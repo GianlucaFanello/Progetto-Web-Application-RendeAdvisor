@@ -1,0 +1,4 @@
+#tastoAccedi{font-size: xx-large; font-family: "System Bold Italic"; background-color: black; color:white; border-radius: 50px; width: 300px; heigth: 250px; padding:20px; }
+h1,h2{font-family: Verdana; font-size: xxx-large;}
+#password,#email{font-size: xx-large; border-radius: 50px; width: 300px; heigth: 250px;}
+body{background-color: white; background-image: linear-gradient(to bottom, white,lightblue);
