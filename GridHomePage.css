@@ -1,0 +1,6 @@
+.struttura{display:grid; grid-template-columns: auto auto auto; padding: 10px;}
+.struttura div {background-color: white; padding: 10px; font-size: 30px; text-align: center;}
+
+p{word-spacing: 80px; text-align: center;}
+input{font-size: xx-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 600px; heigth: 250px; padding:15px; }
+#bottoneR{font-size: xx-large; font-family: "System Bold Italic"; background-color: black; color:white; border-radius: 50px; width: 200px; heigth: 200px; padding:15px;}

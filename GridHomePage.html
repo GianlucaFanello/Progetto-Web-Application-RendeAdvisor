@@ -1,0 +1,45 @@
+<!-- Lo scopo di questo file html è quello di creare uno scheletro della home page in html e css da modificare più avanti.
+Ho usato un Grid Layout, lo trovate su w3school nella sezione di css. In sostanza divido la pagina in div e uso il tag css display:grid per
+rappresentarlo come una griglia. -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <!-- importo sempre i file css esterni! Cerchiamo di farlo tutti e per tutti i file.-->
+    <link rel="stylesheet" href="GridHomePage.css" type="text/css"/>
+   <!-- C'è da aggiungere la favicoon(il logo il alto a sinistra nella barra di ricerca), se qualcuno volesse farlo top.-->
+</head>
+<body>
+<div class="struttura">
+    <div><img src="LogoRendeAdvisorH.png" width="200px" height="100px"/></div>
+    <div><p><a href="recensioni.html"/>Recensioni</a>     <a href="inserisci.html"/>Inserisci</a>     <a href="faq.html"/>Faq</a></p></div>
+    <div><img src="iconaVuota.jpg" width="100px" height="100px"/> </div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div><h2>BENVENUTO A RENDE</h2></div>
+    <div></div>
+    <div></div>
+    <!-- per separare i testi: "hotel" e ristoranti ho usato il tag css word-spacing -->
+    <div><p><a href="hotel.html">Hotel</a> <a href="ristoranti.html"/>Ristoranti</a></p></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div class="barraRicerca"><input type="search" name="ricerca" value="Hotel o Ristorante"/></div>
+    <div><input type="button" name="bottoneR" value="Ricerca" id="bottoneR"/></div>
+
+</div>
+</body>
+</html>
