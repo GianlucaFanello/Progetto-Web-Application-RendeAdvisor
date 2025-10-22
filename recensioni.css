@@ -1,0 +1,7 @@
+.struttura{display:grid; grid-template-columns: auto auto auto; padding: 10px; align-items: center;}
+.struttura div {background-color: white; padding: 10px; font-size: 30px; text-align: center;}
+
+p{word-spacing: 80px; text-align: center;}
+input{font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 500px; heigth: 100px; padding:5px;}
+h4>{font-family: "System Bold Italic";}
+#barra2{font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 700px; heigth: 100px; padding:3px;}
