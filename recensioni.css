@@ -1,7 +1,14 @@
-.struttura{display:grid; grid-template-columns: auto auto auto; padding: 10px; align-items: center;}
-.struttura div {background-color: white; padding: 10px; font-size: 30px; text-align: center;}
+#search{font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 500px; heigth: 100px; padding:5px;}
+.Flexbox{display: flex; justify-content: space-around; align-items: center}
+#home,#altro{font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 100px; heigth: 150px; padding:5px;}
+.Grid{display: grid; grid-template-columns: auto auto auto; padding: 10px; align-items: center;}
+.Flexbox2{display: flex; justify-content: space-around; align-items: stretch; align-content: flex-end; padding: 80px;}
+.Flexbox3{display: flex; justify-content: space-around; align-items: flex-start;}
+.Flexbox4{display: flex; justify-content: space-evenly;}
+p {
+    font-size: x-large;
+    margin: 5px 0; /* Riduce lo spazio */
+}
 
-p{word-spacing: 80px; text-align: center;}
-input{font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 500px; heigth: 100px; padding:5px;}
-h4>{font-family: "System Bold Italic";}
-#barra2{font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 700px; heigth: 100px; padding:3px;}
+#recensione{font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 720px; heigth: 100px; padding:5px;}
+.Flexbox5{display: flex; justify-content: space-evenly; padding: 80px;}
