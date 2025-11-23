@@ -1,0 +1,15 @@
+#tastoAccedi{font-size: large; font-family: "System Bold Italic"; background-color: black;
+;
+; color:white; border-radius: 50px; width: 550px; height: 50px; padding:5px; margin-left: 490px; margin-top: 100px; transition: background-color 0.3s;}
+h1{font-family: Verdana; font-size: xxx-large;}
+.Flexbox{display: flex; justify-content: space-around; align-items: center}
+.FlexBox2{display: flex; justify-content: space-around; align-items: center; }
+.FlexBox3{display: flex; justify-content: space-around; align-items: center; }
+
+#password,#email{font-size: xx-large; font-weight: lighter;  width: 300px; heigth: 250px; justify-content: right; margin-right: 300px; margin-left: 300px;  border: 2px solid #ddd; transition: border 0.3s;}
+#non{margin-left: 655px; margin-top: 50px}
+
+p{margin-right: 300px; margin-left: 300px;}
+#tastoAccedi:hover{background-color: #002233;}
+#email:hover{border: 2px solid #00c6ff;}
+#password:hover{border: 2px solid #00c6ff;}

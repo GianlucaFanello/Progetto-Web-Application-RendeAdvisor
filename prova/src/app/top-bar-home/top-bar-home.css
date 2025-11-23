@@ -1,0 +1,11 @@
+#search{font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 500px; height: 100px; padding:5px;}
+.Flexbox{display: flex; justify-content: space-around; align-items: center}
+.Grid{display: grid; grid-template-columns: auto auto auto; padding: 10px; align-items: center;}
+#recensioni{border:none;font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 200px; height: 40px; padding:5px; transition: all 0.3s; cursor: pointer;}
+#FAQ:hover { background-image: linear-gradient(135deg, #0072ff, #00c6ff); color:white;}
+#recensioni:hover {background-image: linear-gradient(135deg, #00c6ff, #0072ff); color: white;}
+#FAQ{border:none;font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 200px; height: 40px; padding:5px; transition: all 0.3s; cursor: pointer;}
+#inserisci{font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 200px; height: 40px; padding:5px; transition: all 0.3s; border:none; cursor: pointer;}
+#inserisci:hover { background-image: linear-gradient(135deg, #0072ff, #00c6ff); color:white;}
+#archivio{border:none;font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 200px; height: 40px; padding:5px; transition: all 0.3s; cursor: pointer;}
+#archivio:hover { background-image: linear-gradient(135deg, #0072ff, #00c6ff); color:white;}

@@ -1,0 +1,11 @@
+.Grid{display: grid; grid-template-columns: auto auto auto; padding: 10px; align-items: center;}
+.Flexbox2{display: flex; justify-content: space-around; align-items: stretch; align-content: flex-end; padding: 80px;}
+.Flexbox3{display: flex; justify-content: space-around; align-items: flex-start;}
+.Flexbox4{display: flex; justify-content: space-evenly;}
+p {
+  font-size: x-large;
+  margin: 5px 0; /* Riduce lo spazio */
+}
+
+#recensione{font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 720px; heigth: 100px; padding:5px;}
+.Flexbox5{display: flex; justify-content: space-evenly; padding: 80px;}

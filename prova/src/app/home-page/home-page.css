@@ -1,0 +1,81 @@
+/* Contenitore per la barra di ricerca */
+.search-container {
+  position: relative;
+  width: 800px;
+  margin-top: 50px;
+  margin-left: 250px;
+}
+
+/* Barra di ricerca */
+#searchBar {
+  font-size: x-large;
+  font-family: "System Bold Italic";
+  background-color: white;
+  border-radius: 50px;
+  width: 100%;
+  height: 50px;
+  padding: 5px 120px 5px 20px; /* padding-right maggiore per fare spazio al bottone */
+  border: 2px solid #ddd;
+  box-sizing: border-box;
+  margin-left: 100px;
+}
+
+#ricercaButton {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: medium;
+  font-family: "System Bold Italic";
+  background-image: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  width: 100px;
+  height: 40px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-image 0.3s;
+  margin-right: -100px;
+}
+
+#ricercaButton:hover {
+  background-image: linear-gradient(135deg, #0072ff, #00c6ff);
+}
+
+/* Resto del CSS */
+h1 {
+  font-family: Verdana;
+  font-size: xxx-large;
+  margin-left: 30px;
+}
+
+.Flexbox, .FlexBox2, .FlexBox3 {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.FlexBox2 {
+  margin-left: 400px;
+  margin-right: 400px;
+}
+
+#hotel, #ristoranti {
+  font-size: x-large;
+  font-family: "System Bold Italic";
+  background-color: white;
+  border-radius: 50px;
+  width: 200px;
+  height: 50px;
+  padding: 5px;
+  transition: all 0.3s;
+  margin-top: 150px;
+  border: 2px solid #ddd;
+  cursor: pointer;
+}
+
+
+#hotel:hover, #ristoranti:hover {
+  background-image: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+}

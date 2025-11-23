@@ -1,0 +1,22 @@
+#tastoRegistra{font-size: large; font-family: "System Bold Italic"; background-color: black;
+;
+; color:white; border-radius: 50px; width: 550px; height: 50px; padding:5px; margin-left: 490px; margin-top: 80px; transition: background-color 0.3s;}
+
+h1{font-family: Verdana; font-size: xx-large; margin-left: 600px}
+#nome,#cognome,#username,#password,#email{font-size: xx-large; font-weight: lighter;  width: 300px; heigth: 250px; justify-content: right; margin-right: 100px; margin-left: 600px;  border: 2px solid #ddd; transition: border 0.3s;}
+.Flexbox{display: flex; justify-content: space-around; align-items: center;}
+.FlexBox2{display: flex; justify-content: space-around; align-items: center; margin-left: 300px;}
+img{margin-right: 800px; margin-top: 200px}
+.FlexBox3{display: flex; justify-content: space-around; align-items: center; margin-left: 1119px;}
+p{margin-left: 600px}
+
+#nome:hover{border: 2px solid #00c6ff;}
+#username:hover{border: 2px solid #00c6ff;}
+#cognome:hover{border: 2px solid #00c6ff;}
+#password:hover{border: 2px solid #00c6ff;}
+#email:hover{border: 2px solid #00c6ff;}
+#tastoRegistra:hover{background-color: #002233;
+}
+
+
+
