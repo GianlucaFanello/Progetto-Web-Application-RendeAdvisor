@@ -1,0 +1,26 @@
+package it.unical.demacs.wa.rendeadvisor_be.dao;
+
+import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaDTO;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public interface IAttivitaDAO {
+
+    boolean insertAttivita(AttivitaDTO attivita) throws Exception;
+
+    // Cerca un'attività per nome
+    AttivitaDTO findByPrimaryKey(String nomeLocale) throws SQLException;
+
+    // Restituisce tutte le attività
+    ArrayList<AttivitaDTO> findAll() throws SQLException;
+
+    // Restituisce solo Ristorante o solo Hotel
+    ArrayList<AttivitaDTO> findByTipo(String tipo) throws SQLException;
+
+    //Aggiorna i dati (descrizione, foto, ecc.)
+    boolean updateAttivita(AttivitaDTO attivita) throws SQLException;
+
+    //Rimuove un'attività dal sistema
+    boolean delete(String nomeLocale) throws SQLException;
+}
