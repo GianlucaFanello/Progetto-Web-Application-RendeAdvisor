@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aggiungi recensione</title>
+    <link rel="stylesheet" href="AggiungiRecensione.css" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="Flexbox" id="uno">
+    <div>
+        <h1>Aggiungi recensione <img src="../../png/matita.png" width="30px"></h1>
+    </div>
+</div>
+    <div id="box">
+        <div class="Flexbox3">
+                <div>
+                    <label id="nomeLocale">NomeLocale</label>
+                </div>
+                <div class="Flexbox2">
+                    <label id="valutazione">Scegli quante stelle dare</label>
+                    <div>
+                        <img id="star" class="star" src="../../png/star.png" width="40px">
+                        <img id="star" class="star" src="../../png/star.png" width="40px">
+                        <img id="star" class="star" src="../../png/star.png" width="40px">
+                        <img id="star" class="star" src="../../png/star.png" width="40px">
+                        <img id="star" class="star" src="../../png/star.png" width="40px">
+                    </div>
+                    <input id="numberBox" type="number" min="1" max="5">
+                </div>
+
+                    <textarea id="boxRecensione" placeholder="Inserisci qui la tua recensione"></textarea>
+
+                <div><button id="button">Aggiungi</button></div>
+                <div>
+                    <label id="annulla">Annulla</label>
+                </div>
+        </div>
+</div>
+</body>
+</html>
