@@ -9,23 +9,39 @@ body{
 }
 
 #principale{
+    background: linear-gradient(to bottom, #ccffcc 0%, #ffffff 100%);
     display: flex;
-    flex-direction: column;
-    width: 80%;
-    background-color: aquamarine;
+    width: 40%;
     border: solid 2px black;
     border-radius: 2rem;
-    background-color: white;
     box-shadow: 5px 5px 10px #888888;
     gap: 0px;
 }
 
+#dati{
+    font-size: 20px;
+    margin: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0px;
+}
+
+#secondario{
+    margin-top: 10px;
+    font-size: 20px;
+}
+
 #fotoUtente{
+    margin: 15px 30px;
     border-radius: 50%;
     box-shadow: 0px 5px 35px rgba(50,50,93,0.1), 10px 15px 25px rgba(0,0,0,0.07);
     width: 200px;
     height: 200px;
+    margin-left: auto;
+    border: solid black 2px;
 }
+
+
 
 .button{
     font-family: "Alkatra";
