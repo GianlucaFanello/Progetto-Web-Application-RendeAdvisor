@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
   <link rel="stylesheet" href="home-page.css" type="text/css"/>
+  <script type="text/javascript" src="home-page.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400..700&display=swap" rel="stylesheet">
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfaX4yY-9HFApHUu2Rw_KFXNEjY5rVIOM&callback=MostraMappa">
+  </script>
 
 </head>
 <body>
@@ -53,89 +57,9 @@
   </div>
 </div>
 
-<script>
-  // Dati di esempio dei ristoranti e hotel
-  const luoghi = [
-    "Mindujo Ristorante",
-    "La Griglia",
-    "Ristorante La Sala",
-    "Willy Crak",
-    "Hotel Central",
-    "Hotel Paradiso",
-    "Pizzeria Napoli",
-    "Trattoria del Centro",
-    "Ristorante Borgata",
-    "Caffè Roma",
-    "Hotel Rende Plaza",
-    "Osteria del Borgo"
-  ];
-
-  const searchBar = document.getElementById('searchBar');
-  const searchDropdown = document.getElementById('searchDropdown');
-
-  // Funzione per filtrare e mostrare i risultati
-  function showResults(query) {
-    if (query.length === 0) {
-      searchDropdown.classList.remove('show');
-      return;
-    }
-
-    // Filtra i risultati in base alla query
-    const results = luoghi.filter(luogo =>
-      luogo.toLowerCase().includes(query.toLowerCase())
-    );
-
-    // Crea l'HTML per i risultati
-    if (results.length > 0) {
-      searchDropdown.innerHTML = results.map(result =>
-        `<div class="search-dropdown-item" onclick="selectResult('${result}')">${result}</div>`
-      ).join('');
-      searchDropdown.classList.add('show');
-    } else {
-      searchDropdown.innerHTML = '<div class="search-dropdown-empty">Nessun risultato trovato</div>';
-      searchDropdown.classList.add('show');
-    }
-  }
-
-  // Funzione quando si seleziona un risultato
-  function selectResult(result) {
-    searchBar.value = result;
-    searchDropdown.classList.remove('show');
-  }
-
-  // Event listener per la digitazione
-  searchBar.addEventListener('input', function(e) {
-    showResults(e.target.value);
-  });
-
-  // Chiudi il dropdown quando si clicca fuori
-  document.addEventListener('click', function(e) {
-    if (!searchBar.contains(e.target) && !searchDropdown.contains(e.target)) {
-      searchDropdown.classList.remove('show');
-    }
-  });
-
-  // Event listener per il pulsante di ricerca
-  document.getElementById('ricercaButton').addEventListener('click', function() {
-    const query = searchBar.value;
-    if (query.trim() !== '') {
-      console.log('Ricerca per:', query);
-      // Qui puoi aggiungere la logica per la ricerca effettiva
-      searchDropdown.classList.remove('show');
-    }
-  });
-
-  // Ricerca anche premendo Enter
-  searchBar.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-      const query = searchBar.value;
-      if (query.trim() !== '') {
-        console.log('Ricerca per:', query);
-        searchDropdown.classList.remove('show');
-      }
-    }
-  });
-</script>
+<div class="mappa">
+  <div id="map" style="width:50%; height:350px;"></div>
+</div>
 
 </body>
 </html>
