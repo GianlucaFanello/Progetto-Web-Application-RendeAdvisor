@@ -1,0 +1,421 @@
+/* Contenitore per la barra di ricerca */
+.search-container {
+  position: relative;
+  width: 800px;
+  margin-top: 50px;
+  margin-left: 250px;
+}
+
+/* Barra di ricerca */
+#searchBar {
+  font-size: x-large;
+  font-family: "System Bold Italic";
+  background-color: white;
+  border-radius: 50px;
+  width: 100%;
+  height: 60px;
+  padding: 5px 120px 5px 20px;
+  border: 2px solid #ddd;
+  box-sizing: border-box;
+  margin-left: 100px;
+  box-shadow: 2px 2px 5px #888888;
+  outline: none;
+}
+
+/* Dropdown della ricerca */
+.search-dropdown {
+  position: absolute;
+  top: 65px;
+  left: 100px;
+  width: calc(100% - 100px);
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: white;
+  border: 2px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 1000;
+}
+
+.search-dropdown.show {
+  display: block;
+}
+
+.search-dropdown-item {
+  padding: 15px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s;
+  font-family: "System Bold Italic";
+  font-size: large;
+}
+
+.search-dropdown-item:hover {
+  background-image: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+}
+
+.search-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.search-dropdown-empty {
+  padding: 15px 20px;
+  text-align: center;
+  color: #999;
+  font-family: "System Bold Italic";
+}
+
+/* Personalizza la scrollbar */
+.search-dropdown::-webkit-scrollbar {
+  width: 8px;
+}
+
+.search-dropdown::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.search-dropdown::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  border-radius: 10px;
+}
+
+.search-dropdown::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #0072ff, #00c6ff);
+}
+
+#locale1, #locale2, #locale3, #locale4 {
+  width: 300px;
+  height: 230px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+#locale1:hover {
+  opacity: 85%;
+}
+
+#locale2:hover {
+  opacity: 85%;
+}
+#locale3:hover {
+  opacity: 85%;
+}
+
+#locale4:hover {
+  opacity: 85%;
+}
+
+#ricercaButton {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: large;
+  font-family: "Alkatra";
+  background-image: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  width: 100px;
+  height: 50px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-image 0.3s;
+  margin-right: -100px;
+}
+
+#ricercaButton:hover {
+  background-image: linear-gradient(135deg, #0072ff, #00c6ff);
+}
+
+/* Resto del CSS */
+h1 {
+  font-family: "Alkatra";
+  font-size: xxx-large;
+  margin-left: 520px;
+
+}
+
+#inserisciA {
+  font-family: Alkatra;
+}
+
+.Flexbox, .FlexBox2, .FlexBox3{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.FlexBox3 {
+  margin-left: 400px;
+  margin-right: 400px;
+}
+#profilo{cursor:pointer; transition: opacity 0.3s;}
+#logo{cursor:pointer;}
+#recensioni{border:none;font-size: x-large; font-family: "Alkatra"; background-color: white;  border-radius: 50px; width: 200px; height: 40px; padding:5px; transition: all 0.3s; cursor: pointer;}
+#FAQ:hover { background-image: linear-gradient(135deg, #00c6ff, #0072ff); color:white;}
+#recensioni:hover {background-image: linear-gradient(135deg, #00c6ff, #0072ff); color: white;}
+#FAQ{border:none;font-size: x-large; font-family: "Alkatra"; background-color: white;  border-radius: 50px; width: 200px; height: 40px; padding:5px; transition: all 0.3s; cursor: pointer;}
+#inserisci{font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 200px; height: 40px; padding:5px; transition: all 0.3s; border:none; cursor: pointer;}
+#inserisci:hover {background-image: linear-gradient(135deg, #00c6ff, #0072ff); color:white;}
+#archivio{border:none;font-size: x-large; font-family: "Alkatra"; background-color: white;  border-radius: 50px; width: 200px; height: 40px; padding:5px; transition: all 0.3s; cursor: pointer;}
+#archivio:hover { background-image: linear-gradient(135deg, #00c6ff, #0072ff); color:white;}
+#search{font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 500px; height: 100px; padding:5px;}
+.Flexbox{display: flex; justify-content: space-around; align-items: center}
+.Grid{display: grid; grid-template-columns: auto auto auto; padding: 10px; align-items: center;}
+#profilo:hover{opacity: 70%;}
+#inserisciA{border:none;font-size: x-large; font-family: "Alkatra"; background-color: white;  border-radius: 50px; width: 200px; height: 40px; padding:5px; transition: all 0.3s; cursor: pointer;}
+}
+
+.Ordinati {
+  position: relative;
+  margin-bottom: 80px;
+  width: 100%;
+}
+
+.FlexBox4{
+  display: flex;
+  margin-top: 20px;
+  justify-content: stretch;
+  align-items: center;
+  gap: 20px;
+  margin-left: 130px;
+  position: relative;
+}
+
+#testo{
+  font-family: "Candara Light";
+  position: relative;
+  margin-top: 50px;
+  margin-left: 130px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#hotel, #ristoranti {
+  font-size: x-large;
+  font-family: "Alkatra";
+  background-color: white;
+  border-radius: 50px;
+  width: 200px;
+  height: 50px;
+  padding: 5px;
+  transition: all 0.3s;
+  margin-top: 150px;
+  border: 2px solid #ddd;
+  cursor: pointer;
+}
+
+#hotel:hover, #ristoranti:hover {
+  background-image: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+}
+
+/* Media Query per schermi medi */
+@media screen and (max-width: 1400px) {
+  h1 {
+    margin-left: 32%;
+    font-size: xx-large;
+  }
+
+  .search-container {
+    width: 60%;
+    margin-left: 18%;
+  }
+
+  #searchBar {
+    margin-left: 8%;
+  }
+
+  .search-dropdown {
+    left: 8%;
+    width: calc(92% - 8%);
+  }
+
+  .FlexBox3 {
+    margin-left: 28%;
+    margin-right: 28%;
+  }
+
+  .FlexBox4 {
+    margin-left: 10%;
+    gap: 20px;
+  }
+
+  #locale1, #locale2, #locale3, #locale4 {
+    width: 260px;
+    height: 200px;
+  }
+
+  #testo {
+    margin-left: 100px;
+  }
+
+  .cuore {
+    right: 100px;
+  }
+}
+
+/* Media Query per schermi piccoli */
+@media screen and (max-width: 1200px) {
+  h1 {
+    margin-left: 28%;
+    font-size: x-large;
+  }
+
+  #logo {
+    width: 150px;
+    height: 150px;
+  }
+
+  #profilo {
+    width: 80px;
+    height: 80px;
+  }
+
+  #recensioni, #inserisci, #FAQ, #archivio {
+    width: 150px;
+    font-size: large;
+  }
+
+  .search-container {
+    width: 55%;
+    margin-left: 15%;
+  }
+
+  #searchBar {
+    margin-left: 10%;
+    font-size: large;
+  }
+
+  .search-dropdown {
+    left: 10%;
+    width: calc(90% - 10%);
+  }
+
+  #ricercaButton {
+    width: 80px;
+    font-size: medium;
+    margin-right: -10%;
+  }
+
+  .FlexBox3 {
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+
+  #hotel, #ristoranti {
+    width: 180px;
+    font-size: large;
+    margin-top: 100px;
+  }
+
+  .FlexBox4 {
+    margin-left: 8%;
+    gap: 15px;
+    margin-top: 100px;
+  }
+
+  #locale1, #locale2, #locale3, #locale4 {
+    width: 220px;
+    height: 170px;
+  }
+
+  #testo {
+    margin-left: 80px;
+    font-size: 16px;
+  }
+
+  .cuore {
+    right: 80px;
+  }
+}
+
+/* Media Query per schermi molto piccoli */
+@media screen and (max-width: 900px) {
+  h1 {
+    margin-left: 150px;
+    font-size: large;
+  }
+
+  #logo {
+    width: 120px;
+    height: 120px;
+  }
+
+  #profilo {
+    width: 60px;
+    height: 60px;
+  }
+
+  #recensioni, #inserisci, #FAQ, #archivio {
+    width: 80px;
+    height: 32px;
+    font-size: medium;
+    padding: 3px;
+  }
+
+  .search-container {
+    width: 70%;
+    margin-left: 10%;
+  }
+
+  #searchBar {
+    margin-left: 8%;
+    height: 50px;
+    font-size: medium;
+    padding: 5px 80px 5px 15px;
+  }
+
+  .search-dropdown {
+    left: 8%;
+    width: calc(92% - 8%);
+    max-height: 200px;
+  }
+
+  .search-dropdown-item {
+    padding: 10px 15px;
+    font-size: medium;
+  }
+
+  #ricercaButton {
+    width: 70px;
+    height: 40px;
+    font-size: small;
+    margin-right: -8%;
+  }
+
+  .FlexBox3 {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+
+  #hotel, #ristoranti {
+    width: 150px;
+    height: 40px;
+    font-size: medium;
+    margin-top: 80px;
+  }
+
+  .FlexBox4 {
+    margin-left: 5%;
+    margin-right: 5%;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  #locale1, #locale2, #locale3, #locale4 {
+    width: 180px;
+    height: 140px;
+  }
+
+  #testo {
+    margin-left: 30px;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,159 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 40px 0;
+    background-color: #f5f5f5;
+}
+
+#principale{
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 80%;
+    border: solid 2px black;
+    border-radius: 2rem;
+    background-color: white;
+    box-shadow: 5px 5px 10px #888888;
+    min-width: 1200px;
+}
+
+#principale2 {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+}
+
+#principale3{
+    display: flex;
+}
+
+#fotoProfilo{
+    max-width: 250px;
+    max-height: 250px;
+    margin-left: 100px;
+    margin-right: 50px;
+    margin-top: 90px;
+    border-radius: 8rem;
+    box-shadow: 0px 5px 35px rgba(50,50,93,0.1), 10px 15px 25px rgba(0,0,0,0.07);
+}
+
+#formContainer {
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    column-gap: 20px;
+    row-gap: 15px;
+    align-items: center;
+}
+
+.divbox label {
+    font-size: 26px;
+}
+
+.textArea {
+    width: 100%;
+    min-width: 250px;
+    height: 40px;
+    resize: none;
+    padding: 5px;
+    font-size: 18px;
+    box-sizing: border-box;
+    border-radius: 6rem;
+    transition: border-color 0.3s;
+
+}
+
+.textArea:hover {
+  border-color: #00c6ff;
+}
+
+.divbox{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.cognome{
+    margin-top: 25px;
+}
+
+.username{
+    margin-top: 27px;
+
+}
+
+#descrizione{
+    border-radius: 20px;
+    height: 120px;   /* più alto */
+    min-width: 350px; /* più largo se vuoi */
+    transition: border-color 0.3s;
+}
+
+#descrizione:hover {border-color: #00c6ff;}
+
+.button{
+    font-size: xx-large;
+    font-family: "System Bold Italic";
+    background: linear-gradient(
+        90deg,
+        rgb(30, 170, 220),
+        rgb(30, 130, 220)
+    );
+    border-radius: 50px;
+    width: 200px;
+    height: 50px;
+    color: white;
+
+}
+
+#fotoButtonContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sfoglia{
+    margin-top: 50px;
+    margin-left: 50px;
+  background-image: linear-gradient(135deg, #00c6ff, #0072ff);
+  font-size: xx-large;
+  font-family: "System Bold Italic";
+  border-radius: 50px;
+  width: 200px;
+  height: 50px;
+  color: white;
+  border: 2px solid #ddd;
+  transition: background-image 0.3s;
+
+
+}
+
+#salvaModifiche{
+  font-size: x-large;
+  font-family: "System Bold Italic";
+  border-radius: 50px;
+  width: 200px;
+  height: 50px;
+  color: white;
+  background-image: linear-gradient(135deg, #00c6ff, #0072ff);
+  border: 2px solid #ddd;
+  transition: background-image 0.3s;
+}
+
+#salvaModifiche:hover{
+  background-image: linear-gradient(135deg, #0072ff, #00c6ff);
+}
+#sfoglia:hover {
+  background-image: linear-gradient(135deg, #0072ff, #00c6ff);
+}
+

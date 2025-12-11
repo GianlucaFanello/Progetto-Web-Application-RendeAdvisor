@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="home-page.css" type="text/css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400..700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<div class="Flexbox">
+  <div><img src="../../assets/logo-rende-advisor-h.png" width="200px" height="200px" id="logo" routerLink="/Home"/> </div>
+  <div><input type="button" value="Recensioni" id="recensioni" routerLink="/Recensioni"/></div>
+  <div><input type="button" value="Inserisci attività" id="inserisciA" routerLink="/aggiungiStruttura"/></div>
+  <div><input type="button" value="FAQ" id="FAQ" routerLink="/Faq"/></div>
+  <div><input type="button" value="Archivio" id="archivio"/></div>
+  <div><img src="../../assets/user-profile-icon-free-vector.jpeg" width="100px" height="100px" id="profilo" routerLink="/profiloImposta"/></div>
+</div>
+
+<div class="Flexbox2">
+  <div><h1>BENVENUTO A RENDE</h1></div>
+</div>
+
+<div class="FlexBox3">
+  <div><input type="button" value="HOTEL" id="hotel" routerLink="/hotel"/></div>
+  <div><input type="button" value="RISTORANTI" id="ristoranti" routerLink="/ristorante"/></div>
+</div>
+
+<div class="search-container">
+  <div><input type="search" placeholder="Hotel o ristoranti" id="searchBar"/></div>
+  <div><input type="button" value="Ricerca" id="ricercaButton"/></div>
+  <div id="searchDropdown" class="search-dropdown"></div>
+</div>
+
+<div class="Ordinati">
+  <h4 id="testo">Ordinati in base alla distanza dal centro</h4>
+  <div class="FlexBox4">
+    <div><img src="../../assets/MINDUJO.jpg" width="200px" height="200px" id="locale1"></div>
+    <div><img src="../../assets/laGriglia.jpg" width="200px" height="200px" id="locale2"></div>
+    <div><img src="../../assets/la-sala-interna.jpg" width="200px" height="200px" id="locale3"></div>
+    <div><img src="../../assets/willy-crak.jpg" width="200px" height="200px" id="locale4"></div>
+  </div>
+</div>
+
+<div class="Ordinati">
+  <h4 id="testo">Ristoranti che non prevedono carne</h4>
+  <div class="FlexBox4">
+    <div><img src="../../assets/MINDUJO.jpg" width="200px" height="200px" id="locale1"></div>
+    <div><img src="../../assets/laGriglia.jpg" width="200px" height="200px" id="locale2"></div>
+    <div><img src="../../assets/la-sala-interna.jpg" width="200px" height="200px" id="locale3"></div>
+    <div><img src="../../assets/willy-crak.jpg" width="200px" height="200px" id="locale4"></div>
+  </div>
+</div>
+
+<script>
+  // Dati di esempio dei ristoranti e hotel
+  const luoghi = [
+    "Mindujo Ristorante",
+    "La Griglia",
+    "Ristorante La Sala",
+    "Willy Crak",
+    "Hotel Central",
+    "Hotel Paradiso",
+    "Pizzeria Napoli",
+    "Trattoria del Centro",
+    "Ristorante Borgata",
+    "Caffè Roma",
+    "Hotel Rende Plaza",
+    "Osteria del Borgo"
+  ];
+
+  const searchBar = document.getElementById('searchBar');
+  const searchDropdown = document.getElementById('searchDropdown');
+
+  // Funzione per filtrare e mostrare i risultati
+  function showResults(query) {
+    if (query.length === 0) {
+      searchDropdown.classList.remove('show');
+      return;
+    }
+
+    // Filtra i risultati in base alla query
+    const results = luoghi.filter(luogo =>
+      luogo.toLowerCase().includes(query.toLowerCase())
+    );
+
+    // Crea l'HTML per i risultati
+    if (results.length > 0) {
+      searchDropdown.innerHTML = results.map(result =>
+        `<div class="search-dropdown-item" onclick="selectResult('${result}')">${result}</div>`
+      ).join('');
+      searchDropdown.classList.add('show');
+    } else {
+      searchDropdown.innerHTML = '<div class="search-dropdown-empty">Nessun risultato trovato</div>';
+      searchDropdown.classList.add('show');
+    }
+  }
+
+  // Funzione quando si seleziona un risultato
+  function selectResult(result) {
+    searchBar.value = result;
+    searchDropdown.classList.remove('show');
+  }
+
+  // Event listener per la digitazione
+  searchBar.addEventListener('input', function(e) {
+    showResults(e.target.value);
+  });
+
+  // Chiudi il dropdown quando si clicca fuori
+  document.addEventListener('click', function(e) {
+    if (!searchBar.contains(e.target) && !searchDropdown.contains(e.target)) {
+      searchDropdown.classList.remove('show');
+    }
+  });
+
+  // Event listener per il pulsante di ricerca
+  document.getElementById('ricercaButton').addEventListener('click', function() {
+    const query = searchBar.value;
+    if (query.trim() !== '') {
+      console.log('Ricerca per:', query);
+      // Qui puoi aggiungere la logica per la ricerca effettiva
+      searchDropdown.classList.remove('show');
+    }
+  });
+
+  // Ricerca anche premendo Enter
+  searchBar.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      const query = searchBar.value;
+      if (query.trim() !== '') {
+        console.log('Ricerca per:', query);
+        searchDropdown.classList.remove('show');
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
