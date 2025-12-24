@@ -1,0 +1,154 @@
+.Grid{display: grid; grid-template-columns: auto auto auto; padding: 10px; align-items: center;}
+.Flexbox2{display: flex; justify-content: space-around; align-items: stretch; align-content: flex-end; padding: 60px;}
+.Flexbox3{display: flex; justify-content: space-around; align-items: flex-start; margin-bottom: 60px; }
+.Flexbox4{display: flex; justify-content: space-evenly;}
+#hotel1,#hotel2,#hotel3{transition: width 2s}
+#hotel3:hover {
+  width: 300px;
+
+}
+
+#search{outline: none; font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 500px; height: 50px; padding:5px; border: 2px solid #ddd;}
+.Flexbox{display: flex; justify-content: space-around; align-items: center}
+#home{font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 100px; height: 50px; padding:5px;  transition: color 0.3s; border: 0px solid #ddd; cursor: pointer}
+#home:hover {background-image: linear-gradient(135deg, #00c6ff, #0072ff);  color: white;}
+#FAQ:hover {background-image: linear-gradient(135deg, #00c6ff, #0072ff); color: white;}
+#FAQ{font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 100px; height: 50px; padding:5px; transition: color 0.3s; border: 0px solid #ddd; cursor: pointer}
+#logo{cursor:pointer;}
+#profilo{cursor:pointer;}
+#hotel2:hover {
+  width: 300px;
+
+}
+
+#hotel1:hover {
+  width: 300px;
+
+}
+
+/* Media Query per schermi medi */
+@media screen and (max-width: 1400px) {
+  .Grid {
+    grid-template-columns: auto auto auto;
+    padding: 8px;
+    gap: 8px;
+  }
+
+  .Flexbox2 {
+    padding: 40px;
+  }
+
+  .Flexbox3 {
+    margin-bottom: 40px;
+  }
+
+  #search {
+    width: 400px;
+    height: 45px;
+    font-size: large;
+  }
+
+  #home, #FAQ {
+    width: 90px;
+    height: 45px;
+    font-size: large;
+  }
+
+  #hotel1, #hotel2, #hotel3 {
+    width: 200px;
+  }
+
+  #hotel1:hover, #hotel2:hover, #hotel3:hover {
+    width: 270px;
+  }
+}
+
+/* Media Query per schermi piccoli */
+@media screen and (max-width: 1200px) {
+  .Grid {
+    grid-template-columns: auto auto auto;
+    padding: 6px;
+    gap: 6px;
+  }
+
+  .Flexbox2 {
+    padding: 30px;
+  }
+
+  .Flexbox3 {
+    margin-bottom: 30px;
+  }
+
+  #search {
+    width: 350px;
+    height: 40px;
+    font-size: medium;
+  }
+
+  #home, #FAQ {
+    width: 80px;
+    height: 40px;
+    font-size: medium;
+  }
+
+  #hotel1, #hotel2, #hotel3 {
+    width: 180px;
+  }
+
+  #hotel1:hover, #hotel2:hover, #hotel3:hover {
+    width: 240px;
+  }
+}
+
+/* Media Query per schermi molto piccoli */
+@media screen and (max-width: 900px) {
+  .Grid {
+    grid-template-columns: auto auto auto;
+    padding: 5px;
+    gap: 5px;
+  }
+
+  .Flexbox2 {
+    padding: 20px;
+  }
+
+  .Flexbox3 {
+    margin-bottom: 20px;
+  }
+
+  #search {
+    width: 150px;
+    height: 30px;
+    font-size: small;
+  }
+
+  #home, #FAQ {
+    width: 70px;
+    height: 38px;
+    font-size: small;
+  }
+  #profilo {
+    width: 50px;
+    height: 50px;
+  }
+
+  #hotel1, #hotel2, #hotel3 {
+    width: 150px;
+  }
+
+  #hotel1:hover, #hotel2:hover, #hotel3:hover {
+    width: 200px;
+  }
+  #logo{
+    width: 100px;
+    height: 100px;
+  }
+  h1 {
+    font-size: small;
+  }
+
+  h2{
+    font-size: small;
+  }
+}
+

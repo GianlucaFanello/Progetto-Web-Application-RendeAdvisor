@@ -1,0 +1,73 @@
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 40px 0;
+  background-color: #f5f5f5;
+  font-family: "Alkatra";
+}
+
+#principale{
+  background-image: linear-gradient(0deg, #ffffff, #00c6ff);
+  display: flex;
+  width: 40%;
+  border: solid 2px black;
+  border-radius: 2rem;
+  box-shadow: 5px 5px 10px #888888;
+  gap: 0px;
+}
+
+#stelleDiv, #valDiv{
+  display: flex;
+  gap: 5px;
+}
+
+.star{
+  width: 25px;
+}
+
+#dati{
+  font-size: 20px;
+  margin: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0px;
+}
+
+#secondario{
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+#fotoUtente{
+  margin: 15px 30px;
+  border-radius: 50%;
+  box-shadow: 0px 5px 35px rgba(50,50,93,0.1), 10px 15px 25px rgba(0,0,0,0.07);
+  width: 200px;
+  height: 200px;
+  margin-left: auto;
+  border: solid black 2px;
+}
+
+
+
+.button{
+  font-family: "Alkatra";
+  background: linear-gradient(
+    90deg,
+    rgb(30, 170, 220),
+    rgb(30, 130, 220)
+  );
+  border-radius: 50px;
+  width: 200px;
+  height: 50px;
+  color: white;
+  margin: 10px 30px;
+  font-size: 22px;
+}
+
+
+@media (max-width: 600px) { /*media lavora come un if per il display, in questo caso sotto i 600px modifica la classe sottoDiv*/
+
+}
