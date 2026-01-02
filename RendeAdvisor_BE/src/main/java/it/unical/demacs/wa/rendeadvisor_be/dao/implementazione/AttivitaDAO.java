@@ -17,7 +17,7 @@ public class AttivitaDAO implements IAttivitaDAO {
 
     @Override
     public boolean insertAttivita(AttivitaDTO attivita) throws Exception {
-        String query = "INSERT INTO Risposte(nomeLocale, proprietario, telefono, email,  immagine, descrizione, indirizzo, tipo)" +
+        String query = "INSERT INTO Attivita(nomeLocale, proprietario, telefono, email,  immagine, descrizione, indirizzo, tipo)" +
                 " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement ps = connection.prepareStatement(query);
@@ -29,11 +29,8 @@ public class AttivitaDAO implements IAttivitaDAO {
         ps.setString(6, attivita.getDescrizione());
         ps.setString(7, attivita.getIndirizzo());
         ps.setString(8, attivita.getTipo());
-        ps.executeUpdate();
 
-        ResultSet rs = ps.executeQuery();
-
-        return rs.next();
+        return ps.executeUpdate() == 1;
     }
 
     @Override
@@ -79,7 +76,10 @@ public class AttivitaDAO implements IAttivitaDAO {
             String indirizzo = rs.getString("indirizzo");
             String tipo = rs.getString("tipo");
             AttivitaDTO attivitaDTO = new AttivitaDTO(nome, proprietario, telefono, email,  immagine, descrizione,indirizzo, tipo);
+
+            listaAttivita.add(attivitaDTO);
         }
+
         return listaAttivita;
     }
 
@@ -101,6 +101,7 @@ public class AttivitaDAO implements IAttivitaDAO {
             String indirizzo = rs.getString("indirizzo");
 
             AttivitaDTO attivitaDTO = new AttivitaDTO(nome, proprietario, telefono, email,  immagine, descrizione,indirizzo, tipo);
+            listaAttivitaByTipo.add(attivitaDTO);
         }
 
         return listaAttivitaByTipo;
@@ -108,9 +109,15 @@ public class AttivitaDAO implements IAttivitaDAO {
 
     @Override
     public boolean updateAttivita(AttivitaDTO attivita) throws SQLException {
-        String query = "UPDATE FROM Attivita WHERE nomeLocale = ?";
+        String query = "UPDATE FROM Attivita SET telefono=?,email=?,immagine=?,descrizione=?,indirizzo=?,tipo=? WHERE nomeLocale = ?";
         PreparedStatement ps = connection.prepareStatement(query);
-        ps.setString(1, attivita.getNomeLocale());
+        ps.setString(1, attivita.getTelefono());
+        ps.setString(2, attivita.getEmail());
+        ps.setBytes(3, attivita.getImmagine());
+        ps.setString(4, attivita.getDescrizione());
+        ps.setString(5, attivita.getIndirizzo());
+        ps.setString(6, attivita.getTipo());
+        ps.setString(7, attivita.getNomeLocale());
 
         return ps.executeUpdate() == 1;
     }
