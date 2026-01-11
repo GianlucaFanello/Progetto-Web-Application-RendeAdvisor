@@ -1,13 +1,13 @@
 package it.unical.demacs.wa.rendeadvisor_be.dao;
 
-import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaDTO;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaDTO;
+
 public interface IAttivitaDAO {
 
-    boolean insertAttivita(AttivitaDTO attivita) throws Exception;
+    boolean insertAttivita(AttivitaDTO attivita) throws SQLException;
 
     // Cerca un'attività per nome
     AttivitaDTO findByPrimaryKey(String nomeLocale) throws SQLException;

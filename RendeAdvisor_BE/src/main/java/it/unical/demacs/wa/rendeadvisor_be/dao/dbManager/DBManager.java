@@ -1,4 +1,4 @@
-package it.unical.demacs.wa.rendeadvisor_be.dao.dbManager; // Il tuo package corretto
+package it.unical.demacs.wa.rendeadvisor_be.dao.dbManager;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

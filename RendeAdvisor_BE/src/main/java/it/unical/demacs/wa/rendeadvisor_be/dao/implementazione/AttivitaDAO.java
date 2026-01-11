@@ -1,13 +1,13 @@
 package it.unical.demacs.wa.rendeadvisor_be.dao.implementazione;
 
-import it.unical.demacs.wa.rendeadvisor_be.dao.IAttivitaDAO;
-import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaDTO;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import it.unical.demacs.wa.rendeadvisor_be.dao.IAttivitaDAO;
+import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaDTO;
 
 public class AttivitaDAO implements IAttivitaDAO {
     Connection connection;
@@ -16,8 +16,8 @@ public class AttivitaDAO implements IAttivitaDAO {
     }
 
     @Override
-    public boolean insertAttivita(AttivitaDTO attivita) throws Exception {
-        String query = "INSERT INTO Attivita(nomeLocale, proprietario, telefono, email,  immagine, descrizione, indirizzo, tipo)" +
+    public boolean insertAttivita(AttivitaDTO attivita) throws SQLException {
+        String query = "INSERT INTO attivita(nomelocale, proprietario, telefono, email,  immagine, descrizione, indirizzo, tipo)" +
                 " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement ps = connection.prepareStatement(query);
@@ -36,7 +36,7 @@ public class AttivitaDAO implements IAttivitaDAO {
     @Override
     public AttivitaDTO findByPrimaryKey(String nomeLocale) throws SQLException {
 
-        String query = "SELECT * FROM Attivita WHERE nomeLocale = ?";
+        String query = "SELECT * FROM attivita WHERE nomelocale = ?";
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1, nomeLocale);
 
@@ -44,7 +44,7 @@ public class AttivitaDAO implements IAttivitaDAO {
         AttivitaDTO attivitaDTO = null;
         if (rs.next()) {
 
-            String nome = rs.getString("nomeLocale");
+            String nome = rs.getString("nomelocale");
             String proprietario = rs.getString("proprietario");
             String telefono = rs.getString("telefono");
             String email = rs.getString("email");
@@ -61,13 +61,13 @@ public class AttivitaDAO implements IAttivitaDAO {
 
     @Override
     public ArrayList<AttivitaDTO> findAll() throws SQLException {
-        String query = "SELECT * FROM Attivita";
+        String query = "SELECT * FROM attivita";
         PreparedStatement ps = connection.prepareStatement(query);
         ResultSet rs = ps.executeQuery();
 
         ArrayList<AttivitaDTO> listaAttivita = new ArrayList<>();
         while (rs.next()) {
-            String nome = rs.getString("nomeLocale");
+            String nome = rs.getString("nomelocale");
             String proprietario = rs.getString("proprietario");
             String telefono = rs.getString("telefono");
             String email = rs.getString("email");
@@ -85,14 +85,14 @@ public class AttivitaDAO implements IAttivitaDAO {
 
     @Override
     public ArrayList<AttivitaDTO> findByTipo(String tipo) throws  SQLException{
-        String  query = "SELECT * FROM Attivita WHERE tipo = ?";
+        String  query = "SELECT * FROM attivita WHERE tipo = ?";
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1, tipo);
 
         ResultSet rs = ps.executeQuery();
         ArrayList<AttivitaDTO> listaAttivitaByTipo = new ArrayList<>();
         while (rs.next()) {
-            String nome = rs.getString("nomeLocale");
+            String nome = rs.getString("nomelocale");
             String proprietario = rs.getString("proprietario");
             String telefono = rs.getString("telefono");
             String email = rs.getString("email");
@@ -109,7 +109,7 @@ public class AttivitaDAO implements IAttivitaDAO {
 
     @Override
     public boolean updateAttivita(AttivitaDTO attivita) throws SQLException {
-        String query = "UPDATE FROM Attivita SET telefono=?,email=?,immagine=?,descrizione=?,indirizzo=?,tipo=? WHERE nomeLocale = ?";
+        String query = "UPDATE attivita SET telefono=?,email=?,immagine=?,descrizione=?,indirizzo=?,tipo=? WHERE nomelocale = ?";
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1, attivita.getTelefono());
         ps.setString(2, attivita.getEmail());
@@ -125,7 +125,7 @@ public class AttivitaDAO implements IAttivitaDAO {
 
     @Override
     public boolean delete(String nomeLocale) throws  SQLException{
-        String query = "DELETE FROM Attivita WHERE nomeLocale = ?";
+        String query = "DELETE FROM attivita WHERE nomelocale = ?";
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1, nomeLocale);
         return ps.executeUpdate() == 1;

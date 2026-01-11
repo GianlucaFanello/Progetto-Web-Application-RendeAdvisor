@@ -1,8 +1,8 @@
 package it.unical.demacs.wa.rendeadvisor_be.model.dto;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -15,5 +15,6 @@ public class RispostaDTO {
     private String idRisposta;
     private String idRecensione;
     private String utente;
+    private String risposta;
 
 }

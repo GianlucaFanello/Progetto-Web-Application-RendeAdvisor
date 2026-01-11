@@ -1,23 +1,22 @@
 package it.unical.demacs.wa.rendeadvisor_be.dao.implementazione;
 
-import it.unical.demacs.wa.rendeadvisor_be.dao.IUtenteDAO;
-import it.unical.demacs.wa.rendeadvisor_be.model.dto.UtenteDTO;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import it.unical.demacs.wa.rendeadvisor_be.dao.IUtenteDAO;
+import it.unical.demacs.wa.rendeadvisor_be.model.dto.UtenteDTO;
+
 public class UtenteDAO implements IUtenteDAO {
 
     Connection connection ;
 
-    UtenteDAO(Connection con) {
-        connection = con ;
+    public UtenteDAO(Connection con) {
+        this.connection = con ;
     }
 
-    // --- Implementazione metodi interface
 
     @Override
     public UtenteDTO getUtenteByUsername(String username) throws SQLException{
@@ -49,11 +48,11 @@ public class UtenteDAO implements IUtenteDAO {
     @Override
     public UtenteDTO getUtenteByEmail(String email) throws SQLException {
 
-        String query = "SELECT * FROM Utente WHERE email=?";
+        String query = "SELECT * FROM utente WHERE email = ?";
 
         PreparedStatement ps = connection.prepareStatement(query);
 
-        ps.setString(1, query);
+        ps.setString(1, email);
 
         ResultSet rs = ps.executeQuery();
 
@@ -75,20 +74,33 @@ public class UtenteDAO implements IUtenteDAO {
 
     @Override
     public boolean insertUtente(UtenteDTO utente) throws SQLException {
-        String query = "INSERT INTO Utente(nome, cognome, username, email, descrizione, immagine)" +
-                "VALUES(?,?,?;?,?,?)" ;
+        // Inserisce nome, cognome, username, email, password, descrizione e immagine
+        String query = "INSERT INTO utente(nome, cognome, username, email, password, descrizione, immagine) VALUES(?,?,?,?,?,?,?)";
+        try (PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setString(1, utente.getNome());
+            ps.setString(2, utente.getCognome());
+            ps.setString(3, utente.getUsername());
+            ps.setString(4, utente.getEmail());
+            ps.setString(5, utente.getPassword()); // Qui andrebbe BCrypt in futuro
+            ps.setString(6, utente.getDescrizione());
+            ps.setBytes(7, utente.getImmagine());
+            return ps.executeUpdate() > 0;
+        }
+    }
 
-        PreparedStatement ps = connection.prepareStatement(query);
 
-        ps.setString(1, utente.getNome());
-        ps.setString(2, utente.getCognome());
-        ps.setString(3, utente.getUsername());
-        ps.setString(4, utente.getEmail());
-        ps.setString(5, utente.getDescrizione());
-        ps.setBytes(6, utente.getImmagine());
-
-        int inserito = ps.executeUpdate(query);
-        return inserito == 1 ?  true : false ;
+    @Override
+    public UtenteDTO login(String username, String password) throws SQLException {
+        // Controlla se esiste un utente con username e password corrispondenti
+        String query = "SELECT * FROM utente WHERE username = ? AND password = ?";
+        try (PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setString(1, username);
+            ps.setString(2, password);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) return mapRow(rs);
+            }
+        }
+        return null;
     }
 
     @Override
@@ -120,7 +132,7 @@ public class UtenteDAO implements IUtenteDAO {
 
     @Override
     public boolean updateUtente(UtenteDTO utente) throws SQLException {
-        String query = "UPDATE Utente SET nome = ?, cognome = ?, email = ?, username = ?, descrizione = ?, immagine = ?" ;
+        String query = "UPDATE utente SET nome = ?, cognome = ?, email = ?, username = ?, descrizione = ?, immagine = ? WHERE username = ?" ;
 
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1, utente.getNome());
@@ -129,20 +141,33 @@ public class UtenteDAO implements IUtenteDAO {
         ps.setString(4, utente.getUsername());
         ps.setString(5, utente.getDescrizione());
         ps.setBytes(6, utente.getImmagine());
-        ResultSet rs = ps.executeQuery();
+        ps.setString(7, utente.getUsername());
+        int updated = ps.executeUpdate();
 
-        return rs.next();
+        return updated > 0;
     }
 
     @Override
     public boolean deleteUtente(UtenteDTO utente) throws SQLException {
 
-        String query = "DELETE FROM Utente where username = ?" ;
+        String query = "DELETE FROM utente where username = ?" ;
 
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1, utente.getUsername());
-        ResultSet rs = ps.executeQuery();
+        int deleted = ps.executeUpdate();
 
-        return rs.next();
+        return deleted > 0;
     }
+
+    // Metodo per trasformare una riga del db in un oggetto Java
+    private UtenteDTO mapRow(ResultSet rs) throws SQLException {
+        return new UtenteDTO(
+                rs.getString("username"), rs.getString("nome"),
+                rs.getString("cognome"), rs.getString("email"),
+                null, // Non restituiamo la password per sicurezza
+                rs.getString("descrizione"), rs.getBytes("immagine")
+        );
+    }
+
+
 }

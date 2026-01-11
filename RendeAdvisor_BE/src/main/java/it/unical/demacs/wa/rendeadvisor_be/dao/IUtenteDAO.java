@@ -1,21 +1,31 @@
 package it.unical.demacs.wa.rendeadvisor_be.dao;
 
-import it.unical.demacs.wa.rendeadvisor_be.model.dto.UtenteDTO;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import it.unical.demacs.wa.rendeadvisor_be.model.dto.UtenteDTO;
+
 public interface IUtenteDAO {
 
-        public UtenteDTO getUtenteByUsername(String username) throws SQLException;
+    // Cerca un utente tramite il suo username
+    UtenteDTO getUtenteByUsername(String username) throws SQLException;
 
-        public UtenteDTO getUtenteByEmail(String email) throws SQLException;
+    // Cerca un utente tramite la sua email
+    UtenteDTO getUtenteByEmail(String email) throws SQLException;
 
-        public boolean insertUtente(UtenteDTO utente) throws SQLException;
+    // Inserisce un nuovo utente nel database
+    boolean insertUtente(UtenteDTO utente) throws SQLException;
 
-        public ArrayList<UtenteDTO> getAllUtenti() throws SQLException;
+    // Restituisce la lista di tutti gli utenti registrati
+    ArrayList<UtenteDTO> getAllUtenti() throws SQLException;
 
-        public boolean updateUtente(UtenteDTO utente) throws SQLException;
+    // Aggiorna i dati di un utente esistente
+    boolean updateUtente(UtenteDTO utente) throws SQLException;
 
-        public boolean deleteUtente(UtenteDTO utente) throws SQLException;
+    // Elimina un utente dal sistema
+    boolean deleteUtente(UtenteDTO utente) throws SQLException;
+
+    // Verifica le credenziali per l'accesso
+    UtenteDTO login(String username, String password) throws SQLException;
+
 }
