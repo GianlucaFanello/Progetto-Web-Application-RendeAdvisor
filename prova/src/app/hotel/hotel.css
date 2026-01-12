@@ -15,11 +15,19 @@
 #FAQ:hover {background-image: linear-gradient(135deg, #00c6ff, #0072ff); color: white;}
 #FAQ{font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 100px; height: 50px; padding:5px; transition: color 0.3s; border: 0px solid #ddd; cursor: pointer}
 #logo{cursor:pointer;}
-#profilo{cursor:pointer;}
 #hotel2:hover {
   width: 300px;
 
 }
+
+#profilo {
+  width: 40px;
+  height: 40px;
+  transition: opacity 0.3s;
+  cursor: pointer;
+
+}
+#profilo:hover{opacity: 70%;}
 
 #hotel1:hover {
   width: 300px;

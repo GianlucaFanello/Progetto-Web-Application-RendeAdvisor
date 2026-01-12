@@ -31,11 +31,18 @@
 
 }
 
-#logo,#profilo{cursor: pointer;}
+#logo{cursor: pointer;}
+
+#profilo {
+  width: 40px;
+  height: 40px;
+  transition: opacity 0.3s;
+  cursor: pointer;
+
+}
+#profilo:hover{opacity: 70%;}
 
 
-
-/* Mobile piccoli (fino a 480px) */
 @media screen and (max-width: 480px) {
   .Flexbox {
     flex-direction: column;
@@ -99,7 +106,7 @@
 
 
 @media screen and (max-width: 900px) {
-  /* Mantieni il Flexbox orizzontale */
+
   .Flexbox {
     display: flex;
     justify-content: space-around;

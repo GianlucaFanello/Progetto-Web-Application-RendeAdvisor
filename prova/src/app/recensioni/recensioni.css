@@ -123,5 +123,9 @@ p {
   #profilo {
     width: 40px;
     height: 40px;
+    transition: opacity 0.3s;
+
   }
+  #profilo:hover{opacity: 40%;}
+
 }
