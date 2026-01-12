@@ -6,10 +6,10 @@ import java.util.ArrayList;
 public interface INelCuoreDAO {
 
     //Aggiunge la struttura dai preferiti
-    void addPreferito(String nomeUtente, String nomeStruttura) throws SQLException;
+    boolean addPreferito(String nomeUtente, String nomeStruttura) throws SQLException;
 
     //Rimuove la struttura dai preferiti
-    void removePreferito(String nomeUtente, String nomeStruttura) throws SQLException;
+    boolean removePreferito(String nomeUtente, String nomeStruttura) throws SQLException;
 
     //cuore pieno/vuoto
     boolean isPreferito(String nomeUtente, String nomeStruttura);

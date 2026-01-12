@@ -18,23 +18,23 @@ public class NelCuoreDAO implements INelCuoreDAO {
 
     // Esegue una INSERT per salvare la relazione Utente-Struttura nel DB
     @Override
-    public void addPreferito(String nomeUtente, String nomeStruttura) throws SQLException {
+    public boolean addPreferito(String nomeUtente, String nomeStruttura) throws SQLException {
         String sql = "INSERT INTO nelcuore (nomeutente, nomestruttura) VALUES (?, ?)";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, nomeUtente);
             ps.setString(2, nomeStruttura);
-            ps.executeUpdate();
+            return ps.executeUpdate() == 1;
         }
     }
 
     // Esegue una DELETE per rimuovere la relazione specifica dal DB
     @Override
-    public void removePreferito(String nomeUtente, String nomeStruttura) throws SQLException {
+    public boolean removePreferito(String nomeUtente, String nomeStruttura) throws SQLException {
         String sql = "DELETE FROM nelcuore WHERE nomeutente = ? AND nomestruttura = ?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, nomeUtente);
             ps.setString(2, nomeStruttura);
-            ps.executeUpdate();
+            return  ps.executeUpdate() == 1;
         }
     }
 
