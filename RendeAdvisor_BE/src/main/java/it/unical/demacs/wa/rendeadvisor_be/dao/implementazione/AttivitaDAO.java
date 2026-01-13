@@ -5,20 +5,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import it.unical.demacs.wa.rendeadvisor_be.dao.IAttivitaDAO;
-import it.unical.demacs.wa.rendeadvisor_be.dao.IRecensioneDAO;
+import it.unical.demacs.wa.rendeadvisor_be.dao.dbManager.DBManager;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaDTO;
-import it.unical.demacs.wa.rendeadvisor_be.model.dto.IRecensione;
-import it.unical.demacs.wa.rendeadvisor_be.model.dto.RecensioneProxy;
+import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaProxy;
+import it.unical.demacs.wa.rendeadvisor_be.model.dto.RecensioneDTO;
 
 public class AttivitaDAO implements IAttivitaDAO {
     Connection connection;
-    private IRecensioneDAO recensioneDAO;
 
-    public AttivitaDAO(Connection connection,  IRecensioneDAO recensioneDAO) {
+    public AttivitaDAO(Connection connection) {
         this.connection = connection;
-        this.recensioneDAO = recensioneDAO;
     }
 
     @Override
@@ -59,8 +58,10 @@ public class AttivitaDAO implements IAttivitaDAO {
             String indirizzo = rs.getString("indirizzo");
             String tipo = rs.getString("tipo");
 
-            IRecensione recensioniProxy = new RecensioneProxy(recensioneDAO, nome);
-            AttivitaDTO attivitaDTO = new AttivitaDTO(nome, proprietario, telefono, email, immagine, descrizione, indirizzo, tipo, recensioniProxy);
+            attivitaDTO = new AttivitaDTO(nome, proprietario, telefono, email, immagine, descrizione, indirizzo, tipo);
+            RecensioneDAO recensioneDAO = new RecensioneDAO(DBManager.getInstance().getConnection());
+            List<RecensioneDTO> recensioni = recensioneDAO.findByLocale(nome);
+            attivitaDTO.setRecensioni(recensioni);
         }
 
         return attivitaDTO;
@@ -74,17 +75,16 @@ public class AttivitaDAO implements IAttivitaDAO {
 
         ArrayList<AttivitaDTO> listaAttivita = new ArrayList<>();
         while (rs.next()) {
-            String nome = rs.getString("nomelocale");
-            String proprietario = rs.getString("proprietario");
-            String telefono = rs.getString("telefono");
-            String email = rs.getString("email");
-            byte[] immagine = rs.getBytes("immagine");
-            String descrizione = rs.getString("descrizione");
-            String indirizzo = rs.getString("indirizzo");
-            String tipo = rs.getString("tipo");
+            AttivitaProxy attivitaDTO = new AttivitaProxy();
+            attivitaDTO.setNomeLocale(rs.getString("nomelocale"));
+            attivitaDTO.setProprietario(rs.getString("proprietario"));
+            attivitaDTO.setTelefono(rs.getString("telefono"));
+            attivitaDTO.setEmail(rs.getString("email"));
+            attivitaDTO.setImmagine(rs.getBytes("immagine"));
+            attivitaDTO.setDescrizione(rs.getString("descrizione"));
+            attivitaDTO.setIndirizzo(rs.getString("indirizzo"));
+            attivitaDTO.setTipo(rs.getString("tipo"));
 
-            IRecensione recensioniProxy = new RecensioneProxy(recensioneDAO, nome);
-            AttivitaDTO attivitaDTO = new AttivitaDTO(nome, proprietario, telefono, email, immagine, descrizione, indirizzo, tipo, recensioniProxy);
             listaAttivita.add(attivitaDTO);
         }
 
@@ -100,15 +100,16 @@ public class AttivitaDAO implements IAttivitaDAO {
         ResultSet rs = ps.executeQuery();
         ArrayList<AttivitaDTO> listaAttivitaByTipo = new ArrayList<>();
         while (rs.next()) {
-            String nome = rs.getString("nomelocale");
-            String proprietario = rs.getString("proprietario");
-            String telefono = rs.getString("telefono");
-            String email = rs.getString("email");
-            byte[] immagine = rs.getBytes("immagine");
-            String descrizione = rs.getString("descrizione");
-            String indirizzo = rs.getString("indirizzo");
-            IRecensione recensioniProxy = new RecensioneProxy(recensioneDAO, nome);
-            AttivitaDTO attivitaDTO = new AttivitaDTO(nome, proprietario, telefono, email, immagine, descrizione, indirizzo, tipo, recensioniProxy);
+            AttivitaProxy attivitaDTO = new AttivitaProxy();
+            attivitaDTO.setNomeLocale(rs.getString("nomelocale"));
+            attivitaDTO.setProprietario(rs.getString("proprietario"));
+            attivitaDTO.setTelefono(rs.getString("telefono"));
+            attivitaDTO.setEmail(rs.getString("email"));
+            attivitaDTO.setImmagine(rs.getBytes("immagine"));
+            attivitaDTO.setDescrizione(rs.getString("descrizione"));
+            attivitaDTO.setIndirizzo(rs.getString("indirizzo"));
+            attivitaDTO.setTipo(rs.getString("tipo"));
+
             listaAttivitaByTipo.add(attivitaDTO);
         }
 

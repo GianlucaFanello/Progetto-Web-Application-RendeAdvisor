@@ -13,7 +13,8 @@ public class AttivitaDTO {
     private String descrizione;
     private String indirizzo;
     private String tipo;
-    private IRecensione recensione;
+
+    private List<RecensioneDTO> recensioni;
 
 
     public AttivitaDTO() {
@@ -21,7 +22,7 @@ public class AttivitaDTO {
 
 
     public AttivitaDTO(String nomeLocale, String proprietario, String telefono, String email,
-                       byte[] immagine, String descrizione, String indirizzo, String tipo, IRecensione recensione) {
+                       byte[] immagine, String descrizione, String indirizzo, String tipo) {
         this.nomeLocale = nomeLocale;
         this.proprietario = proprietario;
         this.telefono = telefono;
@@ -30,7 +31,6 @@ public class AttivitaDTO {
         this.descrizione = descrizione;
         this.indirizzo = indirizzo;
         this.tipo = tipo;
-        this.recensione = recensione;
     }
 
 
@@ -46,8 +46,12 @@ public class AttivitaDTO {
         return proprietario;
     }
 
-    public List<RecensioneDTO> getRecensioniDTO() throws SQLException {
-        return recensione.getRecensioni();
+    public void setRecensioni(List<RecensioneDTO> recensioni) {
+        this.recensioni = recensioni;
+    }
+
+    public List<RecensioneDTO> getRecensioni() throws SQLException {
+        return recensioni;
     }
 
     public void setProprietario(String proprietario) {
