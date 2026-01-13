@@ -17,4 +17,35 @@ public class RispostaDTO {
     private String utente;
     private String risposta;
 
+    public String getIdRisposta() {
+        return idRisposta;
+    }
+
+    public String getIdRecensione() {
+        return idRecensione;
+    }
+
+    public String getUtente() {
+        return utente;
+    }
+
+    public String getRisposta() {
+        return risposta;
+    }
+
+    public void setIdRisposta(String idRisposta) {
+        this.idRisposta = idRisposta;
+    }
+
+    public void setIdRecensione(String idRecensione) {
+        this.idRecensione = idRecensione;
+    }
+
+    public void setUtente(String utente) {
+        this.utente = utente;
+    }
+
+    public void setRisposta(String risposta) {
+        this.risposta = risposta;
+    }
 }
