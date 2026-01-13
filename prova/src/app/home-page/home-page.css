@@ -73,8 +73,8 @@
 h1 {
   font-family: "Alkatra";
   font-size: xxx-large;
-  margin-left: 520px;
-
+  text-align: center;
+  margin: 20px 0;
 }
 
 #inserisciA {
@@ -93,6 +93,7 @@ h1 {
   justify-content: space-around;
   align-items: center;
 }
+.FlexBox2 { justify-content: center; }
 .FlexBox3 {
   margin-left: 400px;
   margin-right: 400px;
@@ -162,8 +163,9 @@ h1 {
 /* Media Query per schermi medi */
 @media screen and (max-width: 1400px) {
   h1 {
-    margin-left: 32%;
+    text-align: center;
     font-size: xx-large;
+    margin: 16px 0;
   }
 
   .search-container {
@@ -207,8 +209,9 @@ h1 {
 
 @media screen and (max-width: 1200px) {
   h1 {
-    margin-left: 28%;
+    text-align: center;
     font-size: x-large;
+    margin: 14px 0;
   }
 
   #logo {
@@ -282,8 +285,9 @@ h1 {
 
 @media screen and (max-width: 900px) {
   h1 {
-    margin-left: 150px;
+    text-align: center;
     font-size: large;
+    margin: 12px 0;
   }
 
   #logo {

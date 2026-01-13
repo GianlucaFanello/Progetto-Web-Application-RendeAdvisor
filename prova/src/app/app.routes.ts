@@ -9,6 +9,7 @@ import { ProfiloImposta } from './profilo-imposta/profilo-imposta';
 import { Login } from './login/login';
 import { RegistraPage } from './registra-page/registra-page';
 import { AggiungiStruttura } from './aggiungi-struttura/aggiungi-struttura';
+import { Archive } from './archive/archive'; 
 
 
 export const routes: Routes = [
@@ -31,6 +32,11 @@ export const routes: Routes = [
     title: 'Recensioni | RendeAdvisor',
     path: 'reviews',
     component: Recensioni
+  },
+  {
+    title: 'Archivio | RendeAdvisor',
+    path: 'archive',
+    component: Archive
   },
   {
     title: 'FAQ | RendeAdvisor',
