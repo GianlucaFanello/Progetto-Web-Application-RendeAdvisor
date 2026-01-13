@@ -1,5 +1,8 @@
 package it.unical.demacs.wa.rendeadvisor_be.model.dto;
 
+import java.sql.SQLException;
+import java.util.List;
+
 public class AttivitaDTO {
 
     private String nomeLocale;
@@ -10,6 +13,7 @@ public class AttivitaDTO {
     private String descrizione;
     private String indirizzo;
     private String tipo;
+    private IRecensione recensione;
 
 
     public AttivitaDTO() {
@@ -17,7 +21,7 @@ public class AttivitaDTO {
 
 
     public AttivitaDTO(String nomeLocale, String proprietario, String telefono, String email,
-                       byte[] immagine, String descrizione, String indirizzo, String tipo) {
+                       byte[] immagine, String descrizione, String indirizzo, String tipo, IRecensione recensione) {
         this.nomeLocale = nomeLocale;
         this.proprietario = proprietario;
         this.telefono = telefono;
@@ -26,6 +30,7 @@ public class AttivitaDTO {
         this.descrizione = descrizione;
         this.indirizzo = indirizzo;
         this.tipo = tipo;
+        this.recensione = recensione;
     }
 
 
@@ -39,6 +44,10 @@ public class AttivitaDTO {
 
     public String getProprietario() {
         return proprietario;
+    }
+
+    public List<RecensioneDTO> getRecensioniDTO() throws SQLException {
+        return recensione.getRecensioni();
     }
 
     public void setProprietario(String proprietario) {
