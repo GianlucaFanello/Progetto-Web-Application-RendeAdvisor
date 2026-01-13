@@ -27,3 +27,12 @@ h1{font-family: Verdana; font-size: xxx-large;}
 #accedi:hover{background-color: #002233;}
 #Registrati:hover{background-color: #002233;}
 
+
+@media (max-width: 800px) {
+  h1{
+    font-size: x-large;
+  }
+  .Flexbox1 {
+    width: 80%;
+  }
+}

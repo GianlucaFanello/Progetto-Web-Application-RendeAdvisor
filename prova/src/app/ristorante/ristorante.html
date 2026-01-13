@@ -5,17 +5,20 @@
   <meta charset="UTF-8">
   <title>Ristoranti</title>
   <link rel="stylesheet" href="ristorante.css" type="text/css"/>
+  <link rel="stylesheet" href="../home-page/home-page.css" type="text/css"/>
+  <link rel="icon" type="image/png" href="public/logo-rende-advisor-h-removebg-preview.png">
+
 </head>
 <body>
-<div class="Flexbox">
-  <div><img src="../../assets/logo-rende-advisor-h.png" width="200px" height="200px" id="logo" routerLink="/Home"/> </div>
-  <div><input type="search" name="barra" id="search" placeholder="Cerca un ristorante"/></div>
-  <div><input type="button" value="Home" id="home" routerLink="/Home"/></div>
-  <div><input type="button" value="FAQ" id="FAQ"/></div>
-  <div><img src="../../assets/user-profile-icon-free-vector.jpeg" width="100px" height="100px" id="profilo"/></div>
-</div>
+
 <div class="Flexbox2">
   <div><h1>RISTORANTI</h1></div>
+</div>
+
+<div class="search-container">
+  <div><input type="search" placeholder="Cerca Ristorante" id="searchBar"/></div>
+  <div><input type="button" value="Ricerca" id="ricercaButton"/></div>
+  <div id="searchDropdown" class="search-dropdown"></div>
 </div>
 
 <div class="Flexbox3">

@@ -1,0 +1,44 @@
+/* Header topbar styles consistent with home-page topbar */
+.header-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 18px;
+  box-shadow:0 1px 3px rgba(0,0,0,0.06);
+  gap:12px;
+  flex-wrap:nowrap;
+}
+.logo-wrap{flex:0 0 auto}
+.logo-wrap img#logo{width:150px;height:auto;cursor:pointer}
+.nav-buttons{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:center;
+  flex:1 1 auto;
+  flex-wrap:nowrap;
+  overflow:hidden;
+}
+.nav-buttons input{
+  border:none;
+  font-size: large;
+  font-family: "Alkatra";
+  background-color: white;
+  border-radius: 50px;
+  padding:8px 14px;
+  height:40px;
+  transition: all 0.3s;
+  cursor: pointer;
+  white-space:nowrap;
+  flex:0 0 auto;
+}
+.nav-buttons input:hover{background-image: linear-gradient(135deg, #00c6ff, #0072ff); color:white}
+.profile-wrap{flex:0 0 auto}
+.profile-wrap img#profilo{width:72px;height:72px;border-radius:6px;cursor:pointer;transition:opacity .3s}
+.profile-wrap img#profilo:hover{opacity:0.7}
+
+@media (max-width:900px){
+  .nav-buttons input{padding:6px 10px;font-size:medium}
+  .logo-wrap img#logo{width:120px}
+  .profile-wrap img#profilo{width:56px;height:56px}
+}
