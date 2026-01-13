@@ -112,7 +112,7 @@ h1 {
 .Grid{display: grid; grid-template-columns: auto auto auto; padding: 10px; align-items: center;}
 #profilo:hover{opacity: 70%;}
 #inserisciA{border:none;font-size: x-large; font-family: "Alkatra"; background-color: white;  border-radius: 50px; width: 200px; height: 40px; padding:5px; transition: all 0.3s; cursor: pointer;}
-}
+
 
 .Ordinati {
   position: relative;

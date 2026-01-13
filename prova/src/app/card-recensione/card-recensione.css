@@ -1,0 +1,179 @@
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  background-color: #f5f5f5;
+}
+
+.card-recensione {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start; /* allinea top */
+  width: 600px;
+  height: 150px;
+  background: #f5f5f5;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px;
+  gap: 30px;
+
+  box-shadow:
+    0 2px 8px 2px rgba(51, 153, 255, 0.5)
+}
+
+/* Cerchio con numero recensione */
+.nRec {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, rgb(30, 170, 220), rgb(30, 130, 220));
+  font-weight: bold;
+  color: black;
+
+  margin: auto 0 auto 0;
+}
+
+/* Header + text-section */
+.recensione {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 10px;
+}
+
+/* Header: logo, nome, rating-section, rispondi */
+.header {
+  display: flex;
+  align-items: stretch;
+  gap: 15px;
+  width: 100%;
+  border-bottom: 2px solid black;
+}
+
+.utente{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoUtente {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  padding: 2px;
+}
+
+.nome {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* rating-section , button rispondi*/
+.info-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1;
+}
+
+/* Rating e stelle */
+.rating-section {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0 auto 0 auto;
+}
+
+/* Rispondi */
+.rispondi {
+  margin-left: auto;
+  margin-top: auto;
+  color: blue;
+  cursor: pointer;
+}
+
+/* Testo recensione */
+.text-section {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.stelle{
+  width: 30px;
+  height: 30px;
+  background-color: #f5f5f5;
+}
+
+.testo {
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  overflow-y: auto;
+}
+
+@media (max-width: 600px) {
+  .card-recensione {
+    flex-direction: column;
+    align-items: stretch;
+    width: 350px;
+    gap: 0;
+    }
+
+  .header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .utente{
+
+  }
+
+  .logoUtente {
+    width: 40px;
+    height: 40px;
+  }
+
+  .rating-section{
+    align-items: flex-start;
+    gap: 5px;
+    margin: 0 0 0 0;
+  }
+
+  .stelle {
+    width: 20px;
+    height: 20px;
+  }
+
+  .testo {
+    font-size: 14px;
+  }
+
+  .info-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .text-section{
+    overflow-y: visible;
+  }
+
+  .nRec {
+    width: 25px;
+    height: 25px;
+    margin: 0 auto 0 auto ;
+  }
+}
+
+
+

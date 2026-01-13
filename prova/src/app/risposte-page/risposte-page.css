@@ -1,0 +1,186 @@
+html, body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 40px 0;
+  background-color: #f5f5f5;
+}
+
+.page {
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 10px;
+  border:3px black solid;
+
+  box-shadow:
+    0 2px 8px 2px black;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-container .overlay {
+  position: absolute;
+  background-color: white;
+  padding: 10px 20px;
+  border: 3px solid black;
+  border-radius: 5px;
+}
+
+.image-container .overlay span {
+  font-weight: bold;
+  color: black;
+}
+
+.review-container{
+  display: grid;
+  grid-template-areas:
+    "logo nome rating"
+     "blank text text";
+  grid-template-columns: 1fr 2fr 5fr;
+  grid-template-rows: 50px 3fr;
+  width: 500px;
+  height: 100px;
+
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fafafa;
+
+  box-shadow:
+    0 2px 8px 2px rgba(51, 153, 255, 0.5);
+
+  align-items: center;
+}
+
+.review-container .review {
+  align-items: flex-start;
+  justify-content: center;
+}
+
+
+.review-container .immagine {
+  grid-area: logo;
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.review-container .testo {
+  grid-area: text;
+  place-self: stretch;
+  overflow-y: auto;
+}
+
+.rating {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.stella {
+  width: 30px;
+  height: 30px;
+}
+
+.inserisci-commento {
+  display: grid;
+  grid-template-areas:
+    "blank label blank2"
+    "logo text button";
+  grid-template-rows: 1fr 3fr;
+  grid-template-columns: 1fr 4fr 1fr;
+  width: 500px;
+  height: 90px;
+  border-radius: 10px;
+  box-shadow:
+    0 2px 8px 2px rgba(50, 153, 255, 0.5);
+}
+
+.inserisci-commento .logo {
+  grid-area: logo;
+  justify-self: center;
+
+  width: 50px;
+  height:50px;
+}
+
+.commento-text {
+  grid-area: text;
+  border: none;
+  resize: none;
+  width: 100%;
+  height: 80%;
+  font-family: inherit;
+  overflow-y: auto;
+  outline: none;
+  font-size: 11px;
+  box-shadow: inset 0 1px 4px grey;
+  background-color: #fafafa;
+}
+
+.conferma {
+  grid-area: button;
+  place-self: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, rgb(30, 170, 250), rgb(30, 130, 250));
+}
+
+.label {
+  grid-area: label;
+  margin: 0;
+  padding: 5px;
+}
+
+
+.sezione-commenti{
+  display: flex;
+  flex-direction: row;
+  border-bottom: black solid ;
+}
+
+
+@media (max-width: 600px) {
+
+  .image-container {
+    width: 350px;
+    height: 100px;
+    border-radius: 10px;
+  }
+
+  .review-container{
+    width: 350px;
+    height: 150px;
+  }
+
+  .inserisci-commento {
+    width: 350px;
+    height: 110px;
+  }
+
+}
