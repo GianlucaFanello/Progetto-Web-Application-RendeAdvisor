@@ -1,6 +1,7 @@
 package it.unical.demacs.wa.rendeadvisor_be.dao.implementazione;
 
 import it.unical.demacs.wa.rendeadvisor_be.dao.INelCuoreDAO;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
+@Repository
 public class NelCuoreDAO implements INelCuoreDAO {
 
     private Connection connection;

@@ -1,11 +1,10 @@
 package it.unical.demacs.wa.rendeadvisor_be.controller;
 
-import it.unical.demacs.wa.rendeadvisor_be.dao.IRispostaDAO;
 import it.unical.demacs.wa.rendeadvisor_be.dao.dbManager.DBManager;
-import it.unical.demacs.wa.rendeadvisor_be.dao.implementazione.RecensioneDAO;
 import it.unical.demacs.wa.rendeadvisor_be.dao.implementazione.RispostaDAO;
-import it.unical.demacs.wa.rendeadvisor_be.model.dto.RecensioneDTO;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.RispostaDTO;
+import it.unical.demacs.wa.rendeadvisor_be.service.RispostaService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,32 +15,38 @@ import java.util.List;
 @RequestMapping("/api/risposta")
 @CrossOrigin(origins = "http://localhost:4200")
 public class RispostaController {
-    private IRispostaDAO rispostaDAO;
 
-    public RispostaController() throws SQLException {
+    private RispostaService rispostaService;
+
+    public RispostaController() {
         try {
-            this.rispostaDAO = new RispostaDAO(DBManager.getInstance().getConnection());
+            this.rispostaService = new RispostaService(new RispostaDAO(DBManager.getInstance().getConnection()));
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException("?", e);
         }
     }
 
-    //Aggiungi una nuova risposta
+    // Aggiungi una nuova risposta
     @PostMapping("/salva")
-    public void salva(@RequestBody RispostaDTO risposta) {
+    public ResponseEntity<String> salva(@RequestBody RispostaDTO risposta) {
         try {
-            rispostaDAO.insertRisposta(risposta);
-            System.out.println("Salvata risposta: " + risposta);
+            rispostaService.salvaRisposta(risposta);
+            return ResponseEntity.ok("ok");
         } catch (SQLException e) {
-            System.out.println("Qualcosa è andato storto con l'inserimento della risposta.");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Errore inserimento risposta");
         }
     }
 
-    // Restituisce risposte di una recensione specifica
+    // Risposte di una recensione
     @GetMapping("/risposte/{idRecensione}")
-    public List<RispostaDTO> getByRecensione(@PathVariable int idRecensione) throws SQLException {
-        RecensioneDTO dto = new RecensioneDTO();
-        dto.setId(String.valueOf(idRecensione));
-        return rispostaDAO.getRisposteByRecensioneId(dto);
+    public ResponseEntity<List<RispostaDTO>> getByRecensione(
+            @PathVariable int idRecensione) {
+        try {
+            return ResponseEntity.ok(
+                    rispostaService.getRisposteByRecensione(idRecensione)
+            );
+        } catch (SQLException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 }

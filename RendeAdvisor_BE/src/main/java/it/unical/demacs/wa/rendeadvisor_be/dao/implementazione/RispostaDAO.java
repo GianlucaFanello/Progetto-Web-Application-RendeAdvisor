@@ -11,7 +11,9 @@ import it.unical.demacs.wa.rendeadvisor_be.dao.IRispostaDAO;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.RecensioneDTO;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.RispostaDTO;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.UtenteDTO;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class RispostaDAO implements IRispostaDAO {
 
     private Connection connection;

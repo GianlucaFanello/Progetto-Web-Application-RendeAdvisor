@@ -2,10 +2,13 @@ package it.unical.demacs.wa.rendeadvisor_be.dao.implementazione;
 
 import it.unical.demacs.wa.rendeadvisor_be.dao.IRecensioneDAO;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.RecensioneDTO;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.*;
 import java.util.ArrayList;
 
+@Repository
 public class RecensioneDAO implements IRecensioneDAO {
     private Connection connection;
 

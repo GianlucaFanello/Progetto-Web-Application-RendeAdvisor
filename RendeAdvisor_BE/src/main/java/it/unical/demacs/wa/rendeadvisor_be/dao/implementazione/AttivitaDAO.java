@@ -12,7 +12,9 @@ import it.unical.demacs.wa.rendeadvisor_be.dao.dbManager.DBManager;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaDTO;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaProxy;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.RecensioneDTO;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class AttivitaDAO implements IAttivitaDAO {
     Connection connection;
 

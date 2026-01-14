@@ -8,7 +8,9 @@ import java.util.ArrayList;
 
 import it.unical.demacs.wa.rendeadvisor_be.dao.IUtenteDAO;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.UtenteDTO;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class UtenteDAO implements IUtenteDAO {
 
     Connection connection ;
