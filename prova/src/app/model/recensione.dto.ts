@@ -1,7 +1,7 @@
 
 
 
-export interface RecensioneDto {
+export interface RecensioneDto{
   id:string;
   nomeUtente:string;
   nomeLocale:string;

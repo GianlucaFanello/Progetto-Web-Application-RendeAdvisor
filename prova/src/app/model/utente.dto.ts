@@ -1,6 +1,6 @@
 
 
-export interface UtenteDTO{
+export interface UtenteDto{
 
   username:string;
   nome:string |null;

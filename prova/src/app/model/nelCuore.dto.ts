@@ -1,4 +1,4 @@
-export interface nelCuore{
+export interface NelCuoreDto{
   nomeUtente: string;
   nomeStruttura: string;
 }

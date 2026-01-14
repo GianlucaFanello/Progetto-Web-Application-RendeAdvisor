@@ -1,4 +1,4 @@
-export interface risposta{
+export interface RispostaDto{
   idRisposta: string;
   idRecensione: string;
   utente: string;
