@@ -91,6 +91,7 @@ public class UtenteDAO implements IUtenteDAO {
     }
 
 
+
     @Override
     public UtenteDTO login(String username, String password) throws SQLException {
         // Controlla se esiste un utente con username e password corrispondenti
@@ -103,6 +104,20 @@ public class UtenteDAO implements IUtenteDAO {
             }
         }
         return null;
+    }
+
+    @Override
+    public String getPasswordByEmail(String email) throws SQLException {
+        String sql = "SELECT password FROM utenti WHERE username = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, email);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getString("password"); // hash salvato
+            } else {
+                return null;
+            }
+        }
     }
 
     @Override

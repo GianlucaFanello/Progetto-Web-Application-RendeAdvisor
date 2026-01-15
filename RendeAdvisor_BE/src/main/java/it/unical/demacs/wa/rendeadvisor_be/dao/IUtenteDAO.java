@@ -28,4 +28,6 @@ public interface IUtenteDAO {
     // Verifica le credenziali per l'accesso
     UtenteDTO login(String username, String password) throws SQLException;
 
+    public String getPasswordByEmail(String email) throws SQLException;
+
 }
