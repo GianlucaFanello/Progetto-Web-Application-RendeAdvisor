@@ -108,7 +108,7 @@ public class UtenteDAO implements IUtenteDAO {
 
     @Override
     public String getPasswordByEmail(String email) throws SQLException {
-        String sql = "SELECT password FROM utenti WHERE username = ?";
+        String sql = "SELECT password FROM utente WHERE email = ?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, email);
             ResultSet rs = ps.executeQuery();
