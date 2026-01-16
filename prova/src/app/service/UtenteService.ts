@@ -24,6 +24,18 @@ export class UtenteService {
     return this.http.post<ApiResponseDto<UtenteDto>>(this.BASE_URL + "/login", credenziali);
   }
 
+
+  isLogged() {
+    return this.http.get<ApiResponseDto<void>>('/api/utente/isLogged');
+  }
+
+  me() {
+    return this.http.get<ApiResponseDto<UtenteDto>>('/api/utente/me');
+  }
+
+  logout() {
+    return this.http.post<ApiResponseDto<void>>('/api/utente/logout', {});
+  }
 }
 
 
