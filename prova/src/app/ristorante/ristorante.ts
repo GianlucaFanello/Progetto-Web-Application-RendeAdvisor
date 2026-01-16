@@ -10,7 +10,6 @@ import {AttivitaService} from '../service/AttivitaService';
   styleUrl: './ristorante.css',
 })
 export class Ristorante {
-
   searchText: string = '';
 
   constructor(
@@ -25,5 +24,6 @@ export class Ristorante {
       });
     }
   }
+
 
 }
