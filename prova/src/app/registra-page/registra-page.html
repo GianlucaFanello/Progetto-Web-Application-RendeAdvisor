@@ -3,28 +3,32 @@
   <div class="Flexbox1">
     <div><h1>Benvenuto</h1></div>
 
-    <div><p><label>Nome:</label></p>
-    <input [(ngModel)]="utente.nome" type="text"  id="nome"></div>
+    <div class="campo"><p><label>Nome:</label></p>
+    <input [(ngModel)]="utente.nome" type="text"  id="nome" class="textField"></div>
 
-    <div><p><label>Cognome:</label></p>
-    <input [(ngModel)]="utente.cognome" type="text"  id="cognome"></div>
+    <div class="campo"><p><label>Cognome:</label></p>
+    <input [(ngModel)]="utente.cognome" type="text"  id="cognome" class="textField"></div>
 
-    <div><p><label>Username:</label></p>
-      <input [(ngModel)]="utente.username" type="text"  id="username"></div>
+    <div class="campo"><p><label>Username:</label></p>
+      <input [(ngModel)]="utente.username" type="text"  id="username" class="textField"></div>
 
-    <div><p><label>Email:</label></p>
-      <input [(ngModel)]="utente.email" type="email"  id="email"></div>
+    <div class="campo"><p><label>Email:</label></p>
+      <input [(ngModel)]="utente.email" type="email"  id="email" class="textField"></div>
 
-    <div><p><label>Password:</label></p>
-      <input [(ngModel)]="utente.password" type="password" id="password"></div>
+    <div class="campo"><p><label>Password:</label></p>
+      <input [(ngModel)]="utente.password" type="password" id="password" class="textField"></div>
 
-    <div class="messaggio-container">
+    <div class="messaggio-container" class="campo">
       <span id="messaggio">{{ messaggio }}</span>
     </div>
 
-    <div>
+    <div class="campo">
       <button type="button" id="tastoRegistra" [disabled]="loading" (click)="registra()">Registrati</button>
       <span *ngIf="loading" class="spinner"></span>
+    </div>
+    <div id="divLabelAccedi" >
+    <label id="labelDomanda">Hai giù un account? </label>
+    <label id="labelAccedi"><b>Accedi!</b></label>
     </div>
   </div>
 </div>
