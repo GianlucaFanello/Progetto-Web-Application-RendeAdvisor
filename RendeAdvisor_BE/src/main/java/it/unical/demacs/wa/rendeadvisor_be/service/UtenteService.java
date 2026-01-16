@@ -49,4 +49,14 @@ public class UtenteService {
             return null;
         }
     }
+
+    public UtenteDTO findByUsername(String username) {
+        try {
+            return dao.getUtenteByUsername(username);
+        }
+        catch (SQLException e) {
+            logger.error("Errore durante la ricerca dell'utente con username: {}", username, e);
+            return null;
+        }
+    }
 }

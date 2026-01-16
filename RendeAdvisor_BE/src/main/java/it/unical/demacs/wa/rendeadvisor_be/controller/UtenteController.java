@@ -4,16 +4,17 @@ package it.unical.demacs.wa.rendeadvisor_be.controller;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.ApiResponse;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.LoginDTO;
 import it.unical.demacs.wa.rendeadvisor_be.service.UtenteService;
+import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.system.ApplicationPid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.jmx.export.notification.UnableToSendNotificationException;
+import org.springframework.web.bind.annotation.*;
 
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.UtenteDTO;
+
+import java.util.concurrent.locks.AbstractOwnableSynchronizer;
 
 @RestController
 @RequestMapping("/api/utenti")
@@ -43,13 +44,44 @@ public class UtenteController {
 
     // Gestisce l'accesso degli utenti esistenti
     @PostMapping("/login")
-    public ResponseEntity<ApiResponse<UtenteDTO>> login(@RequestBody LoginDTO credenziali) {
+    public ResponseEntity<ApiResponse<UtenteDTO>> login(@RequestBody LoginDTO credenziali,  HttpSession session) {
         UtenteDTO utente = utenteService.loginUtente(credenziali);
         if (utente != null) {
-            return ResponseEntity.ok(new ApiResponse<UtenteDTO>(true, "Accesso riuscito!", utente)); // dati sicuri, password = null
+            session.setAttribute("username", utente.getUsername());
+            return ResponseEntity.ok(new ApiResponse<>(true, "Accesso riuscito!", utente)); // dati sicuri, password = null
         } else {
             logger.warn("Login fallito per utente: {}", credenziali.getEmail());
             return ResponseEntity.status(401).body(new ApiResponse<>(false, "Credenziali errate", null));
         }
     }
+
+
+    @GetMapping("/isLogged")
+    public ResponseEntity<?> isLogged(HttpSession session) {
+        String username = (String) session.getAttribute("username");
+
+        if (username == null) {
+            return ResponseEntity.status(401).body(new ApiResponse<>(false, "Utente non autenticato"));
+        }
+        return ResponseEntity.ok(new ApiResponse<>(true,  "Accesso riuscito"));
+    }
+
+
+    @GetMapping("/me")
+    public ResponseEntity<ApiResponse<UtenteDTO>> me(HttpSession session) {
+        String username = (String) session.getAttribute("username");
+
+        if (username == null) {
+            return ResponseEntity.status(401).body(new ApiResponse<>(false,"Non autenticato"));
+        }
+        UtenteDTO utente = utenteService.findByUsername(username);
+        return ResponseEntity.ok(new ApiResponse<>(true, "Invio dati",utente));
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(HttpSession httpSession) {
+        httpSession.invalidate();
+        return ResponseEntity.ok(new ApiResponse<>(true,"Logout effettuato"));
+    }
+
 }
