@@ -2,6 +2,7 @@ package it.unical.demacs.wa.rendeadvisor_be.controller;
 
 
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.ApiResponse;
+import it.unical.demacs.wa.rendeadvisor_be.model.dto.LoginDTO;
 import it.unical.demacs.wa.rendeadvisor_be.service.UtenteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,13 +43,13 @@ public class UtenteController {
 
     // Gestisce l'accesso degli utenti esistenti
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody UtenteDTO credenziali) {
-        UtenteDTO utente = utenteService.loginUtente(credenziali.getEmail(), credenziali.getPassword());
+    public ResponseEntity<ApiResponse<UtenteDTO>> login(@RequestBody LoginDTO credenziali) {
+        UtenteDTO utente = utenteService.loginUtente(credenziali);
         if (utente != null) {
-            return ResponseEntity.ok(utente); // dati sicuri, password = null
+            return ResponseEntity.ok(new ApiResponse<UtenteDTO>(true, "Accesso riuscito!", utente)); // dati sicuri, password = null
         } else {
             logger.warn("Login fallito per utente: {}", credenziali.getEmail());
-            return ResponseEntity.status(401).body("Credenziali errate");
+            return ResponseEntity.status(401).body(new ApiResponse<>(false, "Credenziali errate", null));
         }
     }
 }

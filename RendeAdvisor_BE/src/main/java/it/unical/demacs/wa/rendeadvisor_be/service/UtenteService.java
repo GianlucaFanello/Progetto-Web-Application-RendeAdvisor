@@ -2,6 +2,7 @@ package it.unical.demacs.wa.rendeadvisor_be.service;
 
 import java.sql.SQLException;
 
+import it.unical.demacs.wa.rendeadvisor_be.model.dto.LoginDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -35,11 +36,11 @@ public class UtenteService {
     }
 
     // Logica di login
-    public UtenteDTO loginUtente(String email, String password) {
+    public UtenteDTO loginUtente(LoginDTO credenziali) {
         try {
-            String passwordHashed = dao.getPasswordByEmail(email);
-            if (passwordHashed != null && passwordService.verifyPassword(password, passwordHashed)) {
-                UtenteDTO utente = dao.getUtenteByEmail(email);
+            String passwordHashed = dao.getPasswordByEmail(credenziali.getEmail());
+            if (passwordHashed != null && passwordService.verifyPassword(credenziali.getPassword(), passwordHashed)) {
+                UtenteDTO utente = dao.getUtenteByEmail(credenziali.getEmail());
                 return utente; // login OK
             }
             return null;
