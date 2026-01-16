@@ -1,31 +1,24 @@
 <div id="body">
   <main class="container">
 
-    <!-- Titolo della ricerca -->
     <h1 *ngIf="searchQuery">Risultati ricerca per "{{ searchQuery }}"</h1>
     <h1 *ngIf="!searchQuery">Risultati ricerca</h1>
 
-    <!-- Loader -->
     <div *ngIf="loading" class="loading">
       Caricamento in corso...
     </div>
 
-    <!-- Errore -->
     <div *ngIf="error" class="error">
       {{ error }}
     </div>
 
-    <!-- Nessun risultato -->
     <div *ngIf="!loading && results.length === 0 && !error">
       <p>Nessuna struttura trovata.</p>
     </div>
 
-    <!-- Sezione risultati -->
     <section class="section" *ngIf="!loading && results.length > 0">
       <div class="grid">
-        <!-- Card dinamica -->
         <div class="card" *ngFor="let attivita of results">
-          <!-- Immagine -->
           <img
             [src]="attivita.immagine || '../../assets/camera.jpg'"
             [alt]="attivita.nomeLocale || 'Attività'"
@@ -33,19 +26,14 @@
           />
 
           <div class="card-body">
-            <!-- Nome e indirizzo -->
             <h3>{{ attivita.nomeLocale || 'Nome non disponibile' }}</h3>
             <p>{{ attivita.indirizzo || 'Indirizzo non disponibile' }}</p>
 
-            <!-- Descrizione opzionale -->
             <p *ngIf="attivita.descrizione">{{ attivita.descrizione }}</p>
 
-            <!-- Tipo / categoria -->
             <span class="badge" *ngIf="attivita.tipo">{{ attivita.tipo }}</span>
 
 
-
-            <!-- Bottone dettagli -->
             <button (click)="viewDetails(attivita.nomeLocale)">
               Dettagli
             </button>
