@@ -1,4 +1,4 @@
-body{
+#body{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -135,6 +135,10 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  #divRadio{
+    font-size: 19px;
   }
 
 }
