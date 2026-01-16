@@ -8,25 +8,35 @@
 }
 
 #principale{
-  padding-top: 160px;
-  padding-bottom: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 80%;
-  background-color: aquamarine;
   border: solid 2px black;
   border-radius: 2rem;
   background-color: white;
   box-shadow: 5px 5px 10px #888888;
   gap: 0px;
 }
+#principale > button {
+  align-self: flex-end;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+#principale2{
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 0;
+}
 
 #fotoUtente{
   border-radius: 50%;
   box-shadow: 0px 5px 35px rgba(50,50,93,0.1), 10px 15px 25px rgba(0,0,0,0.07);
-  position: absolute;
-  top: 5px;
+  align-self: center;
   transition: width 0.2s;
 }
 
@@ -45,6 +55,14 @@
 
 #secondario{
   padding-top: 20px;
+}
+
+@media (max-width: 1015px) {
+  #secondario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .button{
@@ -75,5 +93,18 @@ button:hover {
 
 h1, h2, h3{
   margin: 7px;
+}
+
+#logoutButton{
+  font-size: 18px;
+  background: black;
+  color: white;
+  border-radius: 50px;
+}
+
+#logoutButton:hover {
+  font-size: 20px;
+  width: 100px;
+  height: 40px;
 }
 
