@@ -1,4 +1,4 @@
-body{
+#main-container{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,6 +36,36 @@ p{margin-left: 160px}
   background-color: white;
   box-shadow: 5px 5px 10px #888888;
   gap: 0px;
+}
+
+.messaggio-container {
+  display: flex;
+  justify-content: center; /* centro orizzontale */
+  margin-top: 10px;        /* distanza dal campo precedente */
+  min-height: 20px;        /* spazio anche se messaggio vuoto */
+}
+
+#messaggio {
+  color: red;              /* colore errore */
+  font-weight: bold;
+  font-size: medium;
+  text-align: center;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3; /* grigio chiaro */
+  border-top: 4px solid #3498db; /* blu */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-left: 10px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 
