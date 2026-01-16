@@ -1,40 +1,50 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {UtenteDto} from '../model/utente.dto';
-import {ApiResponseDto} from '../model/apiResponse.dto';
-import {LoginDto} from '../model/login.dto';
-
+import { UtenteDto } from '../model/utente.dto';
+import { ApiResponseDto } from '../model/apiResponse.dto';
+import { LoginDto } from '../model/login.dto';
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class UtenteService {
 
   private BASE_URL = 'http://localhost:8080/api/utenti';
 
-  constructor(private http:HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   registra(utente: UtenteDto): Observable<ApiResponseDto<void>> {
-    return this.http.post<ApiResponseDto<void>>(this.BASE_URL + "/registrazione",utente);
+    return this.http.post<ApiResponseDto<void>>(
+      this.BASE_URL + "/registrazione",
+      utente
+    );
   }
 
-  login(credenziali: LoginDto): Observable<ApiResponseDto<UtenteDto>>{
-    return this.http.post<ApiResponseDto<UtenteDto>>(this.BASE_URL + "/login", credenziali);
+  login(credenziali: LoginDto): Observable<ApiResponseDto<UtenteDto>> {
+    return this.http.post<ApiResponseDto<UtenteDto>>(
+      this.BASE_URL + "/login",
+      credenziali
+    );
   }
 
-
-  isLogged() {
-    return this.http.get(this.BASE_URL + '/isLogged');
+  isLogged(): Observable<ApiResponseDto<boolean>> {
+    return this.http.get<ApiResponseDto<boolean>>(
+      this.BASE_URL + "/isLogged"
+    );
   }
 
-  me() {
-    return this.http.get<ApiResponseDto<UtenteDto>>(this.BASE_URL +'/me');
+  me(): Observable<ApiResponseDto<UtenteDto>> {
+    return this.http.get<ApiResponseDto<UtenteDto>>(
+      this.BASE_URL + "/me"
+    );
   }
 
-  logout() {
-    return this.http.post<ApiResponseDto<void>>(this.BASE_URL + '/logout',{});
+  logout(): Observable<ApiResponseDto<void>> {
+    return this.http.post<ApiResponseDto<void>>(
+      this.BASE_URL + "/logout",
+      {}
+    );
   }
 }
 

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {AttivitaDto} from '../model/attivita.dto';
+import {ApiResponseDto} from '../model/apiResponse.dto';
 
 
 @Injectable({
@@ -12,33 +13,30 @@ export class AttivitaService {
 
   private BASE_URL = 'http://localhost:8080/api/attivita';
 
-  constructor(private http:HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  getTutte(): Observable<AttivitaDto[]> {
-    return this.http.get<AttivitaDto[]>(this.BASE_URL);
+  getTutte(): Observable<ApiResponseDto<AttivitaDto[]>> {
+    return this.http.get<ApiResponseDto<AttivitaDto[]>>(this.BASE_URL);
   }
 
-  getRistoranti(): Observable<AttivitaDto[]> {
-    return this.http.get<AttivitaDto[]>(this.BASE_URL +"/ristoranti");
+  getRistoranti(): Observable<ApiResponseDto<AttivitaDto[]>> {
+    return this.http.get<ApiResponseDto<AttivitaDto[]>>(this.BASE_URL + "/ristoranti");
   }
 
-  getHotel(): Observable<AttivitaDto[]> {
-    return this.http.get<AttivitaDto[]>(this.BASE_URL +"/hotel");
+  getHotel(): Observable<ApiResponseDto<AttivitaDto[]>> {
+    return this.http.get<ApiResponseDto<AttivitaDto[]>>(this.BASE_URL + "/hotel");
   }
 
-  getDettaglio(nomeLocale: string): Observable<AttivitaDto> {
-    return this.http.get<AttivitaDto>(this.BASE_URL + "/dettaglio/" + nomeLocale);
+  getDettaglio(nomeLocale: string): Observable<ApiResponseDto<AttivitaDto>> {
+    return this.http.get<ApiResponseDto<AttivitaDto>>(this.BASE_URL + "/dettaglio/" + nomeLocale);
   }
 
-  salva(): Observable<AttivitaDto> {
-    return this.http.get<AttivitaDto>(this.BASE_URL + "/salva");
+  salva(attivita: AttivitaDto): Observable<ApiResponseDto<void>> {
+    return this.http.post<ApiResponseDto<void>>(this.BASE_URL + "/salva", attivita);
   }
 
-  search(query: string): Observable<AttivitaDto[]> {
+  search(query: string): Observable<ApiResponseDto<AttivitaDto[]>> {
     const params = new HttpParams().set('query', query);
-    return this.http.get<AttivitaDto[]>(this.BASE_URL + "/search", { params });
+    return this.http.get<ApiResponseDto<AttivitaDto[]>>(this.BASE_URL + "/search", {params});
   }
-
-
-
 }

@@ -1,24 +1,28 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {RecensioneDto} from '../model/recensione.dto';
+import { RecensioneDto } from '../model/recensione.dto';
+import { ApiResponseDto } from '../model/apiResponse.dto';
 
 @Injectable({
   providedIn: 'root'
 })
-
-export class RecensioneService{
+export class RecensioneService {
 
   private BASE_URL = 'http://localhost:8080/api/recensioni';
 
-  constructor(private http:HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-  getByLocale(nomeLocale: string): Observable<RecensioneDto[]> {
-    return this.http.get<RecensioneDto[]>(this.BASE_URL + "/locale/" + nomeLocale);
+  getByLocale(nomeLocale: string): Observable<ApiResponseDto<RecensioneDto[]>> {
+    return this.http.get<ApiResponseDto<RecensioneDto[]>>(
+      this.BASE_URL + "/locale/" + nomeLocale
+    );
   }
 
-  salva(): Observable<RecensioneDto> {
-    return this.http.get<RecensioneDto>(this.BASE_URL + "/salva");
+  salva(recensione: RecensioneDto): Observable<ApiResponseDto<number>> {
+    return this.http.post<ApiResponseDto<number>>(
+      this.BASE_URL + "/salva",
+      recensione
+    );
   }
-
 }
