@@ -12,5 +12,5 @@ export interface AttivitaDto {
   tipo:string;
   immagine?:string
 
-  recensioni: RecensioneDto[];
+  recensioni?: RecensioneDto[];
 }

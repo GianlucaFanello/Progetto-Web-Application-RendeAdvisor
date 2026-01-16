@@ -8,19 +8,17 @@ import {RouterLink} from '@angular/router';
   templateUrl: './profilo-struttura.html',
   styleUrls: ['./profilo-struttura.css']
 })
-export class ProfiloStrutturaComponent implements OnInit {
+export class ProfiloStrutturaComponent implements OnInit{
 
-  preferito!: boolean
+  preferito: boolean = false;
   contatore = 0;
 
   constructor(private nelCuoreService: NelCuoreService) {}
 
+
   ngOnInit(): void {
-    this.nelCuoreService.preferito("utente", "struttura").subscribe(res => {
-      if (res.success) {
-        this.preferito = res.data;
-      }
-    });
+    this.preferito = false;
+    this.contatore = 10;
   }
 
 
@@ -31,19 +29,11 @@ export class ProfiloStrutturaComponent implements OnInit {
     };
 
     if (this.preferito) {
-      this.nelCuoreService.rimuovi(dto).subscribe(res => {
-        if (res.success) {
           this.preferito = false;
           this.contatore--;
-        }
-      });
     } else {
-      this.nelCuoreService.salva(dto).subscribe(res => {
-        if (res.success) {
           this.preferito = true;
           this.contatore++;
-        }
-      });
     }
   }
 }
