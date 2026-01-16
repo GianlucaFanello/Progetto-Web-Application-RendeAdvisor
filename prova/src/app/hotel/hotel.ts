@@ -5,7 +5,7 @@ import {AttivitaService} from '../service/AttivitaService';
 
 @Component({
   selector: 'app-hotel',
-  imports: [RouterLink, FormsModule],
+  imports: [FormsModule],
   templateUrl: './hotel.html',
   styleUrl: './hotel.css',
 })
@@ -24,7 +24,5 @@ export class Hotel {
         queryParams: { query: this.searchText }
       });
     }
-
   }
-
 }
