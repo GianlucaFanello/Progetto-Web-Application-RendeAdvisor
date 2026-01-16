@@ -25,4 +25,12 @@ export class RecensioneService {
       recensione
     );
   }
+
+  getCountUtente(username:string): Observable<ApiResponseDto<number>> {
+    const params = {username: username}
+    return this.http.get<ApiResponseDto<number>>(
+      this.BASE_URL + "/n_rec",
+      { params }
+    );
+  }
 }

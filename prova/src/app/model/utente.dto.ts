@@ -3,7 +3,7 @@
 export interface UtenteDto{
 
   username:string;
-  nome:string |null;
+  nome:string;
   cognome:string;
   email:string;
   password:string;
