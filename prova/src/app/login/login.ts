@@ -1,12 +1,43 @@
 import { Component } from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
+import {LoginDto} from '../model/login.dto';
+import {FormsModule} from '@angular/forms';
+import {UtenteService} from '../service/UtenteService';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-login',
-  imports: [RouterLink],
+  imports: [RouterLink, FormsModule, NgIf],
   templateUrl: './login.html',
-  styleUrl: './login.css',
+  styleUrls: ['./login.css'],
 })
 export class Login {
 
+  credenziali: LoginDto = {email: '', password: ''}
+  messaggio = '' ;
+  loading = false ;
+
+  constructor(private utenteService: UtenteService, private router:Router ) {
+  }
+
+  login() {
+
+    if(!this.credenziali.email?.trim() || !this.credenziali.password?.trim() ) {
+      this.messaggio = 'Compila tutti i campi'
+      return;
+    }
+
+    this.loading = true;
+
+    this.utenteService.login(this.credenziali).subscribe({
+      next: (res) => {
+        this.messaggio = res.message;
+        this.router.navigate(['/']);
+      },
+      error: (err) =>{
+        this.loading = false ;
+        this.messaggio = err.error.message;
+      }
+    });
+  }
 }
