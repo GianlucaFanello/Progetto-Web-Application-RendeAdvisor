@@ -9,7 +9,8 @@ import { ProfiloImposta } from './profilo-imposta/profilo-imposta';
 import { Login } from './login/login';
 import { RegistraPage } from './registra-page/registra-page';
 import { AggiungiStruttura } from './aggiungi-struttura/aggiungi-struttura';
-import { Archive } from './archive/archive'; 
+import { Archive } from './archive/archive';
+import { RisultatiR } from './risultati-r/risultati-r';
 
 
 export const routes: Routes = [
@@ -23,6 +24,9 @@ export const routes: Routes = [
     path: 'restaurants',
     component: Ristorante
   },
+  {title: 'Risultati | RendeAdvisor',
+   path: 'RisultatiR',
+  component: RisultatiR},
   {
     title: 'Il Tuo Soggiorno | RendeAdvisor',
     path: 'hotels',
@@ -45,12 +49,12 @@ export const routes: Routes = [
   },
   {
     title: 'Login | RendeAdvisor',
-    path: 'login', 
+    path: 'login',
     component: Login
   },
   {
     title: 'Unisciti a RendeAdvisor | RendeAdvisor',
-    path: 'signup', 
+    path: 'signup',
     component: RegistraPage
   },
   {
@@ -60,7 +64,7 @@ export const routes: Routes = [
   },
   {
     title: 'Cosa vuoi fare? | RendeAdvisor',
-    path: 'choose', 
+    path: 'choose',
     component: ProfiloImposta
   },
   {
@@ -68,7 +72,7 @@ export const routes: Routes = [
     path: 'addbusiness',
     component: AggiungiStruttura
   },
-  { 
+  {
     path: '',
     redirectTo: '',
     pathMatch: 'full'

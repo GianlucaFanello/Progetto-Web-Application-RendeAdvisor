@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {AttivitaDto} from '../model/attivita.dto';
 
@@ -33,5 +33,12 @@ export class AttivitaService {
   salva(): Observable<AttivitaDto> {
     return this.http.get<AttivitaDto>(this.BASE_URL + "/salva");
   }
+
+  search(query: string): Observable<AttivitaDto[]> {
+    const params = new HttpParams().set('query', query);
+    return this.http.get<AttivitaDto[]>(this.BASE_URL + "/search", { params });
+  }
+
+
 
 }

@@ -1,11 +1,33 @@
+
 import { Component } from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
+import { AttivitaService } from '../service/AttivitaService';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, FormsModule],
   templateUrl: './home-page.html',
-  styleUrls: ['./home-page.css'], // <-- anche "styleUrls", non "styleUrl"
+  styleUrls: ['./home-page.css'],
 })
-export class HomePage { }
+
+export class HomePage {
+  searchText: string = '';
+
+  constructor(
+    private router: Router,
+    private attivitaService: AttivitaService
+  ) { }
+
+  search() {
+    if (this.searchText.trim()) {
+      this.router.navigate(['/RisultatiR'], {
+        queryParams: { query: this.searchText }
+      });
+    }
+
+  }
+
+
+}
