@@ -28,12 +28,12 @@ public class UtenteController {
         boolean ok = utenteService.registraUtente(utente);
         if (ok) {
             return ResponseEntity.ok(
-                    new ApiResponse<>(true,"Registrazione avvenuta")
+                    new ApiResponse<>(true,"Registrazione avvenuta", null)
             );
         } else {
             logger.error("Registrazione fallita per utente: {}", utente.getUsername());
             return ResponseEntity.badRequest().body(
-                    new ApiResponse<>(false,"Errore nella registrazione")
+                    new ApiResponse<>(false,"Errore nella registrazione", null)
             );
         }
     }
@@ -57,9 +57,9 @@ public class UtenteController {
         String username = (String) session.getAttribute("username");
 
         if (username == null) {
-            return ResponseEntity.status(401).body(new ApiResponse<>(false, "Utente non autenticato"));
+            return ResponseEntity.status(401).body(new ApiResponse<>(false, "Utente non autenticato",null));
         }
-        return ResponseEntity.ok(new ApiResponse<>(true,  "Accesso riuscito"));
+        return ResponseEntity.ok(new ApiResponse<>(true,  "Accesso riuscito",null));
     }
 
 
@@ -68,16 +68,16 @@ public class UtenteController {
         String username = (String) session.getAttribute("username");
 
         if (username == null) {
-            return ResponseEntity.status(401).body(new ApiResponse<>(false,"Non autenticato"));
+            return ResponseEntity.status(401).body(new ApiResponse<>(false,"Non autenticato",null));
         }
         UtenteDTO utente = utenteService.findByUsername(username);
-        return ResponseEntity.ok(new ApiResponse<>(true, "Invio dati",utente));
+        return ResponseEntity.ok(new ApiResponse<>(true, "Invio dati", utente));
     }
 
     @PostMapping("/logout")
     public ResponseEntity<?> logout(HttpSession httpSession) {
         httpSession.invalidate();
-        return ResponseEntity.ok(new ApiResponse<>(true,"Logout effettuato"));
+        return ResponseEntity.ok(new ApiResponse<>(true,"Logout effettuato",null));
     }
 
 }
