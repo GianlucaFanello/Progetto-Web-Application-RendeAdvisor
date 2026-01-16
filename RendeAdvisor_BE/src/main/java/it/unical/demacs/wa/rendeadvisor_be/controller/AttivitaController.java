@@ -119,4 +119,20 @@ public class AttivitaController {
         }
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<ApiResponse<List<AttivitaDTO>>> search(@RequestParam String query) {
+
+        try {
+            List<AttivitaDTO> risultati = attivitaService.search(query);
+
+            return ResponseEntity.ok(new ApiResponse<>(true, "Risultati ricerca", risultati)
+            );
+
+        } catch (SQLException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse<>(false, "Errore", null));
+        }
+    }
+
+
 }

@@ -38,4 +38,9 @@ public class AttivitaService {
     public boolean salvaAttivita(AttivitaDTO attivita) throws SQLException {
         return attivitaDAO.insertAttivita(attivita);
     }
+
+    public List<AttivitaDTO> search(String query) throws SQLException {
+        return attivitaDAO.search(query);
+    }
+
 }

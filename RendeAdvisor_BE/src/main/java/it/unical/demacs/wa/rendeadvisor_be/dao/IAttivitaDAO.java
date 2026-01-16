@@ -2,6 +2,7 @@ package it.unical.demacs.wa.rendeadvisor_be.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaDTO;
 
@@ -23,4 +24,7 @@ public interface IAttivitaDAO {
 
     //Rimuove un'attività dal sistema
     boolean delete(String nomeLocale) throws SQLException;
+
+    List<AttivitaDTO> search(String query) throws SQLException;
+
 }

@@ -141,4 +141,43 @@ public class AttivitaDAO implements IAttivitaDAO {
         ps.setString(1, nomeLocale);
         return ps.executeUpdate() == 1;
     }
+
+
+    @Override
+    public List<AttivitaDTO> search(String query) throws SQLException {
+
+        String sql = """ 
+        SELECT * FROM attivita WHERE nome = ? """;
+
+        PreparedStatement ps = connection.prepareStatement(sql);
+
+        ps.setString(1, query);
+
+        ResultSet rs = ps.executeQuery();
+
+        List<AttivitaDTO> risultati = new ArrayList<>();
+
+        while (rs.next()) {
+            risultati.add(mapResultSetToDTO(rs));
+        }
+
+        return risultati;
+    }
+
+    private AttivitaDTO mapResultSetToDTO(ResultSet rs) throws SQLException {
+        AttivitaDTO dto = new AttivitaDTO();
+
+        dto.setNomeLocale(rs.getString("nomelocale"));
+        dto.setProprietario(rs.getString("proprietario"));
+        dto.setTelefono(rs.getString("telefono"));
+        dto.setEmail(rs.getString("email"));
+        dto.setImmagine(rs.getString("immagine").getBytes());
+
+        dto.setDescrizione(rs.getString("descrizione"));
+        dto.setIndirizzo(rs.getString("indirizzo"));
+        dto.setTipo(rs.getString("tipo"));
+
+        return dto;
+    }
+
 }
