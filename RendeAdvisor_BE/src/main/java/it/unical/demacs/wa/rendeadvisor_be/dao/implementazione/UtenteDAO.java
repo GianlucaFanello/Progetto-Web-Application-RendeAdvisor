@@ -77,15 +77,13 @@ public class UtenteDAO implements IUtenteDAO {
     @Override
     public boolean insertUtente(UtenteDTO utente) throws SQLException {
         // Inserisce nome, cognome, username, email, password, descrizione e immagine
-        String query = "INSERT INTO utente(nome, cognome, username, email, password, descrizione, immagine) VALUES(?,?,?,?,?,?,?)";
+        String query = "INSERT INTO utente(nome, cognome, username, email, password) VALUES(?,?,?,?,?)";
         try (PreparedStatement ps = connection.prepareStatement(query)) {
             ps.setString(1, utente.getNome());
             ps.setString(2, utente.getCognome());
             ps.setString(3, utente.getUsername());
             ps.setString(4, utente.getEmail());
             ps.setString(5, utente.getPassword()); // Qui andrebbe BCrypt in futuro
-            ps.setString(6, utente.getDescrizione());
-            ps.setBytes(7, utente.getImmagine());
             return ps.executeUpdate() > 0;
         }
     }

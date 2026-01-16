@@ -1,6 +1,7 @@
 package it.unical.demacs.wa.rendeadvisor_be.controller;
 
 
+import it.unical.demacs.wa.rendeadvisor_be.model.dto.ApiResponse;
 import it.unical.demacs.wa.rendeadvisor_be.service.UtenteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,13 +26,17 @@ public class UtenteController {
     }
     // Gestisce la creazione di un nuovo account
     @PostMapping("/registrazione")
-    public ResponseEntity<String> registra(@RequestBody UtenteDTO utente) {
+    public ResponseEntity<ApiResponse<Void>> registra(@RequestBody UtenteDTO utente) {
         boolean ok = utenteService.registraUtente(utente);
         if (ok) {
-            return ResponseEntity.ok("Registrazione avvenuta");
+            return ResponseEntity.ok(
+                    new ApiResponse<>(true,"Registrazione avvenuta")
+            );
         } else {
             logger.error("Registrazione fallita per utente: {}", utente.getUsername());
-            return ResponseEntity.badRequest().body("Errore nella registrazione");
+            return ResponseEntity.badRequest().body(
+                    new ApiResponse<>(false,"Errore nella registrazione")
+            );
         }
     }
 
