@@ -2,10 +2,12 @@ import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AttivitaService } from '../service/AttivitaService';
 import { AttivitaDto } from '../model/attivita.dto';
+import {RouterLink} from '@angular/router';
+
 
 @Component({
   selector: 'app-risultati-r',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './risultati-r.html',
   styleUrl: './risultati-r.css',
 })

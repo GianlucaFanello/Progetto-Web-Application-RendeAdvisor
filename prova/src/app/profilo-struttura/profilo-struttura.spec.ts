@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProfiloStruttura } from './profilo-struttura';
+import { ProfiloStrutturaComponent } from './profilo-struttura';
 
 describe('ProfiloStruttura', () => {
-  let component: ProfiloStruttura;
-  let fixture: ComponentFixture<ProfiloStruttura>;
+  let component: ProfiloStrutturaComponent;
+  let fixture: ComponentFixture<ProfiloStrutturaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProfiloStruttura]
+      imports: [ProfiloStrutturaComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ProfiloStruttura);
+    fixture = TestBed.createComponent(ProfiloStrutturaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
