@@ -11,8 +11,8 @@
 #principale{
   display: flex;
   flex-direction: column;
+  align-self: center;
   width: 80%;
-  background-color: aquamarine;
   border: solid 2px black;
   border-radius: 2rem;
   background-color: white;
@@ -27,10 +27,8 @@
 #fotoUtente{
   border-radius: 50%;
   box-shadow: 0px 5px 35px rgba(50,50,93,0.1), 10px 15px 25px rgba(0,0,0,0.07);
-  position: absolute;
-  top: 5px;
-  width: 200px;
-  height: 200px;
+  align-self: center;
+  transition: width 0.2s;
 }
 
 #textArea{
@@ -99,7 +97,6 @@ h1, h2, h3{
 }
 
 #principale2{
-  margin-top: 160px;
   margin-bottom: 40px;
   display: flex;
   flex-direction: column;
