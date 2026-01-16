@@ -1,44 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Aggiunti struttura</title>
-  <link rel="stylesheet" href="aggiungi-struttura.css" type="text/css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400..700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="public/logo-rende-advisor-h-removebg-preview.png">
+<div id="body">
+  <h1>Aggiungi struttura <img src="../../assets/palazzi.png" width="30px"></h1>
+  <div id="principale">
+    <div id="secondario">
+      <div class="interno nome">
+        <label class="etichette">Nome</label>
+        <textarea class="textArea" placeholder="Inserisci nome"></textarea>
+      </div>
+      <div class="interno email">
+        <label class="etichette">Email</label>
+        <textarea class="textArea" placeholder="Inserisci email"></textarea>
+      </div>
+      <div class="interno indirizzo">
+        <label class="etichette">Indirizzo</label>
+        <textarea class="textArea" placeholder="Inserisci indirizzo"></textarea>
+      </div>
+      <div class="interno telefono">
+        <label class="etichette">Telefono</label>
+        <input type="tel" class="textArea" placeholder="Inserisci telefono">
+      </div>
+      <div class="interno descrizione">
+        <label class="etichette">Descrizione</label>
+        <textarea class="textArea boxDescrizione" placeholder="Inserisci descrizione"></textarea>
+      </div>
+      <div id="divRadio">
+        <form>
+          <label class="labelButton" >HOTEL</label>
+          <input type="radio" name="scelta">
+          <label class="labelButton" >RISTORANTE</label>
+          <input type="radio" name="scelta">
+        </form>
+      </div>
+    </div>
+    <div id="terzario">
+      <img src="../../assets/MINDUJO.jpg" id="fotoProfilo">
+      <button class="sfoglia annulla">Sfoglia</button>
+    </div>
 
-</head>
-<body>
-<h1>Aggiungi struttura <img src="../../assets/palazzi.png" width="30px"></h1>
-<div id="principale">
-  <div id="secondario">
-    <div class="interno nome">
-      <label class="etichette">Nome</label>
-      <textarea class="textArea" placeholder="Inserisci nome"></textarea>
-    </div>
-    <div class="interno email">
-      <label class="etichette">Email</label>
-      <textarea class="textArea" placeholder="Inserisci email"></textarea>
-    </div>
-    <div class="interno indirizzo">
-      <label class="etichette">Indirizzo</label>
-      <textarea class="textArea" placeholder="Inserisci indirizzo"></textarea>
-    </div>
-    <div class="interno telefono">
-      <label class="etichette">Telefono</label>
-      <input type="tel" class="textArea" placeholder="Inserisci telefono">
-    </div>
-    <div class="interno descrizione">
-      <label class="etichette">Descrizione</label>
-      <textarea class="textArea boxDescrizione" placeholder="Inserisci descrizione"></textarea>
-    </div>
+    <button class="button" id="buttonConferma">Conferma</button>
+    <button class="annulla">Annulla</button>
   </div>
-  <div id="terzario">
-    <img src="../../assets/MINDUJO.jpg" id="fotoProfilo">
-    <button class="sfoglia annulla">Sfoglia</button>
-  </div>
-
-  <button class="button" id="buttonConferma">Conferma</button>
-  <button class="annulla">Annulla</button>
 </div>
-</body>
-</html>

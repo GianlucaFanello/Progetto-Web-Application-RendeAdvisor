@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {UtenteDto} from '../model/utente.dto';
+import {ApiResponseDto} from '../model/apiResponse.dto';
+import {LoginDto} from '../model/login.dto';
 
 
 @Injectable({
@@ -14,12 +16,12 @@ export class UtenteService {
 
   constructor(private http:HttpClient) {}
 
-  registra(): Observable<UtenteDto> {
-    return this.http.get<UtenteDto>(this.BASE_URL + "/registrazione");
+  registra(utente: UtenteDto): Observable<ApiResponseDto<void>> {
+    return this.http.post<ApiResponseDto<void>>(this.BASE_URL + "/registrazione",utente);
   }
 
-  login(): Observable<UtenteDto>{
-    return this.http.get<UtenteDto>(this.BASE_URL + "/login");
+  login(credenziali: LoginDto): Observable<ApiResponseDto<UtenteDto>>{
+    return this.http.post<ApiResponseDto<UtenteDto>>(this.BASE_URL + "/login", credenziali);
   }
 
 }

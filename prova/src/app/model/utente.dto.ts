@@ -7,6 +7,6 @@ export interface UtenteDto{
   cognome:string;
   email:string;
   password:string;
-  descrizione:string;
+  descrizione?:string;
   immagine?:string;
 }
