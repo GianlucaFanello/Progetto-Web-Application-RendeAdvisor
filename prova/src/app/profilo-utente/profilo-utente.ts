@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'app-profilo-utente',
   imports: [],
   templateUrl: './profilo-utente.html',
-  styleUrl: './profilo-utente.css',
+  styleUrls: ['./profilo-utente.css'],
 })
 export class ProfiloUtente {
 

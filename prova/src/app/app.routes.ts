@@ -12,6 +12,7 @@ import { AggiungiStruttura } from './aggiungi-struttura/aggiungi-struttura';
 import { Archive } from './archive/archive';
 import { RisultatiR } from './risultati-r/risultati-r';
 import {ProfiloStrutturaComponent} from './profilo-struttura/profilo-struttura';
+import {ProfiloUtente} from './profilo-utente/profilo-utente';
 
 
 
@@ -79,6 +80,11 @@ export const routes: Routes = [
     title: 'Aggiungi una attività! | RendeAdvisor',
     path: 'addbusiness',
     component: AggiungiStruttura
+  },
+  {
+    title: 'Profilo',
+    path: 'profilo',
+    component: ProfiloUtente
   },
   {
     path: '',

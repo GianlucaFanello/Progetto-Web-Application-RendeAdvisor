@@ -26,15 +26,15 @@ export class UtenteService {
 
 
   isLogged() {
-    return this.http.get<ApiResponseDto<void>>('/api/utente/isLogged');
+    return this.http.get(this.BASE_URL + '/isLogged');
   }
 
   me() {
-    return this.http.get<ApiResponseDto<UtenteDto>>('/api/utente/me');
+    return this.http.get<ApiResponseDto<UtenteDto>>(this.BASE_URL +'/me');
   }
 
   logout() {
-    return this.http.post<ApiResponseDto<void>>('/api/utente/logout', {});
+    return this.http.post<ApiResponseDto<void>>(this.BASE_URL + '/logout',{});
   }
 }
 
