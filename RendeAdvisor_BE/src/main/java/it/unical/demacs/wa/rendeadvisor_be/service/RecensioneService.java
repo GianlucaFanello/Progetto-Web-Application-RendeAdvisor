@@ -25,4 +25,8 @@ public class RecensioneService {
     public int salvaRecensione(RecensioneDTO recensione) throws SQLException {
         return recensioneDAO.save(recensione);
     }
+
+    public int numeroRecensioniUtente(String username) throws SQLException {
+        return recensioneDAO.countRecensioniUtente(username);
+    }
 }

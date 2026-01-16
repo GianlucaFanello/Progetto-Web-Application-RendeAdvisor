@@ -17,4 +17,6 @@ public interface IRecensioneDAO {
 
     // Cancella una recensione specifica tramite il suo ID
     void delete(int id) throws SQLException;
+
+    int countRecensioniUtente(String username) throws SQLException;
 }

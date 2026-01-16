@@ -85,4 +85,19 @@ public class RecensioneDAO implements IRecensioneDAO {
             ps.executeUpdate();
         }
     }
+
+    public int countRecensioniUtente(String nomeUtente) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM recensioni WHERE nomeutente = ?";
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, nomeUtente);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
+            }
+        }
+        return 0;
+    }
 }
