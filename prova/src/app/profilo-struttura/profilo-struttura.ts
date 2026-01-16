@@ -10,29 +10,39 @@ import {RouterLink} from '@angular/router';
 })
 export class ProfiloStrutturaComponent implements OnInit {
 
-  preferito!: boolean;
+  preferito!: boolean
   contatore = 0;
 
   constructor(private nelCuoreService: NelCuoreService) {}
 
   ngOnInit(): void {
-    this.nelCuoreService.preferito().subscribe((result: boolean) => {
-      this.preferito = result;
+    this.nelCuoreService.preferito("utente", "struttura").subscribe(res => {
+      if (res.success) {
+        this.preferito = res.data;
+      }
     });
-
-
   }
 
+
   togglePreferito(): void {
+    const dto = {
+      nomeUtente: "utente",
+      nomeStruttura: "struttura"
+    };
+
     if (this.preferito) {
-      this.nelCuoreService.rimuovi().subscribe(() => {
-        this.preferito = false;
-        this.contatore--;
+      this.nelCuoreService.rimuovi(dto).subscribe(res => {
+        if (res.success) {
+          this.preferito = false;
+          this.contatore--;
+        }
       });
     } else {
-      this.nelCuoreService.salva().subscribe(() => {
-        this.preferito = true;
-        this.contatore++;
+      this.nelCuoreService.salva(dto).subscribe(res => {
+        if (res.success) {
+          this.preferito = true;
+          this.contatore++;
+        }
       });
     }
   }

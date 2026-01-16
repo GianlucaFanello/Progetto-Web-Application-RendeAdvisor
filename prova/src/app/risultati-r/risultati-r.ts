@@ -38,8 +38,8 @@ export class RisultatiR implements OnInit {
     this.error = '';
 
     this.attivitaService.search(this.searchQuery).subscribe({
-      next: (data) => {
-        this.results = data;
+      next: (res) => {
+        this.results = res.data || [];
         this.loading = false;
       },
       error: (err) => {
