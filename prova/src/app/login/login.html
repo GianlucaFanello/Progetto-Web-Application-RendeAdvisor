@@ -1,25 +1,13 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hotel</title>
-  <link rel="stylesheet" href="login.css" type="text/css"/>
-  <link rel="icon" type="image/png" href="public/logo-rende-advisor-h-removebg-preview.png">
+<div id="body">
+  <div class="Flexbox">
+    <div><h1>Accedi</h1></div>
+    <div><p><label>Email:</label></p>
+      <input type="email" name="email" id="email"/></div>
+    <div><p id="pass"><label>Password:</label></p>
+      <input type="password" name="password" id="password"/></div>
 
-</head>
-<body>
-<div class="Flexbox">
-  <div><h1>Accedi</h1></div>
-  <div><p><label>Email:</label></p>
-    <input type="email" name="email" id="email"/></div>
-  <div><p id="pass"><label>Password:</label></p>
-    <input type="password" name="password" id="password"/></div>
+   <div> <p id="non">Non sei registrato? <a routerLink="/signup">Registrati</a></p></div>
 
- <div> <p id="non">Non sei registrato? <a routerLink="/signup">Registrati</a></p></div>
-
-  <div><button id="tastoAccedi" routerLink="/">Accedi</button></div>
+    <div><button id="tastoAccedi" routerLink="/">Accedi</button></div>
+  </div>
 </div>
-
-</body>
-</html>
