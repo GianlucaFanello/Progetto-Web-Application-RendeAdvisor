@@ -11,6 +11,8 @@ import { RegistraPage } from './registra-page/registra-page';
 import { AggiungiStruttura } from './aggiungi-struttura/aggiungi-struttura';
 import { Archive } from './archive/archive';
 import { RisultatiR } from './risultati-r/risultati-r';
+import {ProfiloStrutturaComponent} from './profilo-struttura/profilo-struttura';
+
 
 
 export const routes: Routes = [
@@ -19,6 +21,12 @@ export const routes: Routes = [
     path: '',
     component: HomePage,
   },
+  {
+    title: 'Profilo | RendeAdvisor',
+    path: 'profilo-struttura',
+    component: ProfiloStrutturaComponent
+  },
+
   {
     title: 'Cucina & Sapori | RendeAdvisor',
     path: 'restaurants',

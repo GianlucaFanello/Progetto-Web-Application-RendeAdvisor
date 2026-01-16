@@ -27,11 +27,15 @@
       <button class="button">Recensioni <img src="../../assets/scrittura.png" width="20px"></button>
       <div id="terzario">
         <label id="nelCuoreNumero">Nel cuore di</label>
-        <label id="contatore">N</label>
+        <label id="contatore">{{contatore}}</label>
         <label > persone <img src="../../assets/Cuore pieno.png" width="30px"></label>
       </div>
     </div>
-    <div>Clicca per inserire nel cuore <img src="../../assets/Heart empty.png" width="50px"></div>
+    <div  style="cursor: pointer;"
+          (click)="togglePreferito()">Clicca per inserire nel cuore <img [src]="preferito
+          ? '../../assets/Cuore pieno.png'
+          : '../../assets/Heart empty.png'"
+                                                                         width="50px"></div>
 
 </div>
 </div>
