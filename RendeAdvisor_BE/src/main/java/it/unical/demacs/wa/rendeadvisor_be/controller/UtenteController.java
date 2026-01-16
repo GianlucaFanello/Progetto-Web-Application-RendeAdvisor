@@ -1,20 +1,16 @@
 package it.unical.demacs.wa.rendeadvisor_be.controller;
 
-
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.ApiResponse;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.LoginDTO;
 import it.unical.demacs.wa.rendeadvisor_be.service.UtenteService;
 import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.system.ApplicationPid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.jmx.export.notification.UnableToSendNotificationException;
 import org.springframework.web.bind.annotation.*;
 
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.UtenteDTO;
 
-import java.util.concurrent.locks.AbstractOwnableSynchronizer;
 
 @RestController
 @RequestMapping("/api/utenti")

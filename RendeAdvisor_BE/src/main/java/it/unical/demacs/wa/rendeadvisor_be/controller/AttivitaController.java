@@ -3,7 +3,9 @@ package it.unical.demacs.wa.rendeadvisor_be.controller;
 
 import it.unical.demacs.wa.rendeadvisor_be.dao.implementazione.AttivitaDAO;
 import it.unical.demacs.wa.rendeadvisor_be.dao.dbManager.DBManager;
+import it.unical.demacs.wa.rendeadvisor_be.model.dto.ApiResponse;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaDTO;
+import it.unical.demacs.wa.rendeadvisor_be.model.dto.RispostaDTO;
 import it.unical.demacs.wa.rendeadvisor_be.service.AttivitaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,53 +32,91 @@ public class AttivitaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<AttivitaDTO>> getTutte() {
+    public ResponseEntity<ApiResponse<List<AttivitaDTO>>> getTutte() {
         try {
-            return ResponseEntity.ok(attivitaService.getTutte());
+            List<AttivitaDTO> lista = attivitaService.getTutte();
+
+            return ResponseEntity.ok(
+                    new ApiResponse<>(true, "Lista attività inviata", lista)
+            );
+
         } catch (SQLException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse<>(false, "Errore interno al server", null));
         }
     }
+
 
     @GetMapping("/ristoranti")
-    public ResponseEntity<List<AttivitaDTO>> getRistoranti() {
+    public ResponseEntity<ApiResponse<List<AttivitaDTO>>> getRistoranti() {
         try {
-            return ResponseEntity.ok(attivitaService.getRistoranti());
+            List<AttivitaDTO> lista = attivitaService.getRistoranti();
+
+            return ResponseEntity.ok(
+                    new ApiResponse<>(true, "Lista ristoranti inviata", lista)
+            );
+
         } catch (SQLException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse<>(false, "Errore interno al server", null));
         }
     }
 
+
     @GetMapping("/hotel")
-    public ResponseEntity<List<AttivitaDTO>> getHotel() {
+    public ResponseEntity<ApiResponse<List<AttivitaDTO>>> getHotel() {
         try {
-            return ResponseEntity.ok(attivitaService.getHotel());
+            List<AttivitaDTO> lista = attivitaService.getHotel();
+
+            return ResponseEntity.ok(
+                    new ApiResponse<>(true, "Lista inviata", lista)
+            );
+
         } catch (SQLException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse<>(false, "Errore interno al server", null));
         }
     }
 
     @GetMapping("/dettaglio/{nomeLocale}")
-    public ResponseEntity<AttivitaDTO> getDettaglio(@PathVariable String nomeLocale) {
+    public ResponseEntity<ApiResponse<AttivitaDTO>> getDettaglio(@PathVariable String nomeLocale) {
         try {
             AttivitaDTO attivita = attivitaService.getDettaglio(nomeLocale);
-            return attivita != null
-                    ? ResponseEntity.ok(attivita)
-                    : ResponseEntity.notFound().build();
+
+            if (attivita == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(new ApiResponse<>(false, "Attività non trovata", null));
+            }
+
+            return ResponseEntity.ok(new ApiResponse<>(true, "Attività trovata", attivita));
+
         } catch (SQLException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse<>(false, "Errore interno al server", null));
         }
     }
 
+
     @PostMapping("/salva")
-    public ResponseEntity<String> salva(@RequestBody AttivitaDTO attivita) {
+    public ResponseEntity<ApiResponse<Void>> salva(@RequestBody AttivitaDTO attivita) {
         try {
             boolean ok = attivitaService.salvaAttivita(attivita);
-            return ok
-                    ? ResponseEntity.ok("OK")
-                    : ResponseEntity.badRequest().body("Errore");
+
+            if (ok) {
+                return ResponseEntity.ok(
+                        new ApiResponse<>(true, "Attività salvata con successo", null)
+                );
+            }
+
+            return ResponseEntity.badRequest().body(
+                    new ApiResponse<>(false, "Errore nel salvataggio", null)
+            );
+
         } catch (SQLException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Server error");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+                    new ApiResponse<>(false, "Errore interno al server", null)
+            );
         }
     }
+
 }

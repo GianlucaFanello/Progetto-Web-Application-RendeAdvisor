@@ -2,8 +2,10 @@ package it.unical.demacs.wa.rendeadvisor_be.controller;
 
 import it.unical.demacs.wa.rendeadvisor_be.dao.dbManager.DBManager;
 import it.unical.demacs.wa.rendeadvisor_be.dao.implementazione.RecensioneDAO;
+import it.unical.demacs.wa.rendeadvisor_be.model.dto.ApiResponse;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.RecensioneDTO;
 import it.unical.demacs.wa.rendeadvisor_be.service.RecensioneService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,22 +23,37 @@ public class RecensioniController {
         try {
             this.recensioniService = new RecensioneService(new RecensioneDAO(DBManager.getInstance().getConnection()));
         } catch (SQLException e) {
-            throw new RuntimeException("cosa mettiamo raga?", e);
+            throw new RuntimeException(e);
         }
     }
 
     @GetMapping("/locale/{nomeLocale}")
-    public List<RecensioneDTO> getByLocale(@PathVariable String nomeLocale) {
-        return recensioniService.getRecensioniByLocale(nomeLocale);
+    public ResponseEntity<ApiResponse<List<RecensioneDTO>>> getByLocale(@PathVariable String nomeLocale) {
+        try {
+            List<RecensioneDTO> recensioni = recensioniService.getRecensioniByLocale(nomeLocale);
+
+            return ResponseEntity.ok(
+                    new ApiResponse<>(true, "Recensioni trovate", recensioni)
+            );
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse<>(false, "Errore interno al server", null));
+        }
     }
 
     @PostMapping("/salva")
-    public ResponseEntity<String> salva(@RequestBody RecensioneDTO recensione) {
+    public ResponseEntity<ApiResponse<Integer>> salva(@RequestBody RecensioneDTO recensione) {
         try {
             int id = recensioniService.salvaRecensione(recensione);
-            return ResponseEntity.ok("Recensione salvata con id " + id);
-        } catch (SQLException e) {
-            return ResponseEntity.badRequest().body("Errore: " + e.getMessage());
+
+            return ResponseEntity.ok(
+                    new ApiResponse<>(true, "Recensione salvata con successo", id)
+            );
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse<>(false, "Errore durante il salvataggio", null));
         }
     }
 }
