@@ -39,4 +39,11 @@ export class AttivitaService {
     const params = new HttpParams().set('query', query);
     return this.http.get<ApiResponseDto<AttivitaDto[]>>(this.BASE_URL + "/search", {params});
   }
+
+  getByNome(nome: string): Observable<AttivitaDto> {
+    return this.http.get<AttivitaDto>(
+      `${this.BASE_URL}/by-nome`,
+      { params: { nome } }
+    );
+  }
 }
