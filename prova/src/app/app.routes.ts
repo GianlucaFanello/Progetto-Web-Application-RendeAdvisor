@@ -14,6 +14,7 @@ import { RisultatiR } from './risultati-r/risultati-r';
 import {ProfiloStrutturaComponent} from './profilo-struttura/profilo-struttura';
 import {ProfiloUtente} from './profilo-utente/profilo-utente';
 import { NelCuore } from './nel-cuore/nel-cuore';
+import {AggiungiR} from './aggiungi-r/aggiungi-r';
 
 
 
@@ -23,6 +24,11 @@ export const routes: Routes = [
     path: '',
     component: HomePage,
   },
+  {
+    path:  'aggiungi-r/:nomeLocale',
+    component: AggiungiR
+  },
+
   {
     path: 'profilo-struttura/:nomeLocale',
     component: ProfiloStrutturaComponent
