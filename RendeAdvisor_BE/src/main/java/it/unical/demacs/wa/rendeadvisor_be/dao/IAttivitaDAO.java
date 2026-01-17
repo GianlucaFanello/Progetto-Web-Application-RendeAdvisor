@@ -10,6 +10,8 @@ public interface IAttivitaDAO {
 
     boolean insertAttivita(AttivitaDTO attivita) throws SQLException;
 
+    AttivitaDTO findByNome(String nome) throws SQLException;
+
     // Cerca un'attività per nome
     AttivitaDTO findByPrimaryKey(String nomeLocale) throws SQLException;
 

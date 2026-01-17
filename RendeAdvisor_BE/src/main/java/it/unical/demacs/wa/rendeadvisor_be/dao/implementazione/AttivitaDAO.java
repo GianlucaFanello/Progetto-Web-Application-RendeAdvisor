@@ -41,6 +41,22 @@ public class AttivitaDAO implements IAttivitaDAO {
     }
 
     @Override
+    public AttivitaDTO findByNome(String nome) throws SQLException {
+        String sql = "SELECT * FROM attivita WHERE nomelocale = ?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, nome);
+
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            return mapResultSetToDTO(rs);
+        }
+
+        return null;
+    }
+
+
+    @Override
     public AttivitaDTO findByPrimaryKey(String nomeLocale) throws SQLException {
 
         String query = "SELECT * FROM attivita WHERE nomelocale = ?";
@@ -146,12 +162,9 @@ public class AttivitaDAO implements IAttivitaDAO {
     @Override
     public List<AttivitaDTO> search(String query) throws SQLException {
 
-        String sql = """ 
-        SELECT * FROM attivita WHERE nome = ? """;
-
-        PreparedStatement ps = connection.prepareStatement(sql);
-
-        ps.setString(1, query);
+       String sql = "SELECT * FROM attivita WHERE nomelocale LIKE ?";
+PreparedStatement ps = connection.prepareStatement(sql);
+ps.setString(1, "%" + query + "%"); // permette match parziale
 
         ResultSet rs = ps.executeQuery();
 
@@ -171,7 +184,12 @@ public class AttivitaDAO implements IAttivitaDAO {
         dto.setProprietario(rs.getString("proprietario"));
         dto.setTelefono(rs.getString("telefono"));
         dto.setEmail(rs.getString("email"));
-        dto.setImmagine(rs.getString("immagine").getBytes());
+        String immagineString = rs.getString("immagine");
+        if (immagineString != null) {
+            dto.setImmagine(immagineString.getBytes());
+        } else {
+            dto.setImmagine(new byte[0]); // array vuoto se non ci sono dati
+        }
 
         dto.setDescrizione(rs.getString("descrizione"));
         dto.setIndirizzo(rs.getString("indirizzo"));

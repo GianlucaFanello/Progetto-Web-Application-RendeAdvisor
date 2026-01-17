@@ -134,5 +134,10 @@ public class AttivitaController {
         }
     }
 
+    @GetMapping("/by-nome")
+    public AttivitaDTO getByNome(@RequestParam String nome) throws SQLException {
+        return attivitaService.findByNome(nome);
+    }
+
 
 }
