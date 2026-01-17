@@ -9,4 +9,5 @@ export interface UtenteDto{
   password:string;
   descrizione?:string;
   immagine?:string;
+
 }

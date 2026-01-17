@@ -4,7 +4,7 @@
           <h1>Modifica profilo</h1>
         </div>
         <div id="principale3">
-          <div id="formContainer">
+          <div id="formContainer" *ngIf="utente">
             <div class="divbox nome"><label>Nome:</label></div>
             <textarea [(ngModel)]="utente.nome" class="textArea" placeholder="Inserisci nome"></textarea>
 
@@ -21,11 +21,12 @@
             <textarea [(ngModel)]="utente.descrizione" id="descrizione" class="textArea" placeholder="Inserisci descrizione"></textarea>
           </div>
           <div id="fotoButtonContainer">
-            <img id="fotoProfilo" src="/assets/user-profile-icon-free-vector.jpeg">
-            <button id="sfoglia">Sfoglia</button>
+            <input #fileInput type="file" accept="image/*" hidden (change)="onFileSelected($event)">
+            <img id="fotoProfilo" [src]="preview || '/assets/user-profile-icon-free-vector.jpeg' ">
+            <button id="sfoglia" (click)="fileInput.click()">Sfoglia</button>
           </div>
           <div class="button-container">
-            <button id="salvaModifiche">Salva modifiche</button>
+            <button (click)="salva()" id="salvaModifiche">Salva modifiche</button>
             <button class="annulla">Annulla</button>
             <span *ngIf="loading" class="spinner"></span>
           </div>
