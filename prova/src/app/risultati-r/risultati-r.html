@@ -1,94 +1,46 @@
 <div id="body">
   <main class="container">
-    <h1>Risultati ricerca</h1>
 
-    <section class="section">
-      <h2>Hotel</h2>
+    <h1 *ngIf="searchQuery">Risultati ricerca per "{{ searchQuery }}"</h1>
+    <h1 *ngIf="!searchQuery">Risultati ricerca</h1>
+
+    <div *ngIf="loading" class="loading">
+      Caricamento in corso...
+    </div>
+
+    <div *ngIf="error" class="error">
+      {{ error }}
+    </div>
+
+    <div *ngIf="!loading && results.length === 0 && !error">
+      <p>Nessuna struttura trovata.</p>
+    </div>
+
+    <section class="section" *ngIf="!loading && results.length > 0">
       <div class="grid">
-        <div class="card">
-          <img src="../../assets/camera.jpg" alt="Hotel Centrale" routerLink="/profilo-struttura">
-          <div class="card-body">
-            <h3>Hotel Centrale</h3>
-            <p>Via Roma 1</p>
-            <div class="rating">
-              <img class="star" src="../../assets/star2.png"/>
-              <img class="star" src="../../assets/star2.png"/>
-              <img class="star" src="../../assets/star2.png"/>
-            </div>
-          </div>
-        </div>
+        <div class="card" *ngFor="let attivita of results">
+          <img
+            [src]="attivita.immagine || '../../assets/camera.jpg'"
+            [alt]="attivita.nomeLocale || 'Attività'"
+            (click)="viewDetails(attivita.nomeLocale)"
+          />
 
-        <div class="card">
-          <img src="../../assets/camera.jpg" alt="B&B Rende">
           <div class="card-body">
-            <h3>B&B Rende</h3>
-            <p>Corso Umberto 12</p>
-            <div class="rating">
-              <img class="star" src="../../assets/star2.png"/>
-              <img class="star" src="../../assets/star2.png"/>
-            </div>
-          </div>
-        </div>
+            <h3>{{ attivita.nomeLocale || 'Nome non disponibile' }}</h3>
+            <p>{{ attivita.indirizzo || 'Indirizzo non disponibile' }}</p>
 
-        <div class="card placeholder">
-          <img src="../../assets/camera.jpg" alt="">
-          <div class="card-body">
-            <h3>Struttura 3</h3>
-            <p>Indirizzo</p>
-          </div>
-        </div>
+            <p *ngIf="attivita.descrizione">{{ attivita.descrizione }}</p>
 
-        <div class="card placeholder">
-          <img src="../../assets/camera.jpg" alt="">
-          <div class="card-body">
-            <h3>Struttura 4</h3>
-            <p>Indirizzo</p>
+            <span class="badge" *ngIf="attivita.tipo">{{ attivita.tipo }}</span>
+
+
+            <button (click)="viewDetails(attivita.nomeLocale)" id="Dettagli">
+              Dettagli
+            </button>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <h2>Ristoranti</h2>
-      <div class="grid">
-        <div class="card">
-          <img src="../../assets/laGriglia.jpg" alt="La Griglia">
-          <div class="card-body">
-            <h3>La Griglia</h3>
-            <p>Via Garibaldi 3</p>
-            <div class="rating">
-              <img class="star" src="../../assets/star2.png"/>
-              <img class="star" src="../../assets/star2.png"/>
-              <img class="star" src="../../assets/star2.png"/>
-              <img class="star" src="../../assets/star2.png"/>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="../../assets/MINDUJO.jpg" alt="Mindujo">
-          <div class="card-body">
-            <h3>Mindujo</h3>
-            <p>Piazza Municipio</p>
-          </div>
-        </div>
-
-        <div class="card placeholder">
-          <img src="../../assets/la-sala-interna.jpg" alt="">
-          <div class="card-body">
-            <h3>Locale 3</h3>
-            <p>Indirizzo</p>
-          </div>
-        </div>
-
-        <div class="card placeholder">
-          <img src="../../assets/willy-crak.jpg" alt="">
-          <div class="card-body">
-            <h3>Locale 4</h3>
-            <p>Indirizzo</p>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 </div>

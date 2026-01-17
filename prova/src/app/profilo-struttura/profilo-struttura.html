@@ -2,22 +2,22 @@
   <div id="principale">
     <div id="principale2">
       <img id="fotoUtente" src="../../assets/palazzi.png" width="200px">
-      <label id="nome">Nome della struttura</label>
+      <label id="nome">{{nomeStruttura}}</label>
       <h2>Voto <img src="../../assets/star.png" width="30px" alt=""></h2>
       <div class="sottoDiv">
-        <h2 id="stringaEmail">EmailStruttura@dominio.com <img class="img" src="../../assets/email.png" width="30px"></h2>
-        <h2>Indirizzo struttura <img class="img" src="../../assets/palazzi.png"  width="30px"></h2>
+        <h2 id="stringaEmail">{{email}}<img class="img" src="../../assets/email.png" width="30px"></h2>
+        <h2>{{indirizzo}} <img class="img" src="../../assets/palazzi.png"  width="30px"></h2>
       </div>
       <div class="sottoDiv">
         <h2>numero di telefono <img src="../../assets/phone.png" width="30px"></h2>
-        <h2>proprietario <img src="../../assets/hat.png" width="30px"></h2>
+        <h2>{{proprietario}} <img src="../../assets/hat.png" width="30px"></h2>
       </div>
 
-      <textarea id="textArea">Descrizione</textarea>
+      <textarea id="textArea">{{ descrizione }}</textarea>
       <div id="secondario">
         <button class="button">Recensioni <img src="../../assets/scrittura.png" width="20px"></button>
         <div id="terzario">
-          <label id="nelCuoreNumero">Nel cuore di</label>
+          <label id="nelCuoreNumero">Nel cuore di </label>
           <label id="contatore">{{contatore}}</label>
           <label > persone <img src="../../assets/Cuore pieno.png" width="30px"></label>
         </div>

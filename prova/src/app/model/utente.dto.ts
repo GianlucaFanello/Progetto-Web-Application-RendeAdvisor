@@ -8,5 +8,6 @@ export interface UtenteDto{
   email:string;
   password:string;
   descrizione?:string;
-  immagine?:string;
+  immagineBase64?:string;
+
 }

@@ -13,6 +13,7 @@ import { Archive } from './archive/archive';
 import { RisultatiR } from './risultati-r/risultati-r';
 import {ProfiloStrutturaComponent} from './profilo-struttura/profilo-struttura';
 import {ProfiloUtente} from './profilo-utente/profilo-utente';
+import { NelCuore } from './nel-cuore/nel-cuore';
 
 
 
@@ -21,6 +22,10 @@ export const routes: Routes = [
     title: 'RendeAdvisor | Scopri il meglio intorno a te',
     path: '',
     component: HomePage,
+  },
+  {
+    path: 'profilo-struttura/:nomeLocale',
+    component: ProfiloStrutturaComponent
   },
   {
     title: 'Profilo | RendeAdvisor',
@@ -85,6 +90,12 @@ export const routes: Routes = [
     title: 'Profilo',
     path: 'profilo',
     component: ProfiloUtente
+  },
+
+  {
+    title: 'I Tuoi Preferiti | RendeAdvisor',
+    path: 'nel-cuore',
+    component: NelCuore
   },
   {
     path: '',

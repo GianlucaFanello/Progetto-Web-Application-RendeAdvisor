@@ -3,11 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AttivitaService } from '../service/AttivitaService';
 import { AttivitaDto } from '../model/attivita.dto';
 import {RouterLink} from '@angular/router';
+import {CommonModule} from '@angular/common';
 
 
 @Component({
   selector: 'app-risultati-r',
-  imports: [RouterLink],
+  imports: [CommonModule],
   templateUrl: './risultati-r.html',
   styleUrl: './risultati-r.css',
 })
@@ -33,6 +34,12 @@ export class RisultatiR implements OnInit {
     });
   }
 
+
+  getStarsArray(n: number): number[] {
+    return Array(n);
+  }
+
+
   performSearch() {
     this.loading = true;
     this.error = '';
@@ -51,8 +58,9 @@ export class RisultatiR implements OnInit {
   }
 
   viewDetails(nomeLocale: string) {
-    this.router.navigate(['/dettaglio', nomeLocale]);
+    this.router.navigate(['/profilo-struttura', encodeURIComponent(nomeLocale)]);
   }
+
 
   goBack() {
     this.router.navigate(['/']);

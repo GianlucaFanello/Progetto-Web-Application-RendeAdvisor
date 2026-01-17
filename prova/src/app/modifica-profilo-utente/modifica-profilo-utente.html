@@ -4,24 +4,32 @@
           <h1>Modifica profilo</h1>
         </div>
         <div id="principale3">
-                <div id="formContainer">
-                    <div class="divbox nome"><label>Nome:</label></div>
-                    <textarea class="textArea" placeholder="Inserisci nome"></textarea>
+          <div id="formContainer" *ngIf="utente">
+            <div class="divbox nome"><label>Nome:</label></div>
+            <textarea [(ngModel)]="utente.nome" class="textArea" placeholder="Inserisci nome"></textarea>
 
-                    <div class="divbox cognome"><label>Cognome:</label></div>
-                    <textarea class="textArea" placeholder="Inserisci cognome"></textarea>
+            <div class="divbox cognome"><label>Cognome:</label></div>
+            <textarea [(ngModel)]="utente.cognome" class="textArea" placeholder="Inserisci cognome"></textarea>
 
-                    <div class="divbox username"><label>Username:</label></div>
-                    <textarea class="textArea" placeholder="Inserisci username"></textarea>
+            <div class="divbox username"><label>Username:</label></div>
+            <textarea [(ngModel)]="utente.username" class="textArea" placeholder="Inserisci username"></textarea>
 
-                    <div class="divbox descrizione"><label>Descrizione:</label></div>
-                    <textarea id="descrizione" class="textArea" placeholder="Inserisci descrizione"></textarea>
-                </div>
-                <div id="fotoButtonContainer">
-                  <img id="fotoProfilo" src="../../assets/paolo rossi.jpg">
-                  <button id="sfoglia">Sfoglia</button>
-                </div>
-                  <button id="salvaModifiche">Salva modifiche</button>
-            </div>
+            <div class="divbox email"><label>Email:</label></div>
+            <textarea [(ngModel)]="utente.email" class="textArea" placeholder="Inserisci email"></textarea>
+
+            <div class="divbox descrizione"><label>Descrizione:</label></div>
+            <textarea [(ngModel)]="utente.descrizione" id="descrizione" class="textArea" placeholder="Inserisci descrizione"></textarea>
+          </div>
+          <div id="fotoButtonContainer">
+            <input #fileInput type="file" accept="image/*" hidden (change)="onFileSelected($event)">
+            <img id="fotoProfilo" [src]="preview || '/assets/user-profile-icon-free-vector.jpeg' ">
+            <button id="sfoglia" (click)="fileInput.click()">Sfoglia</button>
+          </div>
+          <div class="button-container">
+            <button (click)="salva()" id="salvaModifiche">Salva modifiche</button>
+            <button class="annulla">Annulla</button>
+            <span *ngIf="loading" class="spinner"></span>
+          </div>
         </div>
+    </div>
 </div>
