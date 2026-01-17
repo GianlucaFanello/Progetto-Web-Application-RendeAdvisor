@@ -1,6 +1,7 @@
 package it.unical.demacs.wa.rendeadvisor_be.service;
 
 import java.sql.SQLException;
+import java.util.Base64;
 
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.LoginDTO;
 import org.slf4j.Logger;
@@ -52,11 +53,25 @@ public class UtenteService {
 
     public UtenteDTO findByUsername(String username) {
         try {
-            return dao.getUtenteByUsername(username);
+            UtenteDTO utente = dao.getUtenteByUsername(username);
+            if (utente.getImmagine() != null) {
+                utente.setImmagineBase64(Base64.getEncoder().encodeToString(utente.getImmagine()));
+                utente.setImmagine(null);
+            }
+            return utente ;
         }
         catch (SQLException e) {
             logger.error("Errore durante la ricerca dell'utente con username: {}", username, e);
             return null;
+        }
+    }
+
+    public boolean modificaProfilo(UtenteDTO utente, String usernameVecchio) {
+        try {
+            return dao.updateUtente(utente, usernameVecchio);
+        } catch (SQLException e) {
+            logger.error("Errore durante modifica profilo", e);
+            return false;
         }
     }
 }

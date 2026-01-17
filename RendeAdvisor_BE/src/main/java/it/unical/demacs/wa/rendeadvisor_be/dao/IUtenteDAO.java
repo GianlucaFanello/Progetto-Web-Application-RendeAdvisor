@@ -20,7 +20,7 @@ public interface IUtenteDAO {
     ArrayList<UtenteDTO> getAllUtenti() throws SQLException;
 
     // Aggiorna i dati di un utente esistente
-    boolean updateUtente(UtenteDTO utente) throws SQLException;
+    boolean updateUtente(UtenteDTO utente, String usernameVecchio) throws SQLException;
 
     // Elimina un utente dal sistema
     boolean deleteUtente(UtenteDTO utente) throws SQLException;

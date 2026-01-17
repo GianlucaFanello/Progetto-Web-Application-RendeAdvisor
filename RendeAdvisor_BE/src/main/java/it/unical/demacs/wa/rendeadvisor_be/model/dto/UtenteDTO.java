@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor ;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 public class UtenteDTO {
 
@@ -17,6 +16,7 @@ public class UtenteDTO {
     private String password;
     private String descrizione;
     private byte[] immagine;  // scegliere il tipo dell'immagine
+    private String immagineBase64;
 
-
+    public UtenteDTO(String username, String nome, String cognome, String email, String password , String descrizione, byte[] immagine) {}
 }

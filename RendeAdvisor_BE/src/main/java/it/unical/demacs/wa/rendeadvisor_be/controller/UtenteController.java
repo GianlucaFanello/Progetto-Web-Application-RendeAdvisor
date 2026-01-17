@@ -10,6 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.UtenteDTO;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Base64;
 
 
 @RestController
@@ -59,7 +62,7 @@ public class UtenteController {
         if (username == null) {
             return ResponseEntity.status(401).body(new ApiResponse<>(false, "Utente non autenticato",null));
         }
-        return ResponseEntity.ok(new ApiResponse<>(true,  "Accesso riuscito",null));
+        return ResponseEntity.ok(new ApiResponse<>(true,  "Utente Autenticato",username));
     }
 
 
@@ -79,5 +82,53 @@ public class UtenteController {
         httpSession.invalidate();
         return ResponseEntity.ok(new ApiResponse<>(true,"Logout effettuato",null));
     }
+
+    @PostMapping("/modifica/salva")
+    public ResponseEntity<ApiResponse<UtenteDTO>> modifica(
+            HttpSession session,
+            @RequestParam String username,
+            @RequestParam String nome,
+            @RequestParam String cognome,
+            @RequestParam String email,
+            @RequestParam(required = false) String descrizione,
+            @RequestParam(required = false) MultipartFile immagine
+    ) {
+        try {
+            // 1. Recupero username vecchio dalla sessione
+            String usernameVecchio = (String) session.getAttribute("username");
+
+            if (usernameVecchio == null) {
+                return ResponseEntity.status(401)
+                        .body(new ApiResponse<>(false, "Utente non loggato", null));
+            }
+
+
+            UtenteDTO utente = new UtenteDTO();
+            utente.setUsername(username); // username NUOVO
+            utente.setNome(nome);
+            utente.setCognome(cognome);
+            utente.setEmail(email);
+            utente.setDescrizione(descrizione);
+
+            if (immagine != null && !immagine.isEmpty()) {
+                utente.setImmagine(immagine.getBytes());
+            }
+
+            boolean aggiornato = utenteService.modificaProfilo(utente, usernameVecchio);
+
+            // 5. Aggiorno la sessione con lo username nuovo
+            session.setAttribute("username", username);
+
+            return ResponseEntity.ok(new ApiResponse<>(true, "Profilo aggiornato", null));
+
+        } catch (Exception e) {
+            return ResponseEntity.status(500)
+                    .body(new ApiResponse<>(false, "Errore durante la modifica", null));
+        }
+    }
+
+
+
+
 
 }
