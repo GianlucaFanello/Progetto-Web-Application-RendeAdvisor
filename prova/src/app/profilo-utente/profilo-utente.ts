@@ -23,7 +23,7 @@ export class ProfiloUtente implements OnInit{
     this.utenteService.me().subscribe({
       next: (res) => {
         this.utente = res.data
-
+        console.log('UTENTE DAL BACKEND:', res.data);
         this.recensioniService.getCountUtente(this.utente.username).subscribe(
           {
             next: (countRes) => {
@@ -51,4 +51,14 @@ export class ProfiloUtente implements OnInit{
       }
     });
   }
+
+  getImmagine() {
+    if (this.utente?.immagineBase64) {
+      return 'data:image/*;base64,' + this.utente.immagineBase64;
+    }
+
+    return '/assets/user-profile-icon-free-vector.jpeg';
+  }
+
+
 }
