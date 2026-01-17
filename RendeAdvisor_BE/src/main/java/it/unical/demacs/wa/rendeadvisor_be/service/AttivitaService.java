@@ -43,7 +43,6 @@ public class AttivitaService {
         return attivitaDAO.search(query);
     }
 
-    public AttivitaDTO findByNome(String nome) throws SQLException {
-        return attivitaDAO.findByNome(nome);
+    public AttivitaDTO findByNome(String nome) {
     }
 }

@@ -56,4 +56,18 @@ public class RecensioniController {
                     .body(new ApiResponse<>(false, "Errore durante il salvataggio", null));
         }
     }
+
+    @GetMapping("/n_rec")
+    public ResponseEntity<ApiResponse<Integer>> getCountRecensioniByUsername(@RequestParam String username) {
+        try {
+            int count = recensioniService.numeroRecensioniUtente(username);
+
+            return ResponseEntity.ok(
+                    new ApiResponse<>(true, "Controllo numero recensioni riuscito!", count)
+            );
+        } catch (SQLException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse<>(false, "Errore interno al server", null));
+        }
+    }
 }

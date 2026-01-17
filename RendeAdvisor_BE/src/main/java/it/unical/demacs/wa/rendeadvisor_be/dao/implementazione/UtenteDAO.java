@@ -146,7 +146,7 @@ public class UtenteDAO implements IUtenteDAO {
     }
 
     @Override
-    public boolean updateUtente(UtenteDTO utente) throws SQLException {
+    public boolean updateUtente(UtenteDTO utente, String usernameVecchio) throws SQLException {
         String query = "UPDATE utente SET nome = ?, cognome = ?, email = ?, username = ?, descrizione = ?, immagine = ? WHERE username = ?" ;
 
         PreparedStatement ps = connection.prepareStatement(query);
@@ -156,7 +156,7 @@ public class UtenteDAO implements IUtenteDAO {
         ps.setString(4, utente.getUsername());
         ps.setString(5, utente.getDescrizione());
         ps.setBytes(6, utente.getImmagine());
-        ps.setString(7, utente.getUsername());
+        ps.setString(7, usernameVecchio);
         int updated = ps.executeUpdate();
 
         return updated > 0;

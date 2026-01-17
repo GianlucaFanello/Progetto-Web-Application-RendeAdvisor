@@ -10,6 +10,7 @@ public class AttivitaDTO {
     private String telefono;
     private String email;
     private byte[] immagine;
+    private String immagineBase64;
     private String descrizione;
     private String indirizzo;
     private String tipo;
@@ -33,6 +34,13 @@ public class AttivitaDTO {
         this.tipo = tipo;
     }
 
+    public String getImmagineBase64() {
+        return immagineBase64;
+    }
+
+    public void setImmagineBase64(String immagineBase64) {
+        this.immagineBase64 = immagineBase64;
+    }
 
     public String getNomeLocale() {
         return nomeLocale;
