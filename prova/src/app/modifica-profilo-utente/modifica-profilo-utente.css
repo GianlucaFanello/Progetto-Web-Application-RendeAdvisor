@@ -116,6 +116,16 @@
 
 }
 
+.annulla{
+  font-size: x-large;
+  font-family: "System Bold Italic";
+  background-color: white;
+
+  border-radius: 50px;
+  width: 200px;
+  height: 50px;
+}
+
 #fotoButtonContainer{
     display: flex;
     flex-direction: column;
@@ -155,5 +165,28 @@
 }
 #sfoglia:hover {
   background-image: linear-gradient(135deg, #0072ff, #00c6ff);
+}
+
+.button-container{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-left: 10px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 

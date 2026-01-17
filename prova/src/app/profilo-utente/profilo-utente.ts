@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UtenteDto} from '../model/utente.dto';
 import {UtenteService} from '../service/UtenteService';
 import {Router} from '@angular/router';
@@ -11,7 +11,7 @@ import {RecensioneService} from '../service/RecensioneService';
   templateUrl: './profilo-utente.html',
   styleUrls: ['./profilo-utente.css'],
 })
-export class ProfiloUtente {
+export class ProfiloUtente implements OnInit{
 
   utente!: UtenteDto;
   n_rec!: number;
@@ -38,6 +38,10 @@ export class ProfiloUtente {
 
   };
 
+  modifica() {
+    this.router.navigate(['/modify']);
+  }
+
 
   logout() {
     this.utenteService.logout().subscribe({
@@ -47,5 +51,4 @@ export class ProfiloUtente {
       }
     });
   }
-
 }
