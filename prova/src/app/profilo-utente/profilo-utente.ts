@@ -41,7 +41,9 @@ export class ProfiloUtente implements OnInit{
   modifica() {
     this.router.navigate(['/modify']);
   }
-
+  vaiANelCuore() {
+    this.router.navigate(['/nel-cuore']);
+  }
 
   logout() {
     this.utenteService.logout().subscribe({
