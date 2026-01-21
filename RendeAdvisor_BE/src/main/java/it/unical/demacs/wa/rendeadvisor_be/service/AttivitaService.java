@@ -22,12 +22,12 @@ public class AttivitaService {
 
 
     public List<AttivitaDTO> getRistoranti() throws SQLException {
-        return attivitaDAO.findByTipo("Ristorante");
+        return attivitaDAO.findByTipo("ristorante");
     }
 
 
     public List<AttivitaDTO> getHotel() throws SQLException {
-        return attivitaDAO.findByTipo("Hotel");
+        return attivitaDAO.findByTipo("hotel");
     }
 
 
