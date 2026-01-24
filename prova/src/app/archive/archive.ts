@@ -1,21 +1,53 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AttivitaService } from '../service/AttivitaService';
+import { AttivitaDto } from '../model/attivita.dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-archive',
   standalone: true,
-  imports: [RouterLink],
+  imports: [CommonModule],
   templateUrl: './archive.html',
-  styleUrls: ['./archive.css'],
+  styleUrls: ['./archive.css']
 })
-export class Archive {
-  hotels = [
-    { name: 'Hotel Centrale', address: 'Via Roma 1', img: '../../assets/camera.jpg' },
-    { name: 'B&B Rende', address: 'Corso Umberto 12', img: '../../assets/camera.jpg' },
-  ];
+export class Archive implements OnInit {
 
-  restaurants = [
-    { name: 'La Griglia', address: 'Via Garibaldi 3', img: '../../assets/laGriglia.jpg' },
-    { name: 'Mindujo', address: 'Piazza Municipio', img: '../../assets/MINDUJO.jpg' },
-  ];
+  listaHotel: AttivitaDto[] = [];
+  listaRistoranti: AttivitaDto[] = [];
+  loading = true;
+
+  constructor(
+    private attivitaService: AttivitaService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.caricaDati();
+  }
+
+  caricaDati() {
+
+    this.attivitaService.getHotel().subscribe({
+      next: (res) => {
+        // Usa res.data se il backend risponde con ApiResponse, altrimenti adatta
+        this.listaHotel = res.data || [];
+      },
+      error: () => console.error('Errore caricamento hotel')
+    });
+
+    this.attivitaService.getRistoranti().subscribe({
+      next: (res) => {
+        this.listaRistoranti = res.data || [];
+        this.loading = false;
+      },
+      error: () => this.loading = false
+    });
+  }
+
+
+  vaiAlDettaglio(nomeLocale: string) {
+    // Naviga verso: /profilo-struttura/HotelCentrale
+    this.router.navigate(['/profilo-struttura', nomeLocale]);
+  }
 }

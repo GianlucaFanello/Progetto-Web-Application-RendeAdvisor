@@ -30,6 +30,7 @@ export const routes: Routes = [
   },
 
   {
+    title: 'Profilo Struttura | RendeAdvisor',
     path: 'profilo-struttura/:nomeLocale',
     component: ProfiloStrutturaComponent
   },
