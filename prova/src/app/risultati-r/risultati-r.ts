@@ -65,4 +65,9 @@ export class RisultatiR implements OnInit {
   goBack() {
     this.router.navigate(['/']);
   }
+
+  aggiungiRecensione(nomeLocale: string) {
+    this.router.navigate(['/aggiungi-r', encodeURIComponent(nomeLocale)])
+
+  }
 }

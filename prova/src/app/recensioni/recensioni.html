@@ -12,6 +12,6 @@
   </div>
 
   <div class="Flexbox5">
-    <div><input type="search" name="rencesioneBar" id="recensione" placeholder="Cosa vuoi recensire?"/></div>
+    <div><input type="search" name="rencesioneBar"  [(ngModel)]="searchText" id="recensione" placeholder="Cosa vuoi recensire?" (keyup.enter)="search()"/></div>
   </div>
 </div>
