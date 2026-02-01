@@ -1,46 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { RecensioneService } from '../service/RecensioneService';
-import { RecensioneDto } from '../model/recensione.dto';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { RecensioneDto } from '../model/recensione.dto';
+
 @Component({
   selector: 'app-card-recensione',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './card-recensione.html',
-  styleUrls: ['./card-recensione.css'],
+  styleUrls: ['./card-recensione.css']
 })
-export class CardRecensione implements OnInit {
-  nomeStruttura!: string;
-  recensioni: RecensioneDto[] = [];
-  loading: boolean = true;
-  rating!: string;
-  testo!: string;
+export class CardRecensione {
+  // Riceve i dati dal padre
+  @Input() listaRecensioni: RecensioneDto[] = [];
+  @Input() nomeLocale: string = "";
+  @Input() proprietario: string = "";
+  @Input() isProprietario: boolean = false;
 
-  constructor(
-    private route: ActivatedRoute,
-    private recensioneService: RecensioneService
-  ) {}
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    const param = this.route.snapshot.paramMap.get('nomeStruttura');
-    if (param) {
-      this.nomeStruttura = decodeURIComponent(param);
-      this.caricaRecensioni();
-    }
-  }
-
-  private caricaRecensioni(): void {
-    this.recensioneService.getByLocale(this.nomeStruttura).subscribe({
-      next: (response) => {
-        if (response && response.dto) {
-          this.recensioni = response.dto;
-        }
-        this.loading = false;
-      },
-      error: (err) => {
-        console.error('Errore caricamento recensioni', err);
-        this.loading = false;
+  vaiARisposte(recensione: RecensioneDto) {
+    this.router.navigate(['/risposte-page'], {
+      queryParams: {
+        idRecensione: recensione.id,
+        nomeLocale: this.nomeLocale,
+        proprietario: this.proprietario
       }
     });
   }

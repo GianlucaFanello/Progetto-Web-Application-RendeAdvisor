@@ -1,5 +1,22 @@
 <div id="body">
-  <h1>Recensioni <img src="../../assets/scrittura.png" width="30px"></h1>
-  <p>{{nomeStruttura}}</p>
-    <app-card-recensione></app-card-recensione>
+  <div *ngIf="loading" style="text-align: center; margin-top: 20px;">
+    Caricamento in corso...
+  </div>
+
+  <div *ngIf="!loading && attivita">
+    <h1>Recensioni di {{ attivita.nomeLocale }}
+      <img src="../../assets/scrittura.png" width="30px">
+    </h1>
+
+    <app-card-recensione
+      [listaRecensioni]="attivita.recensioni || []"
+      [nomeLocale]="attivita.nomeLocale"
+      [proprietario]="attivita.proprietario"
+      [isProprietario]="isProprietario">
+    </app-card-recensione>
+
+    <p *ngIf="!attivita.recensioni || attivita.recensioni.length === 0" style="text-align: center;">
+      Nessuna recensione presente.
+    </p>
+  </div>
 </div>
