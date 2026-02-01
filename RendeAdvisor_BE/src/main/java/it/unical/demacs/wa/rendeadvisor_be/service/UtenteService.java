@@ -68,6 +68,13 @@ public class UtenteService {
 
     public boolean modificaProfilo(UtenteDTO utente, String usernameVecchio) {
         try {
+
+            UtenteDTO vecchioUtente = dao.getUtenteByUsername(usernameVecchio);
+
+            if(utente.getImmagine() == null && vecchioUtente.getImmagine() != null) {
+                utente.setImmagine(vecchioUtente.getImmagine());
+            }
+
             return dao.updateUtente(utente, usernameVecchio);
         } catch (SQLException e) {
             logger.error("Errore durante modifica profilo", e);

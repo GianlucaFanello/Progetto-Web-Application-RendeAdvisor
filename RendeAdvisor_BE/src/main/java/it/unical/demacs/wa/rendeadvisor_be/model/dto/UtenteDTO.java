@@ -18,5 +18,13 @@ public class UtenteDTO {
     private byte[] immagine;  // scegliere il tipo dell'immagine
     private String immagineBase64;
 
-    public UtenteDTO(String username, String nome, String cognome, String email, String password , String descrizione, byte[] immagine) {}
+    public UtenteDTO(String username, String nome, String cognome, String email, String password , String descrizione, byte[] immagine) {
+        this.username = username;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.email = email;
+        this.password = password;
+        this.descrizione = descrizione;
+        this.immagine = immagine;
+    }
 }
