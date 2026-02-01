@@ -20,8 +20,9 @@ export class ModificaProfiloUtente implements OnInit{
   utente!:UtenteDto;
   preview: string | null = null;
   selectedFile: File | null = null;
-
-  constructor(private utenteService: UtenteService) {
+  urlImmagine?: String;
+  eliminata: string = 'false';
+  constructor(private utenteService: UtenteService, private router:Router) {
   }
 
 
@@ -30,6 +31,7 @@ export class ModificaProfiloUtente implements OnInit{
     this.utenteService.me().subscribe({
       next: (res) => {
         this.utente = res.data;
+        this.urlImmagine = this.getImmagine();
       }
     });
   }
@@ -46,6 +48,16 @@ export class ModificaProfiloUtente implements OnInit{
       this.preview = reader.result as string;
     };
     reader.readAsDataURL(file);
+
+    event.target.value = null;
+  }
+
+  getImmagine() {
+    if (this.utente?.immagineBase64) {
+      return 'data:image/*;base64,' + this.utente.immagineBase64;
+    }
+
+    return '/assets/user-profile-icon-free-vector.jpeg';
   }
 
   salva() {
@@ -63,11 +75,12 @@ export class ModificaProfiloUtente implements OnInit{
     if (this.selectedFile) {
       formData.append("immagine", this.selectedFile);
     }
+    formData.append("eliminata",this.eliminata);
 
     this.utenteService.modificaProfilo(formData).subscribe({
       next: (res) => {
         this.loading = false;
-        alert("Profilo aggiornato");
+        this.router.navigate(['/profilo']);
       },
       error: (err) => {
         this.loading = false;
@@ -78,8 +91,15 @@ export class ModificaProfiloUtente implements OnInit{
   }
 
 
+  annulla() {
+    this.router.navigate(['/profilo']);
+  }
 
-
-
-
+  eliminaImmagine() {
+    this.selectedFile = null;
+    this.utente.immagineBase64 = undefined;
+    this.preview = null;
+    this.eliminata = 'true';
+    this.urlImmagine = this.getImmagine();
+  }
 }

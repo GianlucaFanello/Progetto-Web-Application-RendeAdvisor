@@ -36,7 +36,7 @@ export class RegistraPage {
             this.router.navigate(['/login']);
           },
           error: (err) => {
-            this.messaggio = "Errore nella registrazione!"
+            this.messaggio = err.error.message;
             this.loading = false;
           }
         });
