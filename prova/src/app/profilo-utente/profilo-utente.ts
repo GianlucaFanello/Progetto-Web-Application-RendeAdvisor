@@ -14,6 +14,7 @@ import {RecensioneService} from '../service/RecensioneService';
 export class ProfiloUtente implements OnInit{
 
   utente!: UtenteDto;
+  urlImmagine!: String;
   n_rec!: number;
 
   constructor(private utenteService: UtenteService,private recensioniService:RecensioneService, private router: Router) {
@@ -30,6 +31,7 @@ export class ProfiloUtente implements OnInit{
               this.n_rec = countRes.data;
             }
           });
+        this.urlImmagine = this.getImmagine();
       },
       error: (err) => {
         console.log(err.error.messaggio);
