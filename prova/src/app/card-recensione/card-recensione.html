@@ -1,5 +1,5 @@
-<div id="body" *ngIf="!loading">
-  <div *ngFor="let r of recensioni" class="card-recensione">
+<div id="body">
+  <div class="card-recensione">
     <div class="nRec">0</div>
     <div class="recensione">
 
@@ -12,7 +12,7 @@
 
         <div class="info-row">
           <div class="rating-section">
-            <span class="rating">{{r.valutazione}}</span>
+            <span class="rating">{{rating}}</span>
             <img class="stelle" src="../../assets/star.png" alt="stelle">
           </div>
 
@@ -22,7 +22,7 @@
       </div>
 
       <div class="text-section">
-        <span class="testo">{{r.testo}}</span>
+        <span class="testo">{{testo}}</span>
       </div>
 
     </div>
