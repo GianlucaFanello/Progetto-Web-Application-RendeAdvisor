@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.UtenteDTO;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 
@@ -88,7 +89,8 @@ public class UtenteController {
             @RequestParam String cognome,
             @RequestParam String email,
             @RequestParam(required = false) String descrizione,
-            @RequestParam(required = false) MultipartFile immagine
+            @RequestParam(required = false) MultipartFile immagine,
+            @RequestParam String eliminata
     ) {
         try {
             // 1. Recupero username vecchio dalla sessione
@@ -110,8 +112,8 @@ public class UtenteController {
             if (immagine != null && !immagine.isEmpty()) {
                 utente.setImmagine(immagine.getBytes());
             }
-
-            boolean aggiornato = utenteService.modificaProfilo(utente, usernameVecchio);
+            boolean elim = Objects.equals(eliminata, "true");
+            boolean aggiornato = utenteService.modificaProfilo(utente, usernameVecchio, elim);
 
             // 5. Aggiorno la sessione con lo username nuovo
             session.setAttribute("username", username);

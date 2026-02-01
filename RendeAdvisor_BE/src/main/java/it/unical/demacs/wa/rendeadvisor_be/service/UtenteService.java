@@ -66,12 +66,15 @@ public class UtenteService {
         }
     }
 
-    public boolean modificaProfilo(UtenteDTO utente, String usernameVecchio) {
+    public boolean modificaProfilo(UtenteDTO utente, String usernameVecchio, boolean eliminata) {
         try {
 
             UtenteDTO vecchioUtente = dao.getUtenteByUsername(usernameVecchio);
 
-            if(utente.getImmagine() == null && vecchioUtente.getImmagine() != null) {
+            if(eliminata){
+                utente.setImmagine(null);
+            }
+            else if(utente.getImmagine() == null && vecchioUtente.getImmagine() != null) {
                 utente.setImmagine(vecchioUtente.getImmagine());
             }
 
