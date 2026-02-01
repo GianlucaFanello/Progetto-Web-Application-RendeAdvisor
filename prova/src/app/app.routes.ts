@@ -15,6 +15,7 @@ import {ProfiloStrutturaComponent} from './profilo-struttura/profilo-struttura';
 import {ProfiloUtente} from './profilo-utente/profilo-utente';
 import { NelCuore } from './nel-cuore/nel-cuore';
 import {AggiungiR} from './aggiungi-r/aggiungi-r';
+import {RecensioniStruttura} from './recensioni-struttura/recensioni-struttura';
 
 
 
@@ -24,6 +25,12 @@ export const routes: Routes = [
     path: '',
     component: HomePage,
   },
+  {
+    title: 'Recensioni struttura',
+    path: 'recensioni-struttura/:nomeStruttura',
+    component: RecensioniStruttura
+  },
+
   {
     path:  'aggiungi-r/:nomeLocale',
     component: AggiungiR

@@ -20,7 +20,7 @@
       <div class="grid">
         <div class="card" *ngFor="let attivita of results">
           <img
-            [src]="attivita.immagineBase64 || '../../assets/camera.jpg'"
+            [src]="attivita.immagine || '../../assets/camera.jpg'"
             [alt]="attivita.nomeLocale || 'Attività'"
             (click)="viewDetails(attivita.nomeLocale)"
           />

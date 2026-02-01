@@ -15,7 +15,7 @@
 
       <textarea id="textArea">{{ descrizione }}</textarea>
       <div id="secondario">
-        <button class="button">Recensioni <img src="../../assets/scrittura.png" width="20px"></button>
+        <button class="button" (click)="visualizzaRecensioni(nomeStruttura)">Recensioni <img src="../../assets/scrittura.png" width="20px"></button>
         <div id="terzario">
           <label id="nelCuoreNumero">Nel cuore di </label>
           <label id="contatore">{{contatore}}</label>

@@ -1,19 +1,18 @@
-<div id="body">
-  <div class="card-recensione">
+<div id="body" *ngIf="!loading">
+  <div *ngFor="let r of recensioni" class="card-recensione">
     <div class="nRec">0</div>
-
     <div class="recensione">
 
       <div class="header">
 
         <div class="utente">
           <img class="logoUtente" src="../../assets/willy-crak.jpg" alt="logo">
-          <span class="nome">Nome</span>
+          <span class="nome"></span>
         </div>
 
         <div class="info-row">
           <div class="rating-section">
-            <span class="rating">5</span>
+            <span class="rating">{{r.valutazione}}</span>
             <img class="stelle" src="../../assets/star.png" alt="stelle">
           </div>
 
@@ -23,7 +22,7 @@
       </div>
 
       <div class="text-section">
-        <span class="testo">Testo della recensione...</span>
+        <span class="testo">{{r.testo}}</span>
       </div>
 
     </div>

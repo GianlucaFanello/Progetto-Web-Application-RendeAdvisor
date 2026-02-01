@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { NelCuoreService } from '../service/NelCuoreService';
 import { RouterLink } from '@angular/router';
 import {AttivitaService} from '../service/AttivitaService';
@@ -23,6 +23,7 @@ export class ProfiloStrutturaComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private attivitaService: AttivitaService,
     private nelCuoreService: NelCuoreService
   ) {}
@@ -67,5 +68,11 @@ export class ProfiloStrutturaComponent implements OnInit {
       this.contatore++;
       // this.nelCuoreService.aggiungi(dto).subscribe();
     }
+  }
+
+  visualizzaRecensioni(nomeStruttura: String) {
+    // @ts-ignore
+    this.router.navigate(['/recensioni-struttura', encodeURIComponent(nomeStruttura)])
+
   }
 }
