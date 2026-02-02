@@ -72,6 +72,22 @@
 
 }
 
+.textAreaD {
+  min-width: 30px;
+  height: 40px;
+  resize: none;
+  padding: 5px;
+  font-size: 18px;
+  box-sizing: border-box;
+  border-radius: 6rem;
+  transition: border-color 0.3s;
+
+}
+
+.textAreaD:hover {
+    border-color: #00c6ff;
+}
+
 .textArea:hover {
   border-color: #00c6ff;
 }
@@ -186,14 +202,50 @@
 }
 
 @media (max-width: 1300px) {
-  #fotoButtonContainer{
-    margin-top: 40px;
+
+  .principale3 {
+    width: 200%;
+    height: 200%;
+  }
+
+  .textAreaD {
+    width: 20px;
+    height: 10px;
+  }
+
+  #fotoProfilo{
+    width: 5px;
+    height: 2px;
+    margin-bottom: 60px;
+    margin-top: 30px;
+    margin-left: -20px;
+
+  }
+
+  .divbox descrizione {
+    margin-right: 50px;
+  }
+
+
+
+
+  .formContainer {
+    width: 200%;
   }
   #salvaModifiche{
     margin-top: 50px;
     align-items: center;
-    margin-left: 45px;
+    margin-left: 20px;
   }
+  .annulla {
+    margin-left: 0px;
+  }
+  #sfoglia {
+    margin-right: 50px;
+  }
+
+
+
 }
 
 .button-container{

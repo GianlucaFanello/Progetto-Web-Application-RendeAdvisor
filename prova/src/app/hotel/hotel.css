@@ -85,79 +85,24 @@
 
 }
 
-/* Media Query per schermi medi */
-@media screen and (max-width: 1400px) {
-  .Grid {
-    grid-template-columns: auto auto auto;
-    padding: 8px;
-    gap: 8px;
-  }
-
-  .Flexbox2 {
-    padding: 40px;
-  }
-
-  .Flexbox3 {
-    margin-bottom: 40px;
-  }
-
-  #search {
+@media (min-width: 980px) and (max-width: 1300px) {
+  #searchBar {
     width: 400px;
-    height: 45px;
-    font-size: large;
+    height: 60px;
+    margin-left: 90px;
+    margin-bottom: 0px;
   }
 
-  #home, #FAQ {
-    width: 90px;
-    height: 45px;
-    font-size: large;
+
+  #ricercaButton {
+    width: 100px;
+    height: 50px;
+    margin-right: 310px;
+
   }
 
-  #hotel1, #hotel2, #hotel3 {
-    width: 200px;
-  }
-
-  #hotel1:hover, #hotel2:hover, #hotel3:hover {
-    width: 270px;
-  }
 }
 
-/* Media Query per schermi piccoli */
-@media screen and (max-width: 1200px) {
-  .Grid {
-    grid-template-columns: auto auto auto;
-    padding: 6px;
-    gap: 6px;
-  }
-
-  .Flexbox2 {
-    padding: 30px;
-  }
-
-  .Flexbox3 {
-    margin-bottom: 30px;
-  }
-
-  #search {
-    width: 350px;
-    height: 40px;
-    font-size: medium;
-  }
-
-  #home, #FAQ {
-    width: 80px;
-    height: 40px;
-    font-size: medium;
-  }
-
-  #hotel1, #hotel2, #hotel3 {
-    width: 180px;
-  }
-
-  #hotel1:hover, #hotel2:hover, #hotel3:hover {
-    width: 240px;
-  }
-}
 
 /* Media Query per schermi molto piccoli */
 @media screen and (max-width: 900px) {
@@ -175,10 +120,19 @@
     margin-bottom: 20px;
   }
 
-  #search {
-    width: 150px;
-    height: 30px;
-    font-size: small;
+  #searchBar {
+    width: 400px;
+    height: 60px;
+    margin-left: -200px;
+    margin-bottom: 0px;
+  }
+
+
+  #ricercaButton {
+    width: 100px;
+    height: 50px;
+    margin-right: 600px;
+
   }
 
   #home, #FAQ {

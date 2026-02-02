@@ -131,6 +131,10 @@
     flex-direction: column;
     align-items: center;
   }
+
+  #buttonConferma {
+    margin-right: 65px;
+  }
   #secondario, #terzario{
     display: flex;
     flex-direction: column;

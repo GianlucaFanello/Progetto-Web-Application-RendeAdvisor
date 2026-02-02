@@ -18,7 +18,7 @@
             <textarea [(ngModel)]="utente.email" class="textArea" placeholder="Inserisci email"></textarea>
 
             <div class="divbox descrizione"><label>Descrizione:</label></div>
-            <textarea [(ngModel)]="utente.descrizione" id="descrizione" class="textArea" placeholder="Inserisci descrizione"></textarea>
+            <textarea [(ngModel)]="utente.descrizione" id="descrizione" class="textAreaD" placeholder="Inserisci descrizione"></textarea>
           </div>
           <div id="fotoButtonContainer">
             <input #fileInput type="file" accept="image/*" hidden (change)="onFileSelected($event)">

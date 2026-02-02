@@ -96,69 +96,27 @@
 #profilo:hover{opacity: 70%;}
 
 
-@media screen and (max-width: 480px) {
-  .Flexbox {
-    flex-direction: column;
-    gap: 15px;
+
+@media (min-width: 980px) and (max-width: 1300px) {
+  #searchBar {
+    width: 400px;
+    height: 60px;
+    margin-left: 90px;
+    margin-bottom: 0px;
   }
 
-  #logo {
-    width: 120px !important;
-    height: 120px !important;
-  }
 
-  #profilo {
-    width: 60px !important;
-    height: 60px !important;
-  }
-
-  #search {
+  #ricercaButton {
     width: 100px;
-    font-size: medium;
-    height: 40px;
+    height: 50px;
+    margin-right: 310px;
+
   }
 
-  #home, #FAQ {
-    width: 90%;
-    font-size: medium;
-  }
-
-  .Flexbox2 {
-    padding: 20px;
-  }
-
-  .Flexbox2 h1 {
-    font-size: 24px;
-  }
-
-  .Flexbox3 {
-    margin-bottom: 20px;
-  }
-
-  .Flexbox3 h2 {
-    font-size: 16px;
-    padding: 0 10px;
-  }
-
-  .Flexbox4 {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-
-  #ristoranti1, #ristoranti2, #ristoranti3 {
-    width: 90%;
-    max-width: 300px;
-  }
-
-  #ristoranti1:hover, #ristoranti2:hover, #ristoranti3:hover {
-    width: 95%;
-  }
 }
 
 
-
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 980px) {
 
   .Flexbox {
     display: flex;
@@ -175,11 +133,19 @@
     flex-shrink: 0; /* Impedisce al logo di ridursi troppo */
   }
 
-  #search {
+  #searchBar {
+    width: 400px;
+    height: 60px;
+    margin-left: -200px;
+    margin-bottom: 0px;
+  }
+
+
+  #ricercaButton {
     width: 100px;
-    height: 35px;
-    font-size: small;
-    flex-shrink: 1; /* Permette alla searchbar di ridursi se necessario */
+    height: 50px;
+    margin-right: 600px;
+
   }
 
   #home {
