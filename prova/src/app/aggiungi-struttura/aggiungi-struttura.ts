@@ -22,21 +22,55 @@ export class AggiungiStruttura implements OnInit{
   };
 
   messaggio = '';
+  preview: string | null = null;
+  selectedFile: File | null = null;
 
   loading = false;
+  urlImmagine?: string | null;
 
   constructor(private attivitaService:AttivitaService, private utenteService: UtenteService, private router:Router) {
   }
 
   ngOnInit() {
+
+    this.urlImmagine = '/assets/strutturaDefault.png' ;
+
     this.utenteService.me().subscribe({
       next: (res) => {
         this.attivita.proprietario = res.data.username;
         },
-      error: () => {
-        this.messaggio = 'Registrati o Accedi';
-      }
     });
+  }
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+
+    if (!file) return;
+
+    this.selectedFile = file;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.preview = reader.result as string;
+    };
+    reader.readAsDataURL(file);
+
+    event.target.value = null;
+  }
+
+  getImmagine() {
+    if (this.attivita?.immagineBase64) {
+      return 'data:image/*;base64,' + this.attivita.immagineBase64;
+    }
+
+    return '/assets/strutturaDefault.png';
+  }
+
+  eliminaImmagine() {
+    this.selectedFile = null;
+    this.attivita.immagineBase64 = undefined;
+    this.preview = null;
+    this.urlImmagine = this.getImmagine();
   }
 
   salva() {
@@ -56,7 +90,20 @@ export class AggiungiStruttura implements OnInit{
 
     this.loading = true
 
-    this.attivitaService.salva(this.attivita).subscribe({
+    const formData = new FormData();
+    formData.append("nomeLocale", this.attivita.nomeLocale);
+    formData.append("telefono", this.attivita.telefono);
+    formData.append("email", this.attivita.email);
+    formData.append("descrizione", this.attivita.descrizione);
+    formData.append("indirizzo", this.attivita.indirizzo);
+    formData.append("tipo", this.attivita.tipo);
+    formData.append("proprietario", this.attivita.proprietario);
+
+    if(this.selectedFile) {
+      formData.append("immagine", this.selectedFile);
+    }
+
+    this.attivitaService.salva(formData).subscribe({
       next: (res) => {
         this.messaggio = res.message;
 
@@ -69,5 +116,9 @@ export class AggiungiStruttura implements OnInit{
       }
     });
 
+  }
+
+  annulla() {
+    this.router.navigate(['/']);
   }
 }

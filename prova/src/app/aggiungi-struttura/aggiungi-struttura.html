@@ -1,5 +1,5 @@
 <div id="body">
-  <h1>Aggiungi struttura <img src="../../assets/palazzi.png" width="30px"></h1>
+  <h1>Aggiungi struttura <img src="/assets/palazzi.png" width="30px"></h1>
   <div id="principale">
     <div id="secondario">
       <div class="interno nome">
@@ -16,7 +16,7 @@
       </div>
       <div class="interno telefono">
         <label class="etichette">Telefono</label>
-        <input [(ngModel)]="attivita.telefono" type="tel" class="textArea" placeholder="Inserisci telefono">
+        <textarea [(ngModel)]="attivita.telefono" type="tel" class="textArea" placeholder="Inserisci telefono"></TextArea>
       </div>
       <div class="interno descrizione">
         <label class="etichette">Descrizione</label>
@@ -31,9 +31,16 @@
         </form>
       </div>
     </div>
-    <div id="terzario">
-      <img src="../../assets/MINDUJO.jpg" id="fotoProfilo">
-      <button class="sfoglia annulla">Sfoglia</button>
+    <div id="terziario">
+      <div id="fotoButtonContainer">
+        <input #fileInput type="file" accept="image/*" hidden (change)="onFileSelected($event)">
+        <img [src]="preview || urlImmagine" id="fotoProfilo" alt="img-struttura">
+        <div id="azioni-immagine">
+          <button id="sfoglia" (click)="fileInput.click()">Sfoglia</button>
+          <label id="elimina-immagine" (click)="eliminaImmagine()">x</label>
+        </div>
+      </div>
+
       <div class="messaggio-container" class="campo">
         <span id="messaggio">{{ messaggio }}</span>
       </div>
@@ -41,6 +48,6 @@
     </div>
 
     <button (click)="salva()" class="button" id="buttonConferma">Conferma</button>
-    <button class="annulla">Annulla</button>
+    <button class="annulla" (click)="annulla()">Annulla</button>
   </div>
 </div>

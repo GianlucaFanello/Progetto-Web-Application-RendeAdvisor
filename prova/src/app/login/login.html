@@ -1,5 +1,5 @@
 <div id="body">
-  <div class="Flexbox">
+  <div class="Flexbox" (keydown.enter)="login()">
     <div><h1>Accedi</h1></div>
     <div><p><label>Email:</label></p>
       <input [(ngModel)]="credenziali.email" type="email" name="email" id="email"/></div>

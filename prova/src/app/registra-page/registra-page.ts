@@ -7,7 +7,7 @@ import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-registra-page',
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule, NgIf, RouterLink],
   templateUrl: './registra-page.html',
   styleUrls: ['./registra-page.css'],
 })
