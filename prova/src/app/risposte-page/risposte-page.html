@@ -6,10 +6,13 @@
     </div>
 
     <div class="inserisci-commento" *ngIf="isProprietario">
-      <img class="logo" src="/assets/user-profile-icon-free-vector.jpeg">
-      <h5 class="label">Risposta ufficiale proprietario:</h5>
-      <textarea class="commento-text" [(ngModel)]="nuovaRisposta" placeholder="Inserisci la tua risposta ufficiale..."></textarea>
-      <button class="conferma" (click)="invia()"> > </button>
+      <h5 class="label">Rispondi come proprietario:</h5>
+
+      <img class="logo" src="/assets/user-profile-icon-free-vector.jpeg" alt="mio-logo">
+
+      <textarea class="commento-text" [(ngModel)]="nuovaRisposta" placeholder="Scrivi qui..."></textarea>
+
+      <button class="conferma" (click)="invia()"> ➤ </button>
     </div>
 
     <div class="sezione-commenti">

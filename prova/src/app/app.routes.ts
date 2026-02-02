@@ -16,6 +16,8 @@ import {ProfiloUtente} from './profilo-utente/profilo-utente';
 import { NelCuore } from './nel-cuore/nel-cuore';
 import {AggiungiR} from './aggiungi-r/aggiungi-r';
 import {RecensioniStruttura} from './recensioni-struttura/recensioni-struttura';
+import { RispostePage } from './risposte-page/risposte-page';
+
 
 
 
@@ -116,9 +118,16 @@ export const routes: Routes = [
     redirectTo: '',
     pathMatch: 'full'
   },
+
+
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'recensioni/:nomeStruttura', component: RecensioniStruttura },
+  { path: 'risposte-page', component: RispostePage },
   {
     title: 'Oops! Something goes wrong',
     path: '**',
     component: HomePage
-  }
+  },
+
+
 ];

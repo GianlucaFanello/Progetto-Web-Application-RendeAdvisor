@@ -11,7 +11,7 @@ import { RecensioneDto } from '../model/recensione.dto';
   styleUrls: ['./card-recensione.css']
 })
 export class CardRecensione {
-  // Riceve i dati dal padre
+
   @Input() listaRecensioni: RecensioneDto[] = [];
   @Input() nomeLocale: string = "";
   @Input() proprietario: string = "";
