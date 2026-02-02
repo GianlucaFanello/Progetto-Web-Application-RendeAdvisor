@@ -39,6 +39,63 @@
   font-weight: bold;
 }
 
+
+.recensione-originale {
+  width: 600px;
+  background-color: #fff;
+  border-left: 5px solid #ffcc00;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+}
+
+.rec-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.user-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.nome-autore {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.voto-box {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: #555;
+}
+
+.star-icon {
+  width: 15px;
+  height: 15px;
+}
+
+.testo-recensione {
+  font-style: italic;
+  color: #333;
+  margin: 0;
+  line-height: 1.4;
+}
+
+
+
 .inserisci-commento {
   display: grid;
   grid-template-areas:
@@ -51,7 +108,6 @@
   background: white;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(50, 153, 255, 0.2);
-  margin-bottom: 20px;
   padding: 5px;
 }
 
@@ -121,6 +177,7 @@
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-sizing: border-box;
 }
 
 .commento-item {

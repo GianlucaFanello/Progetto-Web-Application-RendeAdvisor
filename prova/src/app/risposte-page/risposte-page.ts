@@ -18,6 +18,11 @@ export class RispostePage implements OnInit {
   proprietarioLocale: string = "";
   nomeLocale: string = "";
 
+
+  autoreRec: string = "";
+  testoRec: string = "";
+  votoRec: number = 0;
+
   utenteLoggato: string = "";
   isProprietario: boolean = false;
 
@@ -32,11 +37,14 @@ export class RispostePage implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     this.route.queryParams.subscribe(params => {
       this.idRecensione = +params['idRecensione'];
-      this.nomeLocale = params['nomeLocale'] || 'Dettaglio Recensione';
+      this.nomeLocale = params['nomeLocale'] || 'Locale';
       this.proprietarioLocale = params['proprietario'] || '';
+
+      this.autoreRec = params['autoreRec'] || 'Utente';
+      this.testoRec = params['testoRec'] || '';
+      this.votoRec = +params['votoRec'] || 0;
 
       this.verificaEIdentifica();
     });
@@ -46,7 +54,6 @@ export class RispostePage implements OnInit {
     this.utenteService.me().subscribe({
       next: (res) => {
         this.utenteLoggato = res.data?.username || "";
-
         this.isProprietario = (this.utenteLoggato === this.proprietarioLocale && this.utenteLoggato !== "");
         this.caricaRisposte();
       },
