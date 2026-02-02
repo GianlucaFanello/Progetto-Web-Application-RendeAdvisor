@@ -31,7 +31,7 @@ export class AttivitaService {
     return this.http.get<ApiResponseDto<AttivitaDto>>(this.BASE_URL + "/dettaglio/" + nomeLocale);
   }
 
-  salva(attivita: AttivitaDto): Observable<ApiResponseDto<void>> {
+    salva(attivita: FormData): Observable<ApiResponseDto<void>> {
     return this.http.post<ApiResponseDto<void>>(this.BASE_URL + "/salva", attivita);
   }
 
