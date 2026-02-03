@@ -161,5 +161,17 @@ public class AttivitaController {
         return attivitaService.findByNome(nome);
     }
 
+    @GetMapping("/by-proprietario")
+    public ResponseEntity<ApiResponse<List<AttivitaDTO>>> getByProprietario(@RequestParam String username) throws SQLException {
+        try {
+            List<AttivitaDTO> attivita = attivitaService.listaAttivitaByProprietario(username);
 
+            return ResponseEntity.ok(new ApiResponse<>(true, "Risultati ricerca", attivita)
+            );
+
+        } catch (SQLException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse<>(false, "Errore", null));
+        }
+    }
 }

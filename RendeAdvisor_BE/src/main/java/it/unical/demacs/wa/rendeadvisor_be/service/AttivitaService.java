@@ -5,6 +5,7 @@ import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaDTO;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
+import java.util.Base64;
 import java.util.List;
 @Service
 public class AttivitaService {
@@ -45,6 +46,20 @@ public class AttivitaService {
 
     public AttivitaDTO findByNome(String nome) throws SQLException {
         return attivitaDAO.findByNome(nome);
+    }
+
+    public List<AttivitaDTO> listaAttivitaByProprietario(String username) throws SQLException {
+
+        List<AttivitaDTO> attivita = attivitaDAO.listaAttivitaByProprietario(username);
+
+        for(AttivitaDTO a: attivita) {
+            if (a.getImmagine() != null) {
+                a.setImmagineBase64(Base64.getEncoder().encodeToString(a.getImmagine()));
+                a.setImmagine(null);
+            }
+        }
+
+        return attivita ;
     }
 
 }

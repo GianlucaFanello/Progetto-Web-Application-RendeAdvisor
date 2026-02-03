@@ -70,4 +70,17 @@ public class RecensioniController {
                     .body(new ApiResponse<>(false, "Errore interno al server", null));
         }
     }
+
+    @GetMapping("/rating")
+    public ResponseEntity<ApiResponse<Double>> getRatingByUsername(@RequestParam String nomeStruttura) {
+        try{
+            double rating = recensioniService.getRatingStruttura(nomeStruttura);
+            return ResponseEntity.ok(
+                    new ApiResponse<>(true, "Rating restituito con successo!", rating)
+            );
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse<>(false, "Errore interno al server", null));
+        }
+    }
 }

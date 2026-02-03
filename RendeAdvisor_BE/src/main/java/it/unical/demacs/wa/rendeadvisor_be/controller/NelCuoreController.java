@@ -106,4 +106,18 @@ public class NelCuoreController {
         }
     }
 
+    @GetMapping("/count-preferiti")
+    public ResponseEntity<ApiResponse<Integer>> countPreferiti(@RequestParam String nomeStruttura) {
+        try {
+            Integer count = nelCuoreService.countPreferitiLocale(nomeStruttura);
+
+            return ResponseEntity.status(HttpStatus.OK).body(
+                    new ApiResponse<>(true, "Preferito count", count)
+            );
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse<>(false, "Errore interno al server", null));
+        }
+    }
+
 }

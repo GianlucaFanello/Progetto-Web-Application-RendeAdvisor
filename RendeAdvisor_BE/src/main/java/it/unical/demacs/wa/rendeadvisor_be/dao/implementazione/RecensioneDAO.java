@@ -100,4 +100,19 @@ public class RecensioneDAO implements IRecensioneDAO {
         }
         return 0;
     }
+
+    public double getRatingStruttura(String nomeStruttura) throws SQLException {
+        String query = "SELECT AVG(valutazione) FROM recensioni WHERE nomelocale = ?";
+
+        try ( PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setString(1, nomeStruttura);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getDouble(1);
+            }
+            return 0;
+        }
+    }
 }

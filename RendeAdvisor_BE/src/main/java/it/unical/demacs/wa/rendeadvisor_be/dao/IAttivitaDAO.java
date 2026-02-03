@@ -29,4 +29,5 @@ public interface IAttivitaDAO {
 
     List<AttivitaDTO> search(String query) throws SQLException;
 
+    List<AttivitaDTO> listaAttivitaByProprietario(String username) throws SQLException;
 }
