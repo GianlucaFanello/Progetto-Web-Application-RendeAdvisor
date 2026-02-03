@@ -26,12 +26,10 @@ export class RecensioniStruttura implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     const nomeLocale = this.route.snapshot.paramMap.get('nomeStruttura');
 
     if (nomeLocale) {
-      const nomeDecodificato = decodeURIComponent(nomeLocale);
-      this.caricaDati(nomeDecodificato);
+      this.caricaDati(decodeURIComponent(nomeLocale));
     }
   }
 

@@ -16,6 +16,10 @@ import {ProfiloUtente} from './profilo-utente/profilo-utente';
 import { NelCuore } from './nel-cuore/nel-cuore';
 import {AggiungiR} from './aggiungi-r/aggiungi-r';
 import {RecensioniStruttura} from './recensioni-struttura/recensioni-struttura';
+import { RispostePage } from './risposte-page/risposte-page';
+import {StruttureUtente} from './strutture-utente/strutture-utente';
+import {ModificaProfiloStruttura} from './modifica-profilo-struttura/modifica-profilo-struttura';
+
 
 
 
@@ -42,19 +46,14 @@ export const routes: Routes = [
     component: ProfiloStrutturaComponent
   },
   {
-    title: 'Profilo | RendeAdvisor',
-    path: 'profilo-struttura',
-    component: ProfiloStrutturaComponent
-  },
-
-  {
     title: 'Cucina & Sapori | RendeAdvisor',
     path: 'restaurants',
     component: Ristorante
   },
   {title: 'Risultati | RendeAdvisor',
    path: 'RisultatiR',
-  component: RisultatiR},
+  component: RisultatiR
+  },
   {
     title: 'Il Tuo Soggiorno | RendeAdvisor',
     path: 'hotels',
@@ -105,11 +104,15 @@ export const routes: Routes = [
     path: 'profilo',
     component: ProfiloUtente
   },
-
   {
     title: 'I Tuoi Preferiti | RendeAdvisor',
     path: 'nel-cuore',
     component: NelCuore
+  },
+  {
+    title: 'Modifica la tua Struttura | RendeAdvisor',
+    path: "modifica-struttura/:struttura",
+    component: ModificaProfiloStruttura
   },
   {
     path: '',
@@ -117,8 +120,19 @@ export const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    title: 'Strutture utente | RendeAdvisor',
+    path: 'strutture-utente',
+    component: StruttureUtente
+  },
+
+
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'recensioni/:nomeStruttura', component: RecensioniStruttura },
+  { path: 'risposte-page', component: RispostePage },
+  {
     title: 'Oops! Something goes wrong',
     path: '**',
     component: HomePage
-  }
+  },
+
 ];

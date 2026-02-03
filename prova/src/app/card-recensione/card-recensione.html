@@ -3,6 +3,7 @@
 
     <div class="recensione">
       <div class="header">
+
         <div class="utente">
           <img class="logoUtente" src="../../assets/willy-crak.jpg" alt="user">
           <span class="nome">{{ r.nomeUtente }}</span>
@@ -14,10 +15,11 @@
             <img class="stelle" src="../../assets/star.png" alt="stelle">
           </div>
 
-          <button class="rispondi-btn" (click)="vaiARisposte(r)">
+          <span class="rispondi" (click)="vaiARisposte(r)" style="cursor: pointer; color: blue; text-decoration: underline;">
             {{ isProprietario ? 'Rispondi' : 'Leggi risposte' }}
-          </button>
+          </span>
         </div>
+
       </div>
 
       <div class="text-section">

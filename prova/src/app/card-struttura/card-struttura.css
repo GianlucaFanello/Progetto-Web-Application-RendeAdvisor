@@ -3,9 +3,8 @@
   flex-direction: column;
   align-items: center;
   margin: 0;
-  padding: 40px 0;
   background-color: #f5f5f5;
-  font-family: "Alkatra";
+  font-family: "Alkatra", serif;
 }
 
 #principale{
@@ -15,10 +14,15 @@
   border: solid 2px black;
   border-radius: 2rem;
   box-shadow: 5px 5px 10px #888888;
-  gap: 0px;
+  gap: 0;
 }
 
-#stelleDiv, #valDiv{
+#valDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+#stelleDiv{
   display: flex;
   gap: 5px;
 }
@@ -38,6 +42,14 @@
 #secondario{
   margin-top: 10px;
   font-size: 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+#heart{
+  width: 20px;
 }
 
 #fotoUtente{
@@ -52,24 +64,31 @@
 
 
 
-.button{
+.button {
   font-family: "Alkatra";
-  background: linear-gradient(
-    90deg,
-    rgb(30, 170, 220),
-    rgb(30, 130, 220)
-  );
+  padding: 12px 28px;
+  font-size: 20px;
   border-radius: 50px;
-  width: 200px;
-  height: 50px;
-  color: white;
-  margin: 10px 30px;
-  font-size: 22px;
+  border: 2px solid ;
+  background: linear-gradient(90deg, #ffffff, #a8d8ff);
+  color: #003366;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
+
+.button:hover {
+  background: linear-gradient(90deg, #0077ff, #00c6ff);
+  color: white;
+  border-color: #005fcc;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
 
 @media (min-width: 1024px) {
   #principale {
-    width: 60%;
+    width: 100%;
   }
 
   body {
@@ -114,7 +133,7 @@
   }
 
   #fotoUtente {
-    width: 160px;
+    width: 100px;
     height: 160px;
     margin-bottom: 15px;
     order: -1;

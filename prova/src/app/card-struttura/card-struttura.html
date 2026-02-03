@@ -1,21 +1,23 @@
 <div id="body">
   <div id="principale">
     <div id="dati">
-      <label>Nome struttura</label>
-      <label>Indirizzo</label>
-      <label>Email</label>
+      <label>#{{struttura.tipo}}</label>
+      <label>{{struttura.nomeLocale}}</label>
+      <label>{{struttura.indirizzo}}</label>
       <div id="valDiv">
         <div id="stelleDiv">
-          <label>Valutazione </label>
-          <img class="star" src="../../assets/star2.png">
-          <img class="star" src="../../assets/star2.png">
-          <img class="star" src="../../assets/star2.png">
-          <img class="star" src="../../assets/star2.png">
-          <img class="star" src="../../assets/star2.png">
+          <ng-container *ngFor="let i of [0,1,2,3,4]">
+            <img [src]="getStarSrc(i)" class="star">
+          </ng-container>
         </div>
       </div>
-      <h2 id="secondario"><img src="../../assets/Heart full.png" width="15px"> <label>N</label></h2>
+      <h2 id="secondario">
+        <img src="/assets/Heart full.png" width="15px" id="heart">
+        <label>{{preferiti}}</label>
+      </h2>
+      <button class="button" (click)="vaiAllaModifica()">Modifica</button>
     </div>
-    <img src="../../assets/camera.jpg" id="fotoUtente" width="300px">
+    <img [src]="getImmagine()" id="fotoUtente" width="300px">
   </div>
 </div>
+

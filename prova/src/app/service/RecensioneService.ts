@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RecensioneDto } from '../model/recensione.dto';
 import { ApiResponseDto } from '../model/apiResponse.dto';
+import {App} from '../app';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +33,10 @@ export class RecensioneService {
       this.BASE_URL + "/n_rec",
       { params }
     );
+  }
+
+  getRatingStruttura(nomeStruttura: string): Observable<ApiResponseDto<number>> {
+    const params = {nomeStruttura: nomeStruttura};
+    return this.http.get<ApiResponseDto<number>>(this.BASE_URL + "/rating", {params});
   }
 }

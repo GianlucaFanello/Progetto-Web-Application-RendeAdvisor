@@ -51,7 +51,7 @@ export class ProfiloUtente implements OnInit{
     this.utenteService.logout().subscribe({
       next: (res) => {
         if (res.success)
-          this.router.navigate(['/login'])
+          this.router.navigate(['/login']);
       }
     });
   }
@@ -65,4 +65,7 @@ export class ProfiloUtente implements OnInit{
   }
 
 
+  visualizzaStrutture() {
+    this.router.navigate(['/strutture-utente'], {queryParams: {username: this.utente.username}});
+  }
 }

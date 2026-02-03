@@ -31,7 +31,7 @@ export class AttivitaService {
     return this.http.get<ApiResponseDto<AttivitaDto>>(this.BASE_URL + "/dettaglio/" + nomeLocale);
   }
 
-  salva(attivita: AttivitaDto): Observable<ApiResponseDto<void>> {
+    salva(attivita: FormData): Observable<ApiResponseDto<void>> {
     return this.http.post<ApiResponseDto<void>>(this.BASE_URL + "/salva", attivita);
   }
 
@@ -45,5 +45,9 @@ export class AttivitaService {
       `${this.BASE_URL}/by-nome`,
       { params: { nome } }
     );
+  }
+
+  getByProprietario(username: string): Observable<ApiResponseDto<AttivitaDto[]>>{
+    return this.http.get<ApiResponseDto<AttivitaDto[]>>(this.BASE_URL + "/by-proprietario", { params: {username: username} })
   }
 }
