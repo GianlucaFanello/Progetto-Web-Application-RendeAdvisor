@@ -44,7 +44,8 @@
               <img class="star" src="../../assets/star2.png" width="15px"/>
               <img class="star" src="../../assets/star2.png" width="15px"/>
             </div>
-            <button class="button" *ngFor="let ristoranti of listaRistoranti"  (click)="visualizzaRecensioni(ristoranti.nomeLocale)">Recensioni</button>
+            <button class="button" *ngFor="let r of listaRistoranti"  (click)="visualizzaRecensioni(r.nomeLocale)">Recensioni</button>
+
 
           </div>
         </div>
