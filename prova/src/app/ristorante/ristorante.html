@@ -14,8 +14,11 @@
   </div>
 
   <div class="Flexbox4">
-    <div><img src ="prova restaurant 2.jpg" id="ristoranti1"/></div>
-    <div><img src ="prova restaurant 2.jpg" id="ristoranti2"/></div>
-    <div><img src ="prova restaurant 2.jpg" id="ristoranti3"/></div>
+    <div *ngFor="let r of listaRistoranti">
+      <img [src]="'data:image/jpeg;base64,' + r.immagine"
+           [alt]="r.nomeLocale"
+           class="hotel-img" />
+      <p>{{ r.nomeLocale }}</p>
+    </div>
   </div>
 </div>

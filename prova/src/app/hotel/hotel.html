@@ -14,8 +14,9 @@
   </div>
 
   <div class="Flexbox4">
-    <div><img src ="prova restaurant 2.jpg" id="hotel1"/></div>
-    <div><img src ="prova restaurant 2.jpg" id="hotel2"/></div>
-    <div><img src ="prova restaurant 2.jpg" id="hotel3"/></div>
+    <div *ngFor="let hotel of listaHotel">
+      <img [src]="'http://localhost:8080/images/' + hotel.immagine" [alt]="hotel.nomeLocale" class="hotel-img"/>
+      <p>{{ hotel.nomeLocale }}</p>
+    </div>
   </div>
 </div>
