@@ -2,18 +2,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
 
 h1 {
-  font-family: 'Alkatra', cursive;
-  font-size: 50px;
+  font-family: "Alkatra", cursive;
+  font-size: xxx-large;
+  margin: 0;
+  text-align: center;
 }
 
 .contenitore-mappa {
   width: 70%;
   height: 400px;
-  margin: 30px auto;
+  margin: 10px auto;
   border: 10px solid white;
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(0,0,0,0.5);
@@ -30,34 +33,32 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 40px;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 #hotel, #ristoranti {
-  padding: 10px 40px;
-  background-color: white;
-  color: black;
+  font-size: x-large;
   font-family: "Alkatra";
-  font-size: 24px;
+  background-color: white;
   border-radius: 50px;
-  border: 2px solid black;
+  width: 200px;
+  height: 60px;
+  border: 2px solid #ddd;
+  box-shadow: 2px 2px 5px #888888;
   cursor: pointer;
-  transition: all 0.25s ease-in-out;
-  min-width: 200px;
-  height: 65px;
+  transition: all 0.3s;
 }
 
 #hotel:hover, #ristoranti:hover {
-  background-color: #f0f0f0;
-  transform: scale(1.05);
-  border-color: #3299ff;
-  color: #3299ff;
+  background-image: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+  border-color: transparent;
 }
 
 .search-container {
   position: relative;
   width: 800px;
-  margin: 60px auto;
+  margin: 40px auto;
 }
 
 #searchBar {
@@ -70,33 +71,35 @@ h1 {
   padding: 5px 130px 5px 30px;
   border: 2px solid #ddd;
   box-sizing: border-box;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+  box-shadow: 2px 2px 5px #888888;
   outline: none;
 }
 
 #ricercaButton {
   position: absolute;
-  right: 15px;
+  right: 8px;
   top: 50%;
   transform: translateY(-50%);
-  background-color: black;
+  font-size: large;
+  font-family: "Alkatra";
+  background-image: linear-gradient(135deg, #00c6ff, #0072ff);
   color: white;
   border: none;
-  border-radius: 30px;
-  padding: 12px 25px;
-  font-size: 18px;
+  border-radius: 50px;
+  width: 110px;
+  height: 50px;
   cursor: pointer;
-  font-family: "Alkatra";
+  transition: background-image 0.3s;
 }
 
 #ricercaButton:hover {
-  background-color: #333;
+  background-image: linear-gradient(135deg, #0072ff, #00c6ff);
 }
 
 @media screen and (max-width: 900px) {
-  h1 { font-size: 30px; }
-  .contenitore-mappa { width: 90%; height: 300px; }
-  .search-container { width: 95%; }
-  .FlexBox3 { flex-direction: column; align-items: center; gap: 15px; }
-  #hotel, #ristoranti { width: 80%; }
+  h1 { font-size: xx-large; }
+  .contenitore-mappa { width: 90%; height: 280px; }
+  .search-container { width: 90%; }
+  .FlexBox3 { flex-direction: column; align-items: center; gap: 10px; }
+  #hotel, #ristoranti { width: 80%; height: 55px; }
 }
