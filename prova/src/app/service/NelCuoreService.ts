@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import {Injectable, numberAttribute} from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiResponseDto } from '../model/apiResponse.dto';
 import { NelCuoreDto } from '../model/nelCuore.dto';
@@ -35,5 +35,11 @@ export class NelCuoreService {
     const params = new HttpParams().set('nomeUtente', nomeUtente);
 
     return this.http.get<ApiResponseDto<string[]>>(this.BASE_URL + "/lista", { params });
+  }
+
+  countPreferiti(nomeStruttura: string): Observable<ApiResponseDto<number>> {
+    return this.http.get<ApiResponseDto<number>>(this.BASE_URL + "/count-preferiti", {
+      params: {nomeStruttura: nomeStruttura}
+    })
   }
 }

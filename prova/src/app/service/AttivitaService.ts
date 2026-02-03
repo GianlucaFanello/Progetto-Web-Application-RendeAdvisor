@@ -46,4 +46,8 @@ export class AttivitaService {
       { params: { nome } }
     );
   }
+
+  getByProprietario(username: string): Observable<ApiResponseDto<AttivitaDto[]>>{
+    return this.http.get<ApiResponseDto<AttivitaDto[]>>(this.BASE_URL + "/by-proprietario", { params: {username: username} })
+  }
 }
