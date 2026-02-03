@@ -10,7 +10,9 @@ import it.unical.demacs.wa.rendeadvisor_be.service.AttivitaService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -98,8 +100,28 @@ public class AttivitaController {
 
 
     @PostMapping("/salva")
-    public ResponseEntity<ApiResponse<Void>> salva(@RequestBody AttivitaDTO attivita) {
+    public ResponseEntity<ApiResponse<Void>> salva(@RequestParam String nomeLocale,
+                                                   @RequestParam String proprietario,
+                                                   @RequestParam String telefono,
+                                                   @RequestParam String email,
+                                                   @RequestParam String descrizione,
+                                                   @RequestParam String indirizzo,
+                                                   @RequestParam String tipo,
+                                                   @RequestParam(required = false) MultipartFile immagine) throws IOException {
         try {
+            AttivitaDTO attivita = new AttivitaDTO();
+            attivita.setNomeLocale(nomeLocale);
+            attivita.setProprietario(proprietario);
+            attivita.setTelefono(telefono);
+            attivita.setEmail(email);
+            attivita.setDescrizione(descrizione);
+            attivita.setIndirizzo(indirizzo);
+            attivita.setTipo(tipo);
+
+            if (immagine != null && !immagine.isEmpty()) {
+                attivita.setImmagine(immagine.getBytes());
+            }
+
             boolean ok = attivitaService.salvaAttivita(attivita);
 
             if (ok) {
@@ -139,5 +161,17 @@ public class AttivitaController {
         return attivitaService.findByNome(nome);
     }
 
+    @GetMapping("/by-proprietario")
+    public ResponseEntity<ApiResponse<List<AttivitaDTO>>> getByProprietario(@RequestParam String username) throws SQLException {
+        try {
+            List<AttivitaDTO> attivita = attivitaService.listaAttivitaByProprietario(username);
 
+            return ResponseEntity.ok(new ApiResponse<>(true, "Risultati ricerca", attivita)
+            );
+
+        } catch (SQLException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse<>(false, "Errore", null));
+        }
+    }
 }

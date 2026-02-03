@@ -16,4 +16,6 @@ public interface INelCuoreDAO {
 
     // Per la pagina Profilo "Nel Cuore"
     ArrayList<String> findAllByUser(String nomeUtente);
+
+    Integer countPreferitiLocale(String nomeStruttura);
 }

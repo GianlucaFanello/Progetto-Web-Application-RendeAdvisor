@@ -75,4 +75,21 @@ public class NelCuoreDAO implements INelCuoreDAO {
         }
         return preferiti;
     }
+
+    @Override
+    public Integer countPreferitiLocale(String nomeStruttura) {
+        String query =  "SELECT COUNT(*) FROM nelcuore WHERE nomestruttura = ?";
+
+        try(PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setString(1, nomeStruttura);
+
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                return rs.getInt(1);
+            }
+            return 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

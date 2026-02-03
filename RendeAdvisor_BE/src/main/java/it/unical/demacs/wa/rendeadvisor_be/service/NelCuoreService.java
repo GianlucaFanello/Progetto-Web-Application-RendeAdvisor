@@ -38,4 +38,8 @@ public class NelCuoreService {
     public ArrayList<String> listaPreferiti(String nomeUtente) throws SQLException {
         return nelCuoreDAO.findAllByUser(nomeUtente);
     }
+
+    public Integer countPreferitiLocale(String nomeStruttura) {
+        return nelCuoreDAO.countPreferitiLocale(nomeStruttura);
+    }
 }

@@ -163,8 +163,8 @@ public class AttivitaDAO implements IAttivitaDAO {
     public List<AttivitaDTO> search(String query) throws SQLException {
 
        String sql = "SELECT * FROM attivita WHERE nomelocale LIKE ?";
-PreparedStatement ps = connection.prepareStatement(sql);
-ps.setString(1, "%" + query + "%"); // permette match parziale
+       PreparedStatement ps = connection.prepareStatement(sql);
+       ps.setString(1, "%" + query + "%"); // permette match parziale
 
         ResultSet rs = ps.executeQuery();
 
@@ -196,6 +196,28 @@ ps.setString(1, "%" + query + "%"); // permette match parziale
         dto.setTipo(rs.getString("tipo"));
 
         return dto;
+    }
+
+    public List<AttivitaDTO> listaAttivitaByProprietario(String username) throws SQLException {
+        String query = "SELECT nomelocale,indirizzo,tipo,immagine FROM attivita WHERE proprietario=?";
+
+        try(PreparedStatement ps = connection.prepareStatement(query);){
+            ps.setString(1, username);
+
+            ResultSet rs = ps.executeQuery();
+            List<AttivitaDTO> attivita = new ArrayList<>();
+            while(rs.next()){
+                AttivitaDTO dto = new AttivitaDTO();
+                dto.setNomeLocale(rs.getString("nomelocale"));
+                dto.setIndirizzo(rs.getString("indirizzo"));
+                dto.setImmagine(rs.getBytes("immagine"));
+                dto.setTipo(rs.getString("tipo"));
+
+                attivita.add(dto);
+            }
+
+            return attivita;
+        }
     }
 
 }
