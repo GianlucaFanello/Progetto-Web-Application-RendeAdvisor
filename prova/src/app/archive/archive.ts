@@ -50,4 +50,10 @@ export class Archive implements OnInit {
     // Naviga verso: /profilo-struttura/HotelCentrale
     this.router.navigate(['/profilo-struttura', nomeLocale]);
   }
+
+  visualizzaRecensioni(nomeLocale: String) {
+    this.router.navigate(['/recensioni-struttura',nomeLocale]);
+
+
+  }
 }
