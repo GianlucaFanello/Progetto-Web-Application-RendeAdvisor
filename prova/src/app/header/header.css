@@ -41,4 +41,26 @@
   .nav-buttons input{padding:6px 10px;font-size:medium}
   .logo-wrap img#logo{width:120px}
   .profile-wrap img#profilo{width:56px;height:56px}
+  #recensioni {
+    width: 50px;
+  }
+
+  #archivio {
+    width: 50px;
+  }
+
+  #profilo {
+    width: 5px;
+    height: 5px;
+  }
+
+  .logo-wrap {
+    width: 5px;
+    height: 5px;
+    margin-bottom: 80px;
+    margin-right: 70px;
+  }
+
+
+
 }
