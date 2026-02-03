@@ -1,58 +1,17 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
-  <link rel="stylesheet" href="home-page.css" type="text/css"/>
-  <script type="text/javascript" src="../../assets/home-page.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400..700&display=swap" rel="stylesheet">
-  <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfaX4yY-9HFApHUu2Rw_KFXNEjY5rVIOM&callback=MostraMappa">
-  </script>
-  <link rel="icon" type="image/png" href="public/logo-rende-advisor-h-removebg-preview.png">
-
-</head>
-<body>
-
 <div class="Flexbox2">
-  <div><h1>BENVENUTO A RENDE</h1></div>
+  <h1>BENVENUTO A RENDE</h1>
+</div>
+
+<div class="contenitore-mappa">
+  <div id="mappa-google"></div>
 </div>
 
 <div class="FlexBox3">
-  <div><input type="button" value="HOTEL" id="hotel" routerLink="/hotels"/></div>
-  <div><input type="button" value="RISTORANTI" id="ristoranti" routerLink="/restaurants"/></div>
+  <input type="button" value="HOTEL" id="hotel" routerLink="/hotels">
+  <input type="button" value="RISTORANTI" id="ristoranti" routerLink="/restaurants">
 </div>
 
 <div class="search-container">
-  <div><input type="search" placeholder="Hotel o ristoranti" [(ngModel)]="searchText" id="searchBar" (keyup.enter)="search()"/></div>
-  <div><input type="button" value="Ricerca" id="ricercaButton" (click)="search()"/></div>
-  <div id="searchDropdown" class="search-dropdown"></div>
+  <input type="search" placeholder="Cerca hotel o ristoranti..." [(ngModel)]="searchText" id="searchBar" (keyup.enter)="search()">
+  <input type="button" value="Ricerca" id="ricercaButton" (click)="search()">
 </div>
-
-<div class="Ordinati">
-  <h4 id="testo">Ordinati in base alla distanza dal centro</h4>
-  <div class="FlexBox4">
-    <div><img src="../../assets/MINDUJO.jpg" width="200px" height="200px" id="locale1"></div>
-    <div><img src="../../assets/laGriglia.jpg" width="200px" height="200px" id="locale2"></div>
-    <div><img src="../../assets/la-sala-interna.jpg" width="200px" height="200px" id="locale3"></div>
-    <div><img src="../../assets/willy-crak.jpg" width="200px" height="200px" id="locale4"></div>
-  </div>
-</div>
-
-<div class="Ordinati">
-  <h4 id="testo">Ristoranti che non prevedono carne</h4>
-  <div class="FlexBox4">
-    <div><img src="../../assets/MINDUJO.jpg" width="200px" height="200px" id="locale1"></div>
-    <div><img src="../../assets/laGriglia.jpg" width="200px" height="200px" id="locale2"></div>
-    <div><img src="../../assets/la-sala-interna.jpg" width="200px" height="200px" id="locale3"></div>
-    <div><img src="../../assets/willy-crak.jpg" width="200px" height="200px" id="locale4"></div>
-  </div>
-</div>
-
-<div class="mappa">
-  <div id="map" style="width:50%; height:350px;"></div>
-</div>
-
-</body>
-</html>

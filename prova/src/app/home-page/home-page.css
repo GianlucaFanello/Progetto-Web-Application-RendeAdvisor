@@ -1,368 +1,102 @@
-/* Contenitore per la barra di ricerca */
+.Flexbox2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+h1 {
+  font-family: 'Alkatra', cursive;
+  font-size: 50px;
+}
+
+.contenitore-mappa {
+  width: 70%;
+  height: 400px;
+  margin: 30px auto;
+  border: 10px solid white;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  overflow: hidden;
+  background-color: #e5e3df;
+}
+
+#mappa-google {
+  width: 100%;
+  height: 100%;
+}
+
+.FlexBox3 {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+#hotel, #ristoranti {
+  padding: 10px 40px;
+  background-color: white;
+  color: black;
+  font-family: "Alkatra";
+  font-size: 24px;
+  border-radius: 50px;
+  border: 2px solid black;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  min-width: 200px;
+  height: 65px;
+}
+
+#hotel:hover, #ristoranti:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+  border-color: #3299ff;
+  color: #3299ff;
+}
+
 .search-container {
   position: relative;
   width: 800px;
-  margin-top: 50px;
-  margin-left: 250px;
+  margin: 60px auto;
 }
 
-/* Barra di ricerca */
 #searchBar {
   font-size: x-large;
   font-family: "System Bold Italic";
   background-color: white;
   border-radius: 50px;
   width: 100%;
-  height: 60px;
-  padding: 5px 120px 5px 20px;
+  height: 65px;
+  padding: 5px 130px 5px 30px;
   border: 2px solid #ddd;
   box-sizing: border-box;
-  margin-left: 100px;
-  box-shadow: 2px 2px 5px #888888;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
   outline: none;
-}
-
-
-#locale1, #locale2, #locale3, #locale4 {
-  width: 300px;
-  height: 230px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: opacity 0.3s;
-}
-
-#locale1:hover {
-  opacity: 85%;
-}
-
-#locale2:hover {
-  opacity: 85%;
-}
-#locale3:hover {
-  opacity: 85%;
-}
-
-#locale4:hover {
-  opacity: 85%;
 }
 
 #ricercaButton {
   position: absolute;
-  right: 5px;
+  right: 15px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: large;
-  font-family: "Alkatra";
-  background-image: linear-gradient(135deg, #00c6ff, #0072ff);
+  background-color: black;
   color: white;
   border: none;
-  border-radius: 50px;
-  width: 100px;
-  height: 50px;
-  padding: 10px;
+  border-radius: 30px;
+  padding: 12px 25px;
+  font-size: 18px;
   cursor: pointer;
-  transition: background-image 0.3s;
-  margin-right: -100px;
+  font-family: "Alkatra";
 }
 
 #ricercaButton:hover {
-  background-image: linear-gradient(135deg, #0072ff, #00c6ff);
+  background-color: #333;
 }
-
-/* Resto del CSS */
-h1 {
-  font-family: "Alkatra";
-  font-size: xxx-large;
-  text-align: center;
-  margin: 20px 0;
-}
-
-#inserisciA {
-  font-family: Alkatra;
-}
-
-.mappa {
-  margin-top: 50px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.Flexbox, .FlexBox2, .FlexBox3{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.FlexBox2 { justify-content: center; }
-.FlexBox3 {
-  margin-left: 400px;
-  margin-right: 400px;
-}
-#profilo{cursor:pointer; transition: opacity 0.3s;}
-#logo{cursor:pointer;}
-#recensioni{border:none;font-size: x-large; font-family: "Alkatra"; background-color: white;  border-radius: 50px; width: 200px; height: 40px; padding:5px; transition: all 0.3s; cursor: pointer;}
-#FAQ:hover { background-image: linear-gradient(135deg, #00c6ff, #0072ff); color:white;}
-#recensioni:hover {background-image: linear-gradient(135deg, #00c6ff, #0072ff); color: white;}
-#FAQ{border:none;font-size: x-large; font-family: "Alkatra"; background-color: white;  border-radius: 50px; width: 200px; height: 40px; padding:5px; transition: all 0.3s; cursor: pointer;}
-#inserisci{font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 200px; height: 40px; padding:5px; transition: all 0.3s; border:none; cursor: pointer;}
-#inserisci:hover {background-image: linear-gradient(135deg, #00c6ff, #0072ff); color:white;}
-#archivio{border:none;font-size: x-large; font-family: "Alkatra"; background-color: white;  border-radius: 50px; width: 200px; height: 40px; padding:5px; transition: all 0.3s; cursor: pointer;}
-#archivio:hover { background-image: linear-gradient(135deg, #00c6ff, #0072ff); color:white;}
-#search{font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 500px; height: 100px; padding:5px;}
-.Flexbox{display: flex; justify-content: space-around; align-items: center}
-.Grid{display: grid; grid-template-columns: auto auto auto; padding: 10px; align-items: center;}
-#profilo:hover{opacity: 70%;}
-#inserisciA{border:none;font-size: x-large; font-family: "Alkatra"; background-color: white;  border-radius: 50px; width: 200px; height: 40px; padding:5px; transition: all 0.3s; cursor: pointer;}
-
-
-.Ordinati {
-  position: relative;
-  margin-bottom: 80px;
-  width: 100%;
-}
-
-.FlexBox4{
-  display: flex;
-  margin-top: 20px;
-  justify-content: stretch;
-  align-items: center;
-  gap: 20px;
-  margin-left: 130px;
-  position: relative;
-}
-
-#testo{
-  font-family: "Candara Light";
-  position: relative;
-  margin-top: 50px;
-  margin-left: 130px;
-  margin-bottom: 10px;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-#hotel, #ristoranti {
-  font-size: x-large;
-  font-family: "Alkatra";
-  background-color: white;
-  border-radius: 50px;
-  width: 200px;
-  height: 50px;
-  padding: 5px;
-  transition: all 0.3s;
-  margin-top: 150px;
-  border: 2px solid #ddd;
-  cursor: pointer;
-}
-
-#hotel:hover, #ristoranti:hover {
-  background-image: linear-gradient(135deg, #00c6ff, #0072ff);
-  color: white;
-}
-
-/* Media Query per schermi medi */
-@media screen and (max-width: 1400px) {
-  h1 {
-    text-align: center;
-    font-size: xx-large;
-    margin: 16px 0;
-  }
-
-  .search-container {
-    width: 60%;
-    margin-left: 18%;
-  }
-
-  #searchBar {
-    margin-left: 8%;
-  }
-
-  .search-dropdown {
-    left: 8%;
-    width: calc(92% - 8%);
-  }
-
-  .FlexBox3 {
-    margin-left: 28%;
-    margin-right: 28%;
-  }
-
-  .FlexBox4 {
-    margin-left: 10%;
-    gap: 20px;
-  }
-
-  #locale1, #locale2, #locale3, #locale4 {
-    width: 260px;
-    height: 200px;
-  }
-
-  #testo {
-    margin-left: 100px;
-  }
-
-  .cuore {
-    right: 100px;
-  }
-}
-
-
-@media screen and (max-width: 1200px) {
-  h1 {
-    text-align: center;
-    font-size: x-large;
-    margin: 14px 0;
-  }
-
-  #logo {
-    width: 150px;
-    height: 150px;
-  }
-
-  #profilo {
-    width: 80px;
-    height: 80px;
-  }
-
-  #recensioni, #inserisciA, #FAQ, #archivio {
-    width: 150px;
-    font-size: large;
-  }
-
-  .search-container {
-    width: 55%;
-    margin-left: 15%;
-  }
-
-  #searchBar {
-    margin-left: 10%;
-    font-size: large;
-  }
-
-  .search-dropdown {
-    left: 10%;
-    width: calc(90% - 10%);
-  }
-
-  #ricercaButton {
-    width: 80px;
-    font-size: medium;
-    margin-right: -10%;
-  }
-
-  .FlexBox3 {
-    margin-left: 25%;
-    margin-right: 25%;
-  }
-
-  #hotel, #ristoranti {
-    width: 180px;
-    font-size: large;
-    margin-top: 100px;
-  }
-
-  .FlexBox4 {
-    margin-left: 8%;
-    gap: 15px;
-    margin-top: 100px;
-  }
-
-  #locale1, #locale2, #locale3, #locale4 {
-    width: 220px;
-    height: 170px;
-  }
-
-  #testo {
-    margin-left: 80px;
-    font-size: 16px;
-  }
-
-  .cuore {
-    right: 80px;
-  }
-}
-
 
 @media screen and (max-width: 900px) {
-  h1 {
-    text-align: center;
-    font-size: large;
-    margin: 12px 0;
-  }
-
-  #logo {
-    width: 120px;
-    height: 120px;
-  }
-
-  #profilo {
-    width: 60px;
-    height: 60px;
-  }
-
-  #recensioni, #inserisciA, #FAQ, #archivio {
-    width: 80px;
-    height: 32px;
-    font-size: medium;
-    padding: 3px;
-  }
-
-  .search-container {
-    width: 70%;
-    margin-left: 10%;
-  }
-
-  #searchBar {
-    margin-left: 8%;
-    height: 50px;
-    font-size: medium;
-    padding: 5px 80px 5px 15px;
-  }
-
-  .search-dropdown {
-    left: 8%;
-    width: calc(92% - 8%);
-    max-height: 200px;
-  }
-
-  .search-dropdown-item {
-    padding: 10px 15px;
-    font-size: medium;
-  }
-
-  #ricercaButton {
-    width: 70px;
-    height: 40px;
-    font-size: small;
-    margin-right: -8%;
-  }
-
-  .FlexBox3 {
-    margin-left: 20%;
-    margin-right: 20%;
-  }
-
-  #hotel, #ristoranti {
-    width: 150px;
-    height: 40px;
-    font-size: medium;
-    margin-top: 80px;
-  }
-
-  .FlexBox4 {
-    margin-left: 5%;
-    margin-right: 5%;
-    gap: 12px;
-    margin-top: 20px;
-  }
-
-  #locale1, #locale2, #locale3, #locale4 {
-    width: 180px;
-    height: 140px;
-  }
-
-  #testo {
-    margin-left: 30px;
-    font-size: 14px;
-  }
+  h1 { font-size: 30px; }
+  .contenitore-mappa { width: 90%; height: 300px; }
+  .search-container { width: 95%; }
+  .FlexBox3 { flex-direction: column; align-items: center; gap: 15px; }
+  #hotel, #ristoranti { width: 80%; }
 }

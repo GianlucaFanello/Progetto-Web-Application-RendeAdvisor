@@ -39,7 +39,6 @@
   font-weight: bold;
 }
 
-
 .recensione-originale {
   width: 600px;
   background-color: #fff;
@@ -48,6 +47,8 @@
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   box-sizing: border-box;
+  margin-bottom: 10px;
+  word-wrap: break-word;
 }
 
 .rec-header {
@@ -93,8 +94,6 @@
   margin: 0;
   line-height: 1.4;
 }
-
-
 
 .inserisci-commento {
   display: grid;
@@ -146,10 +145,6 @@
   box-sizing: border-box;
 }
 
-.commento-text:focus {
-  border-color: #3299ff;
-}
-
 .conferma {
   grid-area: button;
   align-self: center;
@@ -167,10 +162,6 @@
   justify-content: center;
 }
 
-.conferma:hover {
-  background-color: #007bff;
-}
-
 .sezione-commenti {
   width: 600px;
   background: white;
@@ -183,8 +174,4 @@
 .commento-item {
   border-bottom: 1px solid #eee;
   padding: 10px 0;
-}
-
-.commento-item:last-child {
-  border-bottom: none;
 }
