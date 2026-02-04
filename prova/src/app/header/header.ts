@@ -10,8 +10,10 @@ import {UtenteService} from '../service/UtenteService';
   styleUrls: ['./header.css'],
 })
 export class Header {
+  urlImmagine!: String;
 
   constructor(private utenteService:UtenteService, private router:Router) {
+    this.urlImmagine = '/assets/user-profile-icon-free-vector.jpeg';
   }
 
   logged() {

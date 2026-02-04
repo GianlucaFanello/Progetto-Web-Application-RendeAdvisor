@@ -9,6 +9,6 @@
 		<input type="button" value="Archivio" id="archivio" routerLink="/archive"/>
 	</div>
 	<div class="profile-wrap">
-		<img src="../../assets/user-profile-icon-free-vector.jpeg" id="profilo" alt="profilo" (click)="logged()"/>
+		<img [src]="urlImmagine" id="profilo" alt="profilo" (click)="logged()"/>
 	</div>
 </div>
