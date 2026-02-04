@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12001938-a6b8-495f-9deb-b499fa52cc06" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prova/src/app/home-page/home-page.css" beforeDir="false" afterPath="$PROJECT_DIR$/prova/src/app/home-page/home-page.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prova/src/app/home-page/home-page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/prova/src/app/home-page/home-page.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prova/src/app/archive/archive.css" beforeDir="false" afterPath="$PROJECT_DIR$/prova/src/app/archive/archive.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +34,12 @@
     &quot;assignee&quot;: &quot;Yorshkrum&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/GianlucaFanello/Progetto-Web-Application-RendeAdvisor.git&quot;,
-    &quot;accountId&quot;: &quot;558e1e4b-8dda-4383-834e-aeb64a66e9a3&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/GianlucaFanello/Progetto-Web-Application-RendeAdvisor.git",
+    "accountId": "2a3510cf-79ff-4e94-808e-934606e19e09"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/prova/src/app/app.routes.ts" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/prova/src/app/card-recensione/card-recensione.html" root0="SKIP_INSPECTION" />
@@ -75,15 +73,15 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "C:\\Users\\anton\\Desktop\\Progetto-Web-Application-RendeAdvisor\\prova\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2025.2.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.28539.33" />
-        <option value="bundled-js-predefined-d6986cc7102b-a71380e98a7c-JavaScript-IU-252.28539.33" />
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26199.169" />
+        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-IU-252.26199.169" />
       </set>
     </attachedChunks>
   </component>
@@ -96,6 +94,7 @@
       <updated>1768583969067</updated>
       <workItem from="1768583971304" duration="10679000" />
       <workItem from="1770041502954" duration="9445000" />
+      <workItem from="1770220752250" duration="65000" />
     </task>
     <servers />
   </component>
