@@ -66,7 +66,7 @@ public class UtenteService {
         }
     }
 
-    public boolean modificaProfilo(UtenteDTO utente, String usernameVecchio, boolean eliminata) {
+    public UtenteDTO modificaProfilo(UtenteDTO utente, String usernameVecchio, boolean eliminata) {
         try {
 
             UtenteDTO vecchioUtente = dao.getUtenteByUsername(usernameVecchio);
@@ -78,10 +78,20 @@ public class UtenteService {
                 utente.setImmagine(vecchioUtente.getImmagine());
             }
 
-            return dao.updateUtente(utente, usernameVecchio);
+            if (dao.updateUtente(utente, usernameVecchio)){
+                if (utente.getImmagine() != null) {
+                    String base64 = Base64.getEncoder().encodeToString(utente.getImmagine());
+                    utente.setImmagineBase64(base64);
+                }
+                else {
+                    utente.setImmagineBase64(null);
+                }
+                return utente;
+            };
+            return null;
         } catch (SQLException e) {
             logger.error("Errore durante modifica profilo", e);
-            return false;
+            return null;
         }
     }
 }

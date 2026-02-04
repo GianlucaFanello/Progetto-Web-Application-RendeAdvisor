@@ -113,12 +113,12 @@ public class UtenteController {
                 utente.setImmagine(immagine.getBytes());
             }
             boolean elim = Objects.equals(eliminata, "true");
-            boolean aggiornato = utenteService.modificaProfilo(utente, usernameVecchio, elim);
+            UtenteDTO aggiornato = utenteService.modificaProfilo(utente, usernameVecchio, elim);
 
             // 5. Aggiorno la sessione con lo username nuovo
             session.setAttribute("username", username);
 
-            return ResponseEntity.ok(new ApiResponse<>(true, "Profilo aggiornato", null));
+            return ResponseEntity.ok(new ApiResponse<>(true, "Profilo aggiornato", aggiornato));
 
         } catch (Exception e) {
             return ResponseEntity.status(500)
