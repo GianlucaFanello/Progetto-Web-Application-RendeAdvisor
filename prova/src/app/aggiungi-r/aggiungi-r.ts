@@ -64,6 +64,6 @@ export class AggiungiR implements OnInit {
   }
 
   indietro(): void {
-    this.router.navigate(['/ristorante']); 
+    this.router.navigate(['/ristorante']);
   }
 }

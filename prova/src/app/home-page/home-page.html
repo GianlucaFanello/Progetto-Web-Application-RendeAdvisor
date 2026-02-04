@@ -15,3 +15,26 @@
   <input type="search" placeholder="Cerca hotel o ristoranti..." [(ngModel)]="searchText" id="searchBar" (keyup.enter)="search()">
   <input type="button" value="Ricerca" id="ricercaButton" (click)="search()">
 </div>
+
+<div class="carosello-container">
+  <p class="testo-ordinamento">Ordinati in base a</p>
+
+  <div class="carosello-wrapper">
+    <div class="carosello-slide">
+      <img src="assets/img1.jpg" alt="Vicinanza">
+      <span>Vicinanza</span>
+    </div>
+    <div class="carosello-slide">
+      <img src="assets/img2.jpg" alt="Recensioni">
+      <span>Recensioni</span>
+    </div>
+    <div class="carosello-slide">
+      <img src="assets/img3.jpg" alt="Prezzo">
+      <span>Prezzo</span>
+    </div>
+    <div class="carosello-slide">
+      <img src="assets/img1.jpg" alt="Ingredienti">
+      <span>Ingredienti</span>
+    </div>
+  </div>
+</div>
