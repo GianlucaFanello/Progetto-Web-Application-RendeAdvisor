@@ -11,6 +11,7 @@ import {ApiResponseDto} from '../model/apiResponse.dto';
 
 export class AttivitaService {
 
+
   private BASE_URL = 'http://localhost:8080/api/attivita';
 
   constructor(private http: HttpClient) {}

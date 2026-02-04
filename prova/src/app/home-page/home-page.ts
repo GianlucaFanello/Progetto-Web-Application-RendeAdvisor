@@ -1,6 +1,7 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import {AttivitaService} from '../service/AttivitaService';
 
 declare var google: any;
 
@@ -13,6 +14,12 @@ declare var google: any;
 })
 export class HomePage implements OnInit, AfterViewInit {
   searchText: string = "";
+
+
+  constructor(
+    private router: Router,
+    private attivitaService: AttivitaService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -53,6 +60,10 @@ export class HomePage implements OnInit, AfterViewInit {
   }
 
   search() {
-    console.log("Ricerca eseguita per:", this.searchText);
+    if (this.searchText.trim()) {
+      this.router.navigate(['/RisultatiR'], {
+        queryParams: { query: this.searchText }
+      });
+    }
   }
 }
