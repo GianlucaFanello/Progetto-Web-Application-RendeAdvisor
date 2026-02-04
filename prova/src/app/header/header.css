@@ -34,7 +34,14 @@
 }
 .nav-buttons input:hover{background-image: linear-gradient(135deg, #00c6ff, #0072ff); color:white}
 .profile-wrap{flex:0 0 auto}
-.profile-wrap img#profilo{width:72px;height:72px;border-radius:6px;cursor:pointer;transition:opacity .3s}
+.profile-wrap img#profilo{
+  width:72px;
+  height:72px;
+  border-radius:50px;
+  cursor:pointer;
+  transition:opacity .3s;
+  object-fit: cover;
+}
 .profile-wrap img#profilo:hover{opacity:0.7}
 
 @media (max-width:900px){
