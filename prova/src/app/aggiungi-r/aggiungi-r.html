@@ -1,32 +1,32 @@
 <div id="body">
-<div class="Flexbox" id="uno">
-  <div>
-    <h1>Aggiungi recensione <img src="../../assets/matita.png" width="30px"></h1>
-  </div>
-</div>
-<div id="box">
-  <div class="Flexbox3">
+  <div class="Flexbox" id="uno">
     <div>
-      <label id="nomeLocale">{{ nomeStruttura }}</label>
+      <h1>Aggiungi recensione <img src="../../assets/matita.png" width="30px"></h1>
     </div>
-    <div class="Flexbox2">
-      <label id="valutazione">Scegli quante stelle dare</label>
+  </div>
+  <div id="box">
+    <div class="Flexbox3">
       <div>
-        <img id="star" class="star" src="../../assets/star.png" width="40px">
-        <img id="star" class="star" src="../../assets/star.png" width="40px">
-        <img id="star" class="star" src="../../assets/star.png" width="40px">
-        <img id="star" class="star" src="../../assets/star.png" width="40px">
-        <img id="star" class="star" src="../../assets/star.png" width="40px">
+        <label id="nomeLocale">{{ nomeStruttura }}</label>
       </div>
-      <input id="numberBox" type="number" min="1" max="5">
-    </div>
+      <div class="Flexbox2">
+        <label id="valutazione">Scegli quante stelle dare</label>
+        <div>
+          <img class="star" src="../../assets/star.png" width="40px">
+          <img class="star" src="../../assets/star.png" width="40px">
+          <img class="star" src="../../assets/star.png" width="40px">
+          <img class="star" src="../../assets/star.png" width="40px">
+          <img class="star" src="../../assets/star.png" width="40px">
+        </div>
+        <input id="numberBox" type="number" min="1" max="5" [(ngModel)]="voto">
+      </div>
 
-    <textarea id="boxRecensione" placeholder="Inserisci qui la tua recensione"></textarea>
+      <textarea id="boxRecensione" placeholder="Inserisci qui la tua recensione" [(ngModel)]="testoRecensione"></textarea>
 
-    <div><button id="button">Aggiungi</button></div>
-    <div>
-      <label id="annulla">Annulla</label>
+      <div><button id="button" (click)="aggiungi()">Aggiungi</button></div>
+      <div>
+        <label id="annulla" (click)="indietro()">Annulla</label>
+      </div>
     </div>
   </div>
-</div>
 </div>
