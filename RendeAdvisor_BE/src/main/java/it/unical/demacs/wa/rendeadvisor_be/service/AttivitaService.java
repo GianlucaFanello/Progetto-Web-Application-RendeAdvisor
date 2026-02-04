@@ -45,7 +45,14 @@ public class AttivitaService {
     }
 
     public AttivitaDTO findByNome(String nome) throws SQLException {
-        return attivitaDAO.findByNome(nome);
+        AttivitaDTO attivita = attivitaDAO.findByNome(nome);
+
+        if(attivita.getImmagine() != null){
+            attivita.setImmagineBase64(Base64.getEncoder().encodeToString(attivita.getImmagine()));
+            attivita.setImmagine(null);
+        }
+
+        return attivita;
     }
 
     public List<AttivitaDTO> listaAttivitaByProprietario(String username) throws SQLException {
@@ -62,4 +69,19 @@ public class AttivitaService {
         return attivita ;
     }
 
+    public AttivitaDTO modificaProfilo(AttivitaDTO attivita, String vecchioNomeLocale, boolean elim) throws SQLException {
+
+        AttivitaDTO vecchio = attivitaDAO.findByNome(vecchioNomeLocale);
+        if(elim){
+            attivita.setImmagine(null);
+        }
+        else if (vecchio.getImmagine() != null && attivita.getImmagine() == null) {
+            attivita.setImmagine(vecchio.getImmagine());
+        }
+
+        if(attivitaDAO.updateAttivita(attivita,vecchioNomeLocale)) {
+            return attivita;
+        }
+        return null;
+    }
 }

@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/attivita")
@@ -157,8 +158,22 @@ public class AttivitaController {
     }
 
     @GetMapping("/by-nome")
-    public AttivitaDTO getByNome(@RequestParam String nome) throws SQLException {
-        return attivitaService.findByNome(nome);
+    public ResponseEntity<ApiResponse<AttivitaDTO>> getByNome(@RequestParam String nome) throws SQLException {
+        try {
+            AttivitaDTO attivita = attivitaService.findByNome(nome);
+            if(attivita != null){
+                return ResponseEntity.ok(
+                  new ApiResponse(true, "Locale Trovato", attivita) );
+            }
+            else
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body(new ApiResponse<>(false, "Locale non trovato", null));
+
+        } catch (SQLException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse<>(false, "Errore", null));
+        }
+
     }
 
     @GetMapping("/by-proprietario")
@@ -172,6 +187,43 @@ public class AttivitaController {
         } catch (SQLException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(new ApiResponse<>(false, "Errore", null));
+        }
+    }
+
+    @PostMapping("modifica/salva")
+    public ResponseEntity<ApiResponse<String>> modificaProfilo(@RequestParam String nomeLocale,
+                                                             @RequestParam String email,
+                                                             @RequestParam String telefono,
+                                                             @RequestParam String indirizzo,
+                                                             @RequestParam String descrizione,
+                                                             @RequestParam(required = false) MultipartFile immagine,
+                                                             @RequestParam String eliminata,
+                                                             @RequestParam String vecchioNomeLocale) throws IOException {
+        try {
+            AttivitaDTO attivita= new AttivitaDTO();
+            attivita.setNomeLocale(nomeLocale);
+            attivita.setEmail(email);
+            attivita.setTelefono(telefono);
+            attivita.setIndirizzo(indirizzo);
+            attivita.setDescrizione(descrizione);
+
+            if(immagine != null && !immagine.isEmpty()) {
+                attivita.setImmagine(immagine.getBytes());
+            }
+
+            boolean elim = Objects.equals(eliminata, "true");
+            AttivitaDTO aggiornato = attivitaService.modificaProfilo(attivita, vecchioNomeLocale, elim);
+
+            if(aggiornato != null){
+                return ResponseEntity.ok(new ApiResponse<>(true, "Profilo aggiornato", aggiornato.getNomeLocale()));
+            }
+            else
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiResponse<>(false, "Profilo non modificato", null));
+
+
+        } catch (IOException | SQLException e) {
+            return ResponseEntity.status(500)
+                    .body(new ApiResponse<>(false, "Errore durante la modifica", null));
         }
     }
 }

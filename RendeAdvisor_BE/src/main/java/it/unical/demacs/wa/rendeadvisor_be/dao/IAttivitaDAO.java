@@ -22,7 +22,7 @@ public interface IAttivitaDAO {
     ArrayList<AttivitaDTO> findByTipo(String tipo) throws SQLException;
 
     //Aggiorna i dati (descrizione, foto, ecc.)
-    boolean updateAttivita(AttivitaDTO attivita) throws SQLException;
+    boolean updateAttivita(AttivitaDTO attivita, String vecchioNome) throws SQLException;
 
     //Rimuove un'attività dal sistema
     boolean delete(String nomeLocale) throws SQLException;
