@@ -53,6 +53,6 @@ export class HomePage implements OnInit, AfterViewInit {
   }
 
   search() {
-    console.log("Eseguo ricerca per:", this.searchText);
+    console.log("Ricerca eseguita per:", this.searchText);
   }
 }

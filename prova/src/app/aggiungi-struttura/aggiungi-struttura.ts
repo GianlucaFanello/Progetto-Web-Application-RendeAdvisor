@@ -112,6 +112,7 @@ export class AggiungiStruttura implements OnInit{
         }
       },
       error: (err) => {
+        this.loading = false;
         console.error("Errore HTTP:", err);
       }
     });

@@ -37,11 +37,11 @@ export class ProfiloStrutturaComponent implements OnInit {
 
     this.attivitaService.getByNome(this.nomeStruttura).subscribe({
       next: (attivita) => {
-        this.email = attivita.email;
-        this.indirizzo = attivita.indirizzo;
-        this.telefono = attivita.telefono;
-        this.proprietario = attivita.proprietario;
-        this.descrizione = attivita.descrizione;
+        this.email = attivita.data.email;
+        this.indirizzo = attivita.data.indirizzo;
+        this.telefono = attivita.data.telefono;
+        this.proprietario = attivita.data.proprietario;
+        this.descrizione = attivita.data.descrizione;
         this.loading = false;
       },
       error: () => {
