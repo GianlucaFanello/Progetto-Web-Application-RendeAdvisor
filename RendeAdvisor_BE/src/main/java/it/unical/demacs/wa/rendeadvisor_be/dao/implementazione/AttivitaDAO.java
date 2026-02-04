@@ -135,16 +135,16 @@ public class AttivitaDAO implements IAttivitaDAO {
     }
 
     @Override
-    public boolean updateAttivita(AttivitaDTO attivita) throws SQLException {
-        String query = "UPDATE attivita SET telefono=?,email=?,immagine=?,descrizione=?,indirizzo=?,tipo=? WHERE nomelocale = ?";
+    public boolean updateAttivita(AttivitaDTO attivita, String vecchioNome) throws SQLException {
+        String query = "UPDATE attivita SET nomelocale=?, telefono=?,email=?,immagine=?,descrizione=?,indirizzo=? WHERE nomelocale = ?";
         PreparedStatement ps = connection.prepareStatement(query);
-        ps.setString(1, attivita.getTelefono());
-        ps.setString(2, attivita.getEmail());
-        ps.setBytes(3, attivita.getImmagine());
-        ps.setString(4, attivita.getDescrizione());
-        ps.setString(5, attivita.getIndirizzo());
-        ps.setString(6, attivita.getTipo());
-        ps.setString(7, attivita.getNomeLocale());
+        ps.setString(1, attivita.getNomeLocale());
+        ps.setString(2, attivita.getTelefono());
+        ps.setString(3, attivita.getEmail());
+        ps.setBytes(4, attivita.getImmagine());
+        ps.setString(5, attivita.getDescrizione());
+        ps.setString(6, attivita.getIndirizzo());
+        ps.setString(7, vecchioNome);
 
         return ps.executeUpdate() == 1;
     }
@@ -184,13 +184,8 @@ public class AttivitaDAO implements IAttivitaDAO {
         dto.setProprietario(rs.getString("proprietario"));
         dto.setTelefono(rs.getString("telefono"));
         dto.setEmail(rs.getString("email"));
-        String immagineString = rs.getString("immagine");
-        if (immagineString != null) {
-            dto.setImmagine(immagineString.getBytes());
-        } else {
-            dto.setImmagine(new byte[0]); // array vuoto se non ci sono dati
-        }
-
+        dto.setImmagine(rs.getBytes("immagine"));
+        dto.setImmagine(rs.getBytes("immagine"));
         dto.setDescrizione(rs.getString("descrizione"));
         dto.setIndirizzo(rs.getString("indirizzo"));
         dto.setTipo(rs.getString("tipo"));
