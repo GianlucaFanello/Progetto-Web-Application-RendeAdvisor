@@ -45,6 +45,14 @@ export class Hotel implements OnInit{
       });
     }
   }
+
+  getImmagine(hotel: AttivitaDto) {
+    if(hotel?.immagineBase64) {
+      return "data:image/*;base64," + hotel.immagineBase64 ;
+    }
+
+    return "/assets/strutturaDefault.png";
+  }
 }
 
 

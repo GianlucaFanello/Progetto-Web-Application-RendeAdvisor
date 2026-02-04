@@ -46,7 +46,11 @@ export class Ristorante implements OnInit {
     }
   }
 
+  getImmagine(ristorante: AttivitaDto) {
+    if(ristorante?.immagineBase64) {
+      return "data:image/*;base64," + ristorante.immagineBase64 ;
+    }
 
-
-
+    return "/assets/strutturaDefault.png";
+  }
 }
