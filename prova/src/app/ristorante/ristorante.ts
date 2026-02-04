@@ -24,7 +24,6 @@ export class Ristorante implements OnInit {
 
   ngOnInit() {
     this.caricaR();
-    console.log(this.listaRistoranti);
   }
 
   caricaR() {
