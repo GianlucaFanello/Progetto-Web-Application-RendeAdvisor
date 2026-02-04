@@ -11,6 +11,5 @@ export interface AttivitaDto {
   tipo:string;
   immagineBase64?:string;
 
-  immagine?: string;
   recensioni?: RecensioneDto[];
 }

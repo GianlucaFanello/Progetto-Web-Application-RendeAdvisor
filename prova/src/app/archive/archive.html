@@ -9,7 +9,7 @@
       <div class="grid">
 
         <div class="card" *ngFor="let hotel of listaHotel" (click)="vaiAlDettaglio(hotel.nomeLocale)">
-          <img [src]="hotel.immagine ? 'data:image/jpeg;base64,' + hotel.immagine : '../../assets/camera.jpg'"
+          <img [src]="hotel.immagineBase64 ? 'data:image/jpeg;base64,' + hotel.immagineBase64 : '../../assets/camera.jpg'"
                [alt]="hotel.nomeLocale">
 
           <div class="card-body">
@@ -34,7 +34,7 @@
       <div class="grid">
 
         <div class="card" *ngFor="let rist of listaRistoranti" (click)="vaiAlDettaglio(rist.nomeLocale)">
-          <img [src]="rist.immagine ? 'data:image/jpeg;base64,' + rist.immagine : '../../assets/laGriglia.jpg'"
+          <img [src]="rist.immagineBase64 ? 'data:image/jpeg;base64,' + rist.immagineBase64 : '../../assets/laGriglia.jpg'"
                [alt]="rist.nomeLocale">
 
           <div class="card-body">

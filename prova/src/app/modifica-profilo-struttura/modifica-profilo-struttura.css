@@ -100,20 +100,80 @@
   gap: 30px;
 }
 
-.sfoglia{
+#sfoglia{
+  background-image: linear-gradient(135deg, #00c6ff, #0072ff);
+  font-size: xx-large;
+  font-family: "System Bold Italic";
+  border-radius: 50px;
   width: 150px;
-  cursor: pointer;
+  height: 50px;
+  color: white;
+  cursor:pointer;
   border: 2px solid #ddd;
+  transition: background-image 0.3s;
 }
 
-.annulla{
-  height: 40px;
+#sfoglia:hover {
+  background-image: linear-gradient(135deg, #0072ff, #00c6ff);
+}
+
+#azioni-immagine {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.annulla {
   font-family: "Alkatra";
   font-size: 20px;
+  height: 40px;
+  background-color: white;
+  margin-left: 10px;
+  margin-top: 5px;
   background-color: white;
   border-radius: 50px;
+  border: 2px solid black;
   cursor: pointer;
-  border: 2px solid #ddd;
+  transition: all 0.25s ease-in-out;
+}
+
+.annulla:hover {
+  border-color: red;
+  color: red;
+}
+
+#elimina-immagine {
+  font-size: 25px;
+  margin-top: auto;
+  margin-bottom: 10px;
+  color: red;
+  cursor: pointer;
+  justify-self: center;
+  align-self: center;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  margin-left: 10px;
+  animation: spin 1s linear infinite;
+}
+
+.button-container{
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 @media(max-width: 850px){

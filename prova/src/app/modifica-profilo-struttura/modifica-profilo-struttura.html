@@ -1,34 +1,42 @@
 <div id="body">
-  <h1>Modifica profilo struttura <img src="../../assets/gears.png" width="30px"></h1>
+  <h1>Modifica profilo struttura <img src="/assets/gears.png" width="30px"></h1>
   <div id="principale">
     <div id="secondario">
       <div class="interno nome">
         <label class="etichette">Nome</label>
-        <textarea class="textArea" placeholder="Inserisci nome"></textarea>
+        <textarea class="textArea" placeholder="Inserisci nome" [(ngModel)]="attivita.nomeLocale">{{attivita?.nomeLocale}}</textarea>
       </div>
       <div class="interno email">
         <label class="etichette">Email</label>
-        <textarea class="textArea" placeholder="Inserisci email"></textarea>
+        <textarea class="textArea" placeholder="Inserisci email" [(ngModel)]="attivita.email">{{attivita?.email}}</textarea>
       </div>
       <div class="interno indirizzo">
         <label class="etichette">Indirizzo</label>
-        <textarea class="textArea" placeholder="Inserisci indirizzo"></textarea>
+        <textarea class="textArea" placeholder="Inserisci indirizzo" [(ngModel)]="attivita.indirizzo">{{attivita?.indirizzo}}</textarea>
       </div>
       <div class="interno telefono">
         <label class="etichette">Telefono</label>
-        <input type="tel" class="textArea tel" placeholder="Inserisci telefono">
+        <textarea type="tel" class="textArea tel" placeholder="Inserisci telefono" [(ngModel)]="attivita.telefono">{{attivita?.telefono}}</textarea>
       </div>
       <div class="interno descrizione">
         <label class="etichette">Descrizione</label>
-        <textarea class="textArea boxDescrizione" placeholder="Inserisci descrizione"></textarea>
+        <textarea class="textArea boxDescrizione" placeholder="Inserisci descrizione" [(ngModel)]="attivita.descrizione">{{attivita?.descrizione}}</textarea>
       </div>
     </div>
     <div id="terzario">
-      <img src="../../assets/camera.jpg" id="fotoProfilo">
-      <button class="sfoglia annulla">Sfoglia</button>
+      <input #fileInput type="file" accept="image/*" hidden (change)="onFileSelected($event)">
+      <img [src]="preview || urlImmagine" id="fotoProfilo">
+      <div id="azioni-immagine">
+        <button id="sfoglia" (click)="fileInput.click()">Sfoglia</button>
+        <label id="elimina-immagine" (click)="eliminaImmagine()">x</label>
+      </div>
     </div>
-
-    <button class="button" id="buttonModifiche">Salva modifiche</button>
-    <button class="annulla">Annulla</button>
+    <div class="button-container">
+      <div>
+        <button class="button" id="buttonModifiche" (click)="salva()">Salva modifiche</button>
+        <button class="annulla" (click)="annulla()">Annulla</button>
+      </div>
+      <span *ngIf="loading" class="spinner"></span>
+    </div>
   </div>
 </div>

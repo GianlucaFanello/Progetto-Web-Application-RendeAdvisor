@@ -40,8 +40,8 @@ export class AttivitaService {
     return this.http.get<ApiResponseDto<AttivitaDto[]>>(this.BASE_URL + "/search", {params});
   }
 
-  getByNome(nome: string): Observable<AttivitaDto> {
-    return this.http.get<AttivitaDto>(
+  getByNome(nome: string): Observable<ApiResponseDto<AttivitaDto>> {
+    return this.http.get<ApiResponseDto<AttivitaDto>>(
       `${this.BASE_URL}/by-nome`,
       { params: { nome } }
     );
@@ -49,5 +49,9 @@ export class AttivitaService {
 
   getByProprietario(username: string): Observable<ApiResponseDto<AttivitaDto[]>>{
     return this.http.get<ApiResponseDto<AttivitaDto[]>>(this.BASE_URL + "/by-proprietario", { params: {username: username} })
+  }
+
+  modificaProfilo(formData: FormData) {
+    return this.http.post<ApiResponseDto<void>>(this.BASE_URL + "/modifica/salva", formData);
   }
 }
