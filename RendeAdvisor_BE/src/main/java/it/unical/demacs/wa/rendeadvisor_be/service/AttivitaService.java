@@ -23,12 +23,30 @@ public class AttivitaService {
 
 
     public List<AttivitaDTO> getRistoranti() throws SQLException {
-        return attivitaDAO.findByTipo("ristorante");
+        List<AttivitaDTO> attivita = attivitaDAO.findByTipo("ristorante");
+
+        for(AttivitaDTO a: attivita){
+            if(a.getImmagine() != null){
+                a.setImmagineBase64(Base64.getEncoder().encodeToString(a.getImmagine()));
+                a.setImmagine(null);
+            }
+        }
+
+        return attivita;
     }
 
 
     public List<AttivitaDTO> getHotel() throws SQLException {
-        return attivitaDAO.findByTipo("hotel");
+        List<AttivitaDTO> attivita = attivitaDAO.findByTipo("hotel");
+
+        for(AttivitaDTO a: attivita){
+            if(a.getImmagine() != null){
+                a.setImmagineBase64(Base64.getEncoder().encodeToString(a.getImmagine()));
+                a.setImmagine(null);
+            }
+        }
+
+        return attivita;
     }
 
 
