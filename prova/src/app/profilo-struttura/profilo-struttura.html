@@ -1,31 +1,31 @@
 <div id="body">
   <div id="principale">
     <div id="principale2">
-      <img id="fotoUtente" src="../../assets/palazzi.png" width="200px">
-      <label id="nome">{{nomeStruttura}}</label>
+      <img id="fotoStruttura" [src]="getImmagine()" width="200px">
+      <label id="nome">{{attivita?.nomeLocale}}</label>
       <h2>Voto <img src="../../assets/star.png" width="30px" alt=""></h2>
       <div class="sottoDiv">
-        <h2 id="stringaEmail">{{email}}<img class="img" src="../../assets/email.png" width="30px"></h2>
-        <h2>{{indirizzo}} <img class="img" src="../../assets/palazzi.png"  width="30px"></h2>
+        <h2 id="stringaEmail">{{attivita?.email}}<img class="img" src="/assets/email.png" width="30px"></h2>
+        <h2>{{attivita?.indirizzo}} <img class="img" src="/assets/palazzi.png"  width="30px"></h2>
       </div>
       <div class="sottoDiv">
-        <h2>numero di telefono <img src="../../assets/phone.png" width="30px"></h2>
-        <h2>{{proprietario}} <img src="../../assets/hat.png" width="30px"></h2>
+        <h2>{{attivita.telefono}}<img src="/assets/phone.png" width="30px"></h2>
+        <h2>{{attivita?.proprietario}} <img src="/assets/hat.png" width="30px"></h2>
       </div>
 
-      <textarea id="textArea">{{ descrizione }}</textarea>
+      <textarea id="textArea">{{attivita?.descrizione}}</textarea>
       <div id="secondario">
-        <button class="button" (click)="visualizzaRecensioni(nomeStruttura)">Recensioni <img src="../../assets/scrittura.png" width="20px"></button>
+        <button class="button" (click)="visualizzaRecensioni(nomeStruttura)">Recensioni <img src="/assets/scrittura.png" width="20px"></button>
         <div id="terzario">
           <label id="nelCuoreNumero">Nel cuore di </label>
           <label id="contatore">{{contatore}}</label>
-          <label > persone <img src="../../assets/Cuore pieno.png" width="30px"></label>
+          <label > persone <img src="/assets/Cuore pieno.png" width="30px"></label>
         </div>
       </div>
       <div  style="cursor: pointer;"
             (click)="togglePreferito()">Clicca per inserire nel cuore <img [src]="preferito
-            ? '../../assets/Cuore pieno.png'
-            : '../../assets/Heart empty.png'"
+            ? '/assets/Cuore pieno.png'
+            : '/assets/Heart empty.png'"
                                                                            width="50px"></div>
 
   </div>

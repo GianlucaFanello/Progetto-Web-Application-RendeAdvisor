@@ -4,6 +4,7 @@ import {LoginDto} from '../model/login.dto';
 import {FormsModule} from '@angular/forms';
 import {UtenteService} from '../service/UtenteService';
 import {NgIf} from '@angular/common';
+import {AuthService} from '../service/AuthService';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class Login {
   messaggio = '' ;
   loading = false ;
 
-  constructor(private utenteService: UtenteService, private router:Router ) {
+  constructor(private utenteService: UtenteService, private router:Router, private authService: AuthService) {
   }
 
   login() {
@@ -32,6 +33,11 @@ export class Login {
     this.utenteService.login(this.credenziali).subscribe({
       next: (res) => {
         this.messaggio = res.message;
+
+        this.utenteService.me().subscribe(meRes => {
+          this.authService.setUser(meRes.data); }
+        );
+
         this.router.navigate(['/']);
       },
       error: (err) =>{

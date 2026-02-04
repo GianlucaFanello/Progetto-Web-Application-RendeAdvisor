@@ -2,6 +2,8 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Header } from './header/header';
 import { Footer } from './footer/footer';
+import {UtenteService} from './service/UtenteService';
+import {AuthService} from './service/AuthService';
 
 @Component({
   selector: 'app-root',
@@ -10,5 +12,18 @@ import { Footer } from './footer/footer';
   styleUrl: './app.css'
 })
 export class App {
-  
+
+  constructor(
+    private utenteService: UtenteService,
+    private authService: AuthService
+  ) {}
+
+  ngOnInit() {
+    this.utenteService.me().subscribe({
+      next: res => this.authService.setUser(res.data),
+      error: () => this.authService.clearUser()
+    });
+  }
+
+
 }

@@ -3,6 +3,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { NelCuoreService } from '../service/NelCuoreService';
 import { RouterLink } from '@angular/router';
 import {AttivitaService} from '../service/AttivitaService';
+import {AttivitaDto} from '../model/attivita.dto';
+import {AuthService} from '../service/AuthService';
+import {UtenteDto} from '../model/utente.dto';
 
 @Component({
   selector: 'app-profilo-struttura',
@@ -12,67 +15,83 @@ import {AttivitaService} from '../service/AttivitaService';
 export class ProfiloStrutturaComponent implements OnInit {
 
   nomeStruttura!: string;
+  username!:string;
   preferito: boolean = false;
   contatore = 0;
-  email!: string;
-  indirizzo!: string;
-  telefono!: string;
-  proprietario!: string;
-  descrizione!: string;
   loading: boolean = true;
+
+  attivita!:AttivitaDto;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private attivitaService: AttivitaService,
-    private nelCuoreService: NelCuoreService
+    private nelCuoreService: NelCuoreService,
+    private authService: AuthService
   ) {}
 
 
   ngOnInit(): void {
 
-    this.nomeStruttura = decodeURIComponent(
-      this.route.snapshot.paramMap.get('nomeLocale')!
-    );
-
-    this.attivitaService.getByNome(this.nomeStruttura).subscribe({
-      next: (attivita) => {
-        this.email = attivita.data.email;
-        this.indirizzo = attivita.data.indirizzo;
-        this.telefono = attivita.data.telefono;
-        this.proprietario = attivita.data.proprietario;
-        this.descrizione = attivita.data.descrizione;
-        this.loading = false;
-      },
-      error: () => {
-        console.error('Errore caricamento struttura');
-        this.loading = false;
-      }
+    this.route.paramMap.subscribe(params => {
+      this.nomeStruttura = params.get('nomeLocale') ?? '';
+      this.attivitaService.getByNome(this.nomeStruttura).subscribe({
+        next: (a) => {
+          this.attivita = a.data;
+          this.loading = false;
+        },
+        error: () => {
+          console.error('Errore caricamento struttura');
+          this.loading = false;
+        }
+      });
     });
 
-    this.contatore = 10;
+    const utente = this.authService.getUser();
+    if(utente) {
+      this.username = utente.username;
+    }
+    else {
+      this.router.navigate(['/choose']);
+    }
+
+    this.aggiornaContatore();
+    this.contatore = 0;
   }
+
   togglePreferito(): void {
 
     const dto = {
-      nomeUtente: 'utente',           // TODO: utente reale
+      nomeUtente: this.username,
       nomeStruttura: this.nomeStruttura
     };
 
     if (this.preferito) {
       this.preferito = false;
       this.contatore--;
-      // this.nelCuoreService.rimuovi(dto).subscribe();
+      this.nelCuoreService.rimuovi(dto).subscribe();
     } else {
       this.preferito = true;
       this.contatore++;
-      // this.nelCuoreService.aggiungi(dto).subscribe();
+      this.nelCuoreService.aggiungi(dto).subscribe();
     }
   }
 
   visualizzaRecensioni(nomeStruttura: String) {
     // @ts-ignore
     this.router.navigate(['/recensioni-struttura', encodeURIComponent(nomeStruttura)])
+
+  }
+
+  getImmagine() {
+    if(this.attivita?.immagineBase64){
+      return "data:image/*;base64," + this.attivita.immagineBase64;
+    }
+
+    return "/assets/strutturaDefault.png";
+  }
+
+  private aggiornaContatore() {
 
   }
 }

@@ -30,14 +30,6 @@ export class Header implements OnInit {
       this.isLogged = !!user;
       this.urlImmagine = this.getImmagine();
     });
-
-    this.utenteService.me().subscribe({
-      next: res => {
-        this.authService.setUser(res.data);
-        this.isLogged = true;
-      },
-      error: () => this.authService.clearUser()
-    });
   }
 
   logged() {

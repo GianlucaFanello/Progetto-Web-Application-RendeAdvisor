@@ -76,7 +76,7 @@ export class AggiungiStruttura implements OnInit{
   salva() {
 
     if(!this.attivita.proprietario) {
-      this.messaggio = 'Registrati o Accedi';
+      this.router.navigate(['/choose']);
       return ;
     }
 

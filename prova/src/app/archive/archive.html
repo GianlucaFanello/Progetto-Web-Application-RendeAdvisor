@@ -9,12 +9,12 @@
       <div class="grid">
 
         <div class="card" *ngFor="let hotel of listaHotel" (click)="vaiAlDettaglio(hotel.nomeLocale)">
-          <img [src]="hotel.immagineBase64 ? 'data:image/jpeg;base64,' + hotel.immagineBase64 : '../../assets/camera.jpg'"
+          <img [src]="hotel.immagineBase64? 'data:image/jpeg;base64,' + hotel.immagineBase64 : '../../assets/camera.jpg'"
                [alt]="hotel.nomeLocale">
 
           <div class="card-body">
-            <h3>{{ hotel.nomeLocale }}</h3>
-            <p>{{ hotel.indirizzo }}</p>
+            <h3>{{hotel.nomeLocale}}</h3>
+            <p>{{hotel.indirizzo}}</p>
             <div class="rating">
               <img class="star" src="/assets/star2.png" width="15px"/>
               <img class="star" src="/assets/star2.png" width="15px"/>
@@ -38,8 +38,8 @@
                [alt]="rist.nomeLocale">
 
           <div class="card-body">
-            <h3>{{ rist.nomeLocale }}</h3>
-            <p>{{ rist.indirizzo }}</p>
+            <h3>{{rist.nomeLocale}}</h3>
+            <p>{{rist.indirizzo}}</p>
             <div class="rating">
               <img class="star" src="../../assets/star2.png" width="15px"/>
               <img class="star" src="../../assets/star2.png" width="15px"/>

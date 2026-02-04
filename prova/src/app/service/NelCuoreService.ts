@@ -13,8 +13,8 @@ export class NelCuoreService {
 
   constructor(private http: HttpClient) {}
 
-  salva(dto: NelCuoreDto): Observable<ApiResponseDto<void>> {
-    return this.http.post<ApiResponseDto<void>>(this.BASE_URL + "/salva", dto);
+  aggiungi(dto: NelCuoreDto): Observable<ApiResponseDto<void>> {
+    return this.http.post<ApiResponseDto<void>>(this.BASE_URL + "/aggiungi", dto);
   }
 
   rimuovi(dto: NelCuoreDto): Observable<ApiResponseDto<void>> {

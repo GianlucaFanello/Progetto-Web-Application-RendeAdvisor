@@ -24,9 +24,9 @@
   font-size: 30px;
 }
 
-#fotoUtente{
+#fotoStruttura{
   border-radius: 50%;
-  box-shadow: 0px 5px 35px rgba(50,50,93,0.1), 10px 15px 25px rgba(0,0,0,0.07);
+  box-shadow: 0 5px 35px rgba(50,50,93,0.1), 10px 15px 25px rgba(0,0,0,0.07);
   align-self: center;
   transition: width 0.2s;
 }
