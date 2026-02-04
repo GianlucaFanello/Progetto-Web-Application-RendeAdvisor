@@ -14,6 +14,7 @@ declare var google: any;
 })
 export class HomePage implements OnInit, AfterViewInit {
   searchText: string = "";
+  localiOrdinati = [];
 
 
   constructor(
@@ -21,8 +22,9 @@ export class HomePage implements OnInit, AfterViewInit {
     private attivitaService: AttivitaService
   ) {}
 
-  ngOnInit(): void {}
-
+  ngOnInit(): void {
+    this.caricaERiordinaRistoranti();
+  }
   ngAfterViewInit(): void {
     this.caricaScriptMappa();
   }
@@ -64,6 +66,17 @@ export class HomePage implements OnInit, AfterViewInit {
         title: "Rende"
       });
     }
+  }
+  caricaERiordinaRistoranti() {
+    this.attivitaService.getTutte().subscribe(response => {
+      // @ts-ignore
+      this.localiOrdinati = response.data.map((r: any) => {
+        return {
+          ...r,
+          distanza: calcolaDistanza(CENTRO_RENDE.lat, CENTRO_RENDE.lng, r.latitudine, r.longitudine)
+        };
+      }).sort((a: any, b: any) => a.distanza - b.distanza);
+    });
   }
 
   search() {

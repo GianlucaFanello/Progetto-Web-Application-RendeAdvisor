@@ -55,4 +55,6 @@ export class AttivitaService {
   modificaProfilo(formData: FormData) {
     return this.http.post<ApiResponseDto<void>>(this.BASE_URL + "/modifica/salva", formData);
   }
+
+
 }
