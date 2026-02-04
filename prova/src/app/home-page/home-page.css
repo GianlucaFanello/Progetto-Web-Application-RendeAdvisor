@@ -97,21 +97,26 @@ h1 {
 }
 
 .carosello-container {
-  margin-top: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
   text-align: center;
-  margin-left: 330px;
+
 
 }
 
 .testo-ordinamento {
+  align-self: center;
   font-size: 1.2rem;
   margin-bottom: 40px;
   color: #333;
-  margin-right: 1000px;
 }
 
 .carosello-wrapper {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   overflow-x: auto;
   gap: 15px;
   padding: 10px;
@@ -143,7 +148,7 @@ h1 {
 @media screen and (max-width: 900px) {
   h1 { font-size: xx-large; }
   .contenitore-mappa { width: 90%; height: 250px; }
-  .search-container { width: 90%; }
+  .search-container { width: 80%; min-width: 200px }
   .FlexBox3 { flex-direction: column; align-items: center; gap: 15px; }
-  #hotel, #ristoranti { width: 80%; height: 55px; }
+  #hotel, #ristoranti { width: 60%; height: 55px; min-width: 180px }
 }
