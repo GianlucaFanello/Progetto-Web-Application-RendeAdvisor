@@ -33,6 +33,11 @@ export class HomePage implements OnInit, AfterViewInit {
       return;
     }
 
+    if (document.getElementById('google-maps-script')) {
+      setTimeout(() => this.mostraMappa(), 500);
+      return;
+    }
+
     const script = document.createElement('script');
     script.id = 'google-maps-script';
     script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAfaX4yY-9HFApHUu2Rw_KFXNEjY5rVIOM';
@@ -46,11 +51,13 @@ export class HomePage implements OnInit, AfterViewInit {
     const elementoMappa = document.getElementById('mappa-google');
     if (elementoMappa) {
       const rende = { lat: 39.330, lng: 16.183 };
+
       const map = new google.maps.Map(elementoMappa, {
         center: rende,
         zoom: 13,
         disableDefaultUI: false
       });
+
       new google.maps.Marker({
         position: rende,
         map: map,

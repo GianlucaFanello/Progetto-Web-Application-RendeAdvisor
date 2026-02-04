@@ -1,133 +1,141 @@
 #body {
   display: flex;
   flex-direction: column;
-  align-items: center; /* centra orizzontalmente */
-  margin: 0;
-  padding: 0; /* un po' di spazio sopra/sotto */
-  background-color: #f5f5f5; /* se vuoi */
-  font-family: "Alkatra";
-}
-.Grid {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  padding: 10px;
   align-items: center;
-}
-
-#box{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-style: solid;
-  border-color: black;
-  background-color: white;
-  border-radius: 10px;
-  padding: 20px;
-  max-width: 700px;
-  box-shadow: 5px 5px 10px #888888;
-}
-
-.Flexbox {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.Flexbox2 {
-  display: flex;
-  gap: 10px;
-}
-
-#due {
-  margin: 40px;
-}
-
-#boxRecensione {
-  width: 100%;
-  max-width: 100%;
-  height: 150px;
-  resize: none;
-  font-size: 20px;
-  padding: 4px;
-  outline: none;
-  transition: border 0.3s;
-}
-
-#boxRecensione:hover {
-  border: 2px solid #00c6ff;
-
+  min-height: 100vh;
+  padding: 40px 0;
+  background-color: #f5f5f5;
+  font-family: "Alkatra", sans-serif;
+  box-sizing: border-box;
 }
 
 
-#valutazione {
-  margin-right: 10px;
-  padding-top: 6px;
-
-}
-
-#button {
-  font-family: "Alkatra";
-  background-image: linear-gradient(135deg, #00c6ff, #0072ff);
-  border-radius: 50px;
-  width: 200px;
-  height: 50px;
-  color: white;
-  font-size: 26px;
-  border: 2px solid #ddd;
-  transition:  background-image 0.3s;
-  cursor: pointer;
-}
-
-#button:hover {
-  background-image: linear-gradient(135deg,#0072ff, #00c6ff);
-}
-
-
-
-#nomeLocale,
-.Flexbox2,
-#annulla {
+.Flexbox h1 {
   margin-bottom: 20px;
-  font-weight: bold;
-
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
-#annulla {
-  cursor: pointer;
+#box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px;
+  width: 90%;
+  max-width: 700px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border: 1px solid #ddd;
 }
 
-#nomeLocale{
-  font-size: 30px;
-}
-
-#valutazione{
-  font-size: 26px;
-}
-
-#numberBox{
-  font-size: 16px;
-  text-align: center;
-  font-weight: bold;
-  height: 50px;
-  outline: none;
-  transition: border 0.3s;
-}
-
-#numberBox:hover {
-  border: 2px solid #00c6ff;
-}
-
-.star{
-  opacity: 0.5;
-}
 .Flexbox3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px 30px;
-  gap: 30px;
+  width: 100%;
+  gap: 25px;
 }
 
-#annulla{
+#nomeLocale {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333;
+}
+
+.Flexbox2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#valutazione {
+  font-size: 22px;
+  color: #555;
+}
+
+.stars-container {
+  display: flex;
+  gap: 10px;
+  margin: 5px 0;
+}
+
+
+.star {
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.2s;
+  filter: grayscale(100%);
+  opacity: 0.4;
+}
+
+.star:hover {
+  transform: scale(1.2);
+}
+
+.star.active {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.voto-label {
+  font-size: 20px;
+  font-weight: bold;
+  color: #0072ff;
+  font-family: "System Bold Italic", sans-serif;
+}
+
+/* TEXTAREA */
+#boxRecensione {
+  width: 100%;
+  height: 150px;
+  resize: none;
   font-size: 18px;
+  padding: 15px;
+  border-radius: 15px;
+  border: 2px solid #ccc;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.3s;
+  box-sizing: border-box;
+}
+
+#boxRecensione:focus {
+  border-color: #00c6ff;
+}
+
+#button {
+  font-family: "Alkatra", sans-serif;
+  background-image: linear-gradient(135deg, #00c6ff, #0072ff);
+  border-radius: 50px;
+  width: 220px;
+  height: 55px;
+  color: white;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 114, 255, 0.3);
+}
+
+#button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 114, 255, 0.4);
+}
+
+
+#annulla {
+  font-size: 20px;
+  color: #666;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+#annulla:hover {
+  color: red;
 }

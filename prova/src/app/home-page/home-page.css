@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 15px;
-  margin-bottom: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 h1 {
@@ -15,11 +15,11 @@ h1 {
 
 .contenitore-mappa {
   width: 70%;
-  height: 400px;
-  margin: 10px auto;
+  height: 350px;
+  margin: 0 auto 30px auto;
   border: 10px solid white;
   border-radius: 20px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
   overflow: hidden;
   background-color: #e5e3df;
 }
@@ -33,7 +33,7 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 40px;
-  margin-top: 15px;
+  margin-bottom: 40px;
 }
 
 #hotel, #ristoranti {
@@ -58,7 +58,7 @@ h1 {
 .search-container {
   position: relative;
   width: 800px;
-  margin: 40px auto;
+  margin: 0 auto 50px auto;
 }
 
 #searchBar {
@@ -142,8 +142,8 @@ h1 {
 
 @media screen and (max-width: 900px) {
   h1 { font-size: xx-large; }
-  .contenitore-mappa { width: 90%; height: 280px; }
+  .contenitore-mappa { width: 90%; height: 250px; }
   .search-container { width: 90%; }
-  .FlexBox3 { flex-direction: column; align-items: center; gap: 10px; }
+  .FlexBox3 { flex-direction: column; align-items: center; gap: 15px; }
   #hotel, #ristoranti { width: 80%; height: 55px; }
 }

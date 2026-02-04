@@ -43,6 +43,6 @@
 }
 
 
-@media (max-width: 600px) { /*media lavora come un if per il display, in questo caso sotto i 600px modifica la classe sottoDiv*/
+@media (max-width: 600px) {
 
 }

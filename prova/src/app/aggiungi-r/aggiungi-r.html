@@ -1,32 +1,33 @@
 <div id="body">
-  <div class="Flexbox" id="uno">
-    <div>
-      <h1>Aggiungi recensione <img src="../../assets/matita.png" width="30px"></h1>
-    </div>
+
+  <div class="Flexbox">
+    <h1>Aggiungi recensione <img src="../../assets/matita.png" width="40px" alt="icona"></h1>
   </div>
+
   <div id="box">
     <div class="Flexbox3">
-      <div>
-        <label id="nomeLocale">{{ nomeStruttura }}</label>
-      </div>
+
+      <label id="nomeLocale">{{ nomeStruttura }}</label>
+
       <div class="Flexbox2">
-        <label id="valutazione">Scegli quante stelle dare</label>
-        <div>
-          <img class="star" src="../../assets/star.png" width="40px">
-          <img class="star" src="../../assets/star.png" width="40px">
-          <img class="star" src="../../assets/star.png" width="40px">
-          <img class="star" src="../../assets/star.png" width="40px">
-          <img class="star" src="../../assets/star.png" width="40px">
+        <label id="valutazione">Tocca le stelle per valutare:</label>
+
+        <div class="stars-container">
+          <img class="star" [class.active]="voto >= 1" (click)="setVoto(1)" src="../../assets/star.png" alt="1">
+          <img class="star" [class.active]="voto >= 2" (click)="setVoto(2)" src="../../assets/star.png" alt="2">
+          <img class="star" [class.active]="voto >= 3" (click)="setVoto(3)" src="../../assets/star.png" alt="3">
+          <img class="star" [class.active]="voto >= 4" (click)="setVoto(4)" src="../../assets/star.png" alt="4">
+          <img class="star" [class.active]="voto >= 5" (click)="setVoto(5)" src="../../assets/star.png" alt="5">
         </div>
-        <input id="numberBox" type="number" min="1" max="5" [(ngModel)]="voto">
+
+        <span class="voto-label">{{ voto }} su 5</span>
       </div>
 
-      <textarea id="boxRecensione" placeholder="Inserisci qui la tua recensione" [(ngModel)]="testoRecensione"></textarea>
+      <textarea id="boxRecensione" placeholder="Raccontaci la tua esperienza qui..." [(ngModel)]="testoRecensione"></textarea>
 
-      <div><button id="button" (click)="aggiungi()">Aggiungi</button></div>
-      <div>
-        <label id="annulla" (click)="indietro()">Annulla</label>
-      </div>
+      <div><button id="button" (click)="aggiungi()">Pubblica Recensione</button></div>
+      <div><label id="annulla" (click)="indietro()">Annulla e torna indietro</label></div>
+
     </div>
   </div>
 </div>

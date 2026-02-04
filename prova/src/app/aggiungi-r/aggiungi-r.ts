@@ -4,18 +4,19 @@ import { RecensioneService } from '../service/RecensioneService';
 import { RecensioneDto } from '../model/recensione.dto';
 import { FormsModule } from '@angular/forms';
 import { AuthService} from '../service/AuthService';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-aggiungi-r',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './aggiungi-r.html',
   styleUrl: './aggiungi-r.css',
 })
 export class AggiungiR implements OnInit {
   nomeStruttura!: string;
   testoRecensione: string = '';
-  voto: number = 5;
+  voto: number = 0;
   usernameLoggato: string = '';
 
   constructor(
@@ -26,17 +27,37 @@ export class AggiungiR implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.nomeStruttura = decodeURIComponent(
-      this.route.snapshot.paramMap.get('nomeLocale')!
-    );
+
+    const nomeParam = this.route.snapshot.paramMap.get('nomeLocale');
+    this.nomeStruttura = nomeParam ? decodeURIComponent(nomeParam) : '';
+
+
     const utente = this.authService.getUser();
     if (utente) {
       this.usernameLoggato = utente.username;
     } else {
       this.usernameLoggato = 'Anonimo';
-    }  }
+    }
+  }
+
+
+  setVoto(valore: number): void {
+    this.voto = valore;
+  }
+
 
   aggiungi(): void {
+
+    if (this.voto === 0) {
+      alert("Seleziona un numero di stelle per la valutazione!");
+      return;
+    }
+
+    if (this.testoRecensione.trim() === '') {
+      alert("Inserisci un testo per la recensione!");
+      return;
+    }
+
     const nuovaRecensione: RecensioneDto = {
       id: '',
       nomeUtente: this.usernameLoggato,
@@ -45,25 +66,21 @@ export class AggiungiR implements OnInit {
       valutazione: this.voto
     };
 
-    if (this.testoRecensione.trim() === '') {
-      alert("Inserisci un testo per la recensione!");
-      return;
-    }
-
     this.recensioneService.salva(nuovaRecensione).subscribe({
       next: (response) => {
-        if (response.success) {
-          alert("Recensione aggiunta con successo!");
-          this.indietro();
-        }
+
+        alert("Recensione aggiunta con successo!");
+        this.indietro();
       },
       error: (err) => {
         console.error("Errore durante il salvataggio", err);
+        alert("Errore durante il salvataggio della recensione.");
       }
     });
   }
 
   indietro(): void {
-    this.router.navigate(['/ristorante']);
+
+    this.router.navigate(['/restaurants']);
   }
 }
