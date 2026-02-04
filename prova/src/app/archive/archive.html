@@ -16,11 +16,11 @@
             <h3>{{ hotel.nomeLocale }}</h3>
             <p>{{ hotel.indirizzo }}</p>
             <div class="rating">
-              <img class="star" src="../../assets/star2.png" width="15px"/>
-              <img class="star" src="../../assets/star2.png" width="15px"/>
-              <img class="star" src="../../assets/star2.png" width="15px"/>
+              <img class="star" src="/assets/star2.png" width="15px"/>
+              <img class="star" src="/assets/star2.png" width="15px"/>
+              <img class="star" src="/assets/star2.png" width="15px"/>
             </div>
-            <button class="button" *ngFor="let hotel of listaHotel"  (click)="visualizzaRecensioni(hotel.nomeLocale)">Recensioni</button>
+            <button class="button" (click)="visualizzaRecensioni(hotel.nomeLocale)">Recensioni</button>
 
           </div>
         </div>
@@ -44,7 +44,7 @@
               <img class="star" src="../../assets/star2.png" width="15px"/>
               <img class="star" src="../../assets/star2.png" width="15px"/>
             </div>
-            <button class="button" *ngFor="let ristoranti of listaRistoranti"  (click)="visualizzaRecensioni(ristoranti.nomeLocale)">Recensioni</button>
+            <button class="button" (click)="visualizzaRecensioni(rist.nomeLocale)">Recensioni</button>
 
           </div>
         </div>
