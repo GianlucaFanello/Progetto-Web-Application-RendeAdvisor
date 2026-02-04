@@ -75,8 +75,10 @@ public class AttivitaDAO implements IAttivitaDAO {
             String descrizione = rs.getString("descrizione");
             String indirizzo = rs.getString("indirizzo");
             String tipo = rs.getString("tipo");
+            double latitudine = rs.getDouble("latitudine");
+            double longitudine = rs.getDouble("longitudine");
 
-            attivitaDTO = new AttivitaDTO(nome, proprietario, telefono, email, immagine, descrizione, indirizzo, tipo);
+            attivitaDTO = new AttivitaDTO(nome, proprietario, telefono, email, immagine, descrizione, indirizzo, tipo, latitudine, longitudine);
             RecensioneDAO recensioneDAO = new RecensioneDAO(DBManager.getInstance().getConnection());
             List<RecensioneDTO> recensioni = recensioneDAO.findByLocale(nome);
             attivitaDTO.setRecensioni(recensioni);
@@ -189,6 +191,8 @@ public class AttivitaDAO implements IAttivitaDAO {
         dto.setDescrizione(rs.getString("descrizione"));
         dto.setIndirizzo(rs.getString("indirizzo"));
         dto.setTipo(rs.getString("tipo"));
+        dto.setLatitudine(rs.getDouble("latitudine"));
+        dto.setLongitudine(rs.getDouble("longitudine"));
 
         return dto;
     }
