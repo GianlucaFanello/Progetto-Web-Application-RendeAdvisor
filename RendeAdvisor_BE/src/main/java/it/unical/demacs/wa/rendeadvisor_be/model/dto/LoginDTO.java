@@ -1,13 +1,20 @@
 package it.unical.demacs.wa.rendeadvisor_be.model.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-
-@Getter
-@AllArgsConstructor
-
 public class LoginDTO {
 
     String email;
     String password;
+
+    public LoginDTO(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }

@@ -1,13 +1,4 @@
 package it.unical.demacs.wa.rendeadvisor_be.model.dto;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 
 
 public class RispostaDTO {
@@ -16,6 +7,15 @@ public class RispostaDTO {
     private String idRecensione;
     private String utente;
     private String risposta;
+
+    public RispostaDTO() {}
+
+    public RispostaDTO(String idRisposta, String idRecensione, String utente, String risposta) {
+        this.idRisposta = idRisposta;
+        this.idRecensione = idRecensione;
+        this.utente = utente;
+        this.risposta = risposta;
+    }
 
     public String getIdRisposta() {
         return idRisposta;
