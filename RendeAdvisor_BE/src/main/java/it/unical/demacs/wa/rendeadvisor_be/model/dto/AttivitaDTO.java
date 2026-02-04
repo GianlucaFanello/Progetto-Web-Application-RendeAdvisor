@@ -1,0 +1,129 @@
+package it.unical.demacs.wa.rendeadvisor_be.model.dto;
+
+import java.sql.SQLException;
+import java.util.List;
+
+public class AttivitaDTO {
+
+    private String nomeLocale;
+    private String proprietario;
+    private String telefono;
+    private String email;
+    private byte[] immagine;
+    private String immagineBase64;
+    private String descrizione;
+    private String indirizzo;
+    private String tipo;
+    private double latitudine;
+    private double longitudine;
+
+    private List<RecensioneDTO> recensioni;
+
+
+    public AttivitaDTO() {
+    }
+
+
+    public AttivitaDTO(String nomeLocale, String proprietario, String telefono, String email,
+                       byte[] immagine, String descrizione, String indirizzo, String tipo, double latitudine,double longitudine) {
+        this.nomeLocale = nomeLocale;
+        this.proprietario = proprietario;
+        this.telefono = telefono;
+        this.email = email;
+        this.immagine = immagine;
+        this.descrizione = descrizione;
+        this.indirizzo = indirizzo;
+        this.tipo = tipo;
+        this.latitudine = latitudine;
+        this.longitudine = longitudine;
+    }
+
+    public String getImmagineBase64() {
+        return immagineBase64;
+    }
+
+    public void setImmagineBase64(String immagineBase64) {
+        this.immagineBase64 = immagineBase64;
+    }
+
+    public void setLatitudine(double latitudine) {
+        this.latitudine = latitudine;
+    }
+
+    public void setLongitudine(double longitudine) {this.longitudine = longitudine;}
+
+    public double getLatitudine() {return latitudine;}
+    public double getLongitudine() {return longitudine;}
+
+    public String getNomeLocale() {
+        return nomeLocale;
+    }
+
+    public void setNomeLocale(String nomeLocale) {
+        this.nomeLocale = nomeLocale;
+    }
+
+    public String getProprietario() {
+        return proprietario;
+    }
+
+    public void setRecensioni(List<RecensioneDTO> recensioni) {
+        this.recensioni = recensioni;
+    }
+
+    public List<RecensioneDTO> getRecensioni() throws SQLException {
+        return recensioni;
+    }
+
+    public void setProprietario(String proprietario) {
+        this.proprietario = proprietario;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public byte[] getImmagine() {
+        return immagine;
+    }
+
+    public void setImmagine(byte[] immagine) {
+        this.immagine = immagine;
+    }
+
+    public String getDescrizione() {
+        return descrizione;
+    }
+
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
+    }
+
+    public String getIndirizzo() {
+        return indirizzo;
+    }
+
+    public void setIndirizzo(String indirizzo) {
+        this.indirizzo = indirizzo;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+}
