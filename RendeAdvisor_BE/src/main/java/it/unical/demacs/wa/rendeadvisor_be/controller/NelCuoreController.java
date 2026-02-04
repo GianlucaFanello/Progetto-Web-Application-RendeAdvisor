@@ -30,8 +30,8 @@ public class NelCuoreController {
         }
     }
 
-    @PostMapping("/salva")
-    public ResponseEntity<ApiResponse<Void>> salva(@RequestBody NelCuoreDTO nelCuoreDTO) {
+    @PostMapping("/aggiungi")
+    public ResponseEntity<ApiResponse<Void>> aggiungi(@RequestBody NelCuoreDTO nelCuoreDTO) {
         try {
             boolean ok = nelCuoreService.aggiungiPreferito(nelCuoreDTO);
 
