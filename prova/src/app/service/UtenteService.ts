@@ -48,7 +48,7 @@ export class UtenteService {
   }
 
   modificaProfilo(formData: FormData) {
-    return this.http.post<ApiResponseDto<void>>( this.BASE_URL + "/modifica/salva" , formData );
+    return this.http.post<ApiResponseDto<UtenteDto>>( this.BASE_URL + "/modifica/salva" , formData );
   }
 }
 
