@@ -2,19 +2,21 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import {AttivitaService} from '../service/AttivitaService';
+import {AttivitaDto} from '../model/attivita.dto';
+import {NgForOf, NgIf} from '@angular/common';
 
 declare var google: any;
 
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [RouterLink, FormsModule],
+  imports: [RouterLink, FormsModule, NgForOf, NgIf],
   templateUrl: './home-page.html',
   styleUrls: ['./home-page.css']
 })
 export class HomePage implements OnInit, AfterViewInit {
   searchText: string = "";
-  localiOrdinati = [];
+  localiOrdinati: AttivitaDto[] = [];
 
 
   constructor(
@@ -23,6 +25,12 @@ export class HomePage implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
+    this.attivitaService.getVicini().subscribe(
+      res => {
+        this.localiOrdinati = res.data;
+        console.log("Vicini:", res.data);
+      }
+    );
   }
   ngAfterViewInit(): void {
     this.caricaScriptMappa();
@@ -65,6 +73,14 @@ export class HomePage implements OnInit, AfterViewInit {
         title: "Rende"
       });
     }
+  }
+
+  getImmagine(i:number){
+    if(this.localiOrdinati[i].immagineBase64){
+      return "data:image/*;base64," + this.localiOrdinati[i].immagineBase64;
+    }
+
+    return "/assets/strutturaDefault.png";
   }
 
   search() {

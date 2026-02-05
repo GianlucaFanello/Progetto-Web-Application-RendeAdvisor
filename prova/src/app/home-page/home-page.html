@@ -22,16 +22,13 @@
   <div class="carosello-wrapper">
     <div class="carosello-slide" *ngFor="let locale of localiOrdinati; let i = index">
 
-      <img [src]="locale.immagine || 'assets/laGriglia.jpg'" [alt]="locale.nomelocale">
+      <img [src]="getImmagine(i)" [alt]="locale.nomeLocale">
 
-      <span>{{ locale.nomelocale }}</span>
-
-      <small>{{ locale.distanza.toFixed(2) }} km dal centro</small>
-
+      <span>{{ locale.nomeLocale}}</span>
       <p *ngIf="i === 0" class="badge-vicino">
         📍 Il più vicino a te!
       </p>
 
     </div>
   </div>
-</div>>
+</div>
