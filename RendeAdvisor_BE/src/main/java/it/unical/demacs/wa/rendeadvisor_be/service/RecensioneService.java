@@ -33,4 +33,8 @@ public class RecensioneService {
     public double getRatingStruttura(String nomeStruttura) throws SQLException {
         return recensioneDAO.countRecensioniUtente(nomeStruttura);
     }
+
+    public List<RecensioneDTO> getRecensioniByUtente(String username) {
+        return recensioneDAO.findByUtente(username);
+    }
 }
