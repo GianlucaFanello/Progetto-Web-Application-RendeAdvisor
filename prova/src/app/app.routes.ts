@@ -19,6 +19,7 @@ import {RecensioniStruttura} from './recensioni-struttura/recensioni-struttura';
 import { RispostePage } from './risposte-page/risposte-page';
 import {StruttureUtente} from './strutture-utente/strutture-utente';
 import {ModificaProfiloStruttura} from './modifica-profilo-struttura/modifica-profilo-struttura';
+import { MieRecensioni } from './mie-recensioni/mie-recensioni';
 
 
 
@@ -88,6 +89,12 @@ export const routes: Routes = [
     title: 'Modifica Profilo | RendeAdvisor',
     path: 'modify',
     component: ModificaProfiloUtente
+  },
+
+  {
+    title: 'Le mie Recensioni | RendeAdvisor',
+    path: 'mie-recensioni',
+    component: MieRecensioni
   },
   {
     title: 'Cosa vuoi fare? | RendeAdvisor',
