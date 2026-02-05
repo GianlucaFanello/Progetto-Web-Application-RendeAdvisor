@@ -14,6 +14,7 @@ declare var google: any;
 })
 export class HomePage implements OnInit, AfterViewInit {
   searchText: string = "";
+  localiOrdinati = [];
 
 
   constructor(
@@ -21,8 +22,8 @@ export class HomePage implements OnInit, AfterViewInit {
     private attivitaService: AttivitaService
   ) {}
 
-  ngOnInit(): void {}
-
+  ngOnInit(): void {
+  }
   ngAfterViewInit(): void {
     this.caricaScriptMappa();
   }

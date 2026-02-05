@@ -75,6 +75,7 @@ export class ModificaProfiloUtente implements OnInit {
       next: (res) => {
         this.loading = false;
 
+        console.log(res);
         this.authService.setUser(res.data);
 
         this.router.navigate(['/profilo']);

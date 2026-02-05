@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
   imports: [FormsModule, CommonModule],
   templateUrl: './ristorante.html',
   styleUrl: './ristorante.css',
+  standalone: true
 })
 export class Ristorante implements OnInit {
   searchText: string = '';
