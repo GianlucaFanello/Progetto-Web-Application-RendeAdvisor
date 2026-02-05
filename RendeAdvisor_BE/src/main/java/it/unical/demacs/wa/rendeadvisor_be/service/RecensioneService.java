@@ -34,7 +34,7 @@ public class RecensioneService {
         return recensioneDAO.countRecensioniUtente(nomeStruttura);
     }
 
-    public List<RecensioneDTO> getRecensioniByUtente(String username) {
+    public List<RecensioneDTO> getRecensioniByUtente(String username) throws SQLException {
         return recensioneDAO.findByUtente(username);
     }
 }

@@ -13,7 +13,7 @@ public interface IRecensioneDAO {
     ArrayList<RecensioneDTO> findByLocale(String nomeLocale);
 
     // Trova tutte le recensioni scritte da un determinato utente
-    ArrayList<RecensioneDTO> findByUtente(String nomeUtente);
+    ArrayList<RecensioneDTO> findByUtente(String nomeUtente) throws SQLException;
 
     // Cancella una recensione specifica tramite il suo ID
     void delete(int id) throws SQLException;

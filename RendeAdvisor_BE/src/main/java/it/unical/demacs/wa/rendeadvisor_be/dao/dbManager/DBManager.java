@@ -12,9 +12,9 @@ public class DBManager {
     private DBManager() throws SQLException {
 
         this.connection = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/postgres",
+                "jdbc:postgresql://localhost:5432/test",
                 "postgres",
-                "123456"
+                "12345"
         );
     }
 

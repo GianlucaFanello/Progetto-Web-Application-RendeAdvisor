@@ -47,12 +47,6 @@ public class RecensioneDAO implements IRecensioneDAO {
         return executeQuery("SELECT * FROM recensioni WHERE nomelocale = ?", nomeLocale);
     }
 
-    // Chiama il metodo 'executeQuery' filtrando per nomeUtente
-    @Override
-    public ArrayList<RecensioneDTO> findByUtente(String nomeUtente) {
-        return executeQuery("SELECT * FROM recensioni WHERE nomeutente = ?", nomeUtente);
-    }
-
     // Metodo per evitare di riscrivere il codice di estrazione dal ResultSet
     private ArrayList<RecensioneDTO> executeQuery(String query, String param) {
         ArrayList<RecensioneDTO> recensioni = new ArrayList<>();
@@ -124,7 +118,7 @@ public class RecensioneDAO implements IRecensioneDAO {
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     RecensioneDTO r = new RecensioneDTO();
-                    r.setId(rs.getInt("id"));
+                    r.setId(String.valueOf(rs.getInt("id")));
                     r.setNomeUtente(rs.getString("nomeutente"));
                     r.setNomeLocale(rs.getString("nomelocale"));
                     r.setTesto(rs.getString("testo"));

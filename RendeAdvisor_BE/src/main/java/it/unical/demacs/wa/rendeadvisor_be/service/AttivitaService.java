@@ -19,19 +19,16 @@ public class AttivitaService {
     // Nel file AttivitaService.java
     @Autowired
     public AttivitaService(IAttivitaDAO attivitaDAO, GeocodingService geocodingService) {
-        this.attivitaDAO = attivitaDAO;         // <--- AGGIUNGI QUESTO
-        this.geocodingService = geocodingService; // <--- AGGIUNGI QUESTO
+        this.attivitaDAO = attivitaDAO;
+        this.geocodingService = geocodingService;
     }
 
     public boolean salvaAttivita(AttivitaDTO attivita) throws SQLException {
-        // Ora geocodingService non sarà mai null
         double[] coords = geocodingService.getCoordinates(attivita.getIndirizzo());
         attivita.setLatitudine(coords[0]);
         attivita.setLongitudine(coords[1]);
         return attivitaDAO.insertAttivita(attivita);
     }
-
-
 
 
     public List<AttivitaDTO> getTutte() throws SQLException {
@@ -116,4 +113,24 @@ public class AttivitaService {
         }
         return null;
     }
+
+    public List<AttivitaDTO> getVicini() throws SQLException {
+        List<AttivitaDTO> locali = attivitaDAO.findAll();
+
+        List<AttivitaDTO> ordinati = geocodingService.ordinaPerDistanzaDalCentro(locali);
+
+        for(AttivitaDTO a: ordinati){
+
+            a.setLatitudine(-1);
+            a.setLongitudine(-1);
+
+            if(a.getImmagine() != null){
+                a.setImmagineBase64(Base64.getEncoder().encodeToString(a.getImmagine()));
+                a.setImmagine(null);
+            }
+        }
+
+        return ordinati;
+    }
+
 }
