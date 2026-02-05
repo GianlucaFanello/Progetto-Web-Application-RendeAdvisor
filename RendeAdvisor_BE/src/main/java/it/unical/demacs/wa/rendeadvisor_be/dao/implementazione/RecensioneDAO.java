@@ -116,5 +116,25 @@ public class RecensioneDAO implements IRecensioneDAO {
         }
     }
 
+    public ArrayList<RecensioneDTO> findByUtente(String nomeUtente) throws SQLException {
+        ArrayList<RecensioneDTO> recensioni = new ArrayList<>();
+        String sql = "SELECT * FROM recensioni WHERE nomeutente = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, nomeUtente);
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    RecensioneDTO r = new RecensioneDTO();
+                    r.setId(rs.getInt("id"));
+                    r.setNomeUtente(rs.getString("nomeutente"));
+                    r.setNomeLocale(rs.getString("nomelocale"));
+                    r.setTesto(rs.getString("testo"));
+                    r.setValutazione(rs.getFloat("valutazione"));
+                    recensioni.add(r);
+                }
+            }
+        }
+        return recensioni;
+    }
+
 
 }
