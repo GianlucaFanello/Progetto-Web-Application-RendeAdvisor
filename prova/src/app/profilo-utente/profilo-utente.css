@@ -14,6 +14,35 @@
   transform: translateY(-20px);
 }
 
+#logoutButton {
+  font-family: "Alkatra";
+  background-color: white;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-size: large;
+  color: black;
+  width: 100px;
+  height: 50px;
+  border: 2px solid black;
+  cursor: pointer;
+  margin: 5px;
+  margin-top: 30px;
+  margin-right: 20px;
+  margin-left: 1070px;
+  transition: width 2s;
+}
+
+
+
+
+
+
+#logoutButton:hover {
+  border-color: red;
+  color: red;
+  width: 110px;
+}
+
 #principale {
   display: flex;
   flex-direction: column;
@@ -54,16 +83,40 @@
   margin: 10px 0;
 }
 
-.button {
+#r,#modifica,#cuore,#struttura{
   font-family: "Alkatra";
+  font-size: xx-large;
   background-image: linear-gradient(135deg, #00c6ff, #0072ff);
   border-radius: 50px;
   padding: 10px 20px;
+  width: 230px;
+  height: 50px;
+  font-size: 22px;
   color: white;
-  border: none;
+  border: 2px solid #ddd;
   cursor: pointer;
   margin: 5px;
+  transition: background-image 0.3s;
+  transition: width 0.3s;
 }
+
+#modifica:hover {
+  background-image: linear-gradient(135deg, #0072ff, #00c6ff);
+  width: 300px;
+}
+#cuore:hover {
+  background-image: linear-gradient(135deg, #0072ff, #00c6ff);
+  width: 300px;
+}
+#r:hover {
+  background-image: linear-gradient(135deg, #0072ff, #00c6ff);
+  width: 300px;
+}
+#struttura:hover {
+  background-image: linear-gradient(135deg, #0072ff, #00c6ff);
+  width: 300px;
+}
+
 
 /* Stile Recensioni */
 #recensioni-list {
