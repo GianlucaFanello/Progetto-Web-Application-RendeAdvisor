@@ -4,6 +4,7 @@ import {NgForOf, NgIf} from '@angular/common';
 import {AttivitaDto} from '../model/attivita.dto';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AttivitaService} from '../service/AttivitaService';
+import {AuthService} from '../service/AuthService';
 
 
 @Component({
@@ -24,21 +25,21 @@ export class StruttureUtente implements  OnInit{
   username!:string;
   strutture: AttivitaDto[] = [] ;
 
-  constructor(private router: Router, private route:ActivatedRoute, private attivitaService: AttivitaService) {
+  constructor(private router: Router, private route:ActivatedRoute, private attivitaService: AttivitaService, private authService: AuthService) {
   }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(
-     params => {
-       this.username = params['username']
+    this.authService.user$.subscribe(user => {
+      if (!user) return;
 
-       this.attivitaService.getByProprietario(this.username).subscribe(
-         res => {
-           this.strutture = res.data;
-           this.presenti = this.strutture.length > 0;
-       });
-     }
-    )
+      this.username = user.username;
+      console.log("USERNAME", this.username);
+
+      this.attivitaService.getByProprietario(this.username).subscribe(res => {
+        this.strutture = res.data;
+        this.presenti = this.strutture.length > 0;
+      });
+    });
   }
 
 }
