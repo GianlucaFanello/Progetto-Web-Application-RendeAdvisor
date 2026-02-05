@@ -25,8 +25,11 @@ public class AttivitaService {
 
     public boolean salvaAttivita(AttivitaDTO attivita) throws SQLException {
         double[] coords = geocodingService.getCoordinates(attivita.getIndirizzo());
-        attivita.setLatitudine(coords[0]);
-        attivita.setLongitudine(coords[1]);
+        if (coords != null) {
+            attivita.setLatitudine(coords[0]);
+            attivita.setLongitudine(coords[1]);
+        }
+
         return attivitaDAO.insertAttivita(attivita);
     }
 
@@ -115,14 +118,20 @@ public class AttivitaService {
     }
 
     public List<AttivitaDTO> getVicini() throws SQLException {
-        List<AttivitaDTO> locali = attivitaDAO.findAll();
+        List<AttivitaDTO> locali = attivitaDAO.findAll()
+                .stream()
+                .filter(a -> a.getLatitudine() != null && a.getLongitudine() != null && a.getLatitudine() != 0.0 && a.getLongitudine() != 0.0)
+                .toList();
 
+        attivitaDAO.findAll().forEach(a -> { System.out.println(a.getNomeLocale() + " lat=" + a.getLatitudine() + " lng=" + a.getLongitudine()); });
         List<AttivitaDTO> ordinati = geocodingService.ordinaPerDistanzaDalCentro(locali);
+
+
 
         for(AttivitaDTO a: ordinati){
 
-            a.setLatitudine(-1);
-            a.setLongitudine(-1);
+            a.setLatitudine(null);
+            a.setLongitudine(null);
 
             if(a.getImmagine() != null){
                 a.setImmagineBase64(Base64.getEncoder().encodeToString(a.getImmagine()));

@@ -22,8 +22,8 @@ public class AttivitaDTO {
     private String descrizione;
     private String indirizzo;
     private String tipo;
-    private double latitudine;
-    private double longitudine;
+    private Double latitudine;
+    private Double longitudine;
 
     private List<RecensioneDTO> recensioni;
 

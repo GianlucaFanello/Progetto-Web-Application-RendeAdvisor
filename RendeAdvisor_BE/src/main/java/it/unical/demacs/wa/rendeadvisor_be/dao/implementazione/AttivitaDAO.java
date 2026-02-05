@@ -36,8 +36,16 @@ public class AttivitaDAO implements IAttivitaDAO {
         ps.setString(6, attivita.getDescrizione());
         ps.setString(7, attivita.getIndirizzo());
         ps.setString(8, attivita.getTipo());
-        ps.setDouble(9, attivita.getLatitudine());
-        ps.setDouble(10, attivita.getLongitudine());
+        if (attivita.getLatitudine() != null)
+            ps.setDouble(9, attivita.getLatitudine());
+        else
+            ps.setNull(9, java.sql.Types.DOUBLE);
+
+        if (attivita.getLongitudine() != null)
+            ps.setDouble(10, attivita.getLongitudine());
+        else
+            ps.setNull(10, java.sql.Types.DOUBLE);
+
 
         return ps.executeUpdate() == 1;
     }
