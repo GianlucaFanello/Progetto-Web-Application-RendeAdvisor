@@ -9,13 +9,13 @@
         <h2>{{attivita?.indirizzo}} <img class="img" src="/assets/palazzi.png"  width="30px"></h2>
       </div>
       <div class="sottoDiv">
-        <h2>{{attivita.telefono}}<img src="/assets/phone.png" width="30px"></h2>
+        <h2>{{attivita?.telefono}}<img src="/assets/phone.png" width="30px"></h2>
         <h2>{{attivita?.proprietario}} <img src="/assets/hat.png" width="30px"></h2>
       </div>
 
       <textarea id="textArea">{{attivita?.descrizione}}</textarea>
       <div id="secondario">
-        <button class="button" (click)="visualizzaRecensioni(nomeStruttura)">Recensioni <img src="/assets/scrittura.png" width="20px"></button>
+        <button class="button" (click)="visualizzaRecensioni(attivita.nomeLocale)">Recensioni <img src="/assets/scrittura.png" width="20px"></button>
         <div id="terzario">
           <label id="nelCuoreNumero">Nel cuore di </label>
           <label id="contatore">{{contatore}}</label>

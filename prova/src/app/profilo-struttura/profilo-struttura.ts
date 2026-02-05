@@ -14,9 +14,8 @@ import {UtenteDto} from '../model/utente.dto';
 })
 export class ProfiloStrutturaComponent implements OnInit {
 
-  nomeStruttura!: string;
   username!:string;
-  preferito: boolean = false;
+  preferito!: boolean;
   contatore = 0;
   loading: boolean = true;
 
@@ -33,54 +32,63 @@ export class ProfiloStrutturaComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.route.paramMap.subscribe(params => {
-      this.nomeStruttura = params.get('nomeLocale') ?? '';
-      this.attivitaService.getByNome(this.nomeStruttura).subscribe({
-        next: (a) => {
-          this.attivita = a.data;
-          this.loading = false;
-        },
-        error: () => {
-          console.error('Errore caricamento struttura');
-          this.loading = false;
-        }
-      });
-    });
+    this.authService.user$.subscribe(utente => {
 
-    const utente = this.authService.getUser();
-    if(utente) {
+      if (!utente) return;
+
       this.username = utente.username;
-    }
-    else {
-      this.router.navigate(['/choose']);
-    }
 
-    this.aggiornaContatore();
-    this.contatore = 0;
+      this.route.paramMap.subscribe(params => {
+        const nomeStruttura = params.get('nomeLocale') ?? '';
+
+        this.nelCuoreService.preferito(this.username, nomeStruttura)
+          .subscribe(res => this.preferito = res.data);
+
+        this.attivitaService.getByNome(nomeStruttura).subscribe({
+          next: a => {
+            this.attivita = a.data;
+
+            this.aggiornaContatore();
+
+            this.loading = false;
+          },
+          error: () => {
+            console.error('Errore caricamento struttura');
+            this.loading = false;
+          }
+        });
+      });
+
+    });
   }
+
 
   togglePreferito(): void {
 
     const dto = {
       nomeUtente: this.username,
-      nomeStruttura: this.nomeStruttura
+      nomeStruttura: this.attivita.nomeLocale
     };
 
     if (this.preferito) {
       this.preferito = false;
-      this.contatore--;
-      this.nelCuoreService.rimuovi(dto).subscribe();
+      this.nelCuoreService.rimuovi(dto).subscribe(
+        res => {
+          this.aggiornaContatore();
+        });
+
     } else {
       this.preferito = true;
-      this.contatore++;
-      this.nelCuoreService.aggiungi(dto).subscribe();
+      this.nelCuoreService.aggiungi(dto).subscribe(
+        res => {
+          this.aggiornaContatore();
+        });
     }
   }
 
   visualizzaRecensioni(nomeStruttura: String) {
     // @ts-ignore
     this.router.navigate(['/recensioni-struttura', encodeURIComponent(nomeStruttura)])
-
   }
 
   getImmagine() {
@@ -92,6 +100,9 @@ export class ProfiloStrutturaComponent implements OnInit {
   }
 
   private aggiornaContatore() {
-
+    this.nelCuoreService.countPreferiti(this.attivita.nomeLocale).subscribe(
+      res => {
+        this.contatore = res.data;
+      });
   }
 }
