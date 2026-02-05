@@ -39,12 +39,12 @@
   transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
   flex-direction: column;
+
 }
 
 .card-preferito:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-  border-color: #00c6ff;
+  box-shadow: 0 8px 15px #d9534f;
 }
 
 .card-img {
