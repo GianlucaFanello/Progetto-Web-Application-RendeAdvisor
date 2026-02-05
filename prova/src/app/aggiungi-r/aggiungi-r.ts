@@ -59,7 +59,7 @@ export class AggiungiR implements OnInit {
     }
 
     const nuovaRecensione: RecensioneDto = {
-      id: '',
+      id: 0, // Cambiato da '' a 0
       nomeUtente: this.usernameLoggato,
       nomeLocale: this.nomeStruttura,
       testo: this.testoRecensione,
