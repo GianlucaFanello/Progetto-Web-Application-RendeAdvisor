@@ -1,0 +1,30 @@
+<p>mie-recensioni works!</p>
+<div id="body">
+  <h1>Le tue Recensioni <img src="../../assets/scrittura.png" width="40px"></h1>
+
+  <div id="principale">
+    <div *ngIf="loading" class="spinner">Caricamento...</div>
+
+    <div id="griglia-recensioni" *ngIf="!loading && listaRecensioni.length > 0">
+
+      <div class="card-rec" *ngFor="let rec of listaRecensioni" (click)="vaiAlLocale(rec.nomeLocale)">
+        <div class="card-header">
+          <strong>{{ rec.nomeLocale }}</strong>
+          <span class="voto">{{ rec.valutazione }}/5 <img src="../../assets/star.png" width="15px"></span>
+        </div>
+        <hr>
+        <p class="testo">"{{ rec.testo }}"</p>
+      </div>
+
+    </div>
+
+    <div *ngIf="!loading && listaRecensioni.length === 0" class="vuoto">
+      <h2>Non hai ancora scritto nessuna recensione.</h2>
+      <button class="button" (click)="tornaAlProfilo()">Torna al profilo</button>
+    </div>
+
+    <div *ngIf="!loading && listaRecensioni.length > 0" style="margin-top: 30px;">
+      <button class="button" (click)="tornaAlProfilo()">Indietro</button>
+    </div>
+  </div>
+</div>
