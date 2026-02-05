@@ -1,13 +1,20 @@
-#body{
+#body {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0;
   padding: 40px 0;
   background-color: #f5f5f5;
+  min-height: 100vh;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-#principale{
+.fade-out {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+#principale {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,93 +25,68 @@
   box-shadow: 5px 5px 10px #888888;
   gap: 0px;
 }
-#principale > button {
-  align-self: flex-end;
-  margin-top: 20px;
-  margin-right: 20px;
-}
 
-#principale2{
+#principale2 {
   padding-bottom: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 0;
 }
 
-#fotoUtente{
+#fotoUtente {
   border-radius: 50%;
-  box-shadow: 0px 5px 35px rgba(50,50,93,0.1), 10px 15px 25px rgba(0,0,0,0.07);
-  align-self: center;
-  transition: width 0.2s;
+  box-shadow: 0px 5px 35px rgba(50,50,93,0.1);
+  transition: transform 0.3s;
 }
 
 #fotoUtente:hover {
-  width: 300px;
+  transform: scale(1.1);
 }
 
-#textArea{
+#textArea {
   resize: none;
-  width: 50%;
+  width: 60%;
   height: 100px;
   border-radius: 1rem;
-  padding: 8px;
-  font-size: 20px;
+  padding: 10px;
+  font-size: 18px;
+  margin: 10px 0;
 }
 
-#secondario{
-  padding-top: 20px;
-}
-
-@media (max-width: 1015px) {
-  #secondario {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-.button{
-  font-size: xx-large;
-  font-family: "System Bold Italic";
+.button {
+  font-family: "Alkatra";
   background-image: linear-gradient(135deg, #00c6ff, #0072ff);
   border-radius: 50px;
-  width: 200px;
-  height: 50px;
+  padding: 10px 20px;
   color: white;
-  margin: 10px 30px;
-  font-size: 22px;
-  border: 2px solid #ddd;
+  border: none;
   cursor: pointer;
-  transition: background-image 0.3s;
-  transition: width 0.3s;
+  margin: 5px;
 }
 
-button:hover {
-  background-image: linear-gradient(135deg, #0072ff, #00c6ff);
-  width: 300px;
+/* Stile Recensioni */
+#recensioni-list {
+  width: 80%;
+  margin-top: 20px;
+  animation: fadeIn 0.5s;
 }
 
-#username{
-  color: #888888;
-  font-size: 22px;
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
 }
 
-h1, h2, h3{
-  margin: 7px;
+.card-rec {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #fafafa;
 }
 
-#logoutButton{
-  font-size: 18px;
-  background: black;
-  color: white;
-  border-radius: 50px;
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  color: #0072ff;
 }
-
-#logoutButton:hover {
-  font-size: 20px;
-  width: 100px;
-  height: 40px;
-}
-
