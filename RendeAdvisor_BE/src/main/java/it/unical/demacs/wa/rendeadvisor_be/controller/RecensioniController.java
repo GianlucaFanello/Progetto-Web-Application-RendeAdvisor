@@ -83,4 +83,20 @@ public class RecensioniController {
                     .body(new ApiResponse<>(false, "Errore interno al server", null));
         }
     }
+
+
+    @GetMapping("/utente/{username}")
+    public ResponseEntity<ApiResponse<List<RecensioneDTO>>> getByUtente(@PathVariable String username) {
+        try {
+            List<RecensioneDTO> recensioni = recensioniService.getRecensioniByUtente(username);
+
+            return ResponseEntity.ok(
+                    new ApiResponse<>(true, "Recensioni utente trovate", recensioni)
+            );
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ApiResponse<>(false, "Errore interno al server", null));
+        }
+    }
 }
