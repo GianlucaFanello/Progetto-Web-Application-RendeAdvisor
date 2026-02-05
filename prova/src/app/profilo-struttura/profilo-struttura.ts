@@ -11,6 +11,7 @@ import {UtenteDto} from '../model/utente.dto';
   selector: 'app-profilo-struttura',
   templateUrl: './profilo-struttura.html',
   styleUrls: ['./profilo-struttura.css'],
+  standalone: true
 })
 export class ProfiloStrutturaComponent implements OnInit {
 
@@ -32,35 +33,45 @@ export class ProfiloStrutturaComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.authService.user$.subscribe(utente => {
+    this.route.paramMap.subscribe(params => {
+      const nomeStruttura = params.get('nomeLocale') ?? '';
 
-      if (!utente) return;
+      this.attivitaService.getByNome(nomeStruttura).subscribe({
+        next: a => {
+          this.attivita = a.data;
 
-      this.username = utente.username;
+          console.log("DTO RICEVUTO", a);
+          console.log("DATA", a.data);
 
-      this.route.paramMap.subscribe(params => {
-        const nomeStruttura = params.get('nomeLocale') ?? '';
 
+          this.aggiornaContatore();
+
+          this.loading = false;
+        },
+        error: () => {
+          console.error('Errore caricamento struttura');
+          this.loading = false;
+        }
+      });
+
+      this.authService.user$.subscribe(utente => {
+
+        if (!utente) {
+          this.preferito = false;
+          return;
+        }
+
+        this.username = utente.username;
+
+        // 5. Carico il preferito SOLO se loggato
         this.nelCuoreService.preferito(this.username, nomeStruttura)
           .subscribe(res => this.preferito = res.data);
 
-        this.attivitaService.getByNome(nomeStruttura).subscribe({
-          next: a => {
-            this.attivita = a.data;
-
-            this.aggiornaContatore();
-
-            this.loading = false;
-          },
-          error: () => {
-            console.error('Errore caricamento struttura');
-            this.loading = false;
-          }
-        });
       });
 
     });
   }
+
 
 
   togglePreferito(): void {
@@ -100,9 +111,11 @@ export class ProfiloStrutturaComponent implements OnInit {
   }
 
   private aggiornaContatore() {
+    if (!this.attivita) return;
+
     this.nelCuoreService.countPreferiti(this.attivita.nomeLocale).subscribe(
-      res => {
-        this.contatore = res.data;
-      });
+      res => this.contatore = res.data
+    );
   }
+
 }

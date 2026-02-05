@@ -1,7 +1,5 @@
-
-
 export interface RecensioneDto {
-  id: string;
+  id: number;
   nomeUtente: string;
   nomeLocale: string;
   testo: string;
