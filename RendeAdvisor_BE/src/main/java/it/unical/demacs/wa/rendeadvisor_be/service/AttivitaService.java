@@ -1,7 +1,9 @@
 package it.unical.demacs.wa.rendeadvisor_be.service;
 
 import it.unical.demacs.wa.rendeadvisor_be.dao.IAttivitaDAO;
+import it.unical.demacs.wa.rendeadvisor_be.dao.implementazione.AttivitaDAO;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
@@ -10,11 +12,26 @@ import java.util.List;
 @Service
 public class AttivitaService {
 
-    private IAttivitaDAO attivitaDAO;
+    private final IAttivitaDAO attivitaDAO;
+    private final GeocodingService geocodingService;
 
-    public AttivitaService(IAttivitaDAO attivitaDAO) {
-        this.attivitaDAO = attivitaDAO;
+    // Unico costruttore: Spring inietterà entrambi automaticamente
+    // Nel file AttivitaService.java
+    @Autowired
+    public AttivitaService(IAttivitaDAO attivitaDAO, GeocodingService geocodingService) {
+        this.attivitaDAO = attivitaDAO;         // <--- AGGIUNGI QUESTO
+        this.geocodingService = geocodingService; // <--- AGGIUNGI QUESTO
     }
+
+    public boolean salvaAttivita(AttivitaDTO attivita) throws SQLException {
+        // Ora geocodingService non sarà mai null
+        double[] coords = geocodingService.getCoordinates(attivita.getIndirizzo());
+        attivita.setLatitudine(coords[0]);
+        attivita.setLongitudine(coords[1]);
+        return attivitaDAO.insertAttivita(attivita);
+    }
+
+
 
 
     public List<AttivitaDTO> getTutte() throws SQLException {
@@ -54,9 +71,6 @@ public class AttivitaService {
         return attivitaDAO.findByPrimaryKey(nomeLocale);
     }
 
-    public boolean salvaAttivita(AttivitaDTO attivita) throws SQLException {
-        return attivitaDAO.insertAttivita(attivita);
-    }
 
     public List<AttivitaDTO> search(String query) throws SQLException {
         return attivitaDAO.search(query);

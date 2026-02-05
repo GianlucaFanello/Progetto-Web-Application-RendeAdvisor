@@ -6,6 +6,12 @@ public class ApiResponse<T> {
     private String message;
     private T data;
 
+    public ApiResponse(T data) {
+        this.success = true;
+        this.message = "Operazione riuscita";
+        this.data = data;
+    }
+
     public ApiResponse(boolean success, String message) {
         this.success = success;
         this.message = message;

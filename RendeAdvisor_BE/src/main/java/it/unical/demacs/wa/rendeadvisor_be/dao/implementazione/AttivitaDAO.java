@@ -24,8 +24,8 @@ public class AttivitaDAO implements IAttivitaDAO {
 
     @Override
     public boolean insertAttivita(AttivitaDTO attivita) throws SQLException {
-        String query = "INSERT INTO attivita(nomelocale, proprietario, telefono, email,  immagine, descrizione, indirizzo, tipo)" +
-                " VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO attivita(nomelocale, proprietario, telefono, email,  immagine, descrizione, indirizzo, tipo, latitudine, longitudine)" +
+                " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1, attivita.getNomeLocale());
@@ -36,6 +36,8 @@ public class AttivitaDAO implements IAttivitaDAO {
         ps.setString(6, attivita.getDescrizione());
         ps.setString(7, attivita.getIndirizzo());
         ps.setString(8, attivita.getTipo());
+        ps.setDouble(9, attivita.getLatitudine());
+        ps.setDouble(10, attivita.getLongitudine());
 
         return ps.executeUpdate() == 1;
     }
@@ -104,6 +106,8 @@ public class AttivitaDAO implements IAttivitaDAO {
             attivitaDTO.setDescrizione(rs.getString("descrizione"));
             attivitaDTO.setIndirizzo(rs.getString("indirizzo"));
             attivitaDTO.setTipo(rs.getString("tipo"));
+            attivitaDTO.setLatitudine(rs.getDouble("latitudine"));
+            attivitaDTO.setLongitudine(rs.getDouble("longitudine"));
 
             listaAttivita.add(attivitaDTO);
         }
@@ -129,6 +133,8 @@ public class AttivitaDAO implements IAttivitaDAO {
             attivitaDTO.setDescrizione(rs.getString("descrizione"));
             attivitaDTO.setIndirizzo(rs.getString("indirizzo"));
             attivitaDTO.setTipo(rs.getString("tipo"));
+            attivitaDTO.setLatitudine(rs.getDouble("latitudine"));
+            attivitaDTO.setLongitudine(rs.getDouble("longitudine"));
 
             listaAttivitaByTipo.add(attivitaDTO);
         }
@@ -138,7 +144,7 @@ public class AttivitaDAO implements IAttivitaDAO {
 
     @Override
     public boolean updateAttivita(AttivitaDTO attivita, String vecchioNome) throws SQLException {
-        String query = "UPDATE attivita SET nomelocale=?, telefono=?,email=?,immagine=?,descrizione=?,indirizzo=? WHERE nomelocale = ?";
+        String query = "UPDATE attivita SET nomelocale=?, telefono=?,email=?,immagine=?,descrizione=?,indirizzo=?, latitudine=?, longitudine=? WHERE nomelocale = ?";
         PreparedStatement ps = connection.prepareStatement(query);
         ps.setString(1, attivita.getNomeLocale());
         ps.setString(2, attivita.getTelefono());
@@ -146,7 +152,10 @@ public class AttivitaDAO implements IAttivitaDAO {
         ps.setBytes(4, attivita.getImmagine());
         ps.setString(5, attivita.getDescrizione());
         ps.setString(6, attivita.getIndirizzo());
-        ps.setString(7, vecchioNome);
+        ps.setDouble(7, attivita.getLatitudine()); // Aggiorna lat
+        ps.setDouble(8, attivita.getLongitudine());
+        ps.setString(9, vecchioNome);
+
 
         return ps.executeUpdate() == 1;
     }

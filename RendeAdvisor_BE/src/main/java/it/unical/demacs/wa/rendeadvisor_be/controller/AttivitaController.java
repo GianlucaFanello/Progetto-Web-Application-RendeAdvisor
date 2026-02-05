@@ -7,6 +7,7 @@ import it.unical.demacs.wa.rendeadvisor_be.model.dto.ApiResponse;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaDTO;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.RispostaDTO;
 import it.unical.demacs.wa.rendeadvisor_be.service.AttivitaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,49 +20,33 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 public class AttivitaController {
 
-    private AttivitaService attivitaService;
+    private final AttivitaService attivitaService;
 
-    public AttivitaController() {
-        try {
-            this.attivitaService = new AttivitaService(
-                    new AttivitaDAO(DBManager.getInstance().getConnection())
-            );
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
+    @Autowired // Lascia che Spring passi il Service già pronto con tutto dentro
+    public AttivitaController(AttivitaService attivitaService) {
+        this.attivitaService = attivitaService;
     }
-
     @GetMapping
     public ResponseEntity<ApiResponse<List<AttivitaDTO>>> getTutte() {
         try {
             List<AttivitaDTO> lista = attivitaService.getTutte();
-
-            return ResponseEntity.ok(
-                    new ApiResponse<>(true, "Lista attività inviata", lista)
-            );
-
+            // Passa true, un messaggio e la lista
+            return ResponseEntity.ok(new ApiResponse<>(true, "Lista attività recuperata", lista));
         } catch (SQLException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new ApiResponse<>(false, "Errore interno al server", null));
+            return ResponseEntity.status(500).body(new ApiResponse<>(false, "Errore database: " + e.getMessage()));
         }
     }
-
 
     @GetMapping("/ristoranti")
     public ResponseEntity<ApiResponse<List<AttivitaDTO>>> getRistoranti() {
         try {
             List<AttivitaDTO> lista = attivitaService.getRistoranti();
-
-            return ResponseEntity.ok(
-                    new ApiResponse<>(true, "Lista ristoranti inviata", lista)
-            );
-
+            return ResponseEntity.ok(new ApiResponse<>(true, "Ristoranti recuperati", lista));
         } catch (SQLException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new ApiResponse<>(false, "Errore interno al server", null));
+            return ResponseEntity.status(500).body(new ApiResponse<>(false, "Errore nel recupero ristoranti"));
         }
     }
-
 
     @GetMapping("/hotel")
     public ResponseEntity<ApiResponse<List<AttivitaDTO>>> getHotel() {

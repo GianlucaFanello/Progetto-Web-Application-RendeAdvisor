@@ -14,7 +14,7 @@ public class DBManager {
         this.connection = DriverManager.getConnection(
                 "jdbc:postgresql://localhost:5432/postgres",
                 "postgres",
-                "12345"
+                "123456"
         );
     }
 
