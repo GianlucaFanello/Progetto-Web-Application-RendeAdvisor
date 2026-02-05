@@ -14,13 +14,13 @@
       <textarea id="textArea" disabled>{{utente?.descrizione}}</textarea>
 
       <div id="secondario">
-        <button class="button" (click)="toggleRecensioni()">
+        <button class="button"  id='r' (click)="toggleRecensioni()">
           {{ mostraRecensioni ? 'Nascondi' : 'Le tue Recensioni' }}
           <img src="/assets/scrittura.png" width="20px">
         </button>
-        <button class="button" (click)="modifica()">Modifica profilo <img src="/assets/gears.png" width="20px"></button>
-        <button class="button" (click)="vaiANelCuore()">Nel cuore <img src="/assets/Cuore pieno.png" width="20px"></button>
-        <button class="button" (click)="visualizzaStrutture()">Strutture <img src="/assets/palazzi.png" width="20px"></button>
+        <button class="button" id= "modifica" (click)="modifica()">Modifica profilo <img src="/assets/gears.png" width="20px"></button>
+        <button class="button" id="cuore" (click)="vaiANelCuore()">Nel cuore <img src="/assets/Cuore pieno.png" width="20px"></button>
+        <button class="button" id="struttura" (click)="visualizzaStrutture()">Strutture <img src="/assets/palazzi.png" width="20px"></button>
       </div>
 
       <div id="recensioni-list" *ngIf="mostraRecensioni">

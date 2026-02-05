@@ -10,6 +10,8 @@ export interface AttivitaDto {
   indirizzo:string;
   tipo:string;
   immagineBase64?:string;
+  latitudine: number;
+  longitudine: number;
 
   recensioni?: RecensioneDto[];
 }

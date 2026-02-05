@@ -17,7 +17,8 @@ import {UtenteService} from '../service/UtenteService';
 })
 export class AggiungiStruttura implements OnInit{
 
-  attivita: AttivitaDto = {nomeLocale: '', proprietario: '', telefono: '',
+  attivita: AttivitaDto = {
+    latitudine: 0, longitudine: 0, nomeLocale: '', proprietario: '', telefono: '',
     email: '', descrizione:'', indirizzo:'', tipo:''
   };
 
