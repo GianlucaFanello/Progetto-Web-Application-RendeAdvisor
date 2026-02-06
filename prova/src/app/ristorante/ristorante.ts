@@ -53,4 +53,10 @@ export class Ristorante implements OnInit {
 
     return "/assets/strutturaDefault.png";
   }
+
+  vaiAlProfilo(r: AttivitaDto) {
+    const nomeEncoded = encodeURIComponent(r.nomeLocale);
+    this.router.navigate(['/profilo-struttura', nomeEncoded]);
+  }
+
 }

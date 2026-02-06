@@ -15,8 +15,10 @@
 
   <div class="Flexbox4">
     <div *ngFor="let hotel of listaHotel">
-      <img [src]="getImmagine(hotel)" [alt]="hotel.nomeLocale" class="hotel-img"/>
-      <p>{{ hotel.nomeLocale }}</p>
+      <div (click)="vaiAlProfilo(hotel)">
+        <img [src]="getImmagine(hotel)" [alt]="hotel.nomeLocale" class="hotel-img"/>
+        <p>{{ hotel.nomeLocale }}</p>
+      </div>
     </div>
   </div>
 </div>

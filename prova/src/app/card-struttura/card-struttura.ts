@@ -58,4 +58,10 @@ export class CardStruttura implements OnInit{
   vaiAllaModifica() {
     this.router.navigate(['/modifica-struttura', this.struttura.nomeLocale]);
   }
+
+  vaiAlProfilo() {
+    const nomeEncoded = encodeURIComponent(this.struttura.nomeLocale);
+    this.router.navigate(['/profilo-struttura', nomeEncoded]);
+  }
+
 }

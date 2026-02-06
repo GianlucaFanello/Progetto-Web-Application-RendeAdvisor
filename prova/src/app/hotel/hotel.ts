@@ -53,6 +53,12 @@ export class Hotel implements OnInit{
 
     return "/assets/strutturaDefault.png";
   }
+
+  vaiAlProfilo(hotel: AttivitaDto) {
+    const nomeEncoded = encodeURIComponent(hotel.nomeLocale);
+    this.router.navigate(['/profilo-struttura', nomeEncoded]);
+  }
+
 }
 
 

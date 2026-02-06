@@ -1,9 +1,10 @@
 <div id="body">
-  <div id="principale">
+  <div id="principale" (click)="vaiAlProfilo()">
     <div id="dati">
       <label>#{{struttura.tipo}}</label>
       <label>{{struttura.nomeLocale}}</label>
       <label id="indirizzo">{{struttura.indirizzo}}</label>
+
       <div id="valDiv">
         <div id="stelleDiv">
           <ng-container *ngFor="let i of [0,1,2,3,4]">
@@ -15,9 +16,10 @@
         <img src="/assets/Heart full.png" width="15px" id="heart">
         <label>{{preferiti}}</label>
       </h2>
-      <button class="button" (click)="vaiAllaModifica()">Modifica</button>
+      <button class="button" (click)="vaiAllaModifica(); $event.stopPropagation()">Modifica</button>
     </div>
     <img [src]="getImmagine()" id="fotoUtente" width="300px">
   </div>
 </div>
+
 
