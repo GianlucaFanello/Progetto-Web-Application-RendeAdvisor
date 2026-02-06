@@ -8,7 +8,7 @@
 }
 
 #principale{
-
+    min-width: 300px;
     padding-bottom: 40px;
     padding-left: 30px;
     padding-right: 30px;
@@ -163,7 +163,6 @@
 }
 
 #salvaModifiche{
-  margin-left: 70px;
   margin-top: 30px;
   align-self: start;
   font-size: x-large;
@@ -186,7 +185,6 @@
 }
 
 .annulla {
-  margin-left: 70px;
   margin-top: 5px;
   background-color: white;
   border: 2px solid black;
@@ -199,7 +197,7 @@
   color: red;
 }
 
-@media (max-width: 1300px) {
+@media (min-width: 700px) and (max-width: 1300px) {
 
   .principale3 {
     width: 200%;
@@ -212,8 +210,7 @@
   }
 
   #fotoProfilo{
-    width: 5px;
-    height: 2px;
+    min-width: 300px;
     margin-bottom: 60px;
     margin-top: 30px;
     margin-left: -20px;
@@ -282,6 +279,13 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 700px) {
+  #descrizione{
+    min-width: 100px;
+    margin-bottom: 50px;
+  }
 }
 
 
