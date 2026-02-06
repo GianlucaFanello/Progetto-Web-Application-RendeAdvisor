@@ -34,12 +34,6 @@ export class RisultatiR implements OnInit {
     });
   }
 
-
-  getStarsArray(n: number): number[] {
-    return Array(n);
-  }
-
-
   performSearch() {
     this.loading = true;
     this.error = '';
@@ -59,11 +53,6 @@ export class RisultatiR implements OnInit {
 
   viewDetails(nomeLocale: string) {
     this.router.navigate(['/profilo-struttura', encodeURIComponent(nomeLocale)]);
-  }
-
-
-  goBack() {
-    this.router.navigate(['/']);
   }
 
   aggiungiRecensione(nomeLocale: string) {

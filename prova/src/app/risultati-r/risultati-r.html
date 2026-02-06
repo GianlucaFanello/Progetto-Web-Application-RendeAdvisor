@@ -9,7 +9,7 @@
     </div>
 
     <div *ngIf="error" class="error">
-      {{ error }}
+      {{error}}
     </div>
 
     <div *ngIf="!loading && results.length === 0 && !error">
@@ -26,20 +26,19 @@
           />
 
           <div class="card-body">
-            <h3>{{ attivita.nomeLocale || 'Nome non disponibile' }}</h3>
-            <p>{{ attivita.indirizzo || 'Indirizzo non disponibile' }}</p>
+            <h3>{{attivita.nomeLocale || 'Nome non disponibile'}}</h3>
+            <p>{{attivita.indirizzo || 'Indirizzo non disponibile'}}</p>
 
-            <p *ngIf="attivita.descrizione">{{ attivita.descrizione }}</p>
+            <p *ngIf="attivita.descrizione">{{attivita.descrizione}}</p>
 
-            <span class="badge" *ngIf="attivita.tipo">{{ attivita.tipo }}</span>
+            <span class="badge" *ngIf="attivita.tipo">#{{attivita.tipo}}</span>
 
 
-            <button (click)="viewDetails(attivita.nomeLocale)" id="Dettagli">
-              Dettagli
-            </button>
-            <button (click)="aggiungiRecensione(attivita.nomeLocale)" id="recensione">
-              Recensisci
-            </button>
+            <div class="bottoni">
+              <button id="Dettagli" (click)="viewDetails(attivita.nomeLocale)">Dettagli</button>
+              <button id="recensione" (click)="aggiungiRecensione(attivita.nomeLocale)">Recensisci</button>
+            </div>
+
           </div>
         </div>
       </div>

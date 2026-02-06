@@ -35,8 +35,9 @@ export class ProfiloStrutturaComponent implements OnInit {
 
     this.route.paramMap.subscribe(params => {
       const nomeStruttura = params.get('nomeLocale') ?? '';
+      const nomeEncoded = decodeURIComponent(nomeStruttura);
 
-      this.attivitaService.getByNome(nomeStruttura).subscribe({
+      this.attivitaService.getByNome(nomeEncoded).subscribe({
         next: a => {
           this.attivita = a.data;
 

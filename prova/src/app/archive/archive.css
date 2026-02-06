@@ -51,12 +51,12 @@ h1{font-size:28px;margin-bottom:8px}
 .section{margin-top:20px}
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns:repeat(3,1fr);
   gap:16px;
   margin-top:12px;
 }
 .card{
-  background: #E6E6E6;
+  background: #FFFFFF;
   border-radius:8px;
   overflow:hidden;
   box-shadow:0 2px 6px rgba(0,0,0,0.06);

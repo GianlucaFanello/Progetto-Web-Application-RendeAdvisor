@@ -42,8 +42,7 @@ export class AttivitaService {
   }
 
   getByNome(nome: string): Observable<ApiResponseDto<AttivitaDto>> {
-    return this.http.get<ApiResponseDto<AttivitaDto>>(
-      `${this.BASE_URL}/by-nome`,
+    return this.http.get<ApiResponseDto<AttivitaDto>>( this.BASE_URL + "/by-nome",
       { params: { nome } }
     );
   }
