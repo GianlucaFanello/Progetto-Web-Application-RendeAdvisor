@@ -20,14 +20,20 @@ export class CardRecensione {
 
   vaiARisposte(recensione: RecensioneDto) {
     this.router.navigate(['/risposte-page'], {
-      queryParams: {
-        idRecensione: recensione.id,
+      state: {
+        recensione,
         nomeLocale: this.nomeLocale,
-        proprietario: this.proprietario,
-        autoreRec: recensione.nomeUtente,
-        testoRec: recensione.testo,
-        votoRec: recensione.valutazione
+        proprietario: this.proprietario
       }
     });
+  }
+
+
+  getImmagine(r: RecensioneDto) {
+    if(r.immagineUtenteBase64 != null) {
+      return "data:image/*;base64," + r.immagineUtenteBase64;
+    }
+
+    return "assets/user-profile-icon-free-vector.jpeg";
   }
 }

@@ -1,27 +1,31 @@
 <div id="body">
   <div class="page">
     <div class="image-container">
-      <img src="assets/la-sala-interna.jpg" alt="Immagine Locale">
+      <img [src]="getImmagineLocale()" alt="Immagine Locale">
       <div class="overlay"><span>{{ nomeLocale }}</span></div>
     </div>
 
-    <div class="recensione-originale" *ngIf="testoRec">
+    <div class="recensione-originale" *ngIf="recensione.testo">
       <div class="rec-header">
-        <img class="user-pic" src="/assets/willy-crak.jpg" alt="user">
+        <img class="user-pic"
+             [src]="recensione?.immagineUtenteBase64
+              ? 'data:image/*;base64,' + recensione.immagineUtenteBase64
+              : 'assets/user-profile-free-vector.jpeg'"
+             alt="user">
         <div class="user-info">
-          <span class="nome-autore">{{ autoreRec }}</span>
+          <span class="nome-autore">{{ recensione.nomeUtente}}</span>
           <div class="voto-box">
-            <span>{{ votoRec }}</span>
+            <span>{{ recensione.valutazione }}</span>
             <img src="/assets/star.png" alt="star" class="star-icon">
           </div>
         </div>
       </div>
-      <p class="testo-recensione">"{{ testoRec }}"</p>
+      <p class="testo-recensione">"{{ recensione.testo }}"</p>
     </div>
 
     <div class="inserisci-commento" *ngIf="isProprietario">
       <h5 class="label">Rispondi come proprietario:</h5>
-      <img class="logo" src="/assets/user-profile-icon-free-vector.jpeg" alt="mio-logo">
+      <img class="logo" [src]="getImmagineProprietario()" alt="mio-logo">
       <textarea class="commento-text" [(ngModel)]="nuovaRisposta" placeholder="Scrivi qui..."></textarea>
       <button class="conferma" (click)="invia()"> ➤ </button>
     </div>

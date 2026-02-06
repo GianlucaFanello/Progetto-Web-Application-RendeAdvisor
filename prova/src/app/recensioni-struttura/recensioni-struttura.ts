@@ -38,6 +38,7 @@ export class RecensioniStruttura implements OnInit {
     this.attivitaService.getDettaglio(nomeLocale).subscribe({
       next: (res) => {
         this.attivita = res.data;
+        console.log("ATTIVITA:", res.data);
         this.checkUtente();
       },
       error: (err) => {

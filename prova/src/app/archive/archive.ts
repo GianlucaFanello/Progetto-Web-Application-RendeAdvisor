@@ -71,7 +71,7 @@ export class Archive implements OnInit {
     this.router.navigate(['/profilo-struttura', nomeLocale]);
   }
 
-  visualizzaRecensioni(nomeLocale: String) {
+  visualizzaRecensioni(nomeLocale: string) {
     this.router.navigate(['/recensioni-struttura',nomeLocale]);
   }
 

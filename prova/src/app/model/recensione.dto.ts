@@ -4,4 +4,6 @@ export interface RecensioneDto {
   nomeLocale: string;
   testo: string;
   valutazione: number;
+
+  immagineUtenteBase64?:String;
 }

@@ -78,10 +78,6 @@ h1{font-size:28px;margin-bottom:8px}
   padding: 10px;
   cursor: pointer;
   transition: background-image 0.3s;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 }
 
 #recensione {
@@ -95,12 +91,7 @@ h1{font-size:28px;margin-bottom:8px}
   height: 40px;
   padding: 10px;
   cursor: pointer;
-<<<<<<< Updated upstream
   transition: background-image 0.3s;;
-=======
-  transition: background-image 0.3s;
-
->>>>>>> Stashed changes
 }
 
 .bottoni {
