@@ -56,7 +56,7 @@ h1{font-size:28px;margin-bottom:8px}
   margin-top:12px;
 }
 .card{
-  background:#fff;
+  background: #E6E6E6;
   border-radius:8px;
   overflow:hidden;
   box-shadow:0 2px 6px rgba(0,0,0,0.06);
@@ -67,8 +67,18 @@ h1{font-size:28px;margin-bottom:8px}
 .card-body{padding:12px}
 .card-body h3{margin:0 0 6px 0;font-size:18px}
 .card-body p{margin:0;color:#666}
-.rating{margin-top:8px}
-.rating .star{width:18px;height:18px;margin-right:4px}
+
+.stelleDiv{
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  width: 30px !important;
+  height: 30px !important;
+  object-fit: contain;
+}
+
 
 @media (max-width:600px){
   .Flexbox{padding:8px}
