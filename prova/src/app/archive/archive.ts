@@ -68,7 +68,6 @@ export class Archive implements OnInit {
 
 
   vaiAlDettaglio(nomeLocale: string) {
-    // Naviga verso: /profilo-struttura/HotelCentrale
     this.router.navigate(['/profilo-struttura', nomeLocale]);
   }
 
