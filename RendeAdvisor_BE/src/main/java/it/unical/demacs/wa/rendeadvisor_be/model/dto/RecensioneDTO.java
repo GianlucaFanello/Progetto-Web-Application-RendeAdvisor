@@ -7,6 +7,8 @@ public class RecensioneDTO {
     private String nomeLocale;
     private String testo;
     private float valutazione;
+    private String immagineUtenteBase64;
+
 
 
     public RecensioneDTO() {
@@ -60,5 +62,13 @@ public class RecensioneDTO {
 
     public void setValutazione(float valutazione) {
         this.valutazione = valutazione;
+    }
+
+    public String getImmagineUtenteBase64() {
+        return immagineUtenteBase64;
+    }
+
+    public void setImmagineUtenteBase64(String immagineUtenteBase64) {
+        this.immagineUtenteBase64 = immagineUtenteBase64;
     }
 }

@@ -3,10 +3,10 @@ package it.unical.demacs.wa.rendeadvisor_be.dao.implementazione;
 import it.unical.demacs.wa.rendeadvisor_be.dao.IRecensioneDAO;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.RecensioneDTO;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Base64;
 
 @Repository
 public class RecensioneDAO implements IRecensioneDAO {
@@ -39,35 +39,6 @@ public class RecensioneDAO implements IRecensioneDAO {
             }
         }
         return -1;
-    }
-
-    // Chiama il metodo helper 'executeQuery' filtrando per nomeLocale
-    @Override
-    public ArrayList<RecensioneDTO> findByLocale(String nomeLocale) {
-        return executeQuery("SELECT * FROM recensioni WHERE nomelocale = ?", nomeLocale);
-    }
-
-    // Metodo per evitare di riscrivere il codice di estrazione dal ResultSet
-    private ArrayList<RecensioneDTO> executeQuery(String query, String param) {
-        ArrayList<RecensioneDTO> recensioni = new ArrayList<>();
-        try (PreparedStatement ps = connection.prepareStatement(query)) {
-            ps.setString(1, param);
-
-            try (ResultSet rs = ps.executeQuery()) {
-                while (rs.next()) {
-                    RecensioneDTO r = new RecensioneDTO();
-                    r.setId(rs.getString("id"));
-                    r.setNomeUtente(rs.getString("nomeutente"));
-                    r.setNomeLocale(rs.getString("nomelocale"));
-                    r.setTesto(rs.getString("testo"));
-                    r.setValutazione(rs.getFloat("valutazione"));
-                    recensioni.add(r);
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return recensioni;
     }
 
     // Esegue una DELETE basata sull' id univoco della recensione
@@ -110,25 +81,61 @@ public class RecensioneDAO implements IRecensioneDAO {
         }
     }
 
+
+    @Override
+    public ArrayList<RecensioneDTO> findByLocale(String nomeLocale) {
+        String query = """
+        SELECT r.*, u.immagine AS img_utente
+        FROM recensioni r
+        JOIN utente u ON r.nomeutente = u.username
+        WHERE r.nomelocale = ?
+        """;
+
+        return executeQueryWithUserImage(query, nomeLocale);
+    }
+
+    @Override
     public ArrayList<RecensioneDTO> findByUtente(String nomeUtente) throws SQLException {
+        String query = """
+        SELECT r.*, u.immagine AS img_utente
+        FROM recensioni r
+        JOIN utente u ON r.nomeutente = u.username
+        WHERE r.nomeutente = ?
+        """;
+
+        return executeQueryWithUserImage(query, nomeUtente);
+    }
+
+    private ArrayList<RecensioneDTO> executeQueryWithUserImage(String query, String param) {
         ArrayList<RecensioneDTO> recensioni = new ArrayList<>();
-        String sql = "SELECT * FROM recensioni WHERE nomeutente = ?";
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, nomeUtente);
+
+        try (PreparedStatement ps = connection.prepareStatement(query)) {
+            ps.setString(1, param);
+
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     RecensioneDTO r = new RecensioneDTO();
-                    r.setId(String.valueOf(rs.getInt("id")));
+                    r.setId(rs.getString("id"));
                     r.setNomeUtente(rs.getString("nomeutente"));
                     r.setNomeLocale(rs.getString("nomelocale"));
                     r.setTesto(rs.getString("testo"));
                     r.setValutazione(rs.getFloat("valutazione"));
+
+                    byte[] img = rs.getBytes("img_utente");
+                    if (img != null) {
+                        r.setImmagineUtenteBase64(
+                                Base64.getEncoder().encodeToString(img)
+                        );
+                    }
+
                     recensioni.add(r);
                 }
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
+
         return recensioni;
     }
-
 
 }

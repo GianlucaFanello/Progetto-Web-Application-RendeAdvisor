@@ -26,7 +26,7 @@ public class AttivitaController {
     private final AttivitaService attivitaService;
 
 
-    @Autowired // Lascia che Spring passi il Service già pronto con tutto dentro
+    @Autowired
     public AttivitaController(AttivitaService attivitaService) {
         this.attivitaService = attivitaService;
     }
