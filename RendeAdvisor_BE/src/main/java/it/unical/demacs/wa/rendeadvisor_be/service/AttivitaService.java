@@ -191,7 +191,8 @@ public class AttivitaService {
             }
         }
 
-        return ordinati;
+        return ordinati.subList(0, Math.min(5, ordinati.size()));
+
     }
 
 }
