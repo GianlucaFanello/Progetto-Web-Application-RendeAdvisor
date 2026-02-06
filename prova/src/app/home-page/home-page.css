@@ -100,18 +100,21 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
   text-align: center;
-
-
 }
 
 .testo-ordinamento {
   align-self: center;
   font-size: 1.2rem;
-  margin-bottom: 40px;
   color: #333;
 }
+
+.info-carosello {
+  font-size: 15px;
+  color: grey;
+}
+
+.testo-ordinamento, .info-carosello { margin: 10px 0; }
 
 .carosello-wrapper {
   display: flex;
