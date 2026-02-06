@@ -3,7 +3,7 @@
     <div id="principale2">
       <img id="fotoStruttura" [src]="getImmagine()" width="200px">
       <label id="nome">{{attivita?.nomeLocale}}</label>
-      <h2>Voto <img src="assets/star.png" width="30px" alt=""></h2>
+      <h2>{{rating}}<img src="assets/star.png" width="30px" alt=""></h2>
       <div class="sottoDiv">
         <h2 id="stringaEmail">{{attivita?.email}}<img class="img" src="/assets/email.png" width="30px"></h2>
         <h2>{{attivita?.indirizzo}} <img class="img" src="/assets/palazzi.png"  width="30px"></h2>
@@ -13,7 +13,7 @@
         <h2>{{attivita?.proprietario}} <img src="/assets/hat.png" width="30px"></h2>
       </div>
 
-      <textarea id="textArea">{{attivita?.descrizione}}</textarea>
+      <textarea id="textArea" disabled>{{attivita?.descrizione}}</textarea>
       <div id="secondario">
         <button class="button" (click)="visualizzaRecensioni(attivita.nomeLocale)">Recensioni <img src="/assets/scrittura.png" width="20px"></button>
         <div id="terzario">

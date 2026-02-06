@@ -6,6 +6,7 @@ import {AttivitaService} from '../service/AttivitaService';
 import {AttivitaDto} from '../model/attivita.dto';
 import {AuthService} from '../service/AuthService';
 import {UtenteDto} from '../model/utente.dto';
+import {RecensioneService} from '../service/RecensioneService';
 
 @Component({
   selector: 'app-profilo-struttura',
@@ -19,6 +20,7 @@ export class ProfiloStrutturaComponent implements OnInit {
   preferito!: boolean;
   contatore = 0;
   loading: boolean = true;
+  rating!: number;
 
   attivita!:AttivitaDto;
 
@@ -27,7 +29,8 @@ export class ProfiloStrutturaComponent implements OnInit {
     private router: Router,
     private attivitaService: AttivitaService,
     private nelCuoreService: NelCuoreService,
-    private authService: AuthService
+    private authService: AuthService,
+    private recensioneService: RecensioneService
   ) {}
 
 
@@ -41,10 +44,6 @@ export class ProfiloStrutturaComponent implements OnInit {
         next: a => {
           this.attivita = a.data;
 
-          console.log("DTO RICEVUTO", a);
-          console.log("DATA", a.data);
-
-
           this.aggiornaContatore();
 
           this.loading = false;
@@ -54,6 +53,12 @@ export class ProfiloStrutturaComponent implements OnInit {
           this.loading = false;
         }
       });
+
+      this.recensioneService.getRatingStruttura(nomeEncoded).subscribe(
+        res => {
+          this.rating = res.data;
+        }
+      )
 
       this.authService.user$.subscribe(utente => {
 
