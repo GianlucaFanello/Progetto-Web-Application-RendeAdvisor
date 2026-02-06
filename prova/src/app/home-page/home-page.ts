@@ -28,7 +28,6 @@ export class HomePage implements OnInit, AfterViewInit {
     this.attivitaService.getVicini().subscribe(
       res => {
         this.localiOrdinati = res.data;
-        console.log("Vicini:", res.data);
       }
     );
   }
