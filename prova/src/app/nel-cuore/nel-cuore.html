@@ -6,14 +6,14 @@
 
     <div id="griglia-preferiti" *ngIf="!loading && listaPreferiti.length > 0">
 
-      <div class="card-preferito" *ngFor="let struttura of listaPreferiti" (click)="vaiAlProfilo(struttura)">
-        <img src="assets/la-sala-interna.jpg" class="card-img" alt="locale">
+      <div class="card-preferito" *ngFor="let struttura of listaPreferiti" (click)="vaiAlProfilo(struttura.nomeLocale)">
+        <img [src]="getImmagine(struttura)" class="card-img" alt="locale">
 
         <div class="card-content">
-          <h3>{{ struttura }}</h3>
+          <h3>{{ struttura.nomeLocale }}</h3>
 
-          <button class="btn-remove" (click)="confermaRimozione($event, struttura)">
-            Rimuovi <img src="assets/trash.png" width="18px" alt="cestino">
+          <button class="btn-remove" (click)="confermaRimozione($event, struttura.nomeLocale)">
+            Rimuovi
           </button>
         </div>
       </div>

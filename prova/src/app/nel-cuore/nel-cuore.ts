@@ -4,6 +4,7 @@ import { UtenteService } from '../service/UtenteService';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { NelCuoreDto } from '../model/nelCuore.dto';
+import {AttivitaDto} from '../model/attivita.dto';
 
 @Component({
   selector: 'app-nel-cuore',
@@ -13,7 +14,7 @@ import { NelCuoreDto } from '../model/nelCuore.dto';
   styleUrls: ['./nel-cuore.css']
 })
 export class NelCuore implements OnInit {
-  listaPreferiti: string[] = [];
+  listaPreferiti: AttivitaDto[] = [];
   loading = true;
   usernameLoggato: string = "";
 
@@ -66,12 +67,20 @@ export class NelCuore implements OnInit {
 
       this.nelCuoreService.rimuovi(dto).subscribe({
         next: (res) => {
-          this.listaPreferiti = this.listaPreferiti.filter(s => s !== nomeStruttura);
+          this.listaPreferiti = this.listaPreferiti.filter(s => s.nomeLocale !== nomeStruttura);
         },
         error: (err) => {
           alert("Impossibile rimuovere il preferito al momento.");
         }
       });
     }
+  }
+
+  getImmagine(struttura: AttivitaDto) {
+    if(struttura?.immagineBase64) {
+      return "data:image/*;base64," + struttura.immagineBase64;
+    }
+
+    return "assets/strutturaDefault.png";
   }
 }

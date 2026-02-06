@@ -3,6 +3,7 @@ import {Injectable, numberAttribute} from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiResponseDto } from '../model/apiResponse.dto';
 import { NelCuoreDto } from '../model/nelCuore.dto';
+import {AttivitaDto} from '../model/attivita.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -31,10 +32,10 @@ export class NelCuoreService {
     return this.http.get<ApiResponseDto<boolean>>(this.BASE_URL + "/preferito", { params });
   }
 
-  lista(nomeUtente: string): Observable<ApiResponseDto<string[]>> {
+  lista(nomeUtente: string): Observable<ApiResponseDto<AttivitaDto[]>> {
     const params = new HttpParams().set('nomeUtente', nomeUtente);
 
-    return this.http.get<ApiResponseDto<string[]>>(this.BASE_URL + "/lista", { params });
+    return this.http.get<ApiResponseDto<AttivitaDto[]>>(this.BASE_URL + "/lista", { params });
   }
 
   countPreferiti(nomeStruttura: string): Observable<ApiResponseDto<number>> {
