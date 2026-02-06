@@ -7,8 +7,10 @@
   <h1>BENVENUTO A RENDE</h1>
 </div>
 
-<div class="contenitore-mappa">
-  <div id="mappa-google"></div>
+
+<div class="search-container">
+  <input type="search" placeholder="Cerca hotel o ristoranti..." [(ngModel)]="searchText" id="searchBar" (keyup.enter)="search()">
+  <input type="button" value="Ricerca" id="ricercaButton" (click)="search()">
 </div>
 
 <div class="FlexBox3">
@@ -16,10 +18,13 @@
   <input type="button" value="RISTORANTI" id="ristoranti" routerLink="/restaurants">
 </div>
 
-<div class="search-container">
-  <input type="search" placeholder="Cerca hotel o ristoranti..." [(ngModel)]="searchText" id="searchBar" (keyup.enter)="search()">
-  <input type="button" value="Ricerca" id="ricercaButton" (click)="search()">
+<div class="contenitore-mappa">
+  <div id="mappa-google"></div>
 </div>
+
+
+
+
 
 <div class="carosello-container">
   <p class="testo-ordinamento">Ordinati in base a: <b>Vicinanza</b></p>
