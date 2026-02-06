@@ -19,4 +19,6 @@ public interface IRecensioneDAO {
     void delete(int id) throws SQLException;
 
     int countRecensioniUtente(String username) throws SQLException;
+
+    double getRatingStruttura(String nomeStruttura) throws SQLException;
 }
