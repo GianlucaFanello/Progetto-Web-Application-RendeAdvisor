@@ -84,6 +84,11 @@ export class ProfiloUtente implements OnInit {
     }
   }
 
+
+  vaiAMieRecensioni() {
+    this.router.navigate(['/mie-recensioni']);
+  }
+
   modifica() {
     this.router.navigate(['/modify']);
   }

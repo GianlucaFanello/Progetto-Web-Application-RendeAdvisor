@@ -5,42 +5,17 @@
   margin: 0;
   padding: 40px 0;
   background-color: #f5f5f5;
+  font-family: "Alkatra", sans-serif;
   min-height: 100vh;
+
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
+
 
 .fade-out {
   opacity: 0;
   transform: translateY(-20px);
-}
-
-#logoutButton {
-  font-family: "Alkatra";
-  background-color: white;
-  border-radius: 50px;
-  padding: 10px 20px;
-  font-size: large;
-  color: black;
-  width: 100px;
-  height: 50px;
-  border: 2px solid black;
-  cursor: pointer;
-  margin: 5px;
-  margin-top: 30px;
-  margin-right: 20px;
-  margin-left: 1070px;
-  transition: width 2s;
-}
-
-
-
-
-
-
-#logoutButton:hover {
-  border-color: red;
-  color: red;
-  width: 110px;
+  filter: blur(5px);
 }
 
 #principale {
@@ -48,11 +23,33 @@
   flex-direction: column;
   align-items: center;
   width: 80%;
+  max-width: 900px;
   border: solid 2px black;
   border-radius: 2rem;
   background-color: white;
   box-shadow: 5px 5px 10px #888888;
   gap: 0px;
+  position: relative;
+}
+
+
+#logoutButton {
+  align-self: flex-end;
+  margin-top: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+  background: none;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px 15px;
+  font-weight: bold;
+  font-family: "Alkatra", sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#logoutButton:hover {
+  background-color: black;
+  color: white;
 }
 
 #principale2 {
@@ -61,16 +58,38 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  gap: 10px;
 }
 
 #fotoUtente {
   border-radius: 50%;
-  box-shadow: 0px 5px 35px rgba(50,50,93,0.1);
-  transition: transform 0.3s;
+  box-shadow: 0px 5px 35px rgba(50,50,93,0.1), 10px 15px 25px rgba(0,0,0,0.07);
+  align-self: center;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 4px solid white;
 }
 
 #fotoUtente:hover {
   transform: scale(1.1);
+}
+
+h1 {
+  margin: 10px 0 5px 0;
+  font-size: 2.5em;
+}
+
+#username {
+  color: #666;
+  margin-top: 0;
+  font-size: 1.5em;
+}
+
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 5px 0;
+  font-size: 1.2em;
 }
 
 #textArea {
@@ -78,68 +97,59 @@
   width: 60%;
   height: 100px;
   border-radius: 1rem;
-  padding: 10px;
+  padding: 15px;
   font-size: 18px;
-  margin: 10px 0;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  font-family: inherit;
+  margin-top: 20px;
 }
 
-#r,#modifica,#cuore,#struttura{
-  font-family: "Alkatra";
-  font-size: xx-large;
+#secondario {
+  padding-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+
+.button {
+  font-family: "Alkatra", sans-serif;
+
   background-image: linear-gradient(135deg, #00c6ff, #0072ff);
   border-radius: 50px;
-  padding: 10px 20px;
-  width: 230px;
-  height: 50px;
-  font-size: 22px;
+  padding: 10px 25px;
   color: white;
-  border: 2px solid #ddd;
+  font-size: 18px;
+  border: none;
   cursor: pointer;
-  margin: 5px;
-  transition: background-image 0.3s;
-  transition: width 0.3s;
-}
 
-#modifica:hover {
-  background-image: linear-gradient(135deg, #0072ff, #00c6ff);
-  width: 300px;
-}
-#cuore:hover {
-  background-image: linear-gradient(135deg, #0072ff, #00c6ff);
-  width: 300px;
-}
-#r:hover {
-  background-image: linear-gradient(135deg, #0072ff, #00c6ff);
-  width: 300px;
-}
-#struttura:hover {
-  background-image: linear-gradient(135deg, #0072ff, #00c6ff);
-  width: 300px;
-}
-
-
-/* Stile Recensioni */
-#recensioni-list {
-  width: 80%;
-  margin-top: 20px;
-  animation: fadeIn 0.5s;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; } to { opacity: 1; }
-}
-
-.card-rec {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 10px;
-  background-color: #fafafa;
-}
-
-.card-header {
+  transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
-  color: #0072ff;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 114, 255, 0.3);
+}
+
+
+@media (max-width: 800px) {
+  #secondario {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+
+  #textArea {
+    width: 85%;
+  }
+
+  #principale {
+    width: 95%;
+  }
 }
