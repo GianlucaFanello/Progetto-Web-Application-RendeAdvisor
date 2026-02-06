@@ -73,7 +73,15 @@ public class AttivitaService {
 
 
     public List<AttivitaDTO> search(String query) throws SQLException {
-        return attivitaDAO.search(query);
+        List<AttivitaDTO> attivita = attivitaDAO.search(query);
+
+        for(AttivitaDTO a: attivita){
+            if(a.getImmagine() != null){
+                a.setImmagineBase64(Base64.getEncoder().encodeToString(a.getImmagine()));
+                a.setImmagine(null);
+            }
+        }
+        return attivita;
     }
 
     public AttivitaDTO findByNome(String nome) throws SQLException {
@@ -104,18 +112,43 @@ public class AttivitaService {
     public AttivitaDTO modificaProfilo(AttivitaDTO attivita, String vecchioNomeLocale, boolean elim) throws SQLException {
 
         AttivitaDTO vecchio = attivitaDAO.findByNome(vecchioNomeLocale);
-        if(elim){
+
+        if (elim) {
             attivita.setImmagine(null);
-        }
-        else if (vecchio.getImmagine() != null && attivita.getImmagine() == null) {
+        } else if (attivita.getImmagine() == null && vecchio.getImmagine() != null) {
             attivita.setImmagine(vecchio.getImmagine());
         }
 
-        if(attivitaDAO.updateAttivita(attivita,vecchioNomeLocale)) {
+        String nuovoInd = attivita.getIndirizzo();
+        String vecchioInd = vecchio.getIndirizzo();
+
+        boolean indirizzoCambiato = nuovoInd != null && !nuovoInd.isBlank() && !nuovoInd.equals(vecchioInd);
+
+        if (indirizzoCambiato) {
+
+            double[] coords = geocodingService.getCoordinates(nuovoInd);
+
+            if (coords != null) {
+                attivita.setLatitudine(coords[0]);
+                attivita.setLongitudine(coords[1]);
+            } else {
+                attivita.setLatitudine(null);
+                attivita.setLongitudine(null);
+            }
+
+        } else {
+            // indirizzo non cambiato → vecchie coordinate
+            attivita.setLatitudine(vecchio.getLatitudine());
+            attivita.setLongitudine(vecchio.getLongitudine());
+        }
+
+        if (attivitaDAO.updateAttivita(attivita, vecchioNomeLocale)) {
             return attivita;
         }
+
         return null;
     }
+
 
     public List<AttivitaDTO> getVicini() throws SQLException {
         List<AttivitaDTO> locali = attivitaDAO.findAll()

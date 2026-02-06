@@ -160,7 +160,7 @@ public class AttivitaDAO implements IAttivitaDAO {
         ps.setBytes(4, attivita.getImmagine());
         ps.setString(5, attivita.getDescrizione());
         ps.setString(6, attivita.getIndirizzo());
-        ps.setDouble(7, attivita.getLatitudine()); // Aggiorna lat
+        ps.setDouble(7, attivita.getLatitudine());
         ps.setDouble(8, attivita.getLongitudine());
         ps.setString(9, vecchioNome);
 
