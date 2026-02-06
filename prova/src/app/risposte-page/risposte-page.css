@@ -14,7 +14,9 @@
 
 .image-container {
   position: relative;
-  width: 600px;
+  width: 100%;
+  min-width: 200px;
+  max-width: 600px;
   height: 150px;
   border-radius: 15px;
   overflow: hidden;
@@ -40,7 +42,9 @@
 }
 
 .recensione-originale {
-  width: 600px;
+  width: 100%;
+  min-width: 200px;
+  max-width: 600px;
   background-color: #fff;
   border-left: 5px solid #ffcc00;
   padding: 15px;
@@ -102,7 +106,9 @@
     "logo text button";
   grid-template-columns: 60px 1fr 60px;
   grid-template-rows: 30px 60px;
-  width: 600px;
+  width: 100%;
+  min-width: 200px;
+  max-width: 600px;
   height: 100px;
   background: white;
   border-radius: 15px;
@@ -163,7 +169,9 @@
 }
 
 .sezione-commenti {
-  width: 600px;
+  width: 100%;
+  min-width: 200px;
+  max-width: 600px;
   background: white;
   padding: 20px;
   border-radius: 15px;
