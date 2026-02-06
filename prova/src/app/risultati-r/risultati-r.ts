@@ -70,4 +70,11 @@ export class RisultatiR implements OnInit {
     this.router.navigate(['/aggiungi-r', encodeURIComponent(nomeLocale)])
 
   }
+
+  getImmagine(attivita: AttivitaDto) {
+    if(attivita?.immagineBase64){
+      return "data:image/*;base64," + attivita.immagineBase64;
+    }
+    return "/assets/strutturaDefault.png"
+  }
 }
