@@ -18,6 +18,7 @@
 
 <div class="carosello-container">
   <p class="testo-ordinamento">Ordinati in base a: <b>Vicinanza</b></p>
+  <p class="info-carosello">*Clicca su un locale per visualizzarne la posizione sulla mappa</p>
 
   <div class="carosello-wrapper">
     <div class="carosello-slide" *ngFor="let locale of localiOrdinati; let i = index" (click)="setMarker(locale)">
