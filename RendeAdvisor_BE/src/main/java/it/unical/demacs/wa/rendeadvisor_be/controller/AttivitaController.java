@@ -107,12 +107,12 @@ public class AttivitaController {
                                                    @RequestParam(required = false) MultipartFile immagine) throws IOException {
         try {
             AttivitaDTO attivita = new AttivitaDTO();
-            attivita.setNomeLocale(nomeLocale);
-            attivita.setProprietario(proprietario);
-            attivita.setTelefono(telefono);
-            attivita.setEmail(email);
-            attivita.setDescrizione(descrizione);
-            attivita.setIndirizzo(indirizzo);
+            attivita.setNomeLocale(nomeLocale.trim());
+            attivita.setProprietario(proprietario.trim());
+            attivita.setTelefono(telefono.trim());
+            attivita.setEmail(email.trim());
+            attivita.setDescrizione(descrizione.trim());
+            attivita.setIndirizzo(indirizzo.trim());
             attivita.setTipo(tipo);
 
             if (immagine != null && !immagine.isEmpty()) {
@@ -142,7 +142,7 @@ public class AttivitaController {
     public ResponseEntity<ApiResponse<List<AttivitaDTO>>> search(@RequestParam String query) {
 
         try {
-            List<AttivitaDTO> risultati = attivitaService.search(query);
+            List<AttivitaDTO> risultati = attivitaService.search(query.trim());
 
             return ResponseEntity.ok(new ApiResponse<>(true, "Risultati ricerca", risultati)
             );
@@ -197,18 +197,18 @@ public class AttivitaController {
                                                                @RequestParam String vecchioNomeLocale) throws IOException {
         try {
             AttivitaDTO attivita= new AttivitaDTO();
-            attivita.setNomeLocale(nomeLocale);
-            attivita.setEmail(email);
-            attivita.setTelefono(telefono);
-            attivita.setIndirizzo(indirizzo);
-            attivita.setDescrizione(descrizione);
+            attivita.setNomeLocale(nomeLocale.trim());
+            attivita.setEmail(email.trim());
+            attivita.setTelefono(telefono.trim());
+            attivita.setIndirizzo(indirizzo.trim());
+            attivita.setDescrizione(descrizione.trim());
 
             if(immagine != null && !immagine.isEmpty()) {
                 attivita.setImmagine(immagine.getBytes());
             }
 
             boolean elim = Objects.equals(eliminata, "true");
-            AttivitaDTO aggiornato = attivitaService.modificaProfilo(attivita, vecchioNomeLocale, elim);
+            AttivitaDTO aggiornato = attivitaService.modificaProfilo(attivita, vecchioNomeLocale.trim(), elim);
 
             if(aggiornato != null){
                 return ResponseEntity.ok(new ApiResponse<>(true, "Profilo aggiornato", aggiornato.getNomeLocale()));

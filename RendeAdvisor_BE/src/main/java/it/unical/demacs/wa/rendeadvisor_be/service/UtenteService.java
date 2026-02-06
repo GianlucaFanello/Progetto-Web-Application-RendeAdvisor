@@ -25,9 +25,16 @@ public class UtenteService {
     }
 
     // Logica di registrazione
-    public boolean registraUtente(UtenteDTO utente) {
+    public boolean registraUtente(UtenteDTO utenteDto) {
         try {
-            String hashed = passwordService.hashPassword(utente.getPassword());
+            UtenteDTO utente =  new UtenteDTO();
+            utente.setEmail(utenteDto.getEmail().trim());
+            utente.setNome(utenteDto.getNome().trim());
+            utente.setCognome(utenteDto.getCognome().trim());
+            utente.setUsername(utenteDto.getUsername().trim());
+            utente.setImmagine(utenteDto.getImmagine());
+
+            String hashed = passwordService.hashPassword(utenteDto.getPassword());
             utente.setPassword(hashed);
             return dao.insertUtente(utente);
         } catch (SQLException e) {
@@ -39,9 +46,11 @@ public class UtenteService {
     // Logica di login
     public UtenteDTO loginUtente(LoginDTO credenziali) {
         try {
-            String passwordHashed = dao.getPasswordByEmail(credenziali.getEmail());
+            String email = credenziali.getEmail().trim();
+
+            String passwordHashed = dao.getPasswordByEmail(email);
             if (passwordHashed != null && passwordService.verifyPassword(credenziali.getPassword(), passwordHashed)) {
-                UtenteDTO utente = dao.getUtenteByEmail(credenziali.getEmail());
+                UtenteDTO utente = dao.getUtenteByEmail(email);
                 return utente; // login OK
             }
             return null;
@@ -66,10 +75,18 @@ public class UtenteService {
         }
     }
 
-    public UtenteDTO modificaProfilo(UtenteDTO utente, String usernameVecchio, boolean eliminata) {
+    public UtenteDTO modificaProfilo(UtenteDTO utenteDto, String usernameVecchio, boolean eliminata) {
         try {
 
-            UtenteDTO vecchioUtente = dao.getUtenteByUsername(usernameVecchio);
+            UtenteDTO vecchioUtente = dao.getUtenteByUsername(usernameVecchio.trim());
+
+            UtenteDTO utente =  new UtenteDTO();
+            utente.setEmail(utenteDto.getEmail().trim());
+            utente.setNome(utenteDto.getNome().trim());
+            utente.setCognome(utenteDto.getCognome().trim());
+            utente.setUsername(utenteDto.getUsername().trim());
+            utente.setImmagine(utenteDto.getImmagine());
+            utente.setDescrizione(utenteDto.getDescrizione().trim());
 
             if(eliminata){
                 utente.setImmagine(null);
@@ -78,7 +95,7 @@ public class UtenteService {
                 utente.setImmagine(vecchioUtente.getImmagine());
             }
 
-            if (dao.updateUtente(utente, usernameVecchio)){
+            if (dao.updateUtente(utente, usernameVecchio.trim())){
                 if (utente.getImmagine() != null) {
                     String base64 = Base64.getEncoder().encodeToString(utente.getImmagine());
                     utente.setImmagineBase64(base64);

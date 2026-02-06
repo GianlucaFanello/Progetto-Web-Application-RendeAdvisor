@@ -29,7 +29,7 @@ public class UtenteController {
 
     @PostMapping("/registrazione")
     public ResponseEntity<ApiResponse<Void>> registra(@RequestBody UtenteDTO utente) {
-        if (utente.getEmail() == null || !Pattern.matches(EMAIL_REGEX, utente.getEmail())) {
+        if (!Pattern.matches(EMAIL_REGEX, utente.getEmail().trim())) {
             return ResponseEntity.badRequest().body(new ApiResponse<>(false, "Formato email non valido", null));
         }
         if (utente.getPassword() == null || utente.getPassword().length() < 6) {
