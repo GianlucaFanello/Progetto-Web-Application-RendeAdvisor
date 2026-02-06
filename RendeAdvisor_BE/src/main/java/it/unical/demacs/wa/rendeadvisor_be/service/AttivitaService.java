@@ -163,9 +163,6 @@ public class AttivitaService {
 
         for(AttivitaDTO a: ordinati){
 
-            a.setLatitudine(null);
-            a.setLongitudine(null);
-
             if(a.getImmagine() != null){
                 a.setImmagineBase64(Base64.getEncoder().encodeToString(a.getImmagine()));
                 a.setImmagine(null);
