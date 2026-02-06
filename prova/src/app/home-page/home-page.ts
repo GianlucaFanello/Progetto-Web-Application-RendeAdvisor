@@ -17,6 +17,8 @@ declare var google: any;
 export class HomePage implements OnInit, AfterViewInit {
   searchText: string = "";
   localiOrdinati: AttivitaDto[] = [];
+  map: any;
+  marker:any;
 
 
   constructor(
@@ -60,15 +62,15 @@ export class HomePage implements OnInit, AfterViewInit {
     if (elementoMappa) {
       const rende = { lat: 39.330, lng: 16.183 };
 
-      const map = new google.maps.Map(elementoMappa, {
+      this.map = new google.maps.Map(elementoMappa, {
         center: rende,
         zoom: 13,
         disableDefaultUI: false
       });
 
-      new google.maps.Marker({
+      this.marker = new google.maps.Marker({
         position: rende,
-        map: map,
+        map: this.map,
         title: "Rende"
       });
     }
@@ -80,6 +82,17 @@ export class HomePage implements OnInit, AfterViewInit {
     }
 
     return "/assets/strutturaDefault.png";
+  }
+
+  setMarker(attivita: AttivitaDto) {
+    if(this.marker) {
+      this.marker.setMap(null);
+    }
+    this.marker = new google.maps.Marker(
+      { position: { lat: attivita.latitudine, lng: attivita.longitudine },
+        map: this.map,
+        title: attivita.nomeLocale
+      });
   }
 
   search() {
