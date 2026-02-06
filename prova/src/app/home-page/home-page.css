@@ -2,15 +2,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 50px;
+  margin-bottom: 30px;
 }
 
 h1 {
-  font-family: "Alkatra", cursive;
-  font-size: xxx-large;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: 4rem;
+  color: #2c3e50;
   margin: 0;
   text-align: center;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
 }
 
 .contenitore-mappa {
@@ -37,62 +42,62 @@ h1 {
 }
 
 #hotel, #ristoranti {
-  font-size: x-large;
-  font-family: "Alkatra";
+  font-size: 1.2rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
   background-color: white;
+  border: 2px solid #2c3e50;
   border-radius: 50px;
   width: 200px;
   height: 60px;
-  border: 2px solid #ddd;
-  box-shadow: 2px 2px 5px #888888;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
 #hotel:hover, #ristoranti:hover {
-  background-image: linear-gradient(135deg, #00c6ff, #0072ff);
+  background-color: #2c3e50;
   color: white;
-  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
 .search-container {
-  position: relative;
-  width: 800px;
-  margin: 0 auto 50px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 40px;
 }
 
 #searchBar {
-  font-size: x-large;
-  font-family: "System Bold Italic";
-  background-color: white;
-  border-radius: 50px;
-  width: 100%;
-  height: 65px;
-  padding: 5px 130px 5px 30px;
-  border: 2px solid #ddd;
-  box-sizing: border-box;
-  box-shadow: 2px 2px 5px #888888;
+  width: 400px;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: 1px solid #ccc;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
   outline: none;
+  transition: border-color 0.3s;
+}
+
+#searchBar:focus {
+  border-color: #0072ff;
 }
 
 #ricercaButton {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: large;
-  font-family: "Alkatra";
+  padding: 12px 25px;
+  border-radius: 30px;
+  border: none;
   background-image: linear-gradient(135deg, #00c6ff, #0072ff);
   color: white;
-  border: none;
-  border-radius: 50px;
-  width: 110px;
-  height: 50px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-image 0.3s;
+  transition: transform 0.3s;
 }
 
 #ricercaButton:hover {
+  transform: scale(1.05);
   background-image: linear-gradient(135deg, #0072ff, #00c6ff);
 }
 
@@ -101,67 +106,64 @@ h1 {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
 
 .testo-ordinamento {
-  align-self: center;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #333;
+  margin-bottom: 5px;
 }
 
 .info-carosello {
-  font-size: 15px;
+  font-size: 14px;
   color: grey;
+  margin-bottom: 20px;
 }
-
-.testo-ordinamento, .info-carosello { margin: 10px 0; }
 
 .carosello-wrapper {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  overflow-x: auto;
   gap: 15px;
   padding: 10px;
-  scrollbar-width: thin;
 }
 
 .carosello-slide {
   flex: 0 0 200px;
   position: relative;
-  border-radius: 10px;
+  border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.3s;
+  background: white;
+  padding-bottom: 10px;
 }
 
 .carosello-slide:hover {
-  box-shadow: 0 5px 10px #222222;
+  transform: scale(1.05);
 }
 
-.carosello-slide img {
+#immagineS {
   width: 100%;
   height: 150px;
   object-fit: cover;
-  display: block;
-}
-
-#immagineS:hover {
-  opacity: 87%;
 }
 
 .carosello-slide span {
   display: block;
-  padding: 8px;
-  background: #fff;
-  font-weight: 500;
+  margin-top: 10px;
+  font-weight: 600;
+  color: #2c3e50;
 }
 
-@media screen and (max-width: 900px) {
-  h1 { font-size: xx-large; }
-  .contenitore-mappa { width: 90%; height: 250px; }
-  .search-container { width: 80%; min-width: 200px }
-  .FlexBox3 { flex-direction: column; align-items: center; gap: 15px; }
-  #hotel, #ristoranti { width: 60%; height: 55px; min-width: 180px }
+.badge-vicino {
+  background-color: #27ae60;
+  color: white;
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 10px;
+  margin-top: 5px;
+  display: inline-block;
 }
