@@ -189,9 +189,9 @@ public class AttivitaDAO implements IAttivitaDAO {
     @Override
     public List<AttivitaDTO> search(String query) throws SQLException {
 
-       String sql = "SELECT * FROM attivita WHERE nomelocale LIKE ?";
-       PreparedStatement ps = connection.prepareStatement(sql);
-       ps.setString(1, "%" + query + "%"); // permette match parziale
+        String sql = "SELECT * FROM attivita WHERE LOWER(nomelocale) LIKE ?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1, "%" + query.toLowerCase() + "%");
 
         ResultSet rs = ps.executeQuery();
 

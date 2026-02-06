@@ -142,7 +142,7 @@ public class AttivitaController {
     public ResponseEntity<ApiResponse<List<AttivitaDTO>>> search(@RequestParam String query) {
 
         try {
-            List<AttivitaDTO> risultati = attivitaService.search(query.trim());
+            List<AttivitaDTO> risultati = attivitaService.search(query.trim().toLowerCase());
 
             return ResponseEntity.ok(new ApiResponse<>(true, "Risultati ricerca", risultati)
             );
