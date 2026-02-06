@@ -1,5 +1,7 @@
 package it.unical.demacs.wa.rendeadvisor_be.dao;
 
+import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaDTO;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -15,7 +17,7 @@ public interface INelCuoreDAO {
     boolean isPreferito(String nomeUtente, String nomeStruttura);
 
     // Per la pagina Profilo "Nel Cuore"
-    ArrayList<String> findAllByUser(String nomeUtente);
+    ArrayList<AttivitaDTO> findAllByUser(String nomeUtente);
 
     Integer countPreferitiLocale(String nomeStruttura);
 }

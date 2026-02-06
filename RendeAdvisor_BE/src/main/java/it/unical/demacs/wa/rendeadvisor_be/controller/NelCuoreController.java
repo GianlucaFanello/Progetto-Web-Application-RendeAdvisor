@@ -3,6 +3,8 @@ package it.unical.demacs.wa.rendeadvisor_be.controller;
 import it.unical.demacs.wa.rendeadvisor_be.dao.dbManager.DBManager;
 import it.unical.demacs.wa.rendeadvisor_be.dao.implementazione.NelCuoreDAO;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.ApiResponse;
+import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaDTO;
+import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaProxy;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.NelCuoreDTO;
 import it.unical.demacs.wa.rendeadvisor_be.service.NelCuoreService;
 import org.springframework.http.HttpStatus;
@@ -92,9 +94,9 @@ public class NelCuoreController {
 
 
     @GetMapping("/lista")
-    public ResponseEntity<ApiResponse<List<String>>> lista(@RequestParam String nomeUtente) {
+    public ResponseEntity<ApiResponse<List<AttivitaDTO>>> lista(@RequestParam String nomeUtente) {
         try {
-            List<String> lista = nelCuoreService.listaPreferiti(nomeUtente);
+            List<AttivitaDTO> lista = nelCuoreService.listaPreferiti(nomeUtente);
 
             return ResponseEntity.ok(
                     new ApiResponse<>(true, "Lista preferiti inviata", lista)

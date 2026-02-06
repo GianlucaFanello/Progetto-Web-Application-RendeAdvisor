@@ -1,11 +1,14 @@
 package it.unical.demacs.wa.rendeadvisor_be.service;
 
 import it.unical.demacs.wa.rendeadvisor_be.dao.INelCuoreDAO;
+import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaDTO;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.NelCuoreDTO;
 import org.springframework.stereotype.Service;
+import tools.jackson.core.ObjectReadContext;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Base64;
 
 
 @Service
@@ -35,8 +38,17 @@ public class NelCuoreService {
         return nelCuoreDAO.isPreferito(nomeUtente, nomeStruttura);
     }
 
-    public ArrayList<String> listaPreferiti(String nomeUtente) throws SQLException {
-        return nelCuoreDAO.findAllByUser(nomeUtente);
+    public ArrayList<AttivitaDTO> listaPreferiti(String nomeUtente) throws SQLException {
+        ArrayList<AttivitaDTO> attivita = nelCuoreDAO.findAllByUser(nomeUtente);
+
+        for(AttivitaDTO a: attivita){
+            if(a.getImmagine() != null ) {
+                a.setImmagineBase64(Base64.getEncoder().encodeToString(a.getImmagine()));
+                a.setImmagine(null);
+            }
+        }
+
+        return attivita;
     }
 
     public Integer countPreferitiLocale(String nomeStruttura) {

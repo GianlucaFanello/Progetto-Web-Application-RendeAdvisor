@@ -1,6 +1,7 @@
 package it.unical.demacs.wa.rendeadvisor_be.dao.implementazione;
 
 import it.unical.demacs.wa.rendeadvisor_be.dao.INelCuoreDAO;
+import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaDTO;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -59,15 +60,18 @@ public class NelCuoreDAO implements INelCuoreDAO {
 
     // Esegue una SELECT per ottenere tutti i nomi delle strutture salvate da quell'utente
     @Override
-    public ArrayList<String> findAllByUser(String nomeUtente) {
-        ArrayList<String> preferiti = new ArrayList<>();
-        String sql = "SELECT nomestruttura FROM nelcuore WHERE nomeutente = ?";
+    public ArrayList<AttivitaDTO> findAllByUser(String nomeUtente) {
+        ArrayList<AttivitaDTO> preferiti = new ArrayList<>();
+        String sql = "SELECT a.nomelocale, a.immagine FROM nelcuore n JOIN attivita a ON n.nomestruttura = a.nomelocale WHERE n.nomeutente = ?";
 
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, nomeUtente);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    preferiti.add(rs.getString("nomestruttura"));
+                    AttivitaDTO attivita =  new AttivitaDTO();
+                    attivita.setNomeLocale(rs.getString("nomelocale"));
+                    attivita.setImmagine(rs.getBytes("immagine"));
+                    preferiti.add(attivita);
                 }
             }
         } catch (SQLException e) {
