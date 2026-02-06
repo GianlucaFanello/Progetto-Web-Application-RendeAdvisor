@@ -2,7 +2,9 @@ package it.unical.demacs.wa.rendeadvisor_be.service;
 
 import it.unical.demacs.wa.rendeadvisor_be.dao.IAttivitaDAO;
 import it.unical.demacs.wa.rendeadvisor_be.dao.implementazione.AttivitaDAO;
+import it.unical.demacs.wa.rendeadvisor_be.dao.implementazione.RecensioneDAO;
 import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaDTO;
+import it.unical.demacs.wa.rendeadvisor_be.model.dto.AttivitaProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +16,15 @@ public class AttivitaService {
 
     private final IAttivitaDAO attivitaDAO;
     private final GeocodingService geocodingService;
+    private final RecensioneDAO recensioneDAO;
 
     // Unico costruttore: Spring inietterà entrambi automaticamente
     // Nel file AttivitaService.java
     @Autowired
-    public AttivitaService(IAttivitaDAO attivitaDAO, GeocodingService geocodingService) {
+    public AttivitaService(IAttivitaDAO attivitaDAO, GeocodingService geocodingService,  RecensioneDAO recensioneDAO) {
         this.attivitaDAO = attivitaDAO;
         this.geocodingService = geocodingService;
+        this.recensioneDAO = recensioneDAO;
     }
 
     public boolean salvaAttivita(AttivitaDTO attivita) throws SQLException {
@@ -68,8 +72,26 @@ public class AttivitaService {
 
 
     public AttivitaDTO getDettaglio(String nomeLocale) throws SQLException {
-        return attivitaDAO.findByPrimaryKey(nomeLocale);
+
+        AttivitaDTO base = attivitaDAO.findByPrimaryKey(nomeLocale);
+
+        AttivitaProxy proxy = new AttivitaProxy(recensioneDAO);
+
+        proxy.setNomeLocale(base.getNomeLocale());
+        proxy.setProprietario(base.getProprietario());
+        proxy.setTelefono(base.getTelefono());
+        proxy.setEmail(base.getEmail());
+        proxy.setDescrizione(base.getDescrizione());
+        proxy.setIndirizzo(base.getIndirizzo());
+        proxy.setTipo(base.getTipo());
+        proxy.setLatitudine(base.getLatitudine());
+        proxy.setLongitudine(base.getLongitudine());
+
+        proxy.getRecensioni(); // lazy loading
+
+        return proxy;
     }
+
 
 
     public List<AttivitaDTO> search(String query) throws SQLException {

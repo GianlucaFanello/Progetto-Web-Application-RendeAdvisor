@@ -74,8 +74,9 @@ public class AttivitaDAO implements IAttivitaDAO {
         ps.setString(1, nomeLocale);
 
         ResultSet rs = ps.executeQuery();
-        AttivitaDTO attivitaDTO = null;
+        AttivitaDTO attivita = null;
         if (rs.next()) {
+            attivita = new AttivitaDTO();
 
             String nome = rs.getString("nomelocale");
             String proprietario = rs.getString("proprietario");
@@ -88,13 +89,20 @@ public class AttivitaDAO implements IAttivitaDAO {
             double latitudine = rs.getDouble("latitudine");
             double longitudine = rs.getDouble("longitudine");
 
-            attivitaDTO = new AttivitaDTO(nome, proprietario, telefono, email, immagine, descrizione, indirizzo, tipo, latitudine, longitudine);
-            RecensioneDAO recensioneDAO = new RecensioneDAO(DBManager.getInstance().getConnection());
-            List<RecensioneDTO> recensioni = recensioneDAO.findByLocale(nome);
-            attivitaDTO.setRecensioni(recensioni);
+            attivita.setNomeLocale(nomeLocale);
+            attivita.setProprietario(proprietario);
+            attivita.setTelefono(telefono);
+            attivita.setEmail(email);
+            attivita.setImmagine(immagine);
+            attivita.setDescrizione(descrizione);
+            attivita.setIndirizzo(indirizzo);
+            attivita.setTipo(tipo);
+            attivita.setLatitudine(latitudine);
+            attivita.setLongitudine(longitudine);
+
         }
 
-        return attivitaDTO;
+        return attivita;
     }
 
     @Override
@@ -105,7 +113,7 @@ public class AttivitaDAO implements IAttivitaDAO {
 
         ArrayList<AttivitaDTO> listaAttivita = new ArrayList<>();
         while (rs.next()) {
-            AttivitaProxy attivitaDTO = new AttivitaProxy();
+            AttivitaDTO attivitaDTO = new AttivitaDTO();
             attivitaDTO.setNomeLocale(rs.getString("nomelocale"));
             attivitaDTO.setProprietario(rs.getString("proprietario"));
             attivitaDTO.setTelefono(rs.getString("telefono"));
@@ -132,7 +140,7 @@ public class AttivitaDAO implements IAttivitaDAO {
         ResultSet rs = ps.executeQuery();
         ArrayList<AttivitaDTO> listaAttivitaByTipo = new ArrayList<>();
         while (rs.next()) {
-            AttivitaProxy attivitaDTO = new AttivitaProxy();
+            AttivitaDTO attivitaDTO = new AttivitaDTO();
             attivitaDTO.setNomeLocale(rs.getString("nomelocale"));
             attivitaDTO.setProprietario(rs.getString("proprietario"));
             attivitaDTO.setTelefono(rs.getString("telefono"));
