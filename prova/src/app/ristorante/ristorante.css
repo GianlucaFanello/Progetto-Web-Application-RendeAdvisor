@@ -38,11 +38,9 @@
 }
 
 
-
 #ricercaButton:hover {
   background-image: linear-gradient(135deg, #0072ff, #00c6ff);
 }
-
 
 
 .Flexbox4 {
@@ -57,13 +55,12 @@
 }
 
 
-
 .Flexbox4 > div {
   flex: 0 0 300px;
   scroll-snap-align: center;
   background-color: white;
   border-radius: 20px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s;
   text-align: center;
   overflow: hidden;
@@ -90,13 +87,20 @@
 }
 
 
+.Flexbox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center
+}
 
+.Flexbox2 {
+  display: flex;
+  justify-content: center;
+  padding: 60px;
+}
 
-
-
-.Flexbox{display: flex; justify-content: space-around; align-items: center}
-.Flexbox2{display: flex; justify-content: space-around; align-items: stretch; align-content: flex-end; padding: 60px;}
-.Flexbox3{display: flex;
+.Flexbox3 {
+  display: flex;
   justify-content: space-around;
   align-items: flex-start;
   margin-top: 50px;
@@ -104,17 +108,59 @@
   text-align: center;
 }
 
-#search{outline: none;font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 500px; height: 50px; padding:5px; border: 2px solid #ddd;}
-#home{font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 100px; height: 50px; padding:5px;  transition: color 0.3s; border: 0px solid #ddd; cursor: pointer}
-#FAQ{font-size: x-large; font-family: "System Bold Italic"; background-color: white;  border-radius: 50px; width: 100px; height: 50px; padding:5px; transition: color 0.3s; border: 0px solid #ddd; cursor: pointer}
+#search {
+  outline: none;
+  font-size: x-large;
+  font-family: "System Bold Italic";
+  background-color: white;
+  border-radius: 50px;
+  width: 500px;
+  height: 50px;
+  padding: 5px;
+  border: 2px solid #ddd;
+}
+
+#home {
+  font-size: x-large;
+  font-family: "System Bold Italic";
+  background-color: white;
+  border-radius: 50px;
+  width: 100px;
+  height: 50px;
+  padding: 5px;
+  transition: color 0.3s;
+  border: 0px solid #ddd;
+  cursor: pointer
+}
+
+#FAQ {
+  font-size: x-large;
+  font-family: "System Bold Italic";
+  background-color: white;
+  border-radius: 50px;
+  width: 100px;
+  height: 50px;
+  padding: 5px;
+  transition: color 0.3s;
+  border: 0px solid #ddd;
+  cursor: pointer
+}
 
 
+#home:hover {
+  background-image: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+}
 
-#home:hover {background-image: linear-gradient(135deg, #00c6ff, #0072ff);  color: white;}
-#FAQ:hover {background-image: linear-gradient(135deg, #00c6ff, #0072ff); color: white;}
+#FAQ:hover {
+  background-image: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+}
 
 
-#ristoranti1,#ristoranti2,#ristoranti3{transition: width 2s}
+#ristoranti1, #ristoranti2, #ristoranti3 {
+  transition: width 2s
+}
 
 
 #ristoranti1:hover {
@@ -132,7 +178,9 @@
 
 }
 
-#logo{cursor: pointer;}
+#logo {
+  cursor: pointer;
+}
 
 #profilo {
   width: 40px;
@@ -141,23 +189,22 @@
   cursor: pointer;
 
 }
-#profilo:hover{opacity: 70%;}
+
+#profilo:hover {
+  opacity: 70%;
+}
 
 
-
-@media (min-width: 980px){
+@media (min-width: 980px) {
   #searchBar {
     width: 400px;
     height: 60px;
-    margin-left: 90px;
-    margin-bottom: 0px;
   }
 
 
   #ricercaButton {
     width: 100px;
     height: 50px;
-    margin-right: 310px;
 
   }
 

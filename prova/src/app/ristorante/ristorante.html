@@ -4,8 +4,8 @@
   </div>
 
   <div class="search-container">
-    <div><input type="search" placeholder="Cerca Ristorante" [(ngModel)]="searchText" id="searchBar" (keyup.enter)="search()" /></div>
-    <div><input type="button" value="Ricerca" id="ricercaButton" (click)="search()" /></div>
+    <input type="search" placeholder="Cerca Ristorante" [(ngModel)]="searchText" id="searchBar" (keyup.enter)="search()" />
+    <input type="button" value="Ricerca" id="ricercaButton" (click)="search()" />
     <div id="searchDropdown" class="search-dropdown"></div>
   </div>
 
